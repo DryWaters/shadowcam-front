@@ -1,15 +1,15 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import LoginPage from "../pages/LoginPage";
-import FirstTimePage from "../pages/FirstTimePage";
-import NoPageFound from "../pages/NoPageFound";
+import LoginPage from "../components/LoginPage/LoginPage";
+import InitialPage from "../components/InitialPage/InitialPage";
+import NotFound from "../components/NotFound/NotFound";
 
 const Routes = () => (
   <BrowserRouter>
     <Switch>
       <Route exact path="/" component={LoginPage} />
-      <Route exact path="/first" component={FirstTimePage} />
-      <Route component={NoPageFound} />
+      <Route path="/initial" component={InitialPage} />
+      <Route component={NotFound} />
     </Switch>
   </BrowserRouter>
 );
