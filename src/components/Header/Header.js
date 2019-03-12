@@ -13,6 +13,7 @@ import {
   DropdownMenu,
   DropdownItem
 } from "reactstrap";
+import logo from '../../assets/images/boxer-header.png';
 
 class Header extends Component {
   constructor(props) {
@@ -33,10 +34,10 @@ class Header extends Component {
       <div>
         <Navbar color="dark" dark expand="md">
           <Container>
-            <NavbarBrand href="/">reactstrap</NavbarBrand>
+            <NavbarBrand href="/"><img src={logo} alt="Logo" />ShadowCam</NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
-              <Nav className="ml-auto" navbar>
+              <Nav navbar>
                 <NavItem>
                   <NavLink href="/components/">Components</NavLink>
                 </NavItem>

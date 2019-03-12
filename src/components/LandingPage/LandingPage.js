@@ -1,9 +1,12 @@
-import React from 'react';
+import React from "react";
+import { Container, Row, Col } from "reactstrap";
 
 const LandingPage = () => (
-  <div>
-    <h1>Hi from LandingPage</h1>
-  </div>
-)
+  <Container>
+    <Row>
+      <h1>Hi from LandingPage</h1>
+    </Row>
+  </Container>
+);
 
 export default LandingPage;
