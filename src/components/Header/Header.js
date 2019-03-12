@@ -13,6 +13,7 @@ import {
   DropdownMenu,
   DropdownItem
 } from "reactstrap";
+import { Link, NavLink as NavLk } from "react-router-dom";
 
 import styles from "./Header.module.css";
 import logo from "../../assets/images/boxer-header.png";
@@ -33,11 +34,13 @@ class Header extends Component {
   }
   render() {
     return (
-      <Navbar color="dark" dark expand="md">
+      <Navbar className={styles.container} color="dark" dark expand="md">
         <Container>
-          <NavbarBrand href="/">
-            <img src={logo} alt="Logo" />
-            <span className={styles.logo}>ShadowCam</span>
+          <NavbarBrand>
+            <Link className={styles.logoLink} to="/">
+              <img src={logo} alt="Logo" />
+              <span className={styles.logo}>ShadowCam</span>
+            </Link>
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>

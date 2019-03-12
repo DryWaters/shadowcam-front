@@ -1,6 +1,16 @@
+.container {
+  margin-bottom: 30px;
+}
+
 .logo {
   font-family: "Righteous", cursive;
   font-size: 2em;
+  color: white;
+}
+
+.logoLink:hover {
+    color: white;
+    text-decoration: none !important;
 }
 
 .menuItems {
