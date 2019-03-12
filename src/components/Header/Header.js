@@ -13,7 +13,9 @@ import {
   DropdownMenu,
   DropdownItem
 } from "reactstrap";
-import logo from '../../assets/images/boxer-header.png';
+
+import styles from "./Header.module.css";
+import logo from "../../assets/images/boxer-header.png";
 
 class Header extends Component {
   constructor(props) {
@@ -31,37 +33,32 @@ class Header extends Component {
   }
   render() {
     return (
-      <div>
-        <Navbar color="dark" dark expand="md">
-          <Container>
-            <NavbarBrand href="/"><img src={logo} alt="Logo" />ShadowCam</NavbarBrand>
-            <NavbarToggler onClick={this.toggle} />
-            <Collapse isOpen={this.state.isOpen} navbar>
-              <Nav navbar>
-                <NavItem>
-                  <NavLink href="/components/">Components</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink href="https://github.com/reactstrap/reactstrap">
-                    GitHub
-                  </NavLink>
-                </NavItem>
-                <UncontrolledDropdown nav inNavbar>
-                  <DropdownToggle nav caret>
-                    Options
-                  </DropdownToggle>
-                  <DropdownMenu right>
-                    <DropdownItem>Option 1</DropdownItem>
-                    <DropdownItem>Option 2</DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>Reset</DropdownItem>
-                  </DropdownMenu>
-                </UncontrolledDropdown>
-              </Nav>
-            </Collapse>
-          </Container>
-        </Navbar>
-      </div>
+      <Navbar color="dark" dark expand="md">
+        <Container>
+          <NavbarBrand href="/">
+            <img src={logo} alt="Logo" />
+            <span className={styles.logo}>ShadowCam</span>
+          </NavbarBrand>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav className={styles.menuItems} navbar>
+              <NavItem className={styles.menuItem}>
+                <NavLink>New Recording</NavLink>
+              </NavItem>
+              <NavItem className={styles.menuItem}>
+                <NavLink>Video Recordings</NavLink>
+              </NavItem>
+              <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle caret>Login</DropdownToggle>
+                <DropdownMenu right>
+                  <DropdownItem>My Account</DropdownItem>
+                  <DropdownItem>Logout</DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
+            </Nav>
+          </Collapse>
+        </Container>
+      </Navbar>
     );
   }
 }
