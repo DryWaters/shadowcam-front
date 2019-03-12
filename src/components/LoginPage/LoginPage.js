@@ -1,14 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Button } from "reactstrap";
+import { Container, Row, Col  } from "reactstrap";
 
 const LoginPage = () => (
-  <div>
-    <h1>Hi from Login Page</h1>
-    <Button>
-      <Link to="/initial">Click me</Link>
-    </Button>
-  </div>
+  <Container>
+    <Row>
+      <Col>Login Page</Col>
+    </Row>
+    
+  </Container>
 );
 
 export default LoginPage;
