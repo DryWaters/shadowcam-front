@@ -5,14 +5,11 @@ import Routes from "./routes/routes";
 // import * as serviceWorker from "./serviceWorker";
 import configureStore from "./store/configureStore";
 
-import Header from './components/Header/Header';
-
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const store = configureStore();
 const jsx = (
   <Provider store={store}>
-    <Header />
     <Routes />
   </Provider>
 );
