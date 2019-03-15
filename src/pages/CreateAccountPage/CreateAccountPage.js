@@ -111,10 +111,12 @@ class CreateAccountPage extends Component {
               </Col>
             </FormGroup>
             <FormGroup row>
-              <Col sm="4" lg="3" xl="2">Gender</Col>
+              <Col sm="4" lg="3" xl="2">
+                Gender
+              </Col>
               <FormGroup check>
                 <Label sm="4" check>
-                  <Input type="radio" name="radio1" value="male" />
+                  <Input type="radio" name="radio1" value="male" checked />
                   Male
                 </Label>
               </FormGroup>
