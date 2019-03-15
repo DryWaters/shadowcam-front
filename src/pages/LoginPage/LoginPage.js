@@ -10,7 +10,7 @@ import {
   FormGroup
 } from "reactstrap";
 import { Link } from "react-router-dom";
-import Layout from "../Layout/Layout";
+import Layout from "../../components/Layout/Layout";
 
 import styles from "./LoginPage.module.css";
 

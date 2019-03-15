@@ -1,5 +1,5 @@
 .notFoundBackground {
-    background: url("./boxer-404.jpg") no-repeat center center fixed;
+    background: url("../../assets/images/boxer-404.jpg") no-repeat center center fixed;
     height: calc(100vh - 106px);
     width: 100%;
     background-color: black;

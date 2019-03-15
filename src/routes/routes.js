@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import LoginPage from "../components/LoginPage/LoginPage";
-import LandingPage from "../components/LandingPage/LandingPage";
-import NotFound from "../components/NotFound/NotFound";
-import CreateAccountPage from '../components/CreateAccountPage/CreateAccountPage';
-import ForgotPasswordPage from '../components/ForgotPasswordPage/ForgotPasswordPage';
+import LoginPage from "../pages/LoginPage/LoginPage";
+import LandingPage from "../pages/LandingPage/LandingPage";
+import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
+import CreateAccountPage from '../pages/CreateAccountPage/CreateAccountPage';
+import ForgotPasswordPage from '../pages/ForgotPasswordPage/ForgotPasswordPage';
 
 const Routes = () => (
   <BrowserRouter>
@@ -13,7 +13,7 @@ const Routes = () => (
       <Route path="/account/login" component={LoginPage} />
       <Route path="/account/create" component={CreateAccountPage} />
       <Route path="/account/forgot" component={ForgotPasswordPage} />
-      <Route component={NotFound} />
+      <Route component={NotFoundPage} />
     </Switch>
   </BrowserRouter>
 );

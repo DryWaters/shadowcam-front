@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
 import styles from "./LandingPage.module.css";
-import Layout from "../Layout/Layout";
+import Layout from "../../components/Layout/Layout";
 
 const LandingPage = () => (
   <Layout>
