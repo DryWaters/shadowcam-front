@@ -1,4 +1,4 @@
-.container {
+.headerContainer {
   margin-bottom: 30px;
 }
 
@@ -6,6 +6,10 @@
   font-family: "Righteous", cursive;
   font-size: 2em;
   color: white;
+}
+
+.logoLink {
+  padding-bottom: 10px;
 }
 
 .logoLink:hover {

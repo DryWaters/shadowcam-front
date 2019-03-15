@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import {
   Container,
   Collapse,
@@ -34,22 +35,20 @@ class Header extends Component {
   }
   render() {
     return (
-      <Navbar className={styles.container} color="dark" dark expand="md">
+      <Navbar className={styles.headerContainer} color="dark" dark expand="md">
         <Container>
-          <NavbarBrand>
-            <Link className={styles.logoLink} to="/">
-              <img src={logo} alt="Logo" />
-              <span className={styles.logo}>ShadowCam</span>
-            </Link>
-          </NavbarBrand>
+          <Link className={styles.logoLink} to="/">
+            <img src={logo} alt="Logo" />
+            <span className={styles.logo}>ShadowCam</span>
+          </Link>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className={styles.menuItems} navbar>
               <NavItem className={styles.menuItem}>
-                <NavLink>New Recording</NavLink>
+                {this.props.isAuth && <NavLink>New Recording</NavLink>}
               </NavItem>
               <NavItem className={styles.menuItem}>
-                <NavLink>Video Recordings</NavLink>
+                {this.props.isAuth && <NavLink>Past Recordings</NavLink>}
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle caret>Login</DropdownToggle>
@@ -66,4 +65,8 @@ class Header extends Component {
   }
 }
 
-export default Header;
+const mapStateToProps = state => ({
+  isAuth: state.auth.isAuth
+});
+
+export default connect(mapStateToProps)(Header);
