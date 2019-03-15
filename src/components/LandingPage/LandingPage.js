@@ -5,7 +5,7 @@ import Layout from "../Layout/Layout";
 
 const LandingPage = () => (
   <Layout>
-    <Container className={styles.container}>
+    <Container className={styles.landingContainer}>
       <Row>
         <h1>Hi from LandingPage</h1>
       </Row>
