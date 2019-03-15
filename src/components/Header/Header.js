@@ -36,12 +36,12 @@ class Header extends Component {
   render() {
     const loginDropdown = (
       <UncontrolledDropdown nav inNavbar>
-      <DropdownToggle caret>Login</DropdownToggle>
-      <DropdownMenu right>
-        <DropdownItem>My Account</DropdownItem>
-        <DropdownItem>Logout</DropdownItem>
-      </DropdownMenu>
-    </UncontrolledDropdown>
+        <DropdownToggle caret>Login</DropdownToggle>
+        <DropdownMenu right>
+          <DropdownItem>My Account</DropdownItem>
+          <DropdownItem>Logout</DropdownItem>
+        </DropdownMenu>
+      </UncontrolledDropdown>
     );
 
     const unauthLogin = (

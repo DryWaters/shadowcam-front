@@ -20,7 +20,8 @@
 .menuItems {
   display: flex;
   flex: 1;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  margin-left: 20%;
 }
 
 .menuItem {
@@ -43,6 +44,11 @@
 }
 
 @media only screen and (max-width: 760px) {
+
+  .menuItems {
+    margin-left: 10%;
+  }
+
   .menuItem:after {
     display: none;
   }
