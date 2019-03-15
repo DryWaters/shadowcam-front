@@ -5,7 +5,7 @@ import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
+  Button,
   Nav,
   NavItem,
   NavLink,
@@ -34,6 +34,22 @@ class Header extends Component {
     });
   }
   render() {
+    const loginDropdown = (
+      <UncontrolledDropdown nav inNavbar>
+      <DropdownToggle caret>Login</DropdownToggle>
+      <DropdownMenu right>
+        <DropdownItem>My Account</DropdownItem>
+        <DropdownItem>Logout</DropdownItem>
+      </DropdownMenu>
+    </UncontrolledDropdown>
+    );
+
+    const unauthLogin = (
+      <Link to="/account/login">
+        <Button>Login</Button>
+      </Link>
+    );
+
     return (
       <Navbar className={styles.headerContainer} color="dark" dark expand="md">
         <Container>
@@ -50,13 +66,7 @@ class Header extends Component {
               <NavItem className={styles.menuItem}>
                 {this.props.isAuth && <NavLink>Past Recordings</NavLink>}
               </NavItem>
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle caret>Login</DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>My Account</DropdownItem>
-                  <DropdownItem>Logout</DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
+              {!this.props.isAuth ? unauthLogin : loginDropdown}
             </Nav>
           </Collapse>
         </Container>
