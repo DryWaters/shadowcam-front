@@ -35,9 +35,9 @@ class Header extends Component {
   render() {
     const loginDropdown = (
       <UncontrolledDropdown nav inNavbar>
-        <DropdownToggle caret>Login</DropdownToggle>
+        <DropdownToggle caret>Account</DropdownToggle>
         <DropdownMenu right>
-          <DropdownItem>My Account</DropdownItem>
+          <DropdownItem>Account Settings</DropdownItem>
           <DropdownItem onClick={this.props.logout}>Logout</DropdownItem>
         </DropdownMenu>
       </UncontrolledDropdown>
