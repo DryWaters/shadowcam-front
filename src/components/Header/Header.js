@@ -14,32 +14,31 @@ import {
   DropdownMenu,
   DropdownItem
 } from "reactstrap";
-import { Link, NavLink as NavLk } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { logout } from '../../store/actions/auth';
 
 import styles from "./Header.module.css";
 import logo from "../../assets/images/boxer-header.png";
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
 
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      isOpen: false
-    };
+  state = {
+    isOpen: false
   }
-  toggle() {
+  
+  toggle = () => {
     this.setState({
       isOpen: !this.state.isOpen
     });
   }
+
   render() {
     const loginDropdown = (
       <UncontrolledDropdown nav inNavbar>
         <DropdownToggle caret>Login</DropdownToggle>
         <DropdownMenu right>
           <DropdownItem>My Account</DropdownItem>
-          <DropdownItem>Logout</DropdownItem>
+          <DropdownItem onClick={this.props.logout}>Logout</DropdownItem>
         </DropdownMenu>
       </UncontrolledDropdown>
     );
@@ -79,4 +78,8 @@ const mapStateToProps = state => ({
   isAuth: state.auth.isAuth
 });
 
-export default connect(mapStateToProps)(Header);
+const mapDispatchToProps = dispatch => ({
+  logout: () => dispatch(logout())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
