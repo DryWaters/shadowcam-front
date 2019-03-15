@@ -1,0 +1,18 @@
+.createContainer {
+    margin-top: 50px;
+    padding-bottom: 30px;
+}
+
+.createForm {
+    padding-top: 40px;
+}
+
+.spacer {
+    padding-bottom: 15px;
+}
+
+.createButton {
+    padding: 10px 50px !important;
+    text-transform: uppercase;
+    margin-right: 50px;
+}
