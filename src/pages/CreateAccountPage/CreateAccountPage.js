@@ -56,7 +56,7 @@ class CreateAccountPage extends Component {
                 <Input
                   type="email"
                   required
-                  name="email"
+                  id="email"
                   value={this.state.email}
                   onChange={this.handleChange}
                   placeholder="Email address"
@@ -72,7 +72,7 @@ class CreateAccountPage extends Component {
                   type="password"
                   minLength="8"
                   required
-                  name="password"
+                  id="password"
                   value={this.state.password}
                   onChange={this.handleChange}
                   placeholder="Password"
@@ -88,7 +88,7 @@ class CreateAccountPage extends Component {
                   type="password"
                   minLength="8"
                   required
-                  name="confirmPassword"
+                  id="confirmPassword"
                   value={this.state.confirmPassword}
                   onChange={this.handleChange}
                   placeholder="Confirm Password"
@@ -116,13 +116,13 @@ class CreateAccountPage extends Component {
               </Col>
               <FormGroup check>
                 <Label sm="4" check>
-                  <Input type="radio" name="radio1" value="male" checked />
+                  <Input type="radio" name="gender" value="male" checked />
                   Male
                 </Label>
               </FormGroup>
               <FormGroup check>
                 <Label sm="4" check>
-                  <Input type="radio" name="radio1" value="female" /> Female
+                  <Input type="radio" name="gender" value="female" /> Female
                 </Label>
               </FormGroup>
             </FormGroup>
@@ -135,7 +135,7 @@ class CreateAccountPage extends Component {
                   type="number"
                   min="40"
                   max="100"
-                  name="height"
+                  id="height"
                   value={this.state.height}
                   onChange={this.handleChange}
                   placeholder="Height in inches"
@@ -151,7 +151,7 @@ class CreateAccountPage extends Component {
                   type="number"
                   min="40"
                   max="400"
-                  name="weight"
+                  id="weight"
                   value={this.state.weight}
                   onChange={this.handleChange}
                   placeholder="Weight in pounds"

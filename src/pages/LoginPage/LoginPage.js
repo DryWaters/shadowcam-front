@@ -61,7 +61,7 @@ class LoginPage extends Component {
                     <Input
                       type="email"
                       required
-                      name="email"
+                      id="email"
                       value={this.state.email}
                       onChange={this.handleChange}
                       placeholder="Email address"
@@ -77,7 +77,7 @@ class LoginPage extends Component {
                       type="password"
                       minLength="8"
                       required
-                      name="password"
+                      id="password"
                       value={this.state.password}
                       onChange={this.handleChange}
                       placeholder="Password"
