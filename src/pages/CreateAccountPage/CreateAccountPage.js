@@ -26,7 +26,19 @@ class CreateAccountPage extends Component {
 
   handleChange = event => {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.id]: event.target.value
+    });
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    this.props.tryLogin({
+      email: this.state.email,
+      password: this.state.password
+    });
+    this.setState({
+      email: "",
+      password: ""
     });
   };
 
