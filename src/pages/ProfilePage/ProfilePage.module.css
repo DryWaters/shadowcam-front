@@ -1,0 +1,28 @@
+.profileContainer {
+    margin-top: 50px;
+    padding-bottom: 30px;
+}
+
+.profileForm {
+    padding-top: 40px;
+}
+
+.spacer {
+    padding-bottom: 15px;
+}
+
+.createButton {
+    padding: 10px 50px !important;
+    text-transform: uppercase;
+    margin-right: 50px;
+}
+
+.invalidInput {
+    border: 4px solid red !important;
+}
+
+.passwordHelpers { 
+    padding-top: 20px;
+    line-height: 0.5em;
+    color: red;
+}
