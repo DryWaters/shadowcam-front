@@ -37,8 +37,8 @@ class Header extends Component {
       <UncontrolledDropdown nav inNavbar>
         <DropdownToggle caret>Account</DropdownToggle>
         <DropdownMenu right>
-          <DropdownItem>Account Settings</DropdownItem>
-          <DropdownItem onClick={this.props.logout}>Logout</DropdownItem>
+          <DropdownItem className={styles.dropdownItem}><Link to="/account/profile">Account Settings</Link></DropdownItem>
+          <DropdownItem className={styles.dropdownItem} onClick={this.props.logout}>Logout</DropdownItem>
         </DropdownMenu>
       </UncontrolledDropdown>
     );
