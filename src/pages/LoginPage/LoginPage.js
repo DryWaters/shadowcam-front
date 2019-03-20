@@ -83,9 +83,9 @@ class LoginPage extends Component {
                       placeholder="Password"
                     />
                   </Col>
-                  <Label sm="3">
+                  {/* <Label sm="3">
                     <Link to="/account/forgot">Forgot Password?</Link>
-                  </Label>
+                  </Label> */}
                 </FormGroup>
                 <FormGroup className={styles.spacer}>
                   <Button className={styles.loginButton}>Log In</Button>
