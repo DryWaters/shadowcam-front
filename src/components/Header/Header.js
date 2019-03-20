@@ -14,7 +14,7 @@ import {
   DropdownMenu,
   DropdownItem
 } from "reactstrap";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { logout } from '../../store/actions/auth';
 
 import styles from "./Header.module.css";

@@ -32,7 +32,7 @@
 .menuItem:after {
   display: block;
   content: "";
-  border-bottom: solid 3px #8dc24c;
+  border-bottom: solid 3px #f45342;
   transform: scaleX(0);
   transition: transform 250ms ease-in-out;
   transform-origin: 0% 100%;
