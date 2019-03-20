@@ -12,7 +12,7 @@ const Routes = props => (
     <Switch>
       <Route exact path="/" component={LandingPage} />
       <Route path="/account/login" component={LoginPage} />
-<Route path="/account/create" render={() => props.isAuth ? <CreateAccountPage /> : <Redirect to="/" />} />
+      <Route path="/account/create" component={CreateAccountPage} />} />
       <Route path="/account/profile" render={() => props.isAuth ? <ProfilePage /> : <Redirect to="/" />} />
       <Route component={NotFoundPage} />
     </Switch>
