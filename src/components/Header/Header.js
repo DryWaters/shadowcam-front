@@ -14,7 +14,7 @@ import {
   DropdownMenu,
   DropdownItem
 } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { logout } from '../../store/actions/auth';
 
 import styles from "./Header.module.css";
@@ -25,7 +25,7 @@ class Header extends Component {
   state = {
     isOpen: false
   }
-  
+
   toggle = () => {
     this.setState({
       isOpen: !this.state.isOpen

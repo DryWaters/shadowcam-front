@@ -6,18 +6,23 @@ import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import CreateAccountPage from '../pages/CreateAccountPage/CreateAccountPage';
 import ProfilePage from '../pages/ProfilePage/ProfilePage';
 import ForgotPasswordPage from '../pages/ForgotPasswordPage/ForgotPasswordPage';
+import { connect } from 'react-redux';
 
-const Routes = () => (
+const Routes = props => (
   <BrowserRouter>
     <Switch>
       <Route exact path="/" component={LandingPage} />
       <Route path="/account/login" component={LoginPage} />
       <Route path="/account/create" component={CreateAccountPage} />
-      <Route path="/account/profile" component={ProfilePage} />
+      <Route path="/account/profile" render={() => props.isAuth ? <ProfilePage /> : <LandingPage />} />
       <Route path="/account/forgot" component={ForgotPasswordPage} />
       <Route component={NotFoundPage} />
     </Switch>
   </BrowserRouter>
 );
 
-export default Routes;
+const mapStateToProps = state => ({
+  isAuth: state.auth.isAuth
+})
+
+export default connect(mapStateToProps)(Routes);
