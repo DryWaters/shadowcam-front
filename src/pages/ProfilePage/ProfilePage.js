@@ -43,6 +43,16 @@ const initialState = {
     isValid: false,
     isTouched: false
   },
+  firstName: {
+    value: "",
+    isValid: false,
+    isTouched: false
+  },
+  lastName: {
+    value: "",
+    isValid: false,
+    isTouched: false
+  },
   birthdate: {
     value: "1984-01-01",
     isValid: false,
@@ -128,42 +138,44 @@ class ProfilePage extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.setState(initialState);
+    this.setState({ ...initialState });
+  };
+
+  handleClear = () => {
+    this.setState({ ...initialState });
   };
 
   render() {
     return (
       <Layout>
-        <Container className={styles.profileContainer
-        }>
+        <Container className={styles.profileContainer}>
           <Row>
             <Col>
-              <h1>My Account</h1>
+              <h1>Profile</h1>
             </Col>
           </Row>
-          <FormGroup row className={styles.spacer}>
-            <Label sm="4" lg="3" xl="2" for="email">
-              Email
+          <Form onSubmit={this.handleSubmit} className={styles.createForm}>
+            <FormGroup row className={styles.spacer}>
+              <Label sm="4" lg="3" xl="2" for="email">
+                Email
               </Label>
-            <Col sm="7" lg="5">
-              <Input
-                type="email"
-                required
-                id="email"
-                value={this.state.email.value}
-                onChange={this.handleChange}
-                placeholder="Email address"
-                spellCheck="false"
-                className={
-                  !this.state.email.isValid && this.state.email.isTouched
-                    ? `${styles.invalidInput}`
-                    : ""
-                }
-                disabled
-              />
-            </Col>
-          </FormGroup>
-          <Form onSubmit={this.handleSubmit} className={styles.profileForm}>
+              <Col sm="7" lg="5">
+                <Input
+                  type="email"
+                  required
+                  id="email"
+                  value={this.state.email.value}
+                  onChange={this.handleChange}
+                  placeholder="Email address"
+                  spellCheck="false"
+                  className={
+                    !this.state.email.isValid && this.state.email.isTouched
+                      ? `${styles.invalidInput}`
+                      : ""
+                  }
+                />
+              </Col>
+            </FormGroup>
             <FormGroup row className={styles.spacer}>
               <Label sm="4" lg="3" xl="2" for="password">
                 Password
@@ -179,7 +191,7 @@ class ProfilePage extends Component {
                   placeholder="Password"
                   className={
                     !this.state.password.isValid &&
-                      this.state.password.isTouched
+                    this.state.password.isTouched
                       ? `${styles.invalidInput}`
                       : ""
                   }
@@ -188,20 +200,20 @@ class ProfilePage extends Component {
                   {this.state.password.minChars ? (
                     ""
                   ) : (
-                      <p>Minimum is 8 characters</p>
-                    )}
+                    <p>Minimum is 8 characters</p>
+                  )}
                   {this.state.password.hasNumber ? "" : <p>Contain a number</p>}
                   {this.state.password.hasLower &&
-                    this.state.password.hasUpper ? (
-                      ""
-                    ) : (
-                      <p>Upper and lower case characters</p>
-                    )}
+                  this.state.password.hasUpper ? (
+                    ""
+                  ) : (
+                    <p>Upper and lower case characters</p>
+                  )}
                   {this.state.password.hasSymbol ? (
                     ""
                   ) : (
-                      <p>One symbol: [!@#$%^&*-]</p>
-                    )}
+                    <p>One symbol: [!@#$%^&*-]</p>
+                  )}
                 </div>
               </Col>
             </FormGroup>
@@ -220,7 +232,47 @@ class ProfilePage extends Component {
                   placeholder="Confirm Password"
                   className={
                     !this.state.confirmPassword.isValid &&
-                      this.state.confirmPassword.isTouched
+                    this.state.confirmPassword.isTouched
+                      ? `${styles.invalidInput}`
+                      : ""
+                  }
+                />
+              </Col>
+            </FormGroup>
+            <FormGroup row className={styles.spacer}>
+              <Label sm="4" lg="3" xl="2" for="firstName">
+                First Name
+              </Label>
+              <Col sm="5" md="3">
+                <Input
+                  type="text"
+                  id="firstName"
+                  maxLength="50"
+                  value={this.state.firstName.value}
+                  onChange={this.handleChange}
+                  className={
+                    !this.state.firstName.isValid &&
+                    this.state.firstName.isTouched
+                      ? `${styles.invalidInput}`
+                      : ""
+                  }
+                />
+              </Col>
+            </FormGroup>
+            <FormGroup row className={styles.spacer}>
+              <Label sm="4" lg="3" xl="2" for="lastName">
+                Last Name
+              </Label>
+              <Col sm="5" md="3">
+                <Input
+                  type="text"
+                  id="lastName"
+                  maxLength="50"
+                  value={this.state.lastName.value}
+                  onChange={this.handleChange}
+                  className={
+                    !this.state.lastName.isValid &&
+                    this.state.lastName.isTouched
                       ? `${styles.invalidInput}`
                       : ""
                   }
@@ -241,7 +293,7 @@ class ProfilePage extends Component {
                   onChange={this.handleChange}
                   className={
                     !this.state.birthdate.isValid &&
-                      this.state.birthdate.isTouched
+                    this.state.birthdate.isTouched
                       ? `${styles.invalidInput}`
                       : ""
                   }
@@ -321,7 +373,12 @@ class ProfilePage extends Component {
             </FormGroup>
             <Row className={styles.spacer}>
               <Col>
-                <Button className={styles.createButton}>Clear</Button>
+                <Button
+                  className={styles.createButton}
+                  onClick={this.handleClear}
+                >
+                  Clear
+                </Button>
                 <Button className={styles.createButton}>Register</Button>
               </Col>
             </Row>
