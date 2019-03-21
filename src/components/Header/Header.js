@@ -15,7 +15,7 @@ import {
   DropdownItem
 } from "reactstrap";
 import { Link } from "react-router-dom";
-import { logout } from '../../store/actions/auth';
+import { logout } from '../../store/actions/user';
 
 import styles from "./Header.module.css";
 import logo from "../../assets/images/boxer-header.png";
@@ -75,7 +75,7 @@ class Header extends Component {
 }
 
 const mapStateToProps = state => ({
-  isAuth: state.auth.isAuth
+  isAuth: state.user.isAuth
 });
 
 const mapDispatchToProps = dispatch => ({

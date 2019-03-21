@@ -8,8 +8,7 @@ export const tryLogin = authData => {
       }`
     );
 
-    const API_KEY = "somethingWeMakeUp";
-    const url = `https://shadowcam-back.herokuapp.com/account/login?key=${API_KEY}`;
+    const url = `https://shadowcam-back.herokuapp.com/account/login`;
 
     // fetch url with method post and email/password
     /*

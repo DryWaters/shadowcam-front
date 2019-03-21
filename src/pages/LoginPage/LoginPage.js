@@ -12,7 +12,7 @@ import {
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Layout from "../../components/Layout/Layout";
-import { tryLogin } from "../../store/actions/auth";
+import { tryLogin } from "../../store/actions/user";
 
 import styles from "./LoginPage.module.css";
 
