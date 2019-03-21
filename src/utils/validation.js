@@ -5,7 +5,8 @@ import {
   MIN_WEIGHT,
   MIN_YEAR,
   MAX_YEAR,
-  MIN_PASSWORD_LENGTH
+  MIN_PASSWORD_LENGTH,
+  MAX_NAME_LENGTH
 } from "./constants";
 
 export const isValidEmail = val =>
@@ -17,6 +18,8 @@ export const isValidPassword = val =>
   /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/.test(val);
 
 export const confirmPassword = (password, otherPW) => password === otherPW;
+
+export const isValidName = val => val.length <= MAX_NAME_LENGTH;
 
 export const isValidDate = val =>
   val.slice(0, 4) > MIN_YEAR && val.slice(0, 4) < MAX_YEAR;
@@ -39,6 +42,8 @@ export default {
   email: isValidEmail,
   password: isValidPassword,
   confirmPassword: confirmPassword,
+  firstName: isValidName,
+  lastName: isValidName,
   birthdate: isValidDate,
   height: isValidHeight,
   weight: isValidWeight,

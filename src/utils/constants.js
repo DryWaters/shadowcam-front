@@ -5,3 +5,4 @@ export const MIN_HEIGHT = 40;
 export const MIN_YEAR = 1900;
 export const MAX_YEAR = 2007;
 export const MIN_PASSWORD_LENGTH = 8;
+export const MAX_NAME_LENGTH = 50;

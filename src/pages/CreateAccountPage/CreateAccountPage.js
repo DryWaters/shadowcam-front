@@ -43,6 +43,16 @@ const initialState = {
     isValid: false,
     isTouched: false
   },
+  firstName: {
+    value: "",
+    isValid: false,
+    isTouched: false
+  },
+  lastName: {
+    value: "",
+    isValid: false,
+    isTouched: false
+  },
   birthdate: {
     value: "1984-01-01",
     isValid: false,
@@ -128,7 +138,11 @@ class CreateAccountPage extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.setState(initialState);
+    this.setState({ ...initialState });
+  };
+
+  handleClear = () => {
+    this.setState({ ...initialState });
   };
 
   render() {
@@ -234,6 +248,46 @@ class CreateAccountPage extends Component {
               </Col>
             </FormGroup>
             <FormGroup row className={styles.spacer}>
+              <Label sm="4" lg="3" xl="2" for="firstName">
+                First Name
+              </Label>
+              <Col sm="5" md="3">
+                <Input
+                  type="text"
+                  id="firstName"
+                  maxLength="50"
+                  value={this.state.firstName.value}
+                  onChange={this.handleChange}
+                  className={
+                    !this.state.firstName.isValid &&
+                    this.state.firstName.isTouched
+                      ? `${styles.invalidInput}`
+                      : ""
+                  }
+                />
+              </Col>
+            </FormGroup>
+            <FormGroup row className={styles.spacer}>
+              <Label sm="4" lg="3" xl="2" for="lastName">
+                Last Name
+              </Label>
+              <Col sm="5" md="3">
+                <Input
+                  type="text"
+                  id="lastName"
+                  maxLength="50"
+                  value={this.state.lastName.value}
+                  onChange={this.handleChange}
+                  className={
+                    !this.state.lastName.isValid &&
+                    this.state.lastName.isTouched
+                      ? `${styles.invalidInput}`
+                      : ""
+                  }
+                />
+              </Col>
+            </FormGroup>
+            <FormGroup row className={styles.spacer}>
               <Label sm="4" lg="3" xl="2" for="birthdate">
                 Birthdate
               </Label>
@@ -327,7 +381,12 @@ class CreateAccountPage extends Component {
             </FormGroup>
             <Row className={styles.spacer}>
               <Col>
-                <Button className={styles.createButton}>Clear</Button>
+                <Button
+                  className={styles.createButton}
+                  onClick={this.handleClear}
+                >
+                  Clear
+                </Button>
                 <Button className={styles.createButton}>Register</Button>
               </Col>
             </Row>
