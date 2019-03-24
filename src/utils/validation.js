@@ -9,17 +9,19 @@ import {
   MAX_NAME_LENGTH
 } from "./constants";
 
+// https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
 export const isValidEmail = val =>
   /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/.test(
     val
   );
 
+// https://stackoverflow.com/questions/14850553/javascript-regex-for-password-containing-at-least-8-characters-1-number-1-uppe
 export const isValidPassword = val =>
   /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/.test(val);
 
 export const confirmPassword = (password, otherPW) => password === otherPW;
 
-export const isValidName = val => val.length <= MAX_NAME_LENGTH;
+export const isValidName = val => val.length <= MAX_NAME_LENGTH && val.length > 0;
 
 export const isValidDate = val =>
   val.slice(0, 4) > MIN_YEAR && val.slice(0, 4) < MAX_YEAR;

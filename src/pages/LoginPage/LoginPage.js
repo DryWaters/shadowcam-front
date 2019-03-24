@@ -16,7 +16,7 @@ import { tryLogin } from "../../store/actions/user";
 
 import styles from "./LoginPage.module.css";
 
-class LoginPage extends Component {
+export class LoginPage extends Component {
   state = {
     email: "",
     password: ""
