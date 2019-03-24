@@ -8,13 +8,12 @@ import {
   Button,
   Nav,
   NavItem,
-  NavLink,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem
 } from "reactstrap";
-import { NavLink as NvLink, Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { logout } from "../../store/actions/user";
 
 import styles from "./Header.module.css";
@@ -67,16 +66,14 @@ export class Header extends Component {
             <Nav className={styles.menuItems} navbar>
               <NavItem className={styles.menuItem}>
                 {this.props.isAuth && (
-                  <NvLink to="/recordings/newRecording">
-                    <NavLink>New Recording</NavLink>
-                  </NvLink>
+                  <NavLink to="/recordings/newRecording">New Recording</NavLink>
                 )}
               </NavItem>
               <NavItem className={styles.menuItem}>
                 {this.props.isAuth && (
-                  <NvLink to="/recordings/pastRecordings">
-                    <NavLink>Past Recordings</NavLink>
-                  </NvLink>
+                  <NavLink to="/recordings/pastRecordings">
+                    Past Recordings
+                  </NavLink>
                 )}
               </NavItem>
               {!this.props.isAuth ? unauthLogin : loginDropdown}
