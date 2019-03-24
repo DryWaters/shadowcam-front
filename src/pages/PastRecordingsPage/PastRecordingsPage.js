@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-export class PastSessionsPage {
+export class PastRecordingsPage {
 
   render() {
     return (
@@ -10,4 +10,4 @@ export class PastSessionsPage {
   }
 }
 
-export default connect()(PastSessionsPage)
+export default connect()(PastRecordingsPage)

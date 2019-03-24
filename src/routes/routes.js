@@ -5,8 +5,8 @@ import LandingPage from "../pages/LandingPage/LandingPage";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import CreateAccountPage from '../pages/CreateAccountPage/CreateAccountPage';
 import ProfilePage from '../pages/ProfilePage/ProfilePage';
-import NewSessionPage from '../pages/NewSessionPage/NewSessionPage';
-import PastSessionsPage from '../pages/PastSessionsPage/PastSessionsPage';
+import NewRecordingPage from '../pages/NewRecordingPage/NewRecordingPage';
+import PastRecordingsPage from '../pages/PastRecordingsPage/PastRecordingsPage';
 
 import { connect } from 'react-redux';
 
@@ -17,8 +17,8 @@ const Routes = props => (
       <Route path="/account/login" component={LoginPage} />
       <Route path="/account/create" component={CreateAccountPage} />} />
       <Route path="/account/profile" render={() => props.isAuth ? <ProfilePage /> : <Redirect to="/" />} />
-      <Route path="/session/newSession" render={() => props.isAuth ? <NewSessionPage /> : <Redirect to="/" />} />
-      <Route path="/session/pastSessions" render={() => props.isAuth ? <PastSessionsPage /> : <Redirect to="/" />} />
+      <Route path="/session/newSession" render={() => props.isAuth ? <NewRecordingPage /> : <Redirect to="/" />} />
+      <Route path="/session/pastSessions" render={() => props.isAuth ? <PastRecordingsPage /> : <Redirect to="/" />} />
       <Route component={NotFoundPage} />
     </Switch>
   </BrowserRouter>
