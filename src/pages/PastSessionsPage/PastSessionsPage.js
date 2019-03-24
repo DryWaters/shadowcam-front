@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-export class NewSessionPage {
+export class PastSessionsPage {
 
   render() {
     return (
@@ -10,4 +10,4 @@ export class NewSessionPage {
   }
 }
 
-export default connect()(NewSessionPage)
+export default connect()(PastSessionsPage)

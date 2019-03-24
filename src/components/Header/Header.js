@@ -60,10 +60,10 @@ export class Header extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className={styles.menuItems} navbar>
               <NavItem className={styles.menuItem}>
-                {this.props.isAuth && <NavLink to="/newRecording">New Recording</NavLink>}
+                {this.props.isAuth && <NavLink to="/session/newSession">New Recording</NavLink>}
               </NavItem>
               <NavItem className={styles.menuItem}>
-                {this.props.isAuth && <NavLink to="/pastRecordings">Past Recordings</NavLink>}
+                {this.props.isAuth && <NavLink to="/session/pastSessions">Past Recordings</NavLink>}
               </NavItem>
               {!this.props.isAuth ? unauthLogin : loginDropdown}
             </Nav>
