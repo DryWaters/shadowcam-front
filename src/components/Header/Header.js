@@ -15,30 +15,36 @@ import {
   DropdownItem
 } from "reactstrap";
 import { NavLink as NvLink, Link } from "react-router-dom";
-import { logout } from '../../store/actions/user';
+import { logout } from "../../store/actions/user";
 
 import styles from "./Header.module.css";
 import logo from "../../assets/images/boxer-header.png";
 
 export class Header extends Component {
-
   state = {
     isOpen: false
-  }
+  };
 
   toggle = () => {
     this.setState({
       isOpen: !this.state.isOpen
     });
-  }
+  };
 
   render() {
     const loginDropdown = (
       <UncontrolledDropdown nav inNavbar>
         <DropdownToggle caret>Account</DropdownToggle>
         <DropdownMenu right>
-          <DropdownItem className={styles.dropdownItem}><Link to="/account/profile">Account Settings</Link></DropdownItem>
-          <DropdownItem className={styles.dropdownItem} onClick={this.props.logout}>Logout</DropdownItem>
+          <DropdownItem className={styles.dropdownItem}>
+            <Link to="/account/profile">Account Settings</Link>
+          </DropdownItem>
+          <DropdownItem
+            className={styles.dropdownItem}
+            onClick={this.props.logout}
+          >
+            Logout
+          </DropdownItem>
         </DropdownMenu>
       </UncontrolledDropdown>
     );
@@ -60,10 +66,18 @@ export class Header extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className={styles.menuItems} navbar>
               <NavItem className={styles.menuItem}>
-                {this.props.isAuth && <NavLink><NvLink to="/recordings/newRecording">New Recording</NvLink></NavLink>}
+                {this.props.isAuth && (
+                  <NvLink to="/recordings/newRecording">
+                    <NavLink>New Recording</NavLink>
+                  </NvLink>
+                )}
               </NavItem>
               <NavItem className={styles.menuItem}>
-                {this.props.isAuth && <NavLink><NvLink to="/recordings/pastRecordings">Past Recordings</NvLink></NavLink>}
+                {this.props.isAuth && (
+                  <NvLink to="/recordings/pastRecordings">
+                    <NavLink>Past Recordings</NavLink>
+                  </NvLink>
+                )}
               </NavItem>
               {!this.props.isAuth ? unauthLogin : loginDropdown}
             </Nav>
@@ -80,6 +94,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout())
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Header);
