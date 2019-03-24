@@ -14,7 +14,7 @@ import {
   DropdownMenu,
   DropdownItem
 } from "reactstrap";
-import { Link } from "react-router-dom";
+import { NavLink as NvLink, Link } from "react-router-dom";
 import { logout } from '../../store/actions/user';
 
 import styles from "./Header.module.css";
@@ -60,10 +60,10 @@ export class Header extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className={styles.menuItems} navbar>
               <NavItem className={styles.menuItem}>
-                {this.props.isAuth && <NavLink to="/session/newSession">New Recording</NavLink>}
+                {this.props.isAuth && <NavLink><NvLink to="/recordings/newRecording">New Recording</NvLink></NavLink>}
               </NavItem>
               <NavItem className={styles.menuItem}>
-                {this.props.isAuth && <NavLink to="/session/pastSessions">Past Recordings</NavLink>}
+                {this.props.isAuth && <NavLink><NvLink to="/recordings/pastRecordings">Past Recordings</NvLink></NavLink>}
               </NavItem>
               {!this.props.isAuth ? unauthLogin : loginDropdown}
             </Nav>

@@ -2,7 +2,7 @@ import { LOGIN, LOGOUT } from '../actions/actionTypes';
 
 
 const initialState = {
-  isAuth: false
+  isAuth: true
 };
 
 const userReducer = (state = initialState, action) => {

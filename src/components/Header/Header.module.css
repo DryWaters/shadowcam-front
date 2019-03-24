@@ -29,6 +29,15 @@
   cursor: pointer;
 }
 
+.menuItem a {
+  color: white !important;
+  font-size: 1.25rem;
+}
+
+.menuItem a:hover {
+  text-decoration: none !important;
+}
+
 .menuItem:after {
   display: block;
   content: "";
