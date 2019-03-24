@@ -20,7 +20,7 @@ import { logout } from '../../store/actions/user';
 import styles from "./Header.module.css";
 import logo from "../../assets/images/boxer-header.png";
 
-class Header extends Component {
+export class Header extends Component {
 
   state = {
     isOpen: false
@@ -60,10 +60,10 @@ class Header extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className={styles.menuItems} navbar>
               <NavItem className={styles.menuItem}>
-                {this.props.isAuth && <NavLink>New Recording</NavLink>}
+                {this.props.isAuth && <NavLink to="/newRecording">New Recording</NavLink>}
               </NavItem>
               <NavItem className={styles.menuItem}>
-                {this.props.isAuth && <NavLink>Past Recordings</NavLink>}
+                {this.props.isAuth && <NavLink to="/pastRecordings">Past Recordings</NavLink>}
               </NavItem>
               {!this.props.isAuth ? unauthLogin : loginDropdown}
             </Nav>
