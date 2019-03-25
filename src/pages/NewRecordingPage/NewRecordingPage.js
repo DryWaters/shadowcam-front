@@ -56,7 +56,7 @@ export class NewRecordingPage extends Component {
             </button>
           </Row>
           <Row className={styles.spacer}>
-            <h2>Statistics</h2>
+            <h2>Stats</h2>
           </Row>
           <Row className={styles.spacer}>
             <Col>Total Time:</Col>
