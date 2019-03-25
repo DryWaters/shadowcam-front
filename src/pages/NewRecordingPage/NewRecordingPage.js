@@ -15,7 +15,8 @@ export class NewRecordingPage extends Component {
       totalPunches: 0,
       numJabs: 0,
       numHooks: 0,
-      isRecording: false
+      stream: null,
+      mediaRecorder: null
     };
   }
 
@@ -25,34 +26,54 @@ export class NewRecordingPage extends Component {
       .then(stream => {
         this.videoRef.current.srcObject = stream;
         this.videoRef.current.play();
+        const mediaRecorder = new MediaRecorder(stream);
+        this.setState({ stream, mediaRecorder });
       });
   }
 
   componentWillUnmount() {
-    const stream = this.videoRef.current.srcObject;
+    const stream = this.state.stream;
     const tracks = stream.getTracks();
 
     tracks.forEach(track => track.stop());
     this.videoRef.current.srcObject = null;
   }
 
-  toggleRecording = () => {
+  setRecordingState = ({id}) => {
+
+    if (!this.state.isRecording) {
+      this.state.mediaRecorder.start(1000);
+      this.state.mediaRecorder.ondataavailable = blob => {
+        console.log("blob", blob);
+      };
+    } else {
+      console.log("should stop!");
+      this.state.mediaRecorder.pause();
+    }
     this.setState({
       isRecording: !this.state.isRecording
-    })
-  }
+    });
+  };
+
   render() {
     return (
       <Layout>
         <Container className={styles.newRecordingContainer}>
           <Row>
             <Col>
-              <video className={this.state.isRecording ? styles.videoRecording : styles.video} ref={this.videoRef} />
+              <video
+                className={
+                  this.state.isRecording ? styles.videoRecording : styles.video
+                }
+                ref={this.videoRef}
+              />
             </Col>
           </Row>
           <Row className={styles.videoButtons}>
-            <button className={styles.button} onClick={this.toggleRecording}>
-              <div className={this.state.isRecording ? styles.stop : styles.record} />
+            <button className={styles.button} onClick={this.setRecordingState}>
+              <div
+                className={this.state.isRecording ? styles.stop : styles.record}
+              />
             </button>
           </Row>
           <Row className={styles.spacer}>
