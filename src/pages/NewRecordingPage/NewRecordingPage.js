@@ -47,7 +47,7 @@ export class NewRecordingPage extends Component {
         <Container className={styles.newRecordingContainer}>
           <Row>
             <Col>
-              <video className={styles.video} ref={this.videoRef} />
+              <video className={this.state.isRecording ? styles.videoRecording : styles.video} ref={this.videoRef} />
             </Col>
           </Row>
           <Row className={styles.videoButtons}>
