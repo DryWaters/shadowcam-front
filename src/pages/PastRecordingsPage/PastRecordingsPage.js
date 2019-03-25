@@ -1,13 +1,19 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Container } from 'reactstrap';
 
-export class PastRecordingsPage {
+import Layout from "../../components/Layout/Layout";
 
+export class PastRecordingsPage extends Component {
   render() {
     return (
-      <div>New Session Page</div>
-    )
+      <Layout>
+        <Container>
+          <div>Past Recordings Page</div>
+        </Container>
+      </Layout>
+    );
   }
 }
 
-export default connect()(PastRecordingsPage)
+export default connect()(PastRecordingsPage);
