@@ -14,7 +14,7 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "cross-env REACT_APP_TEST=true react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --verbose=false",
     "test:nowatch": "cross-env CI=true react-scripts test --env=jsdom",

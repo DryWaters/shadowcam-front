@@ -111,7 +111,10 @@ const mapDispatchToProps = dispatch => ({
   tryLogin: authData => dispatch(tryLogin(authData))
 });
 
+const mapStateToProps = state => ({
+  isAuth: state.user.isAuth
+})
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(LoginPage);

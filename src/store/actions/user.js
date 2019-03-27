@@ -1,14 +1,21 @@
-import { LOGIN, LOGOUT } from "./actionTypes";
+import { LOGIN, REGISTER, LOGOUT } from "./actionTypes";
+
+export const register = userData => {
+  return dispatch => {
+    const url = 'https://shadowcam-back. '
+  }
+
+};
 
 export const tryLogin = authData => {
   return dispatch => {
-    console.log(
-      `Checking password and logging in! with ${authData.email} and ${
-        authData.password
-      }`
-    );
+    let url;
 
-    const url = `https://shadowcam-back.herokuapp.com/account/login`;
+    if (process.env.REACT_APP_TEST) {
+      url = 'http://localhost.com/account/login'
+    } else {
+      url = `https://shadowcam-back.herokuapp.com/account/login`;
+    }
 
     // fetch url with method post and email/password
     /*

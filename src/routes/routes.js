@@ -14,8 +14,8 @@ const Routes = props => (
   <BrowserRouter>
     <Switch>
       <Route exact path="/" component={LandingPage} />
-      <Route path="/account/login" component={LoginPage} />
-      <Route path="/account/create" component={CreateAccountPage} />} />
+      <Route path="/account/login" render={() => !props.isAuth ? <LoginPage /> : <Redirect to="/recordings/pastRecordings" />} />
+      <Route path="/account/create" render={() => !props.isAuth ? <CreateAccountPage /> : <Redirect to="/recordings/newRecording" />} />} />
       <Route path="/account/profile" render={() => props.isAuth ? <ProfilePage /> : <Redirect to="/" />} />
       <Route path="/recordings/newRecording" render={() => props.isAuth ? <NewRecordingPage /> : <Redirect to="/" />} />
       <Route path="/recordings/pastRecordings" render={() => props.isAuth ? <PastRecordingsPage /> : <Redirect to="/" />} />
