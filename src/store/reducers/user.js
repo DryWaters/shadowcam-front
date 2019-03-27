@@ -1,8 +1,9 @@
-import { LOGIN, LOGOUT } from '../actions/actionTypes';
-
+import { LOGIN, LOGOUT, REGISTER, SAVE_TOKEN, DELETE_TOKEN } from "../actions/actionTypes";
 
 const initialState = {
-  isAuth: true
+  isAuth: false,
+  token: null,
+  expiresIn: null
 };
 
 const userReducer = (state = initialState, action) => {
@@ -11,13 +12,22 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         isAuth: true
-      }
+      };
     }
     case LOGOUT: {
       return {
         ...state,
-        isAuth: false
-      }
+        isAuth: false,
+        token: null,
+        expiresIn: null
+      };
+    }
+    case SAVE_TOKEN: {
+      return {
+        ...state,
+        token: action.payload.token,
+        expiresIn: action.payload.expiresIn
+      };
     }
     default:
       return state;
