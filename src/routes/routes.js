@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { connect } from 'react-redux';
 import LoginPage from "../pages/LoginPage/LoginPage";
 import LandingPage from "../pages/LandingPage/LandingPage";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
@@ -8,7 +9,6 @@ import ProfilePage from '../pages/ProfilePage/ProfilePage';
 import NewRecordingPage from '../pages/NewRecordingPage/NewRecordingPage';
 import PastRecordingsPage from '../pages/PastRecordingsPage/PastRecordingsPage';
 
-import { connect } from 'react-redux';
 
 const Routes = props => (
   <BrowserRouter>

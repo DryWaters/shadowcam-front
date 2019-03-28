@@ -39,22 +39,26 @@ video {
 
 .recordedVideo {
   margin: 10px;
+  border: solid 3px black;
 }
 
-.recordedVideo:after {
-  position: relative;
-  display: inline-block;
-  content: "";
-  border-right: solid 3px blue;
-  width: 10px;
-  height: 10px;
+.recordedVideo:hover {
+  border: solid 3px blue;
 }
 
 .recordedVideosContainer {
   display: flex;
   flex-wrap: wrap;
-  min-height: 75px;
-  border: solid red 5px;
+  min-height: 100px;
+  border-width: 10px;
+  border-style: solid;
+  border-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0),
+      #f45342,
+      rgba(0, 0, 0, 0)
+    )
+    1;
   margin-bottom: 20px;
 }
 
