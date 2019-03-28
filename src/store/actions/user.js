@@ -34,30 +34,36 @@ export const tryLogin = authData => {
       .then(res => res.json())
       .then(parsedRes => {
         if (parsedRes.status === "ok") {
+          saveTokenToStorage(parsedRes.message.token, parsedRes.message.expiresIn);
           dispatch({
-            type: "SAVE_TOKEN",
+            type: LOGIN,
             payload: {
               token: parsedRes.message.token,
               expiresIn: parsedRes.message.expiresIn
             }
           });
-          dispatch({
-            type: LOGIN
-          });
           return dispatch({
             type: "NOT_LOADING"
           });
         } else {
-          // display alert?  something, invalid password
           dispatch({
             type: "NOT_LOADING"
           });
         }
       })
       .catch(err => {
-        // do something, display alert?  unable to connect to backend
+        alert(
+          "Unable to connect to server.  Please check internet connection."
+        );
       });
   };
+};
+
+const saveTokenToStorage = (token, expiresIn) => {
+  if (localStorage) {
+    localStorage.setItem("token", token);
+    localStorage.setItem("expiresIn", expiresIn);
+  }
 };
 
 export const logout = () => {

@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT, REGISTER, SAVE_TOKEN, DELETE_TOKEN } from "../actions/actionTypes";
+import { LOGIN, LOGOUT } from "../actions/actionTypes";
 
 const initialState = {
   isAuth: false,
@@ -12,6 +12,8 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         isAuth: true,
+        token: action.payload.token,
+        expiresIn: action.payload.expiresIn
       };
     }
     case LOGOUT: {
@@ -20,13 +22,6 @@ const userReducer = (state = initialState, action) => {
         isAuth: false,
         token: null,
         expiresIn: null
-      };
-    }
-    case SAVE_TOKEN: {
-      return {
-        ...state,
-        token: action.payload.token,
-        expiresIn: action.payload.expiresIn
       };
     }
     default:
