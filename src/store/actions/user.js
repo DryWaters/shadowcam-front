@@ -1,8 +1,42 @@
 import { LOGIN, LOGOUT } from "./actionTypes";
+import { loading, notLoading } from "./ui";
 
-export const register = userData => {
+export const tryRegister = userData => {
   return dispatch => {
-    const url = "https://shadowcam-back. ";
+    let url;
+
+    if (process.env.REACT_APP_TEST) {
+      url = "http://localhost:3000/users/register";
+    } else {
+      url = `https://shadowcam-back.herokuapp.com/users/register`;
+    }
+
+    dispatch({
+      type: "LOADING"
+    });
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      mode: "cors",
+      body: JSON.stringify(userData)
+    })
+      .then(res => res.json())
+      .then(parsedRes => {
+        if (parsedRes.status === "ok") {
+          dispatch(tryLogin(userData.email, userData.password));
+        } else {
+          // need to do something with errors
+          return dispatch(notLoading());
+        }
+      })
+      .catch(err => {
+        alert(
+          "Unable to connect to server.  Please check internet connection."
+        );
+      });
   };
 };
 
@@ -28,9 +62,7 @@ export const tryLogin = authData => {
       url = `https://shadowcam-back.herokuapp.com/users/login`;
     }
 
-    dispatch({
-      type: "LOADING"
-    });
+    dispatch(loading());
 
     fetch(url, {
       method: "POST",
@@ -57,13 +89,9 @@ export const tryLogin = authData => {
               expiresIn: parsedRes.message.expiresIn
             }
           });
-          return dispatch({
-            type: "NOT_LOADING"
-          });
+          return dispatch(notLoading());
         } else {
-          dispatch({
-            type: "NOT_LOADING"
-          });
+          return dispatch(notLoading());
         }
       })
       .catch(err => {
@@ -84,6 +112,7 @@ const saveTokenToStorage = (token, expiresIn) => {
 export const logout = () => {
   return dispatch => {
     // remove token from local storage
+    deleteTokenFromStorage();
     dispatch({
       type: "DELETE_TOKEN"
     });
@@ -93,4 +122,10 @@ export const logout = () => {
       type: LOGOUT
     });
   };
+};
+
+const deleteTokenFromStorage = () => {
+  if (localStorage) {
+    localStorage.clear();
+  }
 };

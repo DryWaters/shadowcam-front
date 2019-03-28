@@ -148,6 +148,7 @@ const mapStateToProps = state => ({
   invalidLogin: state.user.invalidLogin,
   isLoading: state.ui.isLoading
 });
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps

@@ -26,3 +26,9 @@
     line-height: 0.5em;
     color: red;
 }
+
+.errorMessage {
+    color: red;
+    font-size: 30px;
+    font-style: bold;
+}

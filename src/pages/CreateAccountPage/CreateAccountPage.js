@@ -9,8 +9,11 @@ import {
   Button,
   FormGroup
 } from "reactstrap";
-import Layout from "../../components/Layout/Layout";
+import { connect } from "react-redux";
+import { loading, notLoading } from "../../store/actions/ui";
+import { tryLogin } from "../../store/actions/user";
 
+import Layout from "../../components/Layout/Layout";
 import validator from "../../utils/validation";
 import {
   MAX_HEIGHT,
@@ -23,6 +26,7 @@ import {
 import styles from "./CreateAccountPage.module.css";
 
 const initialState = {
+  error: false,
   email: {
     value: "",
     isValid: false,
@@ -58,7 +62,7 @@ const initialState = {
     isValid: false,
     isTouched: false
   },
-  gender: "male",
+  gender: "m",
   height: {
     value: 65,
     isValid: false,
@@ -71,7 +75,7 @@ const initialState = {
   }
 };
 
-class CreateAccountPage extends Component {
+export class CreateAccountPage extends Component {
   state = initialState;
 
   // handles validation of input fields
@@ -138,12 +142,77 @@ class CreateAccountPage extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.setState({ ...initialState });
+    this.setState({
+      error: false
+    });
+    if (this.isValidFields) {
+      this.tryRegister({
+        email: this.state.email.value,
+        password: this.state.password.value,
+        firstName: this.state.firstName.value,
+        lastName: this.state.lastName.value,
+        gender: this.state.gender,
+        birthdate: this.state.birthdate.value,
+        height: this.state.height.value,
+        weight: this.state.weight.value
+      });
+    }
+  };
+
+  tryRegister = userData => {
+    let url;
+
+    if (process.env.REACT_APP_TEST) {
+      url = "http://localhost:3000/users/register";
+    } else {
+      url = `https://shadowcam-back.herokuapp.com/users/register`;
+    }
+
+    this.props.loading();
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      mode: "cors",
+      body: JSON.stringify(userData)
+    })
+      .then(res => res.json())
+      .then(parsedRes => {
+        if (parsedRes.status === "ok") {
+          this.props.tryLogin({
+            email: userData.email,
+            password: userData.password
+          });
+        } else {
+          // need to do something with errors
+          this.setState({
+            error: true
+          });
+          return notLoading();
+        }
+      })
+      .catch(err => {
+        alert(
+          "Unable to connect to server.  Please check internet connection."
+        );
+      });
   };
 
   handleClear = () => {
     this.setState({ ...initialState });
   };
+
+  isValidFields = () =>
+    this.state.email.isValid &&
+    this.state.password.isValid &&
+    this.state.confirmPassword.isValid &&
+    this.state.firstName.isValid &&
+    this.state.lastName.isValid &&
+    this.state.birthdate.isValid &&
+    this.state.height.isValid &&
+    this.state.weight.isValid;
 
   render() {
     return (
@@ -160,6 +229,17 @@ class CreateAccountPage extends Component {
                 Before you can use ShadowCam will need some health related
                 information to ensure accuracy in our calculations.
               </p>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              {this.state.error ? (
+                <span className={styles.errorMessage}>
+                  Email has already been used. Have you already registered?
+                </span>
+              ) : (
+                ""
+              )}
             </Col>
           </Row>
           <Form onSubmit={this.handleSubmit} className={styles.createForm}>
@@ -319,7 +399,7 @@ class CreateAccountPage extends Component {
                     name="gender"
                     value="male"
                     onChange={this.handleChecked}
-                    checked={this.state.gender === "male" ? "checked" : ""}
+                    checked={this.state.gender === "m" ? "checked" : ""}
                   />
                   Male
                 </Label>
@@ -331,7 +411,7 @@ class CreateAccountPage extends Component {
                     name="gender"
                     value="female"
                     onChange={this.handleChecked}
-                    checked={this.state.gender === "female" ? "checked" : ""}
+                    checked={this.state.gender === "f" ? "checked" : ""}
                   />{" "}
                   Female
                 </Label>
@@ -397,4 +477,13 @@ class CreateAccountPage extends Component {
   }
 }
 
-export default CreateAccountPage;
+const mapDispatchToProps = dispatch => ({
+  loading: () => dispatch(loading()),
+  notLoading: () => dispatch(notLoading()),
+  tryLogin: authData => dispatch(tryLogin(authData))
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(CreateAccountPage);
