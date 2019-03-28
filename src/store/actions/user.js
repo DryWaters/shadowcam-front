@@ -12,7 +12,6 @@ export const tryLogin = authData => {
 
     if (process.env.REACT_APP_TEST) {
       url = "http://localhost:3000/users/login";
-      console.log(authData);
     } else {
       url = `https://shadowcam-back.herokuapp.com/users/login`;
     }
@@ -43,14 +42,13 @@ export const tryLogin = authData => {
             }
           });
           dispatch({
-            type: "NOT_LOADING"
+            type: LOGIN
           });
           return dispatch({
-            type: LOGIN
+            type: "NOT_LOADING"
           });
         } else {
           // display alert?  something, invalid password
-
           dispatch({
             type: "NOT_LOADING"
           });
@@ -67,7 +65,7 @@ export const logout = () => {
     // remove token from local storage
     dispatch({
       type: "DELETE_TOKEN"
-    })
+    });
 
     // then return action type LOGOUT
     return dispatch({

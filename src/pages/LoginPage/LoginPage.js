@@ -21,24 +21,25 @@ import styles from "./LoginPage.module.css";
 export class LoginPage extends Component {
   state = {
     email: "",
-    password: ""
+    password: "",
+    isSubmitted: false
   };
 
   handleChange = event => {
     this.setState({
-      [event.target.id]: event.target.value
+      [event.target.id]: event.target.value,
+      isSubmitted: false
     });
   };
 
   handleSubmit = event => {
     event.preventDefault();
+    this.setState({
+      isSubmitted: true
+    });
     this.props.tryLogin({
       email: this.state.email,
       password: this.state.password
-    });
-    this.setState({
-      email: "",
-      password: ""
     });
   };
 
@@ -55,7 +56,7 @@ export class LoginPage extends Component {
           </Button>
         );
       } else {
-        return <Button className={styles.loginButton}>Create Account</Button>;
+        return <Button className={styles.loginButton}>Log in</Button>;
       }
     };
     return (
@@ -82,6 +83,13 @@ export class LoginPage extends Component {
                       value={this.state.email}
                       onChange={this.handleChange}
                       placeholder="Email address"
+                      className={
+                        !this.props.isAuth &&
+                        this.state.isSubmitted &&
+                        !this.props.isLoading
+                          ? styles.shake
+                          : ""
+                      }
                     />
                   </Col>
                 </FormGroup>
@@ -98,6 +106,13 @@ export class LoginPage extends Component {
                       value={this.state.password}
                       onChange={this.handleChange}
                       placeholder="Password"
+                      className={
+                        !this.props.isAuth &&
+                        this.state.isSubmitted &&
+                        !this.props.isLoading
+                          ? styles.shake
+                          : ""
+                      }
                     />
                   </Col>
                   {/* <Label sm="3">
@@ -130,6 +145,7 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
   isAuth: state.user.isAuth,
+  invalidLogin: state.user.invalidLogin,
   isLoading: state.ui.isLoading
 });
 export default connect(
