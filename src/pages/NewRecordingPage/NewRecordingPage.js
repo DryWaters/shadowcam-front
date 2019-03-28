@@ -24,8 +24,11 @@ export class NewRecordingPage extends Component {
         debugColor: "#f45342",
         debugWidth: 5
       },
+      recorderSetup: false,
+      recorderState: "inactive",
       width: 640,
       height: 480,
+      videos: [],
       time: 0,
       totalPunches: 0,
       numJabs: 0,
@@ -33,9 +36,22 @@ export class NewRecordingPage extends Component {
     };
   }
 
-  componentDidMount() {
-    this.loadVideo();
+  async componentDidMount() {
+    await this.loadVideo();
+    await this.setupRecorder();
+    this.setState({
+      recorderSetup: true
+    });
   }
+
+  setupRecorder = async () => {
+    this.mediaRecorder = await new MediaRecorder(this.currentStream);
+    this.mediaRecorder.ondataavailable = this.recordVideo;
+  };
+
+  recordVideo = blob => {
+    console.log(blob);
+  };
 
   setupCamera = async () => {
     if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
@@ -140,18 +156,14 @@ export class NewRecordingPage extends Component {
     poseDetectionFrame();
   };
 
-  setRecordingState = () => {
-    // if (!this.state.isRecording) {
-    //   this.mediaRecorder.start(1000);
-    //   this.mediaRecorder.ondataavailable = blob => {
-    //     console.log("blob", blob);
-    //   };
-    // } else {
-    //   console.log("should stop!");
-    //   this.mediaRecorder.pause();
-    // }
+  setRecordingState = id => {
+    if (this.mediaRecorder.state === "paused") {
+      this.mediaRecorder.pause();
+    } else {
+      this.mediaRecorder.start(1000);
+    }
     this.setState({
-      isRecording: !this.state.isRecording
+      recorderState: this.mediaRecorder.state
     });
   };
 
@@ -162,6 +174,41 @@ export class NewRecordingPage extends Component {
   };
 
   render() {
+    
+    const displayVideoControls = () => {
+      if (!this.state.recorderSetup) {
+        return;
+      }
+
+      if (this.state.recorderState === "inactive") {
+        return (
+          <Button
+            className={styles.videoControl}
+            onClick={() => this.setRecordingState({ id: "record" })}
+          >
+            Record
+          </Button>
+        );
+      } else {
+        return (
+          <div>
+            <Button
+              className={styles.videoControl}
+              onClick={() => this.setRecordingState({ id: "pause" })}
+            >
+              Pause
+            </Button>
+            <Button
+              className={styles.videoControl}
+              onClick={() => this.setRecordingState({ id: "stop" })}
+            >
+              Stop
+            </Button>
+          </div>
+        );
+      }
+    };
+
     return (
       <Layout>
         <Container className={styles.newRecordingContainer}>
@@ -185,16 +232,7 @@ export class NewRecordingPage extends Component {
           </Row>
           <Row>
             <Col className={styles.videoButtonContainer}>
-              <button
-                className={styles.button}
-                onClick={this.setRecordingState}
-              >
-                <div
-                  className={
-                    this.state.isRecording ? styles.stop : styles.record
-                  }
-                />
-              </button>
+              {displayVideoControls()}
             </Col>
           </Row>
           <Row className={styles.spacer}>
