@@ -33,6 +33,7 @@ export const tryRegister = userData => {
         }
       })
       .catch(err => {
+        dispatch(notLoading())
         alert(
           "Unable to connect to server.  Please check internet connection."
         );
@@ -95,6 +96,7 @@ export const tryLogin = authData => {
         }
       })
       .catch(err => {
+        dispatch(notLoading());
         alert(
           "Unable to connect to server.  Please check internet connection."
         );
