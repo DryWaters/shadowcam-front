@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Container, Row, Col } from "reactstrap";
-import * as posenet from '@tensorflow-models/posenet';
+import * as posenet from "@tensorflow-models/posenet";
 import Layout from "../../components/Layout/Layout";
-import { drawKeyPoints, drawSkeleton } from '../../utils/poseUtils';
+import { drawKeyPoints, drawSkeleton } from "../../utils/poseUtils";
 
 import styles from "./NewRecordingPage.module.css";
 
@@ -13,7 +13,16 @@ export class NewRecordingPage extends Component {
     this.videoRef = React.createRef();
     this.canvasRef = React.createRef();
     this.state = {
-      showVideo: true,
+      poseNet: {
+        showVideo: true,
+        flipHorizontal: true,
+        imageScaleFactor: 0.5,
+        outputStride: 16,
+        minPoseConfidence: 0.1,
+        minPartConfidence: 0.5,
+        debugColor: '#f45342',
+        debugWidth: 5
+      },
       width: 640,
       height: 480,
       time: 0,
@@ -24,7 +33,6 @@ export class NewRecordingPage extends Component {
   }
 
   componentDidMount() {
-    this.setupCamera();
     this.loadVideo();
   }
 
@@ -70,30 +78,25 @@ export class NewRecordingPage extends Component {
 
   paintToCanvas = async () => {
     this.ctx = this.canvasRef.current.getContext("2d");
-    const flipHorizontal = true;
-    const imageScaleFactor = 0.5;
-    const outputStride = 16;
-    const minPoseConfidence = 0.1;
-    const minPartConfidence = 0.5;
+
     this.canvasRef.current.width = this.state.width;
     this.canvasRef.current.height = this.state.height;
 
     const net = await posenet.load(0.75);
 
     const poseDetectionFrame = async () => {
-      
       let poses = [];
       const pose = await net.estimateSinglePose(
         this.videoRef.current,
-        imageScaleFactor,
-        flipHorizontal,
-        outputStride
+        this.state.poseNet.imageScaleFactor,
+        this.state.poseNet.flipHorizontal,
+        this.state.poseNet.outputStride
       );
       poses.push(pose);
 
       this.ctx.clearRect(0, 0, this.state.width, this.state.height);
 
-      if (this.state.showVideo) {
+      if (this.state.poseNet.showVideo) {
         this.ctx.save();
         this.ctx.scale(-1, 1);
         this.ctx.translate(-this.state.width, 0);
@@ -107,19 +110,29 @@ export class NewRecordingPage extends Component {
         this.ctx.restore();
       }
 
-      poses.forEach(({score, keypoints}) => {
-        if (score > minPoseConfidence) {
-          drawKeyPoints(keypoints, minPartConfidence, '#000', this.ctx)
-          drawSkeleton(keypoints, minPartConfidence, '#000', 6, this.ctx)
+      poses.forEach(({ score, keypoints }) => {
+        if (score > this.state.poseNet.minPoseConfidence) {
+          drawKeyPoints(
+            keypoints,
+            this.state.poseNet.minPartConfidence,
+            this.state.poseNet.debugColor,
+            this.ctx
+          );
+          drawSkeleton(
+            keypoints,
+            this.state.poseNet.minPartConfidence,
+            this.state.poseNet.debugColor,
+            this.state.poseNet.debugWidth,
+            this.ctx
+          );
         }
-      })
+      });
 
       // console.log(poses);
       requestAnimationFrame(poseDetectionFrame);
     };
 
     poseDetectionFrame();
-
   };
 
   setRecordingState = ({ id }) => {
