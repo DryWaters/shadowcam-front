@@ -20,7 +20,7 @@ export class NewRecordingPage extends Component {
         outputStride: 16,
         minPoseConfidence: 0.1,
         minPartConfidence: 0.5,
-        debugColor: '#f45342',
+        debugColor: "#f45342",
         debugWidth: 5
       },
       width: 640,
@@ -40,10 +40,8 @@ export class NewRecordingPage extends Component {
     if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
       alert("Newer browser required to use ShadowCam");
     }
-
     this.videoRef.current.width = this.state.width;
     this.videoRef.current.height = this.state.height;
-
     this.currentStream = await navigator.mediaDevices.getUserMedia({
       audio: false,
       video: {
@@ -54,7 +52,6 @@ export class NewRecordingPage extends Component {
     });
 
     this.videoRef.current.srcObject = this.currentStream;
-
     return new Promise(resolve => {
       this.videoRef.current.onloadedmetadata = () => {
         resolve(this.videoRef.current);
@@ -64,50 +61,54 @@ export class NewRecordingPage extends Component {
 
   loadVideo = async () => {
     this.videoRef.current = await this.setupCamera();
-    this.videoRef.current.play();
+    if (this.videoRef.current) {
+      this.videoRef.current.play();
+      this.paintToCanvas();
+    }
   };
 
   componentWillUnmount() {
     this.videoRef.current.pause();
     const tracks = this.currentStream.getTracks();
     tracks.forEach(track => track.stop());
-
-    this.videoRef.current.srcObject = null;
-    this.ctx = null;
+    this.videoRef.current = null;
+    this.canvasRef.current = null;
   }
 
   paintToCanvas = async () => {
-    this.ctx = this.canvasRef.current.getContext("2d");
-
+    const ctx = this.canvasRef.current.getContext("2d");
     this.canvasRef.current.width = this.state.width;
     this.canvasRef.current.height = this.state.height;
-
     const net = await posenet.load(0.75);
 
     const poseDetectionFrame = async () => {
       let poses = [];
-      const pose = await net.estimateSinglePose(
-        this.videoRef.current,
-        this.state.poseNet.imageScaleFactor,
-        this.state.poseNet.flipHorizontal,
-        this.state.poseNet.outputStride
-      );
-      poses.push(pose);
+      if (this.videoRef.current) {
+        const pose = await net.estimateSinglePose(
+          this.videoRef.current,
+          this.state.poseNet.imageScaleFactor,
+          this.state.poseNet.flipHorizontal,
+          this.state.poseNet.outputStride
+        );
+        poses.push(pose);
+      }
 
-      this.ctx.clearRect(0, 0, this.state.width, this.state.height);
+      ctx.clearRect(0, 0, this.state.width, this.state.height);
 
       if (this.state.poseNet.showVideo) {
-        this.ctx.save();
-        this.ctx.scale(-1, 1);
-        this.ctx.translate(-this.state.width, 0);
-        this.ctx.drawImage(
-          this.videoRef.current,
-          0,
-          0,
-          this.state.width,
-          this.state.height
-        );
-        this.ctx.restore();
+        ctx.save();
+        ctx.scale(-1, 1);
+        ctx.translate(-this.state.width, 0);
+        if (this.videoRef.current) {
+          ctx.drawImage(
+            this.videoRef.current,
+            0,
+            0,
+            this.state.width,
+            this.state.height
+          );
+        }
+        ctx.restore();
       }
 
       poses.forEach(({ score, keypoints }) => {
@@ -116,20 +117,21 @@ export class NewRecordingPage extends Component {
             keypoints,
             this.state.poseNet.minPartConfidence,
             this.state.poseNet.debugColor,
-            this.ctx
+            ctx
           );
           drawSkeleton(
             keypoints,
             this.state.poseNet.minPartConfidence,
             this.state.poseNet.debugColor,
             this.state.poseNet.debugWidth,
-            this.ctx
+            ctx
           );
         }
       });
 
-      // console.log(poses);
-      requestAnimationFrame(poseDetectionFrame);
+      if (this.videoRef.current && !this.videoRef.current.paused) {
+        requestAnimationFrame(poseDetectionFrame);
+      }
     };
 
     poseDetectionFrame();
@@ -162,7 +164,6 @@ export class NewRecordingPage extends Component {
                 }
                 ref={this.videoRef}
                 srcobject={this.currentStream}
-                onCanPlay={this.paintToCanvas}
                 style={{ display: "none" }}
               />
               <canvas
