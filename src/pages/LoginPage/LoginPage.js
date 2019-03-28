@@ -14,6 +14,8 @@ import { connect } from "react-redux";
 import Layout from "../../components/Layout/Layout";
 import { tryLogin } from "../../store/actions/user";
 
+import loadingSpinner from "../../assets/images/loading-spinner.gif";
+
 import styles from "./LoginPage.module.css";
 
 export class LoginPage extends Component {
@@ -35,12 +37,27 @@ export class LoginPage extends Component {
       password: this.state.password
     });
     this.setState({
-      email: '',
-      password: ''
-    })
+      email: "",
+      password: ""
+    });
   };
 
   render() {
+    const shouldDisplayButton = () => {
+      if (this.props.isLoading) {
+        return (
+          <Button disabled className={styles.loginButton}>
+            <img
+              src={loadingSpinner}
+              alt="Loading Spinner"
+              className={styles.loadingSpinner}
+            />
+          </Button>
+        );
+      } else {
+        return <Button className={styles.loginButton}>Create Account</Button>;
+      }
+    };
     return (
       <Layout>
         <Container className={styles.loginContainer}>
@@ -88,7 +105,7 @@ export class LoginPage extends Component {
                   </Label> */}
                 </FormGroup>
                 <FormGroup className={styles.spacer}>
-                  <Button className={styles.loginButton}>Log In</Button>
+                  {shouldDisplayButton()}
                 </FormGroup>
               </Form>
             </Col>
@@ -112,8 +129,9 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  isAuth: state.user.isAuth
-})
+  isAuth: state.user.isAuth,
+  isLoading: state.ui.isLoading
+});
 export default connect(
   mapStateToProps,
   mapDispatchToProps

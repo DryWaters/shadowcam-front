@@ -1,4 +1,4 @@
-import { LOADING, DONE_LOADING } from "../actions/actionTypes";
+import { LOADING, NOT_LOADING } from "../actions/actionTypes";
 
 const initialState = {
   isLoading: false
@@ -12,7 +12,7 @@ const uiReducer = (state = initialState, action) => {
         isLoading: true
       };
     }
-    case DONE_LOADING: {
+    case NOT_LOADING: {
       return {
         ...state,
         isLoading: false

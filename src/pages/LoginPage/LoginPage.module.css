@@ -1,16 +1,20 @@
 .loginContainer {
-    padding-top: 50px;
+  padding-top: 50px;
 }
 
 .forgotPassword {
-    text-align: end;
+  text-align: end;
 }
 
- .spacer {
-    padding-bottom: 30px;
+.spacer {
+  padding-bottom: 30px;
 }
 
 .loginButton {
-    padding: 10px 50px !important;
-    text-transform: uppercase;
+  padding: 10px 50px !important;
+  text-transform: uppercase;
+}
+
+.loadingSpinner {
+  height: 80px;
 }
