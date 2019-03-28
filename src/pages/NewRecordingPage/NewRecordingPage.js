@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col, Button } from "reactstrap";
 import * as posenet from "@tensorflow-models/posenet";
 import Layout from "../../components/Layout/Layout";
 import { drawKeyPoints, drawSkeleton } from "../../utils/poseUtils";
@@ -15,6 +15,7 @@ export class NewRecordingPage extends Component {
     this.state = {
       poseNet: {
         showVideo: true,
+        showDebug: false,
         flipHorizontal: true,
         imageScaleFactor: 0.5,
         outputStride: 16,
@@ -111,23 +112,25 @@ export class NewRecordingPage extends Component {
         ctx.restore();
       }
 
-      poses.forEach(({ score, keypoints }) => {
-        if (score > this.state.poseNet.minPoseConfidence) {
-          drawKeyPoints(
-            keypoints,
-            this.state.poseNet.minPartConfidence,
-            this.state.poseNet.debugColor,
-            ctx
-          );
-          drawSkeleton(
-            keypoints,
-            this.state.poseNet.minPartConfidence,
-            this.state.poseNet.debugColor,
-            this.state.poseNet.debugWidth,
-            ctx
-          );
-        }
-      });
+      if (this.state.poseNet.showDebug) {
+        poses.forEach(({ score, keypoints }) => {
+          if (score > this.state.poseNet.minPoseConfidence) {
+            drawKeyPoints(
+              keypoints,
+              this.state.poseNet.minPartConfidence,
+              this.state.poseNet.debugColor,
+              ctx
+            );
+            drawSkeleton(
+              keypoints,
+              this.state.poseNet.minPartConfidence,
+              this.state.poseNet.debugColor,
+              this.state.poseNet.debugWidth,
+              ctx
+            );
+          }
+        });
+      }
 
       if (this.videoRef.current && !this.videoRef.current.paused) {
         requestAnimationFrame(poseDetectionFrame);
@@ -137,19 +140,25 @@ export class NewRecordingPage extends Component {
     poseDetectionFrame();
   };
 
-  setRecordingState = ({ id }) => {
-    if (!this.state.isRecording) {
-      this.mediaRecorder.start(1000);
-      this.mediaRecorder.ondataavailable = blob => {
-        console.log("blob", blob);
-      };
-    } else {
-      console.log("should stop!");
-      this.mediaRecorder.pause();
-    }
+  setRecordingState = () => {
+    // if (!this.state.isRecording) {
+    //   this.mediaRecorder.start(1000);
+    //   this.mediaRecorder.ondataavailable = blob => {
+    //     console.log("blob", blob);
+    //   };
+    // } else {
+    //   console.log("should stop!");
+    //   this.mediaRecorder.pause();
+    // }
     this.setState({
       isRecording: !this.state.isRecording
     });
+  };
+
+  toggleShowDebug = () => {
+    this.setState(prevState => ({
+      poseNet: { ...prevState.poseNet, showDebug: !prevState.poseNet.showDebug }
+    }));
   };
 
   render() {
@@ -157,25 +166,19 @@ export class NewRecordingPage extends Component {
       <Layout>
         <Container className={styles.newRecordingContainer}>
           <Row>
+            <Col style={{ display: "flex", justifyContent: "center"}}>
+              <Button onClick={this.toggleShowDebug}>Show Debug Lines</Button>
+            </Col>
+          </Row>
+          <Row>
             <Col>
-              <video
-                className={
-                  this.state.isRecording ? styles.videoRecording : styles.video
-                }
-                ref={this.videoRef}
-                srcobject={this.currentStream}
-                style={{ display: "none" }}
-              />
+              <video ref={this.videoRef} srcobject={this.currentStream} />
               <canvas
-                className={
-                  this.state.isRecording ? styles.videoRecording : styles.video
-                }
-                style={{
-                  margin: "0 auto",
-                  display: "block",
-                  maxWidth: "640px",
-                  width: "100%"
-                }}
+                className={`${styles.canvas} ${
+                  this.state.isRecording
+                    ? styles.videoRecording
+                    : styles.notRecording
+                }`}
                 ref={this.canvasRef}
               />
             </Col>

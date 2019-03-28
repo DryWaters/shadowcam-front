@@ -2,7 +2,18 @@
   padding-top: 50px;
 }
 
-.video {
+video {
+  display: none;
+}
+
+.canvas {
+  margin: 20px auto;
+  display: block;
+  max-width: 640px;
+  width: 100%;
+}
+
+.notRecording {
   border-radius: 20px;
   border-width: 10px;
   border-style: solid;
@@ -39,7 +50,7 @@
   border-radius: 20%;
   border: none;
   box-shadow: 5px 5px #f45342;
-} 
+}
 
 .button:focus {
   outline: 0;
