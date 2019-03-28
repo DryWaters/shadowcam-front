@@ -4,6 +4,7 @@ import { Container, Row, Col, Button } from "reactstrap";
 import * as posenet from "@tensorflow-models/posenet";
 import Layout from "../../components/Layout/Layout";
 import { drawKeyPoints, drawSkeleton } from "../../utils/poseUtils";
+import moment from "moment";
 
 import styles from "./NewRecordingPage.module.css";
 
@@ -12,6 +13,7 @@ export class NewRecordingPage extends Component {
     super(props);
     this.videoRef = React.createRef();
     this.canvasRef = React.createRef();
+    this.otherVideoRef = React.createRef();
     this.state = {
       poseNet: {
         showVideo: true,
@@ -26,6 +28,7 @@ export class NewRecordingPage extends Component {
       },
       recorderSetup: false,
       recorderState: "inactive",
+      videoState: 'recording',
       width: 640,
       height: 480,
       videos: [],
@@ -45,12 +48,36 @@ export class NewRecordingPage extends Component {
   }
 
   setupRecorder = async () => {
-    this.mediaRecorder = await new MediaRecorder(this.currentStream);
-    this.mediaRecorder.ondataavailable = this.recordVideo;
+    this.mediaRecorder = await new MediaRecorder(this.currentStream, {
+      mimeType: "video/webm; codecs=vp9"
+    });
+    this.mediaRecorder.ondataavailable = this.handleRecordVideo;
+    this.mediaRecorder.onstop = this.handleStopRecord;
+    this.currentVideo = [];
   };
 
-  recordVideo = blob => {
-    console.log(blob);
+  handleRecordVideo = blob => {
+    this.currentVideo.push(blob.data);
+  };
+
+  handleStopRecord = async () => {
+    await this.setState(prevState => {
+      const currentVideos = [...prevState.videos];
+      const newVideo = {
+        src: window.URL.createObjectURL(
+          new Blob(this.currentVideo, { mimeType: "video/webm; codecs=vp9" })
+        ),
+        screenShot: this.canvasRef.current
+          .toDataURL("image/png")
+          .replace("image/png", "image/octet-stream"),
+        date: new moment()
+      };
+      currentVideos.push(newVideo);
+      this.currentVideo = [];
+      return {
+        videos: currentVideos
+      };
+    });
   };
 
   setupCamera = async () => {
@@ -60,6 +87,7 @@ export class NewRecordingPage extends Component {
     this.videoRef.current.width = this.state.width;
     this.videoRef.current.height = this.state.height;
     this.currentStream = await navigator.mediaDevices.getUserMedia({
+      mimeType: "video/webm; codecs=vp9",
       audio: false,
       video: {
         facingMode: "user",
@@ -156,12 +184,13 @@ export class NewRecordingPage extends Component {
     poseDetectionFrame();
   };
 
-  setRecordingState = id => {
-    if (this.mediaRecorder.state === "paused") {
-      this.mediaRecorder.pause();
-    } else {
-      this.mediaRecorder.start(1000);
+  setRecordingState = ({ id }) => {
+    if (this.state.recorderState === "inactive" && id === "record") {
+      this.mediaRecorder.start();
+    } else if (this.state.recorderState === "recording" && id === "stop") {
+      this.mediaRecorder.stop();
     }
+
     this.setState({
       recorderState: this.mediaRecorder.state
     });
@@ -174,7 +203,6 @@ export class NewRecordingPage extends Component {
   };
 
   render() {
-    
     const displayVideoControls = () => {
       if (!this.state.recorderSetup) {
         return;
@@ -209,6 +237,24 @@ export class NewRecordingPage extends Component {
       }
     };
 
+    const displayRecordedVideos = () => {
+      return this.state.videos.map(video => {
+        return (
+          <img
+            className={styles.recordedVideo}
+            src={video.screenShot}
+            height="75px"
+            alt="Recording Video"
+            onClick={() => {
+              this.videoRef.current.srcObject = null;
+              this.videoRef.current.src = video.src;
+              this.videoRef.current.play();
+            }}
+          />
+        );
+      });
+    };
+
     return (
       <Layout>
         <Container className={styles.newRecordingContainer}>
@@ -233,6 +279,11 @@ export class NewRecordingPage extends Component {
           <Row>
             <Col className={styles.videoButtonContainer}>
               {displayVideoControls()}
+            </Col>
+          </Row>
+          <Row>
+            <Col className={styles.recordedVideosContainer}>
+              {displayRecordedVideos()}
             </Col>
           </Row>
           <Row className={styles.spacer}>

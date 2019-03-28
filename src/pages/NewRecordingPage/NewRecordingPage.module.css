@@ -37,6 +37,27 @@ video {
     1;
 }
 
+.recordedVideo {
+  margin: 10px;
+}
+
+.recordedVideo:after {
+  position: relative;
+  display: inline-block;
+  content: "";
+  border-right: solid 3px blue;
+  width: 10px;
+  height: 10px;
+}
+
+.recordedVideosContainer {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 75px;
+  border: solid red 5px;
+  margin-bottom: 20px;
+}
+
 .videoRecording {
   border-radius: 20px;
   border: 10px solid red;
