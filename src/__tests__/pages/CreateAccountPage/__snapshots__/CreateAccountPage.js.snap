@@ -62,6 +62,24 @@ ShallowWrapper {
             </p>
           </Col>
         </Row>
+        <Row
+          tag="div"
+        >
+          <Col
+            tag="div"
+            widths={
+              Array [
+                "xs",
+                "sm",
+                "md",
+                "lg",
+                "xl",
+              ]
+            }
+          >
+            
+          </Col>
+        </Row>
         <Form
           className="createForm"
           onSubmit={[Function]}
@@ -630,6 +648,24 @@ ShallowWrapper {
               <p>
                 Before you can use ShadowCam will need some health related information to ensure accuracy in our calculations.
               </p>
+            </Col>
+          </Row>,
+          <Row
+            tag="div"
+          >
+            <Col
+              tag="div"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
+            >
+              
             </Col>
           </Row>,
           <Form
@@ -1269,6 +1305,49 @@ ShallowWrapper {
               "rendered": "Before you can use ShadowCam will need some health related information to ensure accuracy in our calculations.",
               "type": "p",
             },
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": <Col
+              tag="div"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
+            >
+              
+            </Col>,
+            "tag": "div",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": "",
+              "tag": "div",
+              "widths": Array [
+                "xs",
+                "sm",
+                "md",
+                "lg",
+                "xl",
+              ],
+            },
+            "ref": null,
+            "rendered": "",
             "type": [Function],
           },
           "type": [Function],
@@ -3362,6 +3441,24 @@ ShallowWrapper {
               </p>
             </Col>
           </Row>
+          <Row
+            tag="div"
+          >
+            <Col
+              tag="div"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
+            >
+              
+            </Col>
+          </Row>
           <Form
             className="createForm"
             onSubmit={[Function]}
@@ -3930,6 +4027,24 @@ ShallowWrapper {
                 <p>
                   Before you can use ShadowCam will need some health related information to ensure accuracy in our calculations.
                 </p>
+              </Col>
+            </Row>,
+            <Row
+              tag="div"
+            >
+              <Col
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+              >
+                
               </Col>
             </Row>,
             <Form
@@ -4569,6 +4684,49 @@ ShallowWrapper {
                 "rendered": "Before you can use ShadowCam will need some health related information to ensure accuracy in our calculations.",
                 "type": "p",
               },
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": <Col
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+              >
+                
+              </Col>,
+              "tag": "div",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": "",
+                "tag": "div",
+                "widths": Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ],
+              },
+              "ref": null,
+              "rendered": "",
               "type": [Function],
             },
             "type": [Function],

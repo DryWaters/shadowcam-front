@@ -2,7 +2,7 @@ import React from "react";
 import { shallow } from "enzyme";
 import { Form, Input } from "reactstrap";
 
-import CreateAccountPage from "../../../pages/CreateAccountPage/CreateAccountPage";
+import { CreateAccountPage } from "../../../pages/CreateAccountPage/CreateAccountPage";
 
 describe("CreateAccountPage render", () => {
   it("Should render CreateAccountPage component without crashing", () => {
@@ -16,9 +16,9 @@ describe("CreateAccountPage render", () => {
 });
 
 describe("Tests for form submission", () => {
-  it("Should clear form state after submission", () => {
+  it("Should post data to backend after submission", () => {
     const event = { preventDefault: function() {} };
-    const wrapper = shallow(<CreateAccountPage />);
+    const wrapper = shallow(<CreateAccountPage loading={() => {}} />);
     const instance = wrapper.instance();
     const spy = jest.spyOn(instance, "handleSubmit");
 
@@ -28,8 +28,6 @@ describe("Tests for form submission", () => {
     });
     wrapper.find(Form).simulate("submit", event);
     expect(spy).toHaveBeenCalledTimes(1);
-    expect(wrapper.state("email").value).toEqual("");
-    expect(wrapper.state("password").value).toEqual("");
   });
 });
 
@@ -103,14 +101,14 @@ describe("Tests for updating component state on key press", () => {
   });
 
   it("Should update gender state when clicking checkentering text in form fields", () => {
-    const event = { target: { name: "gender", value: "female" } };
+    const event = { target: { name: "gender", value: "f" } };
     const wrapper = shallow(<CreateAccountPage />);
-    expect(wrapper.state('gender')).toEqual("male");
+    expect(wrapper.state("gender")).toEqual("m");
     wrapper
       .find(Input)
       .at(7)
       .simulate("change", event);
-    expect(wrapper.state('gender')).toEqual('female');
+    expect(wrapper.state("gender")).toEqual("f");
   });
 
   it("Should update height state when entering text in form fields", () => {
