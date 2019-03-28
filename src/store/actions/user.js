@@ -6,6 +6,18 @@ export const register = userData => {
   };
 };
 
+export const loadToken = (token, expiresIn) => {
+  return dispatch => {
+    dispatch({
+      type: LOGIN,
+      payload: {
+        token,
+        expiresIn
+      }
+    });
+  };
+};
+
 export const tryLogin = authData => {
   return dispatch => {
     let url;
@@ -34,7 +46,10 @@ export const tryLogin = authData => {
       .then(res => res.json())
       .then(parsedRes => {
         if (parsedRes.status === "ok") {
-          saveTokenToStorage(parsedRes.message.token, parsedRes.message.expiresIn);
+          saveTokenToStorage(
+            parsedRes.message.token,
+            parsedRes.message.expiresIn
+          );
           dispatch({
             type: LOGIN,
             payload: {
