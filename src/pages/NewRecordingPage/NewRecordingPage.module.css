@@ -2,6 +2,16 @@
   padding-top: 50px;
 }
 
+.debugContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.videoButtonContainer {
+  display: flex;
+  justify-content: center;
+}
+
 video {
   display: none;
 }
@@ -44,21 +54,6 @@ video {
   width: 30px;
   height: 30px;
   margin: 20px;
-}
-
-.button {
-  border-radius: 20%;
-  border: none;
-  box-shadow: 5px 5px #f45342;
-}
-
-.button:focus {
-  outline: 0;
-}
-
-.videoButtons {
-  justify-content: center;
-  padding: 20px 0;
 }
 
 .spacer {

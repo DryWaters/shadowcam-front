@@ -166,7 +166,7 @@ export class NewRecordingPage extends Component {
       <Layout>
         <Container className={styles.newRecordingContainer}>
           <Row>
-            <Col style={{ display: "flex", justifyContent: "center"}}>
+            <Col className={styles.debugContainer}>
               <Button onClick={this.toggleShowDebug}>Show Debug Lines</Button>
             </Col>
           </Row>
@@ -183,12 +183,19 @@ export class NewRecordingPage extends Component {
               />
             </Col>
           </Row>
-          <Row className={styles.videoButtons}>
-            <button className={styles.button} onClick={this.setRecordingState}>
-              <div
-                className={this.state.isRecording ? styles.stop : styles.record}
-              />
-            </button>
+          <Row>
+            <Col className={styles.videoButtonContainer}>
+              <button
+                className={styles.button}
+                onClick={this.setRecordingState}
+              >
+                <div
+                  className={
+                    this.state.isRecording ? styles.stop : styles.record
+                  }
+                />
+              </button>
+            </Col>
           </Row>
           <Row className={styles.spacer}>
             <h2>Stats</h2>
