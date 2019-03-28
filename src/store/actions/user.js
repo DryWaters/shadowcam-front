@@ -1,4 +1,4 @@
-import { LOGIN, REGISTER, LOGOUT } from "./actionTypes";
+import { LOGIN, LOGOUT } from "./actionTypes";
 
 export const register = userData => {
   return dispatch => {
