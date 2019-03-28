@@ -16,13 +16,13 @@ export const isValidEmail = val =>
   );
 
 // https://stackoverflow.com/questions/14850553/javascript-regex-for-password-containing-at-least-8-characters-1-number-1-uppe
-// export const isValidPassword = val =>
-//   /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/.test(val);
-export const isValidPassword = val => true; // for testing
+export const isValidPassword = val =>
+  /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/.test(val);
 
 export const confirmPassword = (password, otherPW) => password === otherPW;
 
-export const isValidName = val => val.length <= MAX_NAME_LENGTH && val.length > 0;
+export const isValidName = val =>
+  val.length <= MAX_NAME_LENGTH && val.length > 0;
 
 export const isValidDate = val =>
   val.slice(0, 4) > MIN_YEAR && val.slice(0, 4) < MAX_YEAR;
