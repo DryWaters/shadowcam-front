@@ -4,7 +4,7 @@ import { Container, Row, Col, Button } from "reactstrap";
 import * as posenet from "@tensorflow-models/posenet";
 import Layout from "../../components/Layout/Layout";
 import { drawKeyPoints, drawSkeleton } from "../../utils/poseUtils";
-import moment from "moment";
+import Moment from "moment";
 
 import styles from "./NewRecordingPage.module.css";
 
@@ -70,10 +70,11 @@ export class NewRecordingPage extends Component {
         screenShot: this.canvasRef.current
           .toDataURL("image/png")
           .replace("image/png", "image/octet-stream"),
-        timeStamp: new moment().format()
+        timeStamp: new Moment().format()
       };
       currentVideos.push(newVideo);
       this.currentVideo = [];
+
       return {
         videos: currentVideos
       };
@@ -232,6 +233,15 @@ export class NewRecordingPage extends Component {
     this.paintToCanvas();
   };
 
+  handleSaveRecordedVideo = () => {
+    // Do something with the movie
+    var link = document.createElement("a"); // Or maybe get it from the current document
+    link.href = this.state.videos[0].screenShot;
+    link.download = "image.png";
+    link.innerHTML = "Click here to download the file";
+    document.body.appendChild(link);
+  };
+
   render() {
     const displayRecordControls = () => {
       if (!this.state.recorderSetup) {
@@ -247,6 +257,12 @@ export class NewRecordingPage extends Component {
             >
               Record
             </Button>
+            {/* <Button
+              className={styles.videoControl}
+              onClick={() => this.handleSaveRecordedVideo()}
+            >
+              Save Image
+            </Button> */}
           </Col>
         );
       } else {
@@ -310,7 +326,7 @@ export class NewRecordingPage extends Component {
               <video
                 ref={this.videoRef}
                 srcobject={this.currentStream}
-                controls
+                className={styles.video}
               />
               <canvas
                 className={`${styles.canvas} ${

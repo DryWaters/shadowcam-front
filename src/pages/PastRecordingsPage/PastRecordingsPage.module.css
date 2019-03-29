@@ -1,0 +1,48 @@
+.pastRecordingsContainer {
+  padding-top: 50px;
+}
+
+.videoContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.video {
+  width: 640px;
+  height: 480px;
+}
+
+.video:focus {
+  outline: none;
+}
+
+.statContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat {
+  display: flex;
+  flex-direction: row;
+}
+
+.label {
+  margin-right: 10px;
+}
+
+.screenShot {
+  height: 75px;
+}
+
+.workout {
+  padding: 10px 0px;
+  margin-bottom: 40px;
+  border: solid 3px black;
+}
+
+.workout:hover {
+  border: solid 3px blue;
+  cursor: pointer;
+  background-color: #555;
+}
