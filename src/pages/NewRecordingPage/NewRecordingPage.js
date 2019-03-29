@@ -142,7 +142,7 @@ export class NewRecordingPage extends Component {
           totalPunches: prevState.totalPunches + 1
         };
       });
-    }, 100);
+    }, 200);
 
     const poseDetectionFrame = async () => {
       let pose;
