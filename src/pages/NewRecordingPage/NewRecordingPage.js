@@ -2,8 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Container, Row, Col, Button } from "reactstrap";
 import * as posenet from "@tensorflow-models/posenet";
+import debounce from "lodash.debounce";
 import Layout from "../../components/Layout/Layout";
-import { drawKeyPoints, drawSkeleton } from "../../utils/poseUtils";
+import {
+  drawKeyPoints,
+  drawSkeleton,
+  processPose
+} from "../../utils/poseUtils";
 import Moment from "moment";
 
 import styles from "./NewRecordingPage.module.css";
@@ -19,8 +24,8 @@ export class NewRecordingPage extends Component {
         showVideo: true,
         showDebug: false,
         flipHorizontal: true,
-        imageScaleFactor: 0.5,
-        outputStride: 16,
+        imageScaleFactor: 0.9,
+        outputStride: 8,
         minPoseConfidence: 0.1,
         minPartConfidence: 0.5,
         debugColor: "#f45342",
@@ -34,8 +39,8 @@ export class NewRecordingPage extends Component {
       videos: [],
       time: 0,
       totalPunches: 0,
-      numJabs: 0,
-      numHooks: 0
+      leftPunches: 0,
+      rightPunches: 0
     };
   }
 
@@ -128,16 +133,49 @@ export class NewRecordingPage extends Component {
     this.canvasRef.current.height = this.state.height;
     const net = await posenet.load(0.75);
 
+    const debounceUpdateLeft = debounce(() => {
+      console.log("update left");
+      this.setState(prevState => {
+        return {
+          leftPunches: prevState.leftPunches + 1,
+          totalPunches: prevState.totalPunches + 1
+        };
+      });
+    }, 300);
+
+    const debounceUpdateRight = debounce(() => {
+      console.log("update right");
+      this.setState(prevState => {
+        return {
+          rightPunches: prevState.rightPunches + 1,
+          totalPunches: prevState.totalPunches + 1
+        };
+      });
+    }, 300);
+
     const poseDetectionFrame = async () => {
-      let poses = [];
+      let pose;
       if (this.videoRef.current) {
-        const pose = await net.estimateSinglePose(
+        pose = await net.estimateSinglePose(
           this.videoRef.current,
           this.state.poseNet.imageScaleFactor,
           this.state.poseNet.flipHorizontal,
           this.state.poseNet.outputStride
         );
-        poses.push(pose);
+        const { left, right } = processPose(pose);
+        // console.log("Left " + left);
+        // console.log("Right " + right);
+
+        if (left < 0.10 || right < 0.10) {
+          // alert('match!')
+          if (left < 0.10) {
+            console.log('should call update right!')
+            debounceUpdateRight();
+          } else {
+            console.log('should call update left!')
+            debounceUpdateLeft();
+          }
+        }
       }
 
       ctx.clearRect(0, 0, this.state.width, this.state.height);
@@ -159,23 +197,21 @@ export class NewRecordingPage extends Component {
       }
 
       if (this.state.poseNet.showDebug) {
-        poses.forEach(({ score, keypoints }) => {
-          if (score > this.state.poseNet.minPoseConfidence) {
-            drawKeyPoints(
-              keypoints,
-              this.state.poseNet.minPartConfidence,
-              this.state.poseNet.debugColor,
-              ctx
-            );
-            drawSkeleton(
-              keypoints,
-              this.state.poseNet.minPartConfidence,
-              this.state.poseNet.debugColor,
-              this.state.poseNet.debugWidth,
-              ctx
-            );
-          }
-        });
+        if (pose.score > this.state.poseNet.minPoseConfidence) {
+          drawKeyPoints(
+            pose.keypoints,
+            this.state.poseNet.minPartConfidence,
+            this.state.poseNet.debugColor,
+            ctx
+          );
+          drawSkeleton(
+            pose.keypoints,
+            this.state.poseNet.minPartConfidence,
+            this.state.poseNet.debugColor,
+            this.state.poseNet.debugWidth,
+            ctx
+          );
+        }
       }
 
       if (this.videoRef.current && !this.videoRef.current.paused) {
@@ -235,7 +271,6 @@ export class NewRecordingPage extends Component {
   };
 
   handleUploadVideo = timeStamp => {
-
     // fetch upload video
     // if successful change to check mark
     // else stay unchecked
@@ -374,12 +409,12 @@ export class NewRecordingPage extends Component {
             <Col>{this.state.totalPunches}</Col>
           </Row>
           <Row className={styles.spacer}>
-            <Col>Number of Jabs</Col>
-            <Col>{this.state.numJabs}</Col>
+            <Col>Number of Left Punches</Col>
+            <Col>{this.state.leftPunches}</Col>
           </Row>
           <Row className={styles.spacer}>
-            <Col>Number of Hooks</Col>
-            <Col>{this.state.numHooks}</Col>
+            <Col>Number of Right Punches</Col>
+            <Col>{this.state.rightPunches}</Col>
           </Row>
         </Container>
       </Layout>
