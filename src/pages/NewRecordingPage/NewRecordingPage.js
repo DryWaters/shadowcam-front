@@ -28,7 +28,7 @@ export class NewRecordingPage extends Component {
       },
       recorderSetup: false,
       recorderState: "inactive",
-      videoState: 'recording',
+      videoState: "recording",
       width: 640,
       height: 480,
       videos: [],
@@ -241,6 +241,7 @@ export class NewRecordingPage extends Component {
       return this.state.videos.map(video => {
         return (
           <img
+            key={video.date}
             className={styles.recordedVideo}
             src={video.screenShot}
             height="75px"
@@ -265,10 +266,14 @@ export class NewRecordingPage extends Component {
           </Row>
           <Row>
             <Col>
-              <video ref={this.videoRef} srcobject={this.currentStream} />
+              <video
+                ref={this.videoRef}
+                srcobject={this.currentStream}
+                controls
+              />
               <canvas
                 className={`${styles.canvas} ${
-                  this.state.isRecording
+                  this.state.recorderState === "recording"
                     ? styles.videoRecording
                     : styles.notRecording
                 }`}
