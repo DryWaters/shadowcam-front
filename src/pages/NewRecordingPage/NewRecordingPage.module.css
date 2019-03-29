@@ -35,6 +35,28 @@
   animation: recording 1s ease-in-out infinite;
 }
 
+
+.recordedVideoContainer {
+  position: relative;
+}
+
+.videoStatus {
+  position: absolute;
+  top: 20%;
+  right: 20%;
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  border: 1px solid black;
+  background-color: rgba(0,0,0, 0.5);
+}
+
+.videoStatus:hover {
+  border: 1px solid blue;
+  cursor: pointer;
+  background-color: rgba(0,0,0, 1);
+}
+
 .recordedVideo {
   margin: 10px;
   border: solid 3px black;

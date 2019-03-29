@@ -47,6 +47,14 @@ export class NewRecordingPage extends Component {
     });
   }
 
+  componentWillUnmount() {
+    this.videoRef.current.pause();
+    const tracks = this.currentStream.getTracks();
+    tracks.forEach(track => track.stop());
+    this.videoRef.current = null;
+    this.canvasRef.current = null;
+  }
+
   setupRecorder = async () => {
     this.mediaRecorder = await new MediaRecorder(this.currentStream, {
       mimeType: "video/webm; codecs=vp9"
@@ -70,7 +78,8 @@ export class NewRecordingPage extends Component {
         screenShot: this.canvasRef.current
           .toDataURL("image/png")
           .replace("image/png", "image/octet-stream"),
-        timeStamp: new Moment().format()
+        timeStamp: new Moment().format(),
+        synced: false
       };
       currentVideos.push(newVideo);
       this.currentVideo = [];
@@ -112,14 +121,6 @@ export class NewRecordingPage extends Component {
       this.paintToCanvas();
     }
   };
-
-  componentWillUnmount() {
-    this.videoRef.current.pause();
-    const tracks = this.currentStream.getTracks();
-    tracks.forEach(track => track.stop());
-    this.videoRef.current = null;
-    this.canvasRef.current = null;
-  }
 
   paintToCanvas = async () => {
     const ctx = this.canvasRef.current.getContext("2d");
@@ -233,13 +234,19 @@ export class NewRecordingPage extends Component {
     this.paintToCanvas();
   };
 
-  handleSaveRecordedVideo = () => {
-    // Do something with the movie
-    var link = document.createElement("a"); // Or maybe get it from the current document
-    link.href = this.state.videos[0].screenShot;
-    link.download = "image.png";
-    link.innerHTML = "Click here to download the file";
-    document.body.appendChild(link);
+  handleUploadVideo = timeStamp => {
+
+    // fetch upload video
+    // if successful change to check mark
+    // else stay unchecked
+
+    this.setState(prevState => {
+      const oldVideos = prevState.videos.slice();
+      oldVideos.find(video => video.timeStamp === timeStamp).synced = true;
+      return {
+        videos: oldVideos
+      };
+    });
   };
 
   render() {
@@ -257,7 +264,7 @@ export class NewRecordingPage extends Component {
             >
               Record
             </Button>
-            {/* <Button
+            {/* Test Button for saving videos for testing <Button
               className={styles.videoControl}
               onClick={() => this.handleSaveRecordedVideo()}
             >
@@ -301,14 +308,21 @@ export class NewRecordingPage extends Component {
     const displayRecordedVideos = () => {
       return this.state.videos.map(video => {
         return (
-          <img
-            key={video.timeStamp}
-            className={styles.recordedVideo}
-            src={video.screenShot}
-            height="75px"
-            alt="Recording Video"
-            onClick={() => this.handleClickPlayRecordedVideo(video.timeStamp)}
-          />
+          <div className={styles.recordedVideoContainer} key={video.timeStamp}>
+            <img
+              className={styles.recordedVideo}
+              src={video.screenShot}
+              height="75px"
+              alt="Recording Video"
+              onClick={() => this.handleClickPlayRecordedVideo(video.timeStamp)}
+            />
+            <div
+              className={styles.videoStatus}
+              onClick={() => this.handleUploadVideo(video.timeStamp)}
+            >
+              {video.synced ? "\u{2705}" : "\u{274C}"}
+            </div>
+          </div>
         );
       });
     };
