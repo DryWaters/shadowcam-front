@@ -12,15 +12,15 @@ export class PastRecordingsPage extends Component {
     videos: [
       {
         videoName: "Test Movie",
-        src: "http://localhost:3000/videos/testmovie.webm",
+        src: "https://shadowcam-back.herokuapp.com/videos/testmovie.webm",
         timeStamp: new Moment().format(),
-        screenShot: "http://localhost:3000/screenshots/testmovie.png"
+        screenShot: "https://shadowcam-back.herokuapp.com/screenshots/testmovie.png"
       },
       {
         videoName: "Test Movie2",
-        src: "http://localhost:3000/videos/testmovie2.webm",
+        src: "https://shadowcam-back.herokuapp.com/videos/testmovie2.webm",
         timeStamp: new Moment().subtract(7, "days").format(),
-        screenShot: "http://localhost:3000/screenshots/testmovie2.png"
+        screenShot: "https://shadowcam-back.herokuapp.com/screenshots/testmovie2.png"
       }
     ]
   };
