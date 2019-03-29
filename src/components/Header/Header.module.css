@@ -39,6 +39,7 @@
 }
 
 .menuItem:after {
+  padding-top: 10px;
   display: block;
   content: "";
   border-bottom: solid 3px #f45342;
