@@ -41,8 +41,8 @@ export class NewRecordingPage extends Component {
       videos: [],
       time: 0,
       totalPunches: 0,
-      leftPunches: 0,
-      rightPunches: 0
+      leftPunch: 0,
+      rightPunch: 0
     };
   }
 
@@ -133,28 +133,16 @@ export class NewRecordingPage extends Component {
     const ctx = this.canvasRef.current.getContext("2d");
     this.canvasRef.current.width = this.state.width;
     this.canvasRef.current.height = this.state.height;
-    
     const net = await posenet.load(0.75);
 
-    const debounceUpdateLeft = debounce(() => {
-      console.log("update left");
+    const debounceUpdateState = debounce(punchType => {
       this.setState(prevState => {
         return {
-          leftPunches: prevState.leftPunches + 1,
+          [punchType]: prevState[punchType] + 1,
           totalPunches: prevState.totalPunches + 1
         };
       });
-    }, 200);
-
-    const debounceUpdateRight = debounce(() => {
-      console.log("update right");
-      this.setState(prevState => {
-        return {
-          rightPunches: prevState.rightPunches + 1,
-          totalPunches: prevState.totalPunches + 1
-        };
-      });
-    }, 200);
+    }, 100);
 
     const poseDetectionFrame = async () => {
       let pose;
@@ -165,19 +153,9 @@ export class NewRecordingPage extends Component {
           this.state.poseNet.flipHorizontal,
           this.state.poseNet.outputStride
         );
-        const { left, right } = processPose(pose);
-        // console.log("Left " + left);
-        // console.log("Right " + right);
-
-        if (left < 0.1 || right < 0.1) {
-          // alert('match!')
-          if (left < 0.1) {
-            console.log("should call update right!");
-            debounceUpdateRight();
-          } else {
-            console.log("should call update left!");
-            debounceUpdateLeft();
-          }
+        const punchType = processPose(pose);
+        if (punchType !== "no_punch") {
+          debounceUpdateState(punchType);
         }
       }
 
@@ -418,11 +396,11 @@ export class NewRecordingPage extends Component {
           </Row>
           <Row className={styles.spacer}>
             <Col>Number of Left Punches</Col>
-            <Col>{this.state.leftPunches}</Col>
+            <Col>{this.state.leftPunch}</Col>
           </Row>
           <Row className={styles.spacer}>
             <Col>Number of Right Punches</Col>
-            <Col>{this.state.rightPunches}</Col>
+            <Col>{this.state.rightPunch}</Col>
           </Row>
         </Container>
       </Layout>
