@@ -70,7 +70,7 @@ export class NewRecordingPage extends Component {
         screenShot: this.canvasRef.current
           .toDataURL("image/png")
           .replace("image/png", "image/octet-stream"),
-        date: new moment()
+        timeStamp: new moment().format()
       };
       currentVideos.push(newVideo);
       this.currentVideo = [];
@@ -189,6 +189,10 @@ export class NewRecordingPage extends Component {
       this.mediaRecorder.start();
     } else if (this.state.recorderState === "recording" && id === "stop") {
       this.mediaRecorder.stop();
+    } else if (this.state.recorderState === "recording" && id === "pause") {
+      this.mediaRecorder.pause();
+    } else if (this.state.recorderState === "paused" && id === "pause") {
+      this.mediaRecorder.resume();
     }
 
     this.setState({
@@ -202,29 +206,57 @@ export class NewRecordingPage extends Component {
     }));
   };
 
+  handleClickPlayRecordedVideo = timeStamp => {
+    this.setState({
+      videoState: "playing"
+    });
+    const correctVideo = this.state.videos.filter(
+      video => video.timeStamp === timeStamp
+    );
+    this.videoRef.current.srcObject = null;
+    this.videoRef.current.src = null;
+    this.videoRef.current.src = correctVideo[0].src;
+    this.videoRef.current.currentTime = 0;
+    this.videoRef.current.play();
+    this.paintToCanvas();
+  };
+
+  handleClickRecordVideos = () => {
+    this.setState({
+      videoState: "recording"
+    });
+    this.videoRef.current.src = null;
+    this.videoRef.current.srcObject = null;
+    this.videoRef.current.srcObject = this.currentStream;
+    this.videoRef.current.play();
+    this.paintToCanvas();
+  };
+
   render() {
-    const displayVideoControls = () => {
+    const displayRecordControls = () => {
       if (!this.state.recorderSetup) {
         return;
       }
 
       if (this.state.recorderState === "inactive") {
         return (
-          <Button
-            className={styles.videoControl}
-            onClick={() => this.setRecordingState({ id: "record" })}
-          >
-            Record
-          </Button>
+          <Col className={styles.videoButtonContainer}>
+            <Button
+              className={styles.videoControl}
+              onClick={() => this.setRecordingState({ id: "record" })}
+            >
+              Record
+            </Button>
+          </Col>
         );
       } else {
         return (
-          <div>
+          <Col className={styles.videoButtonContainer}>
             <Button
               className={styles.videoControl}
               onClick={() => this.setRecordingState({ id: "pause" })}
             >
-              Pause
+              {this.state.recorderState === "paused" ? "Resume" : "Pause"}
             </Button>
             <Button
               className={styles.videoControl}
@@ -232,25 +264,34 @@ export class NewRecordingPage extends Component {
             >
               Stop
             </Button>
-          </div>
+          </Col>
         );
       }
+    };
+
+    const displayPlayerControls = () => {
+      return (
+        <Col className={styles.videoButtonContainer}>
+          <Button
+            className={styles.videoControl}
+            onClick={this.handleClickRecordVideos}
+          >
+            Record New Video
+          </Button>
+        </Col>
+      );
     };
 
     const displayRecordedVideos = () => {
       return this.state.videos.map(video => {
         return (
           <img
-            key={video.date}
+            key={video.timeStamp}
             className={styles.recordedVideo}
             src={video.screenShot}
             height="75px"
             alt="Recording Video"
-            onClick={() => {
-              this.videoRef.current.srcObject = null;
-              this.videoRef.current.src = video.src;
-              this.videoRef.current.play();
-            }}
+            onClick={() => this.handleClickPlayRecordedVideo(video.timeStamp)}
           />
         );
       });
@@ -282,9 +323,9 @@ export class NewRecordingPage extends Component {
             </Col>
           </Row>
           <Row>
-            <Col className={styles.videoButtonContainer}>
-              {displayVideoControls()}
-            </Col>
+            {this.state.videoState === "playing"
+              ? displayPlayerControls()
+              : displayRecordControls()}
           </Row>
           <Row>
             <Col className={styles.recordedVideosContainer}>
