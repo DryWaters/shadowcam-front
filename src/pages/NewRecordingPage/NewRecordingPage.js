@@ -7,7 +7,8 @@ import Layout from "../../components/Layout/Layout";
 import {
   drawKeyPoints,
   drawSkeleton,
-  processPose
+  processPose,
+  drawBoundingBox
 } from "../../utils/poseUtils";
 import Moment from "moment";
 
@@ -18,7 +19,7 @@ export class NewRecordingPage extends Component {
     super(props);
     this.videoRef = React.createRef();
     this.canvasRef = React.createRef();
-    this.otherVideoRef = React.createRef();
+    this.otherCanvasRef = React.createRef();
     this.state = {
       poseNet: {
         showVideo: true,
@@ -29,6 +30,7 @@ export class NewRecordingPage extends Component {
         minPoseConfidence: 0.1,
         minPartConfidence: 0.5,
         debugColor: "#f45342",
+        debugBoxColor: "blue",
         debugWidth: 5
       },
       recorderSetup: false,
@@ -131,6 +133,7 @@ export class NewRecordingPage extends Component {
     const ctx = this.canvasRef.current.getContext("2d");
     this.canvasRef.current.width = this.state.width;
     this.canvasRef.current.height = this.state.height;
+    
     const net = await posenet.load(0.75);
 
     const debounceUpdateLeft = debounce(() => {
@@ -141,7 +144,7 @@ export class NewRecordingPage extends Component {
           totalPunches: prevState.totalPunches + 1
         };
       });
-    }, 300);
+    }, 200);
 
     const debounceUpdateRight = debounce(() => {
       console.log("update right");
@@ -151,7 +154,7 @@ export class NewRecordingPage extends Component {
           totalPunches: prevState.totalPunches + 1
         };
       });
-    }, 300);
+    }, 200);
 
     const poseDetectionFrame = async () => {
       let pose;
@@ -166,13 +169,13 @@ export class NewRecordingPage extends Component {
         // console.log("Left " + left);
         // console.log("Right " + right);
 
-        if (left < 0.10 || right < 0.10) {
+        if (left < 0.1 || right < 0.1) {
           // alert('match!')
-          if (left < 0.10) {
-            console.log('should call update right!')
+          if (left < 0.1) {
+            console.log("should call update right!");
             debounceUpdateRight();
           } else {
-            console.log('should call update left!')
+            console.log("should call update left!");
             debounceUpdateLeft();
           }
         }
@@ -210,6 +213,11 @@ export class NewRecordingPage extends Component {
             this.state.poseNet.debugColor,
             this.state.poseNet.debugWidth,
             ctx
+          );
+          drawBoundingBox(
+            pose.keypoints,
+            ctx,
+            this.state.poseNet.debugBoxColor
           );
         }
       }
