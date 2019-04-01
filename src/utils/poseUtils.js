@@ -1,7 +1,7 @@
 // https://github.com/tensorflow/tfjs-models/blob/master/posenet/demos/demo_util.js
 // https://medium.com/tensorflow/move-mirror-an-ai-experiment-with-pose-estimation-in-the-browser-using-tensorflow-js-2f7b769f9b23
 import * as posenet from "@tensorflow-models/posenet";
-// import similarity from "compute-cosine-similarity";  //Not used if using more accurate detection with score
+import similarity from "compute-cosine-similarity"; //Not used if using more accurate detection with score
 import VPTreeFactory from "vptree";
 import poseData from "./poseData.json";
 
@@ -23,20 +23,20 @@ export const processPose = pose => {
 const normalizePose = pose => {
   const boundingBox = posenet.getBoundingBox(pose.keypoints);
   const normalizedArray = new Array(34);
-  const confidences = new Array(17);
-  let sumConfidences = 0;
+  // const confidences = new Array(17);
+  // let sumConfidences = 0;
 
   for (let index in pose.keypoints) {
-    sumConfidences += pose.keypoints[index].score;
-    confidences[index] = pose.keypoints[index].score;
+    // sumConfidences += pose.keypoints[index].score;
+    // confidences[index] = pose.keypoints[index].score;
     normalizedArray[index * 2] =
       pose.keypoints[index].position.x / boundingBox.maxX;
     normalizedArray[index * 2 + 1] =
       pose.keypoints[index].position.y / boundingBox.maxY;
   }
 
-  return [...normalizedArray, ...confidences, sumConfidences];
-  // return normalizedArray;
+  // return [...normalizedArray, ...confidences, sumConfidences];
+  return normalizedArray;
 };
 
 const weightedDistanceMatching = (pose, punchPose) => {
@@ -58,14 +58,14 @@ const weightedDistanceMatching = (pose, punchPose) => {
 };
 
 // No longer used since using more accurate detection using keypoint weights
-// const cosineDistanceMatching = (pose, punchPose) => {
-//   let cosineSimliary = similarity(pose.slice(0, 34), punchPose.slice(0, 34));
-//   let distance = 2 * (1 - cosineSimliary);
-//   return Math.sqrt(distance);
-// };
+const cosineDistanceMatching = (pose, punchPose) => {
+  let cosineSimliary = similarity(pose.slice(0, 34), punchPose.slice(0, 34));
+  let distance = 2 * (1 - cosineSimliary);
+  return Math.sqrt(distance);
+};
 
 const buildVPTree = () => {
-  vptree = VPTreeFactory.build(poseData, weightedDistanceMatching);
+  vptree = VPTreeFactory.build(poseData, cosineDistanceMatching);
 };
 
 const findMostSimliarMatch = pose => {
