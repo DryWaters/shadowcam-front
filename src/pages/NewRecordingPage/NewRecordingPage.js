@@ -160,7 +160,7 @@ export class NewRecordingPage extends Component {
           this.state.poseNet.outputStride
         );
         const punchType = processPose(pose);
-        if (punchType !== "no_punch") {
+        if (punchType && punchType !== "rest") {
           debounceUpdateState(punchType);
         }
       }

@@ -5,6 +5,8 @@ import * as posenet from "@tensorflow-models/posenet";
 import VPTreeFactory from "vptree";
 import poseData from "./poseData.json";
 
+console.log("Working with " + poseData.length + " poses!");
+
 const pointRadius = 3;
 const confidenceLevel = 0.14;
 let vptree;
@@ -68,20 +70,16 @@ const buildVPTree = () => {
 
 const findMostSimliarMatch = pose => {
   // const top3Matches = vptree.search(pose, 3);
-  // for (let match of top3Matches) {
-  //   console.log(poseData[match.i][34]);
-  //   console.log(match.d);
-  // }
 
   const nearestPose = vptree.search(pose);
-  // console.log(nearestPose[0].d)
+
   if (nearestPose[0].d < confidenceLevel) {
-    // alert('Match!')
-  }
-  if (nearestPose[0].d < confidenceLevel) {
+    // for (let match of top3Matches) {
+    //   console.log(poseData[match.i][34]);
+    //   console.log(match.d);
+    // }
+
     return poseData[nearestPose[0].i][34];
-  } else {
-    return "no_punch";
   }
 };
 
