@@ -41,8 +41,14 @@ export class NewRecordingPage extends Component {
       videos: [],
       time: 0,
       totalPunches: 0,
-      leftPunch: 0,
-      rightPunch: 0
+      jab: 0,
+      leftBodyHook: 0,
+      leftHook: 0,
+      leftUppercut: 0,
+      powerRear: 0,
+      rightBodyHook: 0,
+      rightHook: 0,
+      rightUppercut: 0
     };
   }
 
@@ -142,7 +148,7 @@ export class NewRecordingPage extends Component {
           totalPunches: prevState.totalPunches + 1
         };
       });
-    }, 200);
+    }, 100);
 
     const poseDetectionFrame = async () => {
       let pose;
@@ -395,12 +401,36 @@ export class NewRecordingPage extends Component {
             <Col>{this.state.totalPunches}</Col>
           </Row>
           <Row className={styles.spacer}>
-            <Col>Number of Left Punches</Col>
-            <Col>{this.state.leftPunch}</Col>
+            <Col>Number of Jabs</Col>
+            <Col>{this.state.jab}</Col>
           </Row>
           <Row className={styles.spacer}>
-            <Col>Number of Right Punches</Col>
-            <Col>{this.state.rightPunch}</Col>
+            <Col>Number of Power Rear Punches</Col>
+            <Col>{this.state.powerRear}</Col>
+          </Row>
+          <Row className={styles.spacer}>
+            <Col>Number of Left Hook Punches</Col>
+            <Col>{this.state.leftHook}</Col>
+          </Row>
+          <Row className={styles.spacer}>
+            <Col>Number of Right Hook Punches</Col>
+            <Col>{this.state.rightHook}</Col>
+          </Row>
+          <Row className={styles.spacer}>
+            <Col>Number of Left Uppercut Punches</Col>
+            <Col>{this.state.leftUppercut}</Col>
+          </Row>
+          <Row className={styles.spacer}>
+            <Col>Number of Right Uppercut Punches</Col>
+            <Col>{this.state.rightUppercut}</Col>
+          </Row>
+          <Row className={styles.spacer}>
+            <Col>Number of Left Body Hook Punches</Col>
+            <Col>{this.state.leftBodyHook}</Col>
+          </Row>
+          <Row className={styles.spacer}>
+            <Col>Number of Right Body Hook Punches</Col>
+            <Col>{this.state.rightBodyHook}</Col>
           </Row>
         </Container>
       </Layout>
