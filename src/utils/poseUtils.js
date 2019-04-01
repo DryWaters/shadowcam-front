@@ -1,18 +1,12 @@
 // https://github.com/tensorflow/tfjs-models/blob/master/posenet/demos/demo_util.js
 // https://medium.com/tensorflow/move-mirror-an-ai-experiment-with-pose-estimation-in-the-browser-using-tensorflow-js-2f7b769f9b23
 import * as posenet from "@tensorflow-models/posenet";
-import similarity from "compute-cosine-similarity";
+// import similarity from "compute-cosine-similarity";  Not used if using more accurate detection with score
 import VPTreeFactory from "vptree";
 
 const pointRadius = 3;
+const confidenceLevel = 0.13;
 let vptree;
-
-const punchTag = [
-  "leftPunch",
-  "rightPunch",
-  "leftPunch",
-  "rightPunch"
-];
 
 const poseData = [
   [
@@ -49,7 +43,8 @@ const poseData = [
     0.6743869600022137,
     0.9596757522756226,
     0.5402059235734651,
-    1
+    1,
+    'leftPunch'
   ],
   [
     0.689359754804897,
@@ -85,7 +80,8 @@ const poseData = [
     0.7084121823641014,
     0.9687124479509347,
     0.5588649134768446,
-    1
+    1,
+    'rightPunch'
   ],
   [
     0.7831916252494893,
@@ -121,7 +117,8 @@ const poseData = [
     0.693233624173217,
     1,
     0.6594577974234379,
-    0.9984747768019924
+    0.9984747768019924,
+    'leftPunch'
   ],
   [
     0.714631694796499,
@@ -157,7 +154,8 @@ const poseData = [
     0.708706227883372,
     0.9988707145006044,
     0.6247409464549367,
-    1
+    1,
+    'rightPunch'
   ]
 ];
 
@@ -172,33 +170,53 @@ export const processPose = pose => {
 
 const normalizePose = pose => {
   const boundingBox = posenet.getBoundingBox(pose.keypoints);
-  const flatPoseArray = pose.keypoints
-    .map(pose => [pose.position.x, pose.position.y])
-    .flat();
-  const normalizedArray = flatPoseArray.map((number, index) => {
-    if (index % 2 === 0) {
-      return number / boundingBox.maxX;
-    } else {
-      return number / boundingBox.maxY;
-    }
-  });
-  return normalizedArray;
+  const normalizedArray = new Array(34);
+  const confidences = new Array(17);
+  let sumConfidences = 0;
+
+  for (let index in pose.keypoints) {
+    sumConfidences += pose.keypoints[index].score;
+    confidences[index] = pose.keypoints[index].score;
+    normalizedArray[index * 2] = pose.keypoints[index].position.x / boundingBox.maxX;
+    normalizedArray[index * 2  + 1] = pose.keypoints[index].position.y / boundingBox.maxY;
+  }
+
+  return [...normalizedArray, ...confidences, sumConfidences];
 };
 
-const cosineDistanceMatching = (pose, punchPose) => {
-  let cosineSimliary = similarity(pose, punchPose);
-  let distance = 2 * (1 - cosineSimliary);
-  return Math.sqrt(distance);
+const weightedDistanceMatching = (pose, punchPose) => {
+  const vector1PoseXY = pose.slice(0, 34);
+  const vector1Confidences = pose.slice(34, 51);
+  const vector1ConfidenceSum = pose.slice(51, 52);
+  const vector2PoseXY = punchPose.slice(0, 34);
+  const summation1 = 1 / vector1ConfidenceSum;
+  let summation2 = 0;
+  for (let i = 0; i < vector1PoseXY.length; i++) {
+    let tempConf = Math.floor(i / 2);
+    let tempSum =
+      vector1Confidences[tempConf] *
+      Math.abs(vector1PoseXY[i] - vector2PoseXY[i]);
+    summation2 = summation2 + tempSum;
+  }
+
+  return summation1 * summation2;
 };
+
+// No longer used since using more accurate detection using keypoint weights
+// const cosineDistanceMatching = (pose, punchPose) => {
+//   let cosineSimliary = similarity(pose, punchPose);
+//   let distance = 2 * (1 - cosineSimliary);
+//   return Math.sqrt(distance);
+// };
 
 const buildVPTree = () => {
-  vptree = VPTreeFactory.build(poseData, cosineDistanceMatching);
+  vptree = VPTreeFactory.build(poseData, weightedDistanceMatching);
 };
 
 const findMostSimliarMatch = pose => {
   let nearestPose = vptree.search(pose);
-  if (nearestPose[0].d < 0.1) {
-    return punchTag[nearestPose[0].i];
+  if (nearestPose[0].d < confidenceLevel) {
+    return poseData[nearestPose[0].i][34];
   } else {
     return "no_punch";
   }
@@ -218,9 +236,9 @@ export function drawKeyPoints(
       canvasContext.arc(x * scale, y * scale, pointRadius, 0, 2 * Math.PI);
 
       if (keypoint.part === "rightWrist") {
-        canvasContext.fillStyle = "blue";
+        canvasContext.fillStyle = 'blue';
       } else {
-        canvasContext.fillStyle = "#fff";
+        canvasContext.fillStyle = skeletonColor;
       }
       canvasContext.fill();
     }
