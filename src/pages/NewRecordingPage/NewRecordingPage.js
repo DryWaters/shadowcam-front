@@ -4,12 +4,7 @@ import { Container, Row, Col, Button } from "reactstrap";
 import * as posenet from "@tensorflow-models/posenet";
 import debounce from "lodash.debounce";
 import Layout from "../../components/Layout/Layout";
-import {
-  drawKeyPoints,
-  drawSkeleton,
-  processPose,
-  drawBoundingBox
-} from "../../utils/poseUtils";
+import { processPose } from "../../utils/poseUtils";
 import Moment from "moment";
 
 import styles from "./NewRecordingPage.module.css";
@@ -19,7 +14,6 @@ export class NewRecordingPage extends Component {
     super(props);
     this.videoRef = React.createRef();
     this.canvasRef = React.createRef();
-    this.otherCanvasRef = React.createRef();
     this.state = {
       poseNet: {
         showVideo: true,
@@ -81,9 +75,14 @@ export class NewRecordingPage extends Component {
     this.currentVideo.push(blob.data);
   };
 
-  handleStopRecord = async () => {
-    await this.setState(prevState => {
+  handleStopRecord = () => {
+    this.setState(prevState => {
       const currentVideos = [...prevState.videos];
+      this.canvasRef.current.width = 160;
+      this.canvasRef.current.height = 120;
+      this.canvasRef.current
+        .getContext("2d")
+        .drawImage(this.videoRef.current, 0, 0, 160, 120);
       const newVideo = {
         src: window.URL.createObjectURL(
           new Blob(this.currentVideo, { mimeType: "video/webm; codecs=vp9" })
@@ -131,14 +130,11 @@ export class NewRecordingPage extends Component {
     this.videoRef.current = await this.setupCamera();
     if (this.videoRef.current) {
       this.videoRef.current.play();
-      this.paintToCanvas();
+      this.processPose();
     }
   };
 
-  paintToCanvas = async () => {
-    const ctx = this.canvasRef.current.getContext("2d");
-    this.canvasRef.current.width = this.state.width;
-    this.canvasRef.current.height = this.state.height;
+  processPose = async () => {
     const net = await posenet.load(0.75);
 
     const debounceUpdateState = debounce(punchType => {
@@ -162,47 +158,6 @@ export class NewRecordingPage extends Component {
         const punchType = processPose(pose);
         if (punchType && punchType !== "rest") {
           debounceUpdateState(punchType);
-        }
-      }
-
-      ctx.clearRect(0, 0, this.state.width, this.state.height);
-
-      if (this.state.poseNet.showVideo) {
-        ctx.save();
-        ctx.scale(-1, 1);
-        ctx.translate(-this.state.width, 0);
-        if (this.videoRef.current) {
-          ctx.drawImage(
-            this.videoRef.current,
-            0,
-            0,
-            this.state.width,
-            this.state.height
-          );
-        }
-        ctx.restore();
-      }
-
-      if (this.state.poseNet.showDebug) {
-        if (pose.score > this.state.poseNet.minPoseConfidence) {
-          drawKeyPoints(
-            pose.keypoints,
-            this.state.poseNet.minPartConfidence,
-            this.state.poseNet.debugColor,
-            ctx
-          );
-          drawSkeleton(
-            pose.keypoints,
-            this.state.poseNet.minPartConfidence,
-            this.state.poseNet.debugColor,
-            this.state.poseNet.debugWidth,
-            ctx
-          );
-          drawBoundingBox(
-            pose.keypoints,
-            ctx,
-            this.state.poseNet.debugBoxColor
-          );
         }
       }
 
@@ -248,7 +203,7 @@ export class NewRecordingPage extends Component {
     this.videoRef.current.src = correctVideo[0].src;
     this.videoRef.current.currentTime = 0;
     this.videoRef.current.play();
-    this.paintToCanvas();
+    this.processPose();
   };
 
   handleClickRecordVideos = () => {
@@ -259,7 +214,7 @@ export class NewRecordingPage extends Component {
     this.videoRef.current.srcObject = null;
     this.videoRef.current.srcObject = this.currentStream;
     this.videoRef.current.play();
-    this.paintToCanvas();
+    this.processPose();
   };
 
   handleUploadVideo = timeStamp => {
@@ -268,7 +223,7 @@ export class NewRecordingPage extends Component {
     // else stay unchecked
 
     this.setState(prevState => {
-      const oldVideos = prevState.videos.slice();
+      const oldVideos = [...prevState.videos];
       oldVideos.find(video => video.timeStamp === timeStamp).synced = true;
       return {
         videos: oldVideos
@@ -339,7 +294,6 @@ export class NewRecordingPage extends Component {
             <img
               className={styles.recordedVideo}
               src={video.screenShot}
-              height="75px"
               alt="Recording Video"
               onClick={() => this.handleClickPlayRecordedVideo(video.timeStamp)}
             />
@@ -358,25 +312,17 @@ export class NewRecordingPage extends Component {
       <Layout>
         <Container className={styles.newRecordingContainer}>
           <Row>
-            <Col className={styles.debugContainer}>
-              <Button onClick={this.toggleShowDebug}>Show Debug Lines</Button>
-            </Col>
-          </Row>
-          <Row>
             <Col>
               <video
                 ref={this.videoRef}
                 srcobject={this.currentStream}
-                className={styles.video}
-              />
-              <canvas
-                className={`${styles.canvas} ${
+                className={`${styles.video} ${
                   this.state.recorderState === "recording"
                     ? styles.videoRecording
                     : styles.notRecording
                 }`}
-                ref={this.canvasRef}
               />
+              <canvas className={styles.canvas} ref={this.canvasRef} />
             </Col>
           </Row>
           <Row>

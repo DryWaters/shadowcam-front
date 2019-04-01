@@ -2,11 +2,6 @@
   padding-top: 50px;
 }
 
-.debugContainer {
-  display: flex;
-  justify-content: center;
-}
-
 .videoButtonContainer {
   display: flex;
   justify-content: center;
@@ -15,13 +10,14 @@
 
 .video {
   display: none;
-}
-
-.canvas {
   margin: 40px auto;
   display: block;
   max-width: 640px;
   width: 100%;
+}
+
+.canvas {
+  display: none;
 }
 
 .notRecording {
@@ -35,15 +31,14 @@
   animation: recording 1s ease-in-out infinite;
 }
 
-
 .recordedVideoContainer {
   position: relative;
 }
 
 .videoStatus {
   position: absolute;
-  top: 20%;
-  right: 20%;
+  top: 15%;
+  right: 10%;
   height: 30px;
   width: 30px;
   text-align: center;
