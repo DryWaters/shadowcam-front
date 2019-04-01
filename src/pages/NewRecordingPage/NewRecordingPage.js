@@ -16,8 +16,6 @@ export class NewRecordingPage extends Component {
     this.canvasRef = React.createRef();
     this.state = {
       poseNet: {
-        showVideo: true,
-        showDebug: false,
         flipHorizontal: true,
         imageScaleFactor: 0.5,
         outputStride: 16,

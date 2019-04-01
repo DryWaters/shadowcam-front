@@ -72,13 +72,14 @@ const findMostSimliarMatch = pose => {
   // const top3Matches = vptree.search(pose, 3);
 
   const nearestPose = vptree.search(pose);
+  // console.log(nearestPose[0].d);
+  // console.log(poseData[nearestPose[0].i][34]);
 
   if (nearestPose[0].d < confidenceLevel) {
     // for (let match of top3Matches) {
     //   console.log(poseData[match.i][34]);
     //   console.log(match.d);
     // }
-
     return poseData[nearestPose[0].i][34];
   }
 };
