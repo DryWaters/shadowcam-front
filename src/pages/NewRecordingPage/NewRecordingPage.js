@@ -24,7 +24,7 @@ export class NewRecordingPage extends Component {
       poseNet: {
         showVideo: true,
         showDebug: false,
-        flipHorizontal: true,
+        flipHorizontal: false,
         imageScaleFactor: 0.5,
         outputStride: 16,
         minPoseConfidence: 0.1,
