@@ -2,7 +2,6 @@
 
 # dependencies
 /node_modules
-/pose-capture/node_modules
 /.pnp
 .pnp.js
 
