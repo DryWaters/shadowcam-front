@@ -1,7 +1,7 @@
 // https://github.com/tensorflow/tfjs-models/blob/master/posenet/demos/demo_util.js
 // https://medium.com/tensorflow/move-mirror-an-ai-experiment-with-pose-estimation-in-the-browser-using-tensorflow-js-2f7b769f9b23
 import * as posenet from "@tensorflow-models/posenet";
-import similarity from "compute-cosine-similarity";  //Not used if using more accurate detection with score
+import similarity from "compute-cosine-similarity"; //Not used if using more accurate detection with score
 import VPTreeFactory from "vptree";
 import poseData from "./poseData.json";
 
@@ -39,8 +39,7 @@ const normalizePose = pose => {
   return normalizedArray;
 };
 
-
-// Distance is incosistence with this 
+// Distance is incosistence with this
 // const weightedDistanceMatching = (pose, punchPose) => {
 //   const vector1PoseXY = pose.slice(0, 34);
 //   const vector1Confidences = pose.slice(34, 51);
