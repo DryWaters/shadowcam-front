@@ -31,7 +31,9 @@ export class NewRecordingPage extends Component {
       width: 640,
       height: 480,
       videos: [],
-      time: 0,
+      timeLeft: 0,
+      intervalTimeLeft: 0,
+      runningTime: 0,
       totalPunches: 0,
       jab: 0,
       leftBodyHook: 0,
@@ -229,6 +231,12 @@ export class NewRecordingPage extends Component {
     });
   };
 
+  formatTime = seconds => {
+    const minutes = ~~(seconds / 60);
+    const secondsLeft = "" + (seconds % 60);
+    return `${minutes}:${secondsLeft.padStart(2, "0")}`;
+  };
+
   render() {
     const displayRecordControls = () => {
       if (!this.state.recorderSetup) {
@@ -242,14 +250,8 @@ export class NewRecordingPage extends Component {
               className={styles.videoControl}
               onClick={() => this.setRecordingState({ id: "record" })}
             >
-              Record
+              Start Training
             </Button>
-            {/* Test Button for saving videos for testing <Button
-              className={styles.videoControl}
-              onClick={() => this.handleSaveRecordedVideo()}
-            >
-              Save Image
-            </Button> */}
           </Col>
         );
       } else {
@@ -338,7 +340,19 @@ export class NewRecordingPage extends Component {
           </Row>
           <Row className={styles.spacer}>
             <Col>Total Time:</Col>
-            <Col>{this.state.time}</Col>
+            <Col>{this.formatTime(this.props.workout_length)}</Col>
+          </Row>
+          <Row className={styles.spacer}>
+            <Col>Total Time Left:</Col>
+            <Col>{this.formatTime(this.state.timeLeft)}</Col>
+          </Row>
+          <Row className={styles.spacer}>
+            <Col>Interval Time:</Col>
+            <Col>{this.formatTime(this.props.interval_length)}</Col>
+          </Row>
+          <Row className={styles.spacer}>
+            <Col>Interval Time Left:</Col>
+            <Col>{this.formatTime(this.state.intervalTimeLeft)}</Col>
           </Row>
           <Row className={styles.spacer}>
             <Col>Number of Punches</Col>
@@ -382,4 +396,16 @@ export class NewRecordingPage extends Component {
   }
 }
 
-export default connect()(NewRecordingPage);
+const mapDispatchToProps = dispatch => ({});
+
+const mapStateToProps = state => ({
+  workout_length: state.workout.workout_length,
+  num_of_intervals: state.workout.num_of_intervals,
+  interval_length: state.workout.interval_length,
+  isLoading: state.ui.isLoading
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NewRecordingPage);
