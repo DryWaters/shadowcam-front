@@ -12,6 +12,7 @@ import {
 import { connect } from "react-redux";
 import { loading, notLoading } from "../../store/actions/ui";
 import { tryLogin } from "../../store/actions/user";
+import loadingSpinner from "../../assets/images/loading-spinner.gif";
 
 import Layout from "../../components/Layout/Layout";
 import validator from "../../utils/validation";
@@ -190,7 +191,7 @@ export class CreateAccountPage extends Component {
           this.setState({
             error: true
           });
-          return notLoading();
+          return this.props.notLoading();
         }
       })
       .catch(err => {
@@ -215,6 +216,22 @@ export class CreateAccountPage extends Component {
     this.state.weight.isValid;
 
   render() {
+    const shouldDisplayButton = () => {
+      if (this.props.isLoading) {
+        return (
+          <Button disabled className={styles.createButton}>
+            <img
+              src={loadingSpinner}
+              alt="Loading Spinner"
+              className={styles.loadingSpinner}
+            />
+          </Button>
+        );
+      } else {
+        return <Button className={styles.createButton}>Register</Button>;
+      }
+    };
+
     return (
       <Layout>
         <Container className={styles.createContainer}>
@@ -467,7 +484,7 @@ export class CreateAccountPage extends Component {
                 >
                   Clear
                 </Button>
-                <Button className={styles.createButton}>Register</Button>
+                {shouldDisplayButton()}
               </Col>
             </Row>
           </Form>
@@ -483,7 +500,11 @@ const mapDispatchToProps = dispatch => ({
   tryLogin: authData => dispatch(tryLogin(authData))
 });
 
+const mapStateToProps = state => ({
+  isLoading: state.ui.isLoading
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(CreateAccountPage);
