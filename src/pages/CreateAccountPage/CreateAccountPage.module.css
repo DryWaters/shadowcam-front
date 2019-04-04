@@ -1,39 +1,38 @@
 .createContainer {
-    margin-top: 50px;
-    padding-bottom: 30px;
+  margin-top: 50px;
+  padding-bottom: 30px;
 }
 
 .createForm {
-    padding-top: 40px;
+  padding-top: 40px;
 }
 
 .spacer {
-    padding-bottom: 15px;
+  padding-bottom: 15px;
 }
 
 .createButton {
-    padding: 10px 50px !important;
-    text-transform: uppercase;
-    margin-right: 50px;
+  padding: 10px 50px !important;
+  text-transform: uppercase;
+  margin-right: 50px;
 }
 
 .invalidInput {
-    border: 4px solid red !important;
+  border: 4px solid red !important;
 }
 
-.passwordHelpers { 
-    padding-top: 20px;
-    line-height: 0.5em;
-    color: red;
+.passwordHelpers {
+  padding-top: 20px;
+  line-height: 0.5em;
+  color: red;
 }
 
 .errorMessage {
-    color: red;
-    font-size: 30px;
-    font-style: bold;
+  color: red;
+  font-size: 30px;
+  font-style: bold;
 }
 
 .loadingSpinner {
-    height: 80px;
-  }
-  
+  height: 80px;
+}

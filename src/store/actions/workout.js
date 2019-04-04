@@ -3,7 +3,6 @@ import { loading, notLoading } from "./ui";
 
 export const tryStartWorkout = workoutData => {
   return dispatch => {
-    
     dispatch(loading());
 
     let url;
@@ -15,7 +14,7 @@ export const tryStartWorkout = workoutData => {
       url = `https://shadowcam-back.herokuapp.com/workouts/create`;
     }
 
-    fetch(url, {
+    return fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -25,10 +24,10 @@ export const tryStartWorkout = workoutData => {
     })
       .then(res => res.json())
       .then(parsedRes => {
-        dispatch(
+        dispatch(notLoading());
+        return dispatch(
           saveWorkoutData(Object.assign(workoutData, parsedRes.message))
         );
-        dispatch(notLoading());
       })
       .catch(error => {
         dispatch(notLoading());
@@ -41,7 +40,7 @@ export const tryStartWorkout = workoutData => {
 
 export const saveWorkoutData = workoutData => {
   return dispatch => {
-    dispatch({
+    return dispatch({
       type: START_WORKOUT,
       payload: workoutData
     });

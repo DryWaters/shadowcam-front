@@ -10,9 +10,11 @@ import {
   FormGroup
 } from "reactstrap";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import Layout from "../../components/Layout/Layout";
 import { tryStartWorkout } from "../../store/actions/workout";
 import loadingSpinner from "../../assets/images/loading-spinner.gif";
+import moment from "moment";
 
 import styles from "./NewWorkoutPage.module.css";
 
@@ -75,9 +77,11 @@ export class NewWorkoutPage extends Component {
   };
 
   handleInputChange = event => {
-    this.setState({
-      [event.target.id]: event.target.value
-    });
+    if (!isNaN(parseInt(event.target.value))) {
+      this.setState({
+        [event.target.id]: parseInt(event.target.value)
+      });
+    }
   };
 
   handleSubmit = event => {
@@ -89,15 +93,56 @@ export class NewWorkoutPage extends Component {
     if (totalTime - totalIntervalTime < 0) {
       this.setState({
         errorMessage:
-          "Total workout time must be greater or equal to the total interval time！"
+          "Total workout time must be greater or equal to the total interval time"
+      });
+    } else if (totalTime <= 0) {
+      this.setState({
+        errorMessage: "Total workout time must be greater than 0"
       });
     } else {
+      const timestamp = new moment().format();
+      const workout_length =
+        this.state.totalTimeMin * 60 + this.state.totalTimeSec;
+      const num_of_intervals = this.state.numberInterval;
+      const interval_length =
+        (this.state.intervalTimeMin * 60 + this.state.intervalTimeSec) *
+        this.state.numberInterval;
+
+      const workoutData = {
+        recording_date: timestamp,
+        workout_length,
+        num_of_intervals,
+        interval_length
+      };
+
       // save new workout data in state
-      // forward to new recording page
+      this.props.tryStartWorkout(workoutData).then(result => {
+        if (result) {
+          // forward to new recording page
+          console.log("should be redirecting!");
+          return <Redirect to="/workouts/newRecording" />;
+        }
+      });
     }
   };
 
   render() {
+    const shouldDisplayButton = () => {
+      if (this.props.isLoading) {
+        return (
+          <Button disabled>
+            <img
+              src={loadingSpinner}
+              alt="Loading Spinner"
+              className={styles.loadingSpinner}
+            />
+          </Button>
+        );
+      } else {
+        return <Button>Start Workout!</Button>;
+      }
+    };
+
     return (
       <Layout>
         <Container className={styles.newWorkoutContainer}>
@@ -124,7 +169,7 @@ export class NewWorkoutPage extends Component {
                   <Col sm="4" md="3">
                     <Input
                       type="number"
-                      min={this.state.minTime}
+                      min="0"
                       id="totalTimeMin"
                       value={this.state.totalTimeMin}
                       onChange={this.handleInputChange}
@@ -190,7 +235,7 @@ export class NewWorkoutPage extends Component {
                 </FormGroup>
                 <Row className={styles.spacer}>
                   <Col className={styles.submitButtonContainer}>
-                    <Button>Start Workout!</Button>
+                    {shouldDisplayButton()}
                   </Col>
                 </Row>
               </Form>

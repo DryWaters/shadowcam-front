@@ -3,9 +3,9 @@ import { START_WORKOUT, STOP_WORKOUT } from "../actions/actionTypes";
 const initialState = {
   workout: {
     work_id: 0,
-    work_len: 0,
-    num_of_int: 0,
-    int_len: 0
+    workout_length: 0,
+    num_of_intervals: 0,
+    interval_length: 0
   }
 };
 
