@@ -25,7 +25,8 @@ export class NewWorkoutPage extends Component {
       totalTimeSec: 0,
       intervalTimeMin: 0,
       intervalTimeSec: 0,
-      numberInterval: 0
+      numberInterval: 1,
+      errorMessage: null
     };
   }
 
@@ -71,10 +72,27 @@ export class NewWorkoutPage extends Component {
     }
   };
 
-  handleInputChange = event => {};
+  handleInputChange = event => {
+    this.setState({
+      [event.target.id]: event.target.value
+    });
+  };
 
   handleSubmit = event => {
     event.preventDefault();
+    const totalTime = this.state.totalTimeMin * 60 + this.state.totalTimeSec;
+    const totalIntervalTime =
+      (this.state.intervalTimeMin * 60 + this.state.intervalTimeSec) *
+      this.state.numberInterval;
+    if (totalTime - totalIntervalTime < 0) {
+      this.setState({
+        errorMessage:
+          "Total workout time must be greater or equal to the total interval time！"
+      });
+    } else {
+      // save new workout data in state
+      // forward to new recording page
+    }
   };
 
   render() {
@@ -91,6 +109,9 @@ export class NewWorkoutPage extends Component {
             </Col>
           </Row>
           <Row>
+            <Col className={styles.error}>{this.state.errorMessage}</Col>
+          </Row>
+          <Row>
             <Col>
               <Form onSubmit={this.handleSubmit} className={styles.form}>
                 <div className={styles.timeCategory}>Total time</div>
@@ -105,7 +126,6 @@ export class NewWorkoutPage extends Component {
                       id="totalTimeMin"
                       value={this.state.totalTimeMin}
                       onChange={this.handleInputChange}
-                      placeholder="Total workout time minutes"
                     />
                   </Col>
                   <Label sm="2" for="totalTimeSec">
@@ -119,7 +139,6 @@ export class NewWorkoutPage extends Component {
                       id="totalTimeSec"
                       value={this.state.totalTimeSec}
                       onChange={this.handleInputChange}
-                      placeholder="Total workout time seconds"
                     />
                   </Col>
                 </FormGroup>
@@ -135,7 +154,6 @@ export class NewWorkoutPage extends Component {
                       id="intervalTimeMin"
                       value={this.state.intervalTimeMin}
                       onChange={this.handleInputChange}
-                      placeholder="Total workout time minutes"
                     />
                   </Col>
                   <Label sm="2" for="intervalTimeSec">
@@ -149,7 +167,6 @@ export class NewWorkoutPage extends Component {
                       id="intervalTimeSec"
                       value={this.state.intervalTimeSec}
                       onChange={this.handleInputChange}
-                      placeholder="Total workout time seconds"
                     />
                   </Col>
                 </FormGroup>
@@ -160,11 +177,12 @@ export class NewWorkoutPage extends Component {
                   <Col sm="4">
                     <Input
                       type="number"
-                      min="0"
+                      min="1"
                       id="numberInterval"
                       value={this.state.numberInterval}
                       onChange={this.handleInputChange}
                       placeholder="Number of Intervals"
+                      required
                     />
                   </Col>
                 </FormGroup>
