@@ -11,6 +11,8 @@ import {
 } from "reactstrap";
 import { connect } from "react-redux";
 import Layout from "../../components/Layout/Layout";
+import { tryStartWorkout } from "../../store/actions/workout";
+import loadingSpinner from "../../assets/images/loading-spinner.gif";
 
 import styles from "./NewWorkoutPage.module.css";
 
@@ -200,4 +202,15 @@ export class NewWorkoutPage extends Component {
   }
 }
 
-export default connect()(NewWorkoutPage);
+const mapDispatchToProps = dispatch => ({
+  tryStartWorkout: workoutData => dispatch(tryStartWorkout(workoutData))
+});
+
+const mapStateToProps = state => ({
+  isLoading: state.ui.isLoading
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NewWorkoutPage);
