@@ -15,6 +15,7 @@ import Layout from "../../components/Layout/Layout";
 import { tryStartWorkout } from "../../store/actions/workout";
 import loadingSpinner from "../../assets/images/loading-spinner.gif";
 import moment from "moment";
+import { formatTimeFromSeconds } from "../../utils/utils";
 
 import styles from "./NewWorkoutPage.module.css";
 
@@ -22,8 +23,9 @@ export class NewWorkoutPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      totalTimeMin: 0,
-      totalTimeSec: 0,
+      totalTime: 0,
+      restTimeMin: 0,
+      restTimeSec: 0,
       intervalTimeMin: 0,
       intervalTimeSec: 0,
       numberInterval: 1,
@@ -31,51 +33,55 @@ export class NewWorkoutPage extends Component {
     };
   }
 
-
-  handleInputChange = event => {
+  handleInputChange = async event => {
     if (!isNaN(parseInt(event.target.value))) {
-      this.setState({
+      await this.setState({
         [event.target.id]: parseInt(event.target.value)
       });
     }
+    this.setState({
+      totalTime: this.getTotalTime()
+    });
+  };
+
+  getTotalTime = () => {
+    return (
+      (this.state.intervalTimeMin * 60 + this.state.intervalTimeSec) *
+        this.state.numberInterval +
+      (this.state.restTimeMin * 60 + this.state.restTimeSec) *
+        (this.state.numberInterval - 1)
+    );
   };
 
   handleSubmit = event => {
     event.preventDefault();
-    const totalTime = this.state.totalTimeMin * 60 + this.state.totalTimeSec;
-    const totalIntervalTime =
-      (this.state.intervalTimeMin * 60 + this.state.intervalTimeSec) *
-      this.state.numberInterval;
-    if (totalTime - totalIntervalTime < 0) {
-      this.setState({
-        errorMessage:
-          "Total workout time must be greater or equal to the total interval time"
-      });
-    } else if (totalTime <= 0) {
+    const totalTime = this.getTotalTime();
+
+    if (totalTime <= 0) {
       this.setState({
         errorMessage: "Total workout time must be greater than 0"
       });
     } else {
       const timestamp = new moment().format();
-      const workout_length =
-        this.state.totalTimeMin * 60 + this.state.totalTimeSec;
+      const workout_length = totalTime;
       const num_of_intervals = this.state.numberInterval;
       const interval_length =
-        (this.state.intervalTimeMin * 60 + this.state.intervalTimeSec) *
-        this.state.numberInterval;
+        this.state.intervalTimeMin * 60 + this.state.intervalTimeSec;
+      const rest_time = this.state.restTimeMin * 60 + this.state.restTimeSec;
 
       const workoutData = {
         recording_date: timestamp,
         workout_length,
         num_of_intervals,
-        interval_length
+        interval_length,
+        rest_time
       };
 
       // save new workout data in state
       this.props.tryStartWorkout(workoutData).then(result => {
         if (result) {
           // forward to new recording page
-          this.props.history.push('/workouts/newRecording');
+          this.props.history.push("/workouts/newRecording");
         }
       });
     }
@@ -107,21 +113,25 @@ export class NewWorkoutPage extends Component {
           <Row>
             <Col>
               <Form onSubmit={this.handleSubmit} className={styles.form}>
-                <div className={styles.timeCategory}>Total time</div>
+                <div className={styles.timeCategory}>
+                  Total Workout Time:{" "}
+                  {formatTimeFromSeconds(this.state.totalTime)}
+                </div>
+                <div className={styles.timeCategory}>Rest time</div>
                 <FormGroup row className={styles.spacer}>
-                  <Label sm="2" for="totalTimeMin">
+                  <Label sm="2" for="restTimeMin">
                     Minutes
                   </Label>
                   <Col sm="4" md="3">
                     <Input
                       type="number"
                       min="0"
-                      id="totalTimeMin"
-                      value={this.state.totalTimeMin}
+                      id="restTimeMin"
+                      value={this.state.restTimeMin}
                       onChange={this.handleInputChange}
                     />
                   </Col>
-                  <Label sm="2" for="totalTimeSec">
+                  <Label sm="2" for="restTimeSec">
                     Seconds
                   </Label>
                   <Col sm="4" md="3">
@@ -129,8 +139,8 @@ export class NewWorkoutPage extends Component {
                       type="number"
                       min="0"
                       max="59"
-                      id="totalTimeSec"
-                      value={this.state.totalTimeSec}
+                      id="restTimeSec"
+                      value={this.state.restTimeSec}
                       onChange={this.handleInputChange}
                     />
                   </Col>

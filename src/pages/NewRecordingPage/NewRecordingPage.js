@@ -6,6 +6,7 @@ import debounce from "lodash.debounce";
 import Layout from "../../components/Layout/Layout";
 import { processPose } from "../../utils/poseUtils";
 import Moment from "moment";
+import { formatTimeFromSeconds } from "../../utils/utils";
 
 import styles from "./NewRecordingPage.module.css";
 
@@ -242,12 +243,6 @@ export class NewRecordingPage extends Component {
     });
   };
 
-  formatTime = seconds => {
-    const minutes = ~~(seconds / 60);
-    const secondsLeft = "" + (seconds % 60);
-    return `${minutes}:${secondsLeft.padStart(2, "0")}`;
-  };
-
   render() {
     const displayRecordControls = () => {
       if (!this.state.recorderSetup) {
@@ -356,19 +351,19 @@ export class NewRecordingPage extends Component {
           </Row>
           <Row className={styles.spacer}>
             <Col>Total Time:</Col>
-            <Col>{this.formatTime(this.props.workout_length)}</Col>
+            <Col>{formatTimeFromSeconds(this.props.workout_length)}</Col>
           </Row>
           <Row className={styles.spacer}>
             <Col>Total Time Left:</Col>
-            <Col>{this.formatTime(this.state.timeLeft)}</Col>
+            <Col>{formatTimeFromSeconds(this.state.timeLeft)}</Col>
           </Row>
           <Row className={styles.spacer}>
             <Col>Interval Time:</Col>
-            <Col>{this.formatTime(this.props.interval_length)}</Col>
+            <Col>{formatTimeFromSeconds(this.props.interval_length)}</Col>
           </Row>
           <Row className={styles.spacer}>
             <Col>Interval Time Left:</Col>
-            <Col>{this.formatTime(this.state.intervalTimeLeft)}</Col>
+            <Col>{formatTimeFromSeconds(this.state.intervalTimeLeft)}</Col>
           </Row>
           <Row className={styles.spacer}>
             <Col>Number of Punches</Col>
