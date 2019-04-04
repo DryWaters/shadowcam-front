@@ -20,20 +20,16 @@ export class NewRecordingPage extends Component {
         imageScaleFactor: 0.5,
         outputStride: 16,
         minPoseConfidence: 0.1,
-        minPartConfidence: 0.5,
-        debugColor: "#f45342",
-        debugBoxColor: "blue",
-        debugWidth: 5
+        minPartConfidence: 0.5
       },
       recorderSetup: false,
-      recorderState: "inactive",
-      videoState: "recording",
+      trainingState: "stopped",
+      timerInterval: null,
       width: 640,
       height: 480,
       videos: [],
-      timeLeft: 0,
-      intervalTimeLeft: 0,
-      runningTime: 0,
+      timeLeft: props.workout_length,
+      intervalTimeLeft: props.interval_length,
       totalPunches: 0,
       jab: 0,
       leftBodyHook: 0,
@@ -66,16 +62,49 @@ export class NewRecordingPage extends Component {
     this.mediaRecorder = await new MediaRecorder(this.currentStream, {
       mimeType: "video/webm; codecs=vp9"
     });
-    this.mediaRecorder.ondataavailable = this.handleRecordVideo;
-    this.mediaRecorder.onstop = this.handleStopRecord;
+    this.mediaRecorder.ondataavailable = this.recordVideo;
+    this.mediaRecorder.onstop = this.createVideoLink;
     this.currentVideo = [];
   };
 
-  handleRecordVideo = blob => {
+  handleStartTraining = () => {
+    this.setState({
+      trainingState: "running"
+    });
+    setTimeout(() => {
+      const timerInterval = this.startInterval();
+      this.setState({
+        timerInterval
+      });
+    }, 5000);
+  };
+
+  startInterval = () => {
+    return setInterval(() => {
+      if (this.state.timeLeft === 0) {
+        this.handleStopTraining();
+      } else if (this.state.intervalTimeLeft === 0) {
+        this.handleRestTraining();
+      } else {
+        this.setState({
+          timeLeft: this.state.timeLeft - 1,
+          intervalTimeLeft: this.state.intervalTimeLeft - 1
+        });
+      }
+    }, 1000);
+  };
+
+  handlePauseTraining = () => {};
+
+  handleStopTraining = () => {};
+
+  handleRestTraining = () => {};
+
+  recordVideo = blob => {
     this.currentVideo.push(blob.data);
   };
 
-  handleStopRecord = () => {
+  createVideoLink = () => {
     this.setState(prevState => {
       const currentVideos = [...prevState.videos];
       this.canvasRef.current.width = 160;
@@ -185,12 +214,6 @@ export class NewRecordingPage extends Component {
     });
   };
 
-  toggleShowDebug = () => {
-    this.setState(prevState => ({
-      poseNet: { ...prevState.poseNet, showDebug: !prevState.poseNet.showDebug }
-    }));
-  };
-
   handleClickPlayRecordedVideo = timeStamp => {
     this.setState({
       videoState: "playing"
@@ -203,18 +226,6 @@ export class NewRecordingPage extends Component {
     this.videoRef.current.src = correctVideo[0].src;
     this.videoRef.current.currentTime = 0;
     this.videoRef.current.play();
-    this.processPose();
-  };
-
-  handleClickRecordVideos = () => {
-    this.setState({
-      videoState: "recording"
-    });
-    this.videoRef.current.src = null;
-    this.videoRef.current.srcObject = null;
-    this.videoRef.current.srcObject = this.currentStream;
-    this.videoRef.current.play();
-    this.processPose();
   };
 
   handleUploadVideo = timeStamp => {
@@ -243,12 +254,12 @@ export class NewRecordingPage extends Component {
         return;
       }
 
-      if (this.state.recorderState === "inactive") {
+      if (this.state.trainingState === "stopped") {
         return (
           <Col className={styles.videoButtonContainer}>
             <Button
               className={styles.videoControl}
-              onClick={() => this.setRecordingState({ id: "record" })}
+              onClick={this.handleStartTraining}
             >
               Start Training
             </Button>
@@ -259,13 +270,13 @@ export class NewRecordingPage extends Component {
           <Col className={styles.videoButtonContainer}>
             <Button
               className={styles.videoControl}
-              onClick={() => this.setRecordingState({ id: "pause" })}
+              onClick={this.handlePauseTraining}
             >
-              {this.state.recorderState === "paused" ? "Resume" : "Pause"}
+              {this.state.trainingState === "paused" ? "Resume" : "Pause"}
             </Button>
             <Button
               className={styles.videoControl}
-              onClick={() => this.setRecordingState({ id: "stop" })}
+              onClick={this.handleStopTraining}
             >
               Stop
             </Button>
@@ -321,6 +332,11 @@ export class NewRecordingPage extends Component {
                     ? styles.videoRecording
                     : styles.notRecording
                 }`}
+              />
+              <div
+                className={
+                  this.state.trainingState === "running" ? styles.countdown : ""
+                }
               />
               <canvas className={styles.canvas} ref={this.canvasRef} />
             </Col>

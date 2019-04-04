@@ -3,7 +3,7 @@ import { loading, notLoading } from "./ui";
 
 export const tryStartWorkout = workoutData => {
   return dispatch => {
-    dispatch(loading());
+    // dispatch(loading());
 
     let url;
 
@@ -13,6 +13,13 @@ export const tryStartWorkout = workoutData => {
     } else {
       url = `https://shadowcam-back.herokuapp.com/workouts/create`;
     }
+
+    // Remove after done testing.
+    return new Promise((resolve, reject) => {
+      resolve(
+        dispatch(saveWorkoutData(Object.assign(workoutData, { work_id: 1 })))
+      );
+    });
 
     return fetch(url, {
       method: "POST",
