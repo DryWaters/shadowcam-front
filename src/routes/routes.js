@@ -7,18 +7,18 @@ import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import CreateAccountPage from '../pages/CreateAccountPage/CreateAccountPage';
 import ProfilePage from '../pages/ProfilePage/ProfilePage';
 import NewRecordingPage from '../pages/NewRecordingPage/NewRecordingPage';
-import PastRecordingsPage from '../pages/PastRecordingsPage/PastRecordingsPage';
+import PastWorkoutsPage from '../pages/PastWorkoutsPage/PastWorkoutsPage';
 
 
 const Routes = props => (
   <BrowserRouter>
     <Switch>
       <Route exact path="/" component={LandingPage} />
-      <Route path="/account/login" render={() => !props.isAuth ? <LoginPage /> : <Redirect to="/recordings/pastRecordings" />} />
-      <Route path="/account/create" render={() => !props.isAuth ? <CreateAccountPage /> : <Redirect to="/recordings/newRecording" />} />} />
+      <Route path="/account/login" render={() => !props.isAuth ? <LoginPage /> : <Redirect to="/workouts/pastWorkouts" />} />
+      <Route path="/account/create" render={() => !props.isAuth ? <CreateAccountPage /> : <Redirect to="/workouts/newWorkout" />} />} />
       <Route path="/account/profile" render={() => props.isAuth ? <ProfilePage /> : <Redirect to="/" />} />
-      <Route path="/recordings/newRecording" render={() => props.isAuth ? <NewRecordingPage /> : <Redirect to="/" />} />
-      <Route path="/recordings/pastRecordings" render={() => props.isAuth ? <PastRecordingsPage /> : <Redirect to="/" />} />
+      <Route path="/workouts/newWorkout" render={() => props.isAuth ? <NewRecordingPage /> : <Redirect to="/" />} />
+      <Route path="/workouts/pastWorkouts" render={() => props.isAuth ? <PastWorkoutsPage /> : <Redirect to="/" />} />
       <Route component={NotFoundPage} />
     </Switch>
   </BrowserRouter>

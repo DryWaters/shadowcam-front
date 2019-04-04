@@ -4,9 +4,9 @@ import { Container, Row, Col } from "reactstrap";
 import Moment from "moment";
 import Layout from "../../components/Layout/Layout";
 
-import styles from "./PastRecordingsPage.module.css";
+import styles from "./PastWorkoutsPage.module.css";
 
-export class PastRecordingsPage extends Component {
+export class PastWorkoutsPage extends Component {
   state = {
     currentVideo: null,
     videos: [
@@ -39,7 +39,7 @@ export class PastRecordingsPage extends Component {
   };
 
   render() {
-    const displayPastRecordings = () => {
+    const displayPastWorkouts = () => {
       return this.state.videos.map(video => {
         return (
           <Row
@@ -63,7 +63,7 @@ export class PastRecordingsPage extends Component {
 
     return (
       <Layout>
-        <Container className={styles.pastRecordingsContainer}>
+        <Container className={styles.pastWorkoutsContainer}>
           <Row>
             <Col className={styles.videoContainer}>
               <video
@@ -101,11 +101,11 @@ export class PastRecordingsPage extends Component {
           <Row className={styles.spacer}>
             <h2>Workouts</h2>
           </Row>
-          {displayPastRecordings()}
+          {displayPastWorkouts()}
         </Container>
       </Layout>
     );
   }
 }
 
-export default connect()(PastRecordingsPage);
+export default connect()(PastWorkoutsPage);

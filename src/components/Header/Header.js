@@ -66,13 +66,13 @@ export class Header extends Component {
             <Nav className={styles.menuItems} navbar>
               <NavItem className={styles.menuItem}>
                 {this.props.isAuth && (
-                  <NavLink to="/recordings/newRecording">New Recording</NavLink>
+                  <NavLink to="/workouts/newWorkout">New Workout</NavLink>
                 )}
               </NavItem>
               <NavItem className={styles.menuItem}>
                 {this.props.isAuth && (
-                  <NavLink to="/recordings/pastRecordings">
-                    Past Recordings
+                  <NavLink to="/workouts/pastWorkouts">
+                    Past Workouts
                   </NavLink>
                 )}
               </NavItem>
