@@ -10,7 +10,7 @@ import {
   FormGroup
 } from "reactstrap";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import Layout from "../../components/Layout/Layout";
 import { tryStartWorkout } from "../../store/actions/workout";
 import loadingSpinner from "../../assets/images/loading-spinner.gif";
@@ -119,8 +119,7 @@ export class NewWorkoutPage extends Component {
       this.props.tryStartWorkout(workoutData).then(result => {
         if (result) {
           // forward to new recording page
-          console.log("should be redirecting!");
-          return <Redirect to="/workouts/newRecording" />;
+          this.props.history.push('/workouts/newRecording');
         }
       });
     }
@@ -258,4 +257,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(NewWorkoutPage);
+)(withRouter(NewWorkoutPage));
