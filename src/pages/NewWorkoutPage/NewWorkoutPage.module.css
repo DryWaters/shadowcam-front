@@ -1,0 +1,32 @@
+.newWorkoutContainer {
+  padding-top: 50px;
+}
+
+.video {
+  margin: 40px auto;
+  display: block;
+  max-width: 640px;
+  width: 100%;
+  transform: scaleX(-1);
+  border-radius: 20px;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.spacer {
+  padding-bottom: 15px;
+}
+
+.timeCategory {
+  font-size: 2rem;
+}
+
+.submitButtonContainer {
+    display: flex;
+    justify-content: center;
+}
