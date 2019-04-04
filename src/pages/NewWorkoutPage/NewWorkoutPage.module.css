@@ -2,15 +2,6 @@
   padding-top: 50px;
 }
 
-.video {
-  margin: 40px auto;
-  display: block;
-  max-width: 640px;
-  width: 100%;
-  transform: scaleX(-1);
-  border-radius: 20px;
-}
-
 .form {
   display: flex;
   justify-content: center;

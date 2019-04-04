@@ -21,10 +21,7 @@ import styles from "./NewWorkoutPage.module.css";
 export class NewWorkoutPage extends Component {
   constructor(props) {
     super(props);
-    this.videoRef = React.createRef();
     this.state = {
-      width: 640,
-      height: 480,
       totalTimeMin: 0,
       totalTimeSec: 0,
       intervalTimeMin: 0,
@@ -34,47 +31,6 @@ export class NewWorkoutPage extends Component {
     };
   }
 
-  async componentDidMount() {
-    await this.loadVideo();
-  }
-
-  componentWillUnmount() {
-    this.videoRef.current.pause();
-    const tracks = this.currentStream.getTracks();
-    tracks.forEach(track => track.stop());
-    this.videoRef.current = null;
-  }
-
-  setupCamera = async () => {
-    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-      alert("Newer browser required to use ShadowCam");
-    }
-    this.videoRef.current.width = this.state.width;
-    this.videoRef.current.height = this.state.height;
-    this.currentStream = await navigator.mediaDevices.getUserMedia({
-      mimeType: "video/webm; codecs=vp9",
-      audio: false,
-      video: {
-        facingMode: "user",
-        width: this.state.width,
-        height: this.state.height
-      }
-    });
-
-    this.videoRef.current.srcObject = this.currentStream;
-    return new Promise(resolve => {
-      this.videoRef.current.onloadedmetadata = () => {
-        resolve(this.videoRef.current);
-      };
-    });
-  };
-
-  loadVideo = async () => {
-    this.videoRef.current = await this.setupCamera();
-    if (this.videoRef.current) {
-      this.videoRef.current.play();
-    }
-  };
 
   handleInputChange = event => {
     if (!isNaN(parseInt(event.target.value))) {
@@ -145,15 +101,6 @@ export class NewWorkoutPage extends Component {
     return (
       <Layout>
         <Container className={styles.newWorkoutContainer}>
-          <Row>
-            <Col>
-              <video
-                ref={this.videoRef}
-                srcobject={this.currentStream}
-                className={styles.video}
-              />
-            </Col>
-          </Row>
           <Row>
             <Col className={styles.error}>{this.state.errorMessage}</Col>
           </Row>
