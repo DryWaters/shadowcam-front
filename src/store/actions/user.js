@@ -11,9 +11,7 @@ export const tryRegister = userData => {
       url = `https://shadowcam-back.herokuapp.com/users/register`;
     }
 
-    dispatch({
-      type: "LOADING"
-    });
+    dispatch(loading());
 
     fetch(url, {
       method: "POST",
@@ -33,7 +31,7 @@ export const tryRegister = userData => {
         }
       })
       .catch(err => {
-        dispatch(notLoading())
+        dispatch(notLoading());
         alert(
           "Unable to connect to server.  Please check internet connection."
         );
