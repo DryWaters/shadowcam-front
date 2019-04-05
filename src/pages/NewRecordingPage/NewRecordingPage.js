@@ -26,10 +26,11 @@ export class NewRecordingPage extends Component {
       recorderSetup: false,
       trainingState: "stopped",
       timerInterval: null,
+      startTimeout: null,
       width: 640,
       height: 480,
       videos: [],
-      timeLeft: props.workout_length,
+      totalTimeLeft: props.workout_length,
       intervalTimeLeft: props.interval_length,
       totalPunches: 0,
       jab: 0,
@@ -69,26 +70,32 @@ export class NewRecordingPage extends Component {
   };
 
   handleStartTraining = () => {
-    this.setState({
-      trainingState: "running"
-    });
-    setTimeout(() => {
+    const startTimeout = setTimeout(() => {
       const timerInterval = this.startInterval();
+      if (this.state.recorderSetup && this.mediaRecorder.state === "inactive") {
+        this.mediaRecorder.start();
+      }
       this.setState({
-        timerInterval
+        timerInterval,
+        recorderState: "recording"
       });
     }, 5000);
+
+    this.setState({
+      trainingState: "running",
+      startTimeout
+    });
   };
 
   startInterval = () => {
     return setInterval(() => {
-      if (this.state.timeLeft === 0) {
+      if (this.state.totalTimeLeft === 0) {
         this.handleStopTraining();
       } else if (this.state.intervalTimeLeft === 0) {
         this.handleRestTraining();
       } else {
         this.setState({
-          timeLeft: this.state.timeLeft - 1,
+          totalTimeLeft: this.state.totalTimeLeft - 1,
           intervalTimeLeft: this.state.intervalTimeLeft - 1
         });
       }
@@ -97,7 +104,19 @@ export class NewRecordingPage extends Component {
 
   handlePauseTraining = () => {};
 
-  handleStopTraining = () => {};
+  handleStopTraining = () => {
+    if (
+      this.mediaRecorder.recorderSetup &&
+      this.mediaRecorder.state === "recording"
+    ) {
+      this.mediaRecorder.stop();
+    }
+    clearInterval(this.state.timerInterval);
+    clearTimeout(this.state.startTimeout);
+    this.setState({
+      trainingState: "done"
+    });
+  };
 
   handleRestTraining = () => {};
 
@@ -160,7 +179,6 @@ export class NewRecordingPage extends Component {
     this.videoRef.current = await this.setupCamera();
     if (this.videoRef.current) {
       this.videoRef.current.play();
-      this.processPose();
     }
   };
 
@@ -197,22 +215,6 @@ export class NewRecordingPage extends Component {
     };
 
     poseDetectionFrame();
-  };
-
-  setRecordingState = ({ id }) => {
-    if (this.state.recorderState === "inactive" && id === "record") {
-      this.mediaRecorder.start();
-    } else if (this.state.recorderState === "recording" && id === "stop") {
-      this.mediaRecorder.stop();
-    } else if (this.state.recorderState === "recording" && id === "pause") {
-      this.mediaRecorder.pause();
-    } else if (this.state.recorderState === "paused" && id === "pause") {
-      this.mediaRecorder.resume();
-    }
-
-    this.setState({
-      recorderState: this.mediaRecorder.state
-    });
   };
 
   handleClickPlayRecordedVideo = timeStamp => {
@@ -260,7 +262,7 @@ export class NewRecordingPage extends Component {
             </Button>
           </Col>
         );
-      } else {
+      } else if (this.state.trainingState === "running") {
         return (
           <Col className={styles.videoButtonContainer}>
             <Button
@@ -280,19 +282,6 @@ export class NewRecordingPage extends Component {
       }
     };
 
-    const displayPlayerControls = () => {
-      return (
-        <Col className={styles.videoButtonContainer}>
-          <Button
-            className={styles.videoControl}
-            onClick={this.handleClickRecordVideos}
-          >
-            Record New Video
-          </Button>
-        </Col>
-      );
-    };
-
     const displayRecordedVideos = () => {
       return this.state.videos.map(video => {
         return (
@@ -303,10 +292,7 @@ export class NewRecordingPage extends Component {
               alt="Recording Video"
               onClick={() => this.handleClickPlayRecordedVideo(video.timeStamp)}
             />
-            <div
-              className={styles.videoStatus}
-              onClick={() => this.handleUploadVideo(video.timeStamp)}
-            >
+            <div className={styles.videoStatus}>
               {video.synced ? "\u{2705}" : "\u{274C}"}
             </div>
           </div>
@@ -323,7 +309,8 @@ export class NewRecordingPage extends Component {
                 ref={this.videoRef}
                 srcobject={this.currentStream}
                 className={`${styles.video} ${
-                  this.state.recorderState === "recording"
+                  this.state.recorderSetup &&
+                  this.mediaRecorder.state === "recording"
                     ? styles.videoRecording
                     : styles.notRecording
                 }`}
@@ -336,11 +323,7 @@ export class NewRecordingPage extends Component {
               <canvas className={styles.canvas} ref={this.canvasRef} />
             </Col>
           </Row>
-          <Row>
-            {this.state.videoState === "playing"
-              ? displayPlayerControls()
-              : displayRecordControls()}
-          </Row>
+          <Row>{displayRecordControls()}</Row>
           <Row>
             <Col className={styles.recordedVideosContainer}>
               {displayRecordedVideos()}
@@ -355,7 +338,7 @@ export class NewRecordingPage extends Component {
           </Row>
           <Row className={styles.spacer}>
             <Col>Total Time Left:</Col>
-            <Col>{formatTimeFromSeconds(this.state.timeLeft)}</Col>
+            <Col>{formatTimeFromSeconds(this.state.totalTimeLeft)}</Col>
           </Row>
           <Row className={styles.spacer}>
             <Col>Interval Time:</Col>

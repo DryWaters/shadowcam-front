@@ -45,6 +45,9 @@ export class NewWorkoutPage extends Component {
   };
 
   getTotalTime = () => {
+    if (this.state.intervalTimeMin <= 0 && this.state.intervalTimeSec <= 0) {
+      return 0;
+    }
     return (
       (this.state.intervalTimeMin * 60 + this.state.intervalTimeSec) *
         this.state.numberInterval +
