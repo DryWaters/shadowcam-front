@@ -133,7 +133,18 @@ export class NewRecordingPage extends Component {
         trainingState: "paused"
       });
     } else {
-      this.handleStartTraining();
+      const timerInterval = this.startInterval();
+      if (this.state.recorderSetup && this.mediaRecorder.state === "inactive") {
+        this.mediaRecorder.start();
+      } else if (this.mediaRecorder.state === "paused") {
+        this.mediaRecorder.resume();
+      }
+      this.processPoses();
+      this.setState({
+        timerInterval,
+        trainingState: "running",
+        ranFirstTime: true
+      });
     }
   };
 
@@ -146,7 +157,7 @@ export class NewRecordingPage extends Component {
     }
     clearInterval(this.state.timerInterval);
     clearTimeout(this.state.startTimeout);
-    if(this.state.videos.length > 0) {
+    if (this.state.videos.length > 0) {
       this.handleUploadVideo();
     }
     this.setState({
@@ -282,12 +293,11 @@ export class NewRecordingPage extends Component {
     // fetch POST upload video
     // if successful change to check mark
     // else stay unchecked
-
   };
 
   handleUploadStats = () => {
     // fetch POST upload stats
-  }
+  };
 
   render() {
     const displayRecordControls = () => {
