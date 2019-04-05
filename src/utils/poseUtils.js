@@ -7,16 +7,12 @@ import poseData from "./poseData.json";
 
 console.log("Working with " + poseData.length + " poses!");
 
-const pointRadius = 3;
 const confidenceLevel = 0.14;
 let vptree;
 
-function toTuple({ x, y }) {
-  return [x, y];
-}
-
 export const processPose = pose => {
   const normalizedPose = normalizePose(pose);
+  console.log(findMostSimliarMatch(normalizedPose));
   return findMostSimliarMatch(normalizedPose);
 };
 
@@ -39,23 +35,23 @@ const normalizePose = pose => {
   return normalizedArray;
 };
 
-const weightedDistanceMatching = (pose, punchPose) => {
-  const vector1PoseXY = pose.slice(0, 34);
-  const vector1Confidences = pose.slice(34, 51);
-  const vector1ConfidenceSum = pose.slice(51, 52);
-  const vector2PoseXY = punchPose.slice(0, 34);
-  const summation1 = 1 / vector1ConfidenceSum;
-  let summation2 = 0;
-  for (let i = 0; i < vector1PoseXY.length; i++) {
-    let tempConf = Math.floor(i / 2);
-    let tempSum =
-      vector1Confidences[tempConf] *
-      Math.abs(vector1PoseXY[i] - vector2PoseXY[i]);
-    summation2 = summation2 + tempSum;
-  }
+// const weightedDistanceMatching = (pose, punchPose) => {
+//   const vector1PoseXY = pose.slice(0, 34);
+//   const vector1Confidences = pose.slice(34, 51);
+//   const vector1ConfidenceSum = pose.slice(51, 52);
+//   const vector2PoseXY = punchPose.slice(0, 34);
+//   const summation1 = 1 / vector1ConfidenceSum;
+//   let summation2 = 0;
+//   for (let i = 0; i < vector1PoseXY.length; i++) {
+//     let tempConf = Math.floor(i / 2);
+//     let tempSum =
+//       vector1Confidences[tempConf] *
+//       Math.abs(vector1PoseXY[i] - vector2PoseXY[i]);
+//     summation2 = summation2 + tempSum;
+//   }
 
-  return summation1 * summation2;
-};
+//   return summation1 * summation2;
+// };
 
 // No longer used since using more accurate detection using keypoint weights
 const cosineDistanceMatching = (pose, punchPose) => {
@@ -83,83 +79,5 @@ const findMostSimliarMatch = pose => {
     return poseData[nearestPose[0].i][34];
   }
 };
-
-export function drawKeyPoints(
-  keypoints,
-  minConfidence,
-  skeletonColor,
-  canvasContext,
-  scale = 1
-) {
-  keypoints.forEach(keypoint => {
-    if (keypoint.score >= minConfidence) {
-      const { x, y } = keypoint.position;
-      canvasContext.beginPath();
-      canvasContext.arc(x * scale, y * scale, pointRadius, 0, 2 * Math.PI);
-
-      if (keypoint.part === "rightWrist") {
-        canvasContext.fillStyle = "blue";
-      } else {
-        canvasContext.fillStyle = skeletonColor;
-      }
-      canvasContext.fill();
-    }
-  });
-}
-
-function drawSegment(
-  [firstX, firstY],
-  [nextX, nextY],
-  color,
-  lineWidth,
-  scale,
-  canvasContext
-) {
-  canvasContext.beginPath();
-  canvasContext.moveTo(firstX * scale, firstY * scale);
-  canvasContext.lineTo(nextX * scale, nextY * scale);
-  canvasContext.lineWidth = lineWidth;
-  canvasContext.strokeStyle = color;
-  canvasContext.stroke();
-}
-
-export function drawBoundingBox(keypoints, ctx, color) {
-  const boundingBox = posenet.getBoundingBox(keypoints);
-
-  ctx.rect(
-    boundingBox.minX,
-    boundingBox.minY,
-    boundingBox.maxX - boundingBox.minX,
-    boundingBox.maxY - boundingBox.minY
-  );
-
-  ctx.strokeStyle = color;
-  ctx.stroke();
-}
-
-export function drawSkeleton(
-  keypoints,
-  minConfidence,
-  color,
-  lineWidth,
-  canvasContext,
-  scale = 1
-) {
-  const adjacentKeyPoints = posenet.getAdjacentKeyPoints(
-    keypoints,
-    minConfidence
-  );
-
-  adjacentKeyPoints.forEach(keypoints => {
-    drawSegment(
-      toTuple(keypoints[0].position),
-      toTuple(keypoints[1].position),
-      color,
-      lineWidth,
-      scale,
-      canvasContext
-    );
-  });
-}
 
 buildVPTree();
