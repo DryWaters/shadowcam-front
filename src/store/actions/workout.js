@@ -33,7 +33,9 @@ export const tryStartWorkout = (workoutData, token) => {
       .then(parsedRes => {
         dispatch(notLoading());
         return dispatch(
-          saveWorkoutData(Object.assign(workoutData, parsedRes.message))
+          saveWorkoutData(
+            Object.assign(workoutData, { work_id: parsedRes.message.work_id })
+          )
         );
       })
       .catch(error => {
