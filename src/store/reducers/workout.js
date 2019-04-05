@@ -1,4 +1,4 @@
-import { START_WORKOUT, STOP_WORKOUT } from "../actions/actionTypes";
+import { START_WORKOUT } from "../actions/actionTypes";
 
 const initialState = {
   work_id: 0,

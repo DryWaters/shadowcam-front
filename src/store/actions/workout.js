@@ -1,35 +1,35 @@
-import { START_WORKOUT, STOP_WORKOUT } from "./actionTypes";
+import { START_WORKOUT } from "./actionTypes";
+import { logout } from "./user";
 import { loading, notLoading } from "./ui";
 
-export const tryStartWorkout = workoutData => {
+export const tryStartWorkout = (workoutData, token) => {
   return dispatch => {
-    // dispatch(loading());
+    dispatch(loading());
 
     let url;
 
     if (process.env.REACT_APP_TEST) {
-      url =
-        "https://8d04e628-eb5e-47f6-b572-89a525f0f298.mock.pstmn.io/workouts/create";
+      url = "http://localhost:3000/workouts/create";
     } else {
       url = `https://shadowcam-back.herokuapp.com/workouts/create`;
     }
 
-    // Remove after done testing.
-    return new Promise((resolve, reject) => {
-      resolve(
-        dispatch(saveWorkoutData(Object.assign(workoutData, { work_id: 1 })))
-      );
-    });
-
     return fetch(url, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
       },
       mode: "cors",
       body: JSON.stringify(workoutData)
     })
-      .then(res => res.json())
+      .then(res => {
+        if (res.status === 401) {
+          return Promise.reject("unathorized");
+        } else {
+          return res.json();
+        }
+      })
       .then(parsedRes => {
         dispatch(notLoading());
         return dispatch(
@@ -38,9 +38,14 @@ export const tryStartWorkout = workoutData => {
       })
       .catch(error => {
         dispatch(notLoading());
-        alert(
-          "Unable to connect to server.  Please check internet connection."
-        );
+        if (error === "unathorized") {
+          alert("Please log back in!");
+          dispatch(logout());
+        } else
+          alert(
+            "Unable to connect to server.  Please check internet connection." +
+              error
+          );
       });
   };
 };

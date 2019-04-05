@@ -81,7 +81,7 @@ export class NewWorkoutPage extends Component {
       };
 
       // save new workout data in state
-      this.props.tryStartWorkout(workoutData).then(result => {
+      this.props.tryStartWorkout(workoutData, this.props.token).then(result => {
         if (result) {
           // forward to new recording page
           this.props.history.push("/workouts/newRecording");
@@ -207,11 +207,12 @@ export class NewWorkoutPage extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  tryStartWorkout: workoutData => dispatch(tryStartWorkout(workoutData))
+  tryStartWorkout: (workoutData, token) => dispatch(tryStartWorkout(workoutData, token))
 });
 
 const mapStateToProps = state => ({
-  isLoading: state.ui.isLoading
+  isLoading: state.ui.isLoading,
+  token: state.user.token
 });
 
 export default connect(

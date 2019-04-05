@@ -10,6 +10,7 @@ import debounce from "lodash.debounce";
 import { processPose } from "../../utils/poseUtils";
 import { formatTimeFromSeconds } from "../../utils/utils";
 import styles from "./NewRecordingPage.module.css";
+import { isPromiseAlike } from "q";
 
 export class NewRecordingPage extends Component {
   constructor(props) {
@@ -190,15 +191,17 @@ export class NewRecordingPage extends Component {
       this.canvasRef.current
         .getContext("2d")
         .drawImage(this.videoRef.current, 0, 0, 160, 120);
+      const videoBlob = new Blob(this.currentVideo, {
+        mimeType: "video/webm; codecs=vp9"
+      });
       const newVideo = {
-        src: window.URL.createObjectURL(
-          new Blob(this.currentVideo, { mimeType: "video/webm; codecs=vp9" })
-        ),
+        src: window.URL.createObjectURL(videoBlob),
         screenShot: this.canvasRef.current
           .toDataURL("image/png")
           .replace("image/png", "image/octet-stream"),
         timeStamp: new Moment().format(),
-        synced: false
+        synced: false,
+        fileSize: videoBlob.size
       };
       currentVideos.push(newVideo);
       this.currentVideo = [];
@@ -293,6 +296,34 @@ export class NewRecordingPage extends Component {
     // fetch POST upload video
     // if successful change to check mark
     // else stay unchecked
+
+    Promise.all(
+      this.state.videos.map(video => this.createUploadRequest(video))
+    ).then(result => console.log(result));
+  };
+
+  createUploadRequest = video => {
+    let url;
+
+    const formData = new FormData();
+    formData.append("work_id", this.props.work_id);
+    formData.append("file_size", video.fileSize);
+    formData.append("video", video.src);
+
+    if (process.env.REACT_APP_TEST) {
+      url = "http://localhost:3000/videos/upload";
+    } else {
+      url = `https://shadowcam-back.herokuapp.com/videos/upload`;
+    }
+
+    return fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      mode: "cors",
+      body: formData
+    });
   };
 
   handleUploadStats = () => {
@@ -466,6 +497,7 @@ const mapStateToProps = state => ({
   workout_length: state.workout.workout_length,
   num_of_intervals: state.workout.num_of_intervals,
   interval_length: state.workout.interval_length,
+  work_id: state.workout.work_id,
   rest_time: state.workout.rest_time,
   isLoading: state.ui.isLoading
 });
