@@ -74,10 +74,12 @@ export class NewRecordingPage extends Component {
       const timerInterval = this.startInterval();
       if (this.state.recorderSetup && this.mediaRecorder.state === "inactive") {
         this.mediaRecorder.start();
+      } else if (this.mediaRecorder.state === "paused") {
+        this.mediaRecorder.resume();
       }
+      this.processPoses();
       this.setState({
-        timerInterval,
-        recorderState: "recording"
+        timerInterval
       });
     }, 5000);
 
@@ -102,13 +104,21 @@ export class NewRecordingPage extends Component {
     }, 1000);
   };
 
-  handlePauseTraining = () => {};
+  handlePauseTraining = () => {
+    if (this.state.recorderSetup && this.mediaRecorder.state === "recording") {
+      this.mediaRecorder.pause();
+      clearInterval(this.state.timerInterval);
+      clearTimeout(this.state.startTimeout);
+      this.setState({
+        trainingState: "paused"
+      });
+    } else {
+      this.handleStartTraining();
+    }
+  };
 
   handleStopTraining = () => {
-    if (
-      this.mediaRecorder.recorderSetup &&
-      this.mediaRecorder.state === "recording"
-    ) {
+    if (this.state.recorderSetup) {
       this.mediaRecorder.stop();
     }
     clearInterval(this.state.timerInterval);
@@ -182,7 +192,7 @@ export class NewRecordingPage extends Component {
     }
   };
 
-  processPose = async () => {
+  processPoses = async () => {
     const net = await posenet.load(0.75);
 
     const debounceUpdateState = debounce(punchType => {
@@ -196,7 +206,7 @@ export class NewRecordingPage extends Component {
 
     const poseDetectionFrame = async () => {
       let pose;
-      if (this.videoRef.current) {
+      if (this.state.recorderSetup) {
         pose = await net.estimateSinglePose(
           this.videoRef.current,
           this.state.poseNet.imageScaleFactor,
@@ -209,7 +219,7 @@ export class NewRecordingPage extends Component {
         }
       }
 
-      if (this.videoRef.current && !this.videoRef.current.paused) {
+      if (this.state.recorderSetup && this.state.trainingState === "running") {
         requestAnimationFrame(poseDetectionFrame);
       }
     };
@@ -262,16 +272,21 @@ export class NewRecordingPage extends Component {
             </Button>
           </Col>
         );
-      } else if (this.state.trainingState === "running") {
+      } else if (
+        this.state.trainingState === "running" ||
+        this.state.trainingState === "paused"
+      ) {
         return (
           <Col className={styles.videoButtonContainer}>
             <Button
+              disabled={this.mediaRecorder.state === "inactive"}
               className={styles.videoControl}
               onClick={this.handlePauseTraining}
             >
               {this.state.trainingState === "paused" ? "Resume" : "Pause"}
             </Button>
             <Button
+              disabled={this.mediaRecorder.state === "inactive"}
               className={styles.videoControl}
               onClick={this.handleStopTraining}
             >

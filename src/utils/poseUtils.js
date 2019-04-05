@@ -12,7 +12,6 @@ let vptree;
 
 export const processPose = pose => {
   const normalizedPose = normalizePose(pose);
-  console.log(findMostSimliarMatch(normalizedPose));
   return findMostSimliarMatch(normalizedPose);
 };
 
