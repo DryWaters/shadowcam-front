@@ -216,7 +216,7 @@ export class NewRecordingPage extends Component {
       currentVideos.push(newVideo);
       this.currentVideo = [];
       if (this.state.trainingState === "done") {
-        // this.handleUploadVideo(currentVideos);
+        this.handleUploadVideo(currentVideos);
       }
 
       return {
@@ -306,9 +306,25 @@ export class NewRecordingPage extends Component {
   };
 
   handleUploadVideo = videos => {
-    Promise.all(videos.map(video => this.createUploadRequest(video)))
-      .then(result => result.map(res => res.json()))
-      .then(result => console.log(result));
+    Promise.all(
+      videos.map(video =>
+        this.createUploadRequest(video).then(resp => resp.json())
+      )
+    ).then(result => this.updateSyncedStatus(result));
+  };
+
+  updateSyncedStatus = responses => {
+    const newVideos = this.state.videos.slice();
+
+    responses.forEach((response, index) => {
+      if (response.status === "ok") {
+        newVideos[index].synced = true;
+      }
+    });
+
+    this.setState({
+      videos: newVideos
+    });
   };
 
   createUploadRequest = video => {
