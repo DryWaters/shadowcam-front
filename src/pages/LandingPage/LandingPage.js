@@ -74,7 +74,7 @@ export class LandingPage extends Component {
               <p>
                 Using only your webcam and a laptop, ShadowCam is able to
                 recognize your poses and then calculate and track vital workout
-                statistics such as max punch speed and number of punches.
+                statistics such as number of punches and interval tracking.
               </p>
               <Link to="/account/create">
                 <Button className={styles.signupButton}>Sign Up!</Button>
