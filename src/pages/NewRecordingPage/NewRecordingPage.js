@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Container, Row, Col, Button } from "reactstrap";
+import Layout from "../../components/Layout/Layout";
+import RestModal from "../../components/RestModal/RestModal";
+
+import Moment from "moment";
 import * as posenet from "@tensorflow-models/posenet";
 import debounce from "lodash.debounce";
-import Layout from "../../components/Layout/Layout";
 import { processPose } from "../../utils/poseUtils";
-import Moment from "moment";
 import { formatTimeFromSeconds } from "../../utils/utils";
-
 import styles from "./NewRecordingPage.module.css";
 
 export class NewRecordingPage extends Component {
@@ -27,6 +28,7 @@ export class NewRecordingPage extends Component {
       trainingState: "stopped",
       timerInterval: null,
       startTimeout: null,
+      ranFirstTime: false,
       width: 640,
       height: 480,
       videos: [],
@@ -79,13 +81,27 @@ export class NewRecordingPage extends Component {
       }
       this.processPoses();
       this.setState({
-        timerInterval
+        timerInterval,
+        ranFirstTime: true
       });
     }, 5000);
 
     this.setState({
       trainingState: "running",
-      startTimeout
+      startTimeout,
+      intervalTimeLeft: this.props.interval_length
+    });
+  };
+
+  handleStopRest = () => {
+    if (this.state.recorderSetup && this.mediaRecorder.state === "inactive") {
+      this.mediaRecorder.start();
+    }
+
+    this.processPoses();
+    this.setState({
+      trainingState: "running",
+      intervalTimeLeft: this.props.interval_length
     });
   };
 
@@ -95,10 +111,14 @@ export class NewRecordingPage extends Component {
         this.handleStopTraining();
       } else if (this.state.intervalTimeLeft === 0) {
         this.handleRestTraining();
-      } else {
+      } else if (this.state.trainingState === "running") {
         this.setState({
           totalTimeLeft: this.state.totalTimeLeft - 1,
           intervalTimeLeft: this.state.intervalTimeLeft - 1
+        });
+      } else {
+        this.setState({
+          totalTimeLeft: this.state.totalTimeLeft - 1
         });
       }
     }, 1000);
@@ -118,17 +138,34 @@ export class NewRecordingPage extends Component {
   };
 
   handleStopTraining = () => {
-    if (this.state.recorderSetup) {
+    if (this.state.trainingState === "done") {
+      return;
+    }
+    if (this.state.recorderSetup && this.mediaRecorder.state === "recording") {
       this.mediaRecorder.stop();
     }
     clearInterval(this.state.timerInterval);
     clearTimeout(this.state.startTimeout);
+    if(this.state.videos.length > 0) {
+      this.handleUploadVideo();
+    }
     this.setState({
       trainingState: "done"
     });
   };
 
-  handleRestTraining = () => {};
+  handleRestTraining = () => {
+    if (this.state.trainingState === "resting") {
+      return;
+    }
+    if (this.state.recorderSetup) {
+      this.mediaRecorder.stop();
+    }
+    this.setState({
+      intervalTimeLeft: this.props.interval_length,
+      trainingState: "resting"
+    });
+  };
 
   recordVideo = blob => {
     this.currentVideo.push(blob.data);
@@ -241,19 +278,16 @@ export class NewRecordingPage extends Component {
     this.videoRef.current.play();
   };
 
-  handleUploadVideo = timeStamp => {
-    // fetch upload video
+  handleUploadVideo = () => {
+    // fetch POST upload video
     // if successful change to check mark
     // else stay unchecked
 
-    this.setState(prevState => {
-      const oldVideos = [...prevState.videos];
-      oldVideos.find(video => video.timeStamp === timeStamp).synced = true;
-      return {
-        videos: oldVideos
-      };
-    });
   };
+
+  handleUploadStats = () => {
+    // fetch POST upload stats
+  }
 
   render() {
     const displayRecordControls = () => {
@@ -318,6 +352,14 @@ export class NewRecordingPage extends Component {
     return (
       <Layout>
         <Container className={styles.newRecordingContainer}>
+          {this.state.trainingState === "resting" ? (
+            <RestModal
+              restTime={this.props.rest_time}
+              stopRest={this.handleStopRest}
+            />
+          ) : (
+            ""
+          )}
           <Row>
             <Col>
               <video
@@ -332,7 +374,10 @@ export class NewRecordingPage extends Component {
               />
               <div
                 className={
-                  this.state.trainingState === "running" ? styles.countdown : ""
+                  this.state.trainingState === "running" &&
+                  !this.state.ranFirstTime
+                    ? styles.countdown
+                    : ""
                 }
               />
               <canvas className={styles.canvas} ref={this.canvasRef} />
@@ -411,6 +456,7 @@ const mapStateToProps = state => ({
   workout_length: state.workout.workout_length,
   num_of_intervals: state.workout.num_of_intervals,
   interval_length: state.workout.interval_length,
+  rest_time: state.workout.rest_time,
   isLoading: state.ui.isLoading
 });
 
