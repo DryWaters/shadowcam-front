@@ -6,32 +6,8 @@ class RestModal extends React.Component {
     super(props);
     this.state = {
       modal: true,
-      restTimeLeft: this.props.restTime,
-      restInterval: null
     };
   }
-
-  componentDidMount() {
-    const restInterval = setInterval(() => {
-      if (this.state.restTimeLeft === 0) {
-        clearInterval(this.state.restInterval);
-        this.props.stopRest();
-      } else {
-        this.setState(prevState => {
-          return {
-            restTimeLeft: prevState.restTimeLeft - 1
-          };
-        });
-      }
-    }, 1000);
-    this.setState({
-      restInterval
-    });
-  }
-
-  toggle = () => {
-    clearInterval(this.state.restInterval);
-  };
 
   render() {
     return (
@@ -41,7 +17,7 @@ class RestModal extends React.Component {
           <ModalBody>
             <div>You deserve a break!</div>
             <div>
-              Take a breather for another {this.state.restTimeLeft} seconds
+              Take a breather for another {this.props.restTime} seconds
             </div>
           </ModalBody>
           <ModalFooter>

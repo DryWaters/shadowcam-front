@@ -10,7 +10,6 @@ import debounce from "lodash.debounce";
 import { processPose } from "../../utils/poseUtils";
 import { formatTimeFromSeconds } from "../../utils/utils";
 import styles from "./NewRecordingPage.module.css";
-import { isPromiseAlike } from "q";
 
 export class NewRecordingPage extends Component {
   constructor(props) {
@@ -35,6 +34,7 @@ export class NewRecordingPage extends Component {
       videos: [],
       totalTimeLeft: props.workout_length,
       intervalTimeLeft: props.interval_length,
+      restTimeLeft: props.rest_time,
       totalPunches: 0,
       jab: 0,
       leftBodyHook: 0,
@@ -75,6 +75,11 @@ export class NewRecordingPage extends Component {
   handleStartTraining = () => {
     const startTimeout = setTimeout(() => {
       const timerInterval = this.startInterval();
+      if (this.videoRef.current === null) {
+        // already navigated off page just return
+        clearInterval(timerInterval);
+        return;
+      }
       if (this.state.recorderSetup && this.mediaRecorder.state === "inactive") {
         this.mediaRecorder.start();
       } else if (this.mediaRecorder.state === "paused") {
@@ -90,20 +95,22 @@ export class NewRecordingPage extends Component {
     this.setState({
       trainingState: "running",
       startTimeout,
+      restTimeLeft: this.props.rest_time,
       intervalTimeLeft: this.props.interval_length
     });
   };
 
   handleStopRest = () => {
+    this.setState({
+      trainingState: "running",
+      restTimeLeft: this.props.rest_time
+    });
+
     if (this.state.recorderSetup && this.mediaRecorder.state === "inactive") {
       this.mediaRecorder.start();
     }
 
     this.processPoses();
-    this.setState({
-      trainingState: "running",
-      intervalTimeLeft: this.props.interval_length
-    });
   };
 
   startInterval = () => {
@@ -112,14 +119,17 @@ export class NewRecordingPage extends Component {
         this.handleStopTraining();
       } else if (this.state.intervalTimeLeft === 0) {
         this.handleRestTraining();
-      } else if (this.state.trainingState === "running") {
+      } else if (this.state.restTimeLeft === 0) {
+        this.handleStopRest();
+      } else if (this.state.trainingState === "resting") {
         this.setState({
           totalTimeLeft: this.state.totalTimeLeft - 1,
-          intervalTimeLeft: this.state.intervalTimeLeft - 1
+          restTimeLeft: this.state.restTimeLeft - 1
         });
       } else {
         this.setState({
-          totalTimeLeft: this.state.totalTimeLeft - 1
+          totalTimeLeft: this.state.totalTimeLeft - 1,
+          intervalTimeLeft: this.state.intervalTimeLeft - 1
         });
       }
     }, 1000);
@@ -153,23 +163,22 @@ export class NewRecordingPage extends Component {
     if (this.state.trainingState === "done") {
       return;
     }
+
+    this.setState({
+      trainingState: "done"
+    });
+
     if (this.state.recorderSetup && this.mediaRecorder.state === "recording") {
       this.mediaRecorder.stop();
     }
     clearInterval(this.state.timerInterval);
     clearTimeout(this.state.startTimeout);
-    if (this.state.videos.length > 0) {
-      this.handleUploadVideo();
-    }
-    this.setState({
-      trainingState: "done"
-    });
   };
 
   handleRestTraining = () => {
-    if (this.state.trainingState === "resting") {
-      return;
-    }
+    // if (this.state.trainingState === "resting") {
+    //   this.handleStopRest();
+    // }
     if (this.state.recorderSetup) {
       this.mediaRecorder.stop();
     }
@@ -196,6 +205,7 @@ export class NewRecordingPage extends Component {
       });
       const newVideo = {
         src: window.URL.createObjectURL(videoBlob),
+        blob: videoBlob,
         screenShot: this.canvasRef.current
           .toDataURL("image/png")
           .replace("image/png", "image/octet-stream"),
@@ -205,6 +215,9 @@ export class NewRecordingPage extends Component {
       };
       currentVideos.push(newVideo);
       this.currentVideo = [];
+      if (this.state.trainingState === "done") {
+        // this.handleUploadVideo(currentVideos);
+      }
 
       return {
         videos: currentVideos
@@ -292,14 +305,10 @@ export class NewRecordingPage extends Component {
     this.videoRef.current.play();
   };
 
-  handleUploadVideo = () => {
-    // fetch POST upload video
-    // if successful change to check mark
-    // else stay unchecked
-
-    Promise.all(
-      this.state.videos.map(video => this.createUploadRequest(video))
-    ).then(result => console.log(result));
+  handleUploadVideo = videos => {
+    Promise.all(videos.map(video => this.createUploadRequest(video)))
+      .then(result => result.map(res => res.json()))
+      .then(result => console.log(result));
   };
 
   createUploadRequest = video => {
@@ -308,7 +317,7 @@ export class NewRecordingPage extends Component {
     const formData = new FormData();
     formData.append("work_id", this.props.work_id);
     formData.append("file_size", video.fileSize);
-    formData.append("video", video.src);
+    formData.append("video", video.blob);
 
     if (process.env.REACT_APP_TEST) {
       url = "http://localhost:3000/videos/upload";
@@ -319,7 +328,7 @@ export class NewRecordingPage extends Component {
     return fetch(url, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        Authorization: `Bearer ${this.props.token}`
       },
       mode: "cors",
       body: formData
@@ -395,7 +404,7 @@ export class NewRecordingPage extends Component {
         <Container className={styles.newRecordingContainer}>
           {this.state.trainingState === "resting" ? (
             <RestModal
-              restTime={this.props.rest_time}
+              restTime={this.state.restTimeLeft}
               stopRest={this.handleStopRest}
             />
           ) : (
@@ -491,18 +500,14 @@ export class NewRecordingPage extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({});
-
 const mapStateToProps = state => ({
   workout_length: state.workout.workout_length,
   num_of_intervals: state.workout.num_of_intervals,
   interval_length: state.workout.interval_length,
   work_id: state.workout.work_id,
   rest_time: state.workout.rest_time,
-  isLoading: state.ui.isLoading
+  isLoading: state.ui.isLoading,
+  token: state.user.token
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(NewRecordingPage);
+export default connect(mapStateToProps)(NewRecordingPage);
