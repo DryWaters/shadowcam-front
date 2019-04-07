@@ -83,11 +83,9 @@ export class PastWorkoutsPage extends Component {
       mode: "cors"
     })
       .then(res => {
-        console.log(res);
         if (res.status === 401) {
           return Promise.reject("unathorized");
         } else {
-          return res.text();
           return res.json();
         }
       })
