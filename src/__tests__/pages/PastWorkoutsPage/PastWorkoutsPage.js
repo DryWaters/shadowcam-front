@@ -5,11 +5,11 @@ import { PastWorkoutsPage } from "../../../pages/PastWorkoutsPage/PastWorkoutsPa
 
 describe("PastWorkoutsPage render", () => {
   it("Should render PastWorkoutsPage component without crashing", () => {
-    shallow(<PastWorkoutsPage />);
+    shallow(<PastWorkoutsPage loading={()=>{}} />);
   });
 
   it("Should match PastWorkoutsPage component snapshot", () => {
-    const wrapper = shallow(<PastWorkoutsPage />);
+    const wrapper = shallow(<PastWorkoutsPage loading={()=>{}} />);
     expect(wrapper).toMatchSnapshot();
   });
 });

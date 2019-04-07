@@ -1,9 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PastRecordingsPage render Should match PastRecordingsPage component snapshot 1`] = `
+exports[`PastWorkoutsPage render Should match PastWorkoutsPage component snapshot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <PastRecordingsPage />,
+  Symbol(enzyme.__unrendered__): <PastWorkoutsPage
+    loading={[Function]}
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "checkPropTypes": [Function],
@@ -19,7 +21,7 @@ ShallowWrapper {
     "nodeType": "function",
     "props": Object {
       "children": <Container
-        className="pastRecordingsContainer"
+        className="pastWorkoutsContainer"
         tag="div"
       >
         <Row
@@ -41,7 +43,6 @@ ShallowWrapper {
             <video
               className="video"
               controls={true}
-              src={null}
             />
           </Col>
           <Row
@@ -146,7 +147,7 @@ ShallowWrapper {
               <div
                 className="label"
               >
-                Hooks
+                Power Rear Punches
               </div>
               <div>
                 0
@@ -168,7 +169,75 @@ ShallowWrapper {
               <div
                 className="label"
               >
-                Uppercuts
+                Left Hooks
+              </div>
+              <div>
+                0
+              </div>
+              <div
+                className="label"
+              >
+                Right Hooks
+              </div>
+              <div>
+                0
+              </div>
+            </Col>
+            <Col
+              className="stat"
+              tag="div"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
+            >
+              <div
+                className="label"
+              >
+                Left Uppercuts
+              </div>
+              <div>
+                0
+              </div>
+              <div
+                className="label"
+              >
+                Right Uppercuts
+              </div>
+              <div>
+                0
+              </div>
+            </Col>
+            <Col
+              className="stat"
+              tag="div"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
+            >
+              <div
+                className="label"
+              >
+                Left Body Hooks
+              </div>
+              <div>
+                0
+              </div>
+              <div
+                className="label"
+              >
+                Right Body Hooks
               </div>
               <div>
                 0
@@ -185,8 +254,7 @@ ShallowWrapper {
           </h2>
         </Row>
         <Row
-          className="workout"
-          onClick={[Function]}
+          className="workoutsHeader"
           tag="div"
         >
           <Col
@@ -201,11 +269,7 @@ ShallowWrapper {
               ]
             }
           >
-            <img
-              alt="Test Movie"
-              className="screenShot"
-              src="https://shadowcam-back.herokuapp.com/screenshots/testmovie.png"
-            />
+            ID
           </Col>
           <Col
             tag="div"
@@ -219,7 +283,7 @@ ShallowWrapper {
               ]
             }
           >
-            Test Movie
+            Date
           </Col>
           <Col
             tag="div"
@@ -233,60 +297,46 @@ ShallowWrapper {
               ]
             }
           >
-            4/4/19 10:35:34 am
+            Length
+          </Col>
+          <Col
+            tag="div"
+            widths={
+              Array [
+                "xs",
+                "sm",
+                "md",
+                "lg",
+                "xl",
+              ]
+            }
+          >
+            Number of Intervals
+          </Col>
+          <Col
+            tag="div"
+            widths={
+              Array [
+                "xs",
+                "sm",
+                "md",
+                "lg",
+                "xl",
+              ]
+            }
+          >
+            Interval Length
           </Col>
         </Row>
         <Row
-          className="workout"
-          onClick={[Function]}
+          className="spinnerContainer"
           tag="div"
         >
-          <Col
-            tag="div"
-            widths={
-              Array [
-                "xs",
-                "sm",
-                "md",
-                "lg",
-                "xl",
-              ]
-            }
-          >
-            <img
-              alt="Test Movie2"
-              className="screenShot"
-              src="https://shadowcam-back.herokuapp.com/screenshots/testmovie2.png"
-            />
-          </Col>
-          <Col
-            tag="div"
-            widths={
-              Array [
-                "xs",
-                "sm",
-                "md",
-                "lg",
-                "xl",
-              ]
-            }
-          >
-            Test Movie2
-          </Col>
-          <Col
-            tag="div"
-            widths={
-              Array [
-                "xs",
-                "sm",
-                "md",
-                "lg",
-                "xl",
-              ]
-            }
-          >
-            3/28/19 10:35:34 am
-          </Col>
+          <img
+            alt="Loading Spinner"
+            className="loadingSpinner"
+            src="loading-spinner.gif"
+          />
         </Row>
       </Container>,
     },
@@ -316,7 +366,6 @@ ShallowWrapper {
               <video
                 className="video"
                 controls={true}
-                src={null}
               />
             </Col>
             <Row
@@ -421,7 +470,7 @@ ShallowWrapper {
                 <div
                   className="label"
                 >
-                  Hooks
+                  Power Rear Punches
                 </div>
                 <div>
                   0
@@ -443,7 +492,75 @@ ShallowWrapper {
                 <div
                   className="label"
                 >
-                  Uppercuts
+                  Left Hooks
+                </div>
+                <div>
+                  0
+                </div>
+                <div
+                  className="label"
+                >
+                  Right Hooks
+                </div>
+                <div>
+                  0
+                </div>
+              </Col>
+              <Col
+                className="stat"
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+              >
+                <div
+                  className="label"
+                >
+                  Left Uppercuts
+                </div>
+                <div>
+                  0
+                </div>
+                <div
+                  className="label"
+                >
+                  Right Uppercuts
+                </div>
+                <div>
+                  0
+                </div>
+              </Col>
+              <Col
+                className="stat"
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+              >
+                <div
+                  className="label"
+                >
+                  Left Body Hooks
+                </div>
+                <div>
+                  0
+                </div>
+                <div
+                  className="label"
+                >
+                  Right Body Hooks
                 </div>
                 <div>
                   0
@@ -451,6 +568,7 @@ ShallowWrapper {
               </Col>
             </Row>
           </Row>,
+          undefined,
           <Row
             className="spacer"
             tag="div"
@@ -459,114 +577,93 @@ ShallowWrapper {
               Workouts
             </h2>
           </Row>,
-          Array [
-            <Row
-              className="workout"
-              onClick={[Function]}
+          <Row
+            className="workoutsHeader"
+            tag="div"
+          >
+            <Col
               tag="div"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
             >
-              <Col
-                tag="div"
-                widths={
-                  Array [
-                    "xs",
-                    "sm",
-                    "md",
-                    "lg",
-                    "xl",
-                  ]
-                }
-              >
-                <img
-                  alt="Test Movie"
-                  className="screenShot"
-                  src="https://shadowcam-back.herokuapp.com/screenshots/testmovie.png"
-                />
-              </Col>
-              <Col
-                tag="div"
-                widths={
-                  Array [
-                    "xs",
-                    "sm",
-                    "md",
-                    "lg",
-                    "xl",
-                  ]
-                }
-              >
-                Test Movie
-              </Col>
-              <Col
-                tag="div"
-                widths={
-                  Array [
-                    "xs",
-                    "sm",
-                    "md",
-                    "lg",
-                    "xl",
-                  ]
-                }
-              >
-                4/4/19 10:35:34 am
-              </Col>
-            </Row>,
-            <Row
-              className="workout"
-              onClick={[Function]}
+              ID
+            </Col>
+            <Col
               tag="div"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
             >
-              <Col
-                tag="div"
-                widths={
-                  Array [
-                    "xs",
-                    "sm",
-                    "md",
-                    "lg",
-                    "xl",
-                  ]
-                }
-              >
-                <img
-                  alt="Test Movie2"
-                  className="screenShot"
-                  src="https://shadowcam-back.herokuapp.com/screenshots/testmovie2.png"
-                />
-              </Col>
-              <Col
-                tag="div"
-                widths={
-                  Array [
-                    "xs",
-                    "sm",
-                    "md",
-                    "lg",
-                    "xl",
-                  ]
-                }
-              >
-                Test Movie2
-              </Col>
-              <Col
-                tag="div"
-                widths={
-                  Array [
-                    "xs",
-                    "sm",
-                    "md",
-                    "lg",
-                    "xl",
-                  ]
-                }
-              >
-                3/28/19 10:35:34 am
-              </Col>
-            </Row>,
-          ],
+              Date
+            </Col>
+            <Col
+              tag="div"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
+            >
+              Length
+            </Col>
+            <Col
+              tag="div"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
+            >
+              Number of Intervals
+            </Col>
+            <Col
+              tag="div"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
+            >
+              Interval Length
+            </Col>
+          </Row>,
+          <Row
+            className="spinnerContainer"
+            tag="div"
+          >
+            <img
+              alt="Loading Spinner"
+              className="loadingSpinner"
+              src="loading-spinner.gif"
+            />
+          </Row>,
         ],
-        "className": "pastRecordingsContainer",
+        "className": "pastWorkoutsContainer",
         "tag": "div",
       },
       "ref": null,
@@ -593,7 +690,6 @@ ShallowWrapper {
                 <video
                   className="video"
                   controls={true}
-                  src={null}
                 />
               </Col>,
               <Row
@@ -698,7 +794,7 @@ ShallowWrapper {
                   <div
                     className="label"
                   >
-                    Hooks
+                    Power Rear Punches
                   </div>
                   <div>
                     0
@@ -720,7 +816,75 @@ ShallowWrapper {
                   <div
                     className="label"
                   >
-                    Uppercuts
+                    Left Hooks
+                  </div>
+                  <div>
+                    0
+                  </div>
+                  <div
+                    className="label"
+                  >
+                    Right Hooks
+                  </div>
+                  <div>
+                    0
+                  </div>
+                </Col>
+                <Col
+                  className="stat"
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                >
+                  <div
+                    className="label"
+                  >
+                    Left Uppercuts
+                  </div>
+                  <div>
+                    0
+                  </div>
+                  <div
+                    className="label"
+                  >
+                    Right Uppercuts
+                  </div>
+                  <div>
+                    0
+                  </div>
+                </Col>
+                <Col
+                  className="stat"
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                >
+                  <div
+                    className="label"
+                  >
+                    Left Body Hooks
+                  </div>
+                  <div>
+                    0
+                  </div>
+                  <div
+                    className="label"
+                  >
+                    Right Body Hooks
                   </div>
                   <div>
                     0
@@ -740,7 +904,6 @@ ShallowWrapper {
                 "children": <video
                   className="video"
                   controls={true}
-                  src={null}
                 />,
                 "className": "videoContainer",
                 "tag": "div",
@@ -760,7 +923,7 @@ ShallowWrapper {
                 "props": Object {
                   "className": "video",
                   "controls": true,
-                  "src": null,
+                  "src": undefined,
                 },
                 "ref": null,
                 "rendered": null,
@@ -872,7 +1035,7 @@ ShallowWrapper {
                     <div
                       className="label"
                     >
-                      Hooks
+                      Power Rear Punches
                     </div>
                     <div>
                       0
@@ -894,7 +1057,75 @@ ShallowWrapper {
                     <div
                       className="label"
                     >
-                      Uppercuts
+                      Left Hooks
+                    </div>
+                    <div>
+                      0
+                    </div>
+                    <div
+                      className="label"
+                    >
+                      Right Hooks
+                    </div>
+                    <div>
+                      0
+                    </div>
+                  </Col>,
+                  <Col
+                    className="stat"
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                  >
+                    <div
+                      className="label"
+                    >
+                      Left Uppercuts
+                    </div>
+                    <div>
+                      0
+                    </div>
+                    <div
+                      className="label"
+                    >
+                      Right Uppercuts
+                    </div>
+                    <div>
+                      0
+                    </div>
+                  </Col>,
+                  <Col
+                    className="stat"
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                  >
+                    <div
+                      className="label"
+                    >
+                      Left Body Hooks
+                    </div>
+                    <div>
+                      0
+                    </div>
+                    <div
+                      className="label"
+                    >
+                      Right Body Hooks
                     </div>
                     <div>
                       0
@@ -1105,7 +1336,7 @@ ShallowWrapper {
                       <div
                         className="label"
                       >
-                        Hooks
+                        Power Rear Punches
                       </div>,
                       <div>
                         0
@@ -1128,11 +1359,11 @@ ShallowWrapper {
                       "key": undefined,
                       "nodeType": "host",
                       "props": Object {
-                        "children": "Hooks",
+                        "children": "Power Rear Punches",
                         "className": "label",
                       },
                       "ref": null,
-                      "rendered": "Hooks",
+                      "rendered": "Power Rear Punches",
                       "type": "div",
                     },
                     Object {
@@ -1158,7 +1389,15 @@ ShallowWrapper {
                       <div
                         className="label"
                       >
-                        Uppercuts
+                        Left Hooks
+                      </div>,
+                      <div>
+                        0
+                      </div>,
+                      <div
+                        className="label"
+                      >
+                        Right Hooks
                       </div>,
                       <div>
                         0
@@ -1181,11 +1420,202 @@ ShallowWrapper {
                       "key": undefined,
                       "nodeType": "host",
                       "props": Object {
-                        "children": "Uppercuts",
+                        "children": "Left Hooks",
                         "className": "label",
                       },
                       "ref": null,
-                      "rendered": "Uppercuts",
+                      "rendered": "Left Hooks",
+                      "type": "div",
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "0",
+                      },
+                      "ref": null,
+                      "rendered": "0",
+                      "type": "div",
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "Right Hooks",
+                        "className": "label",
+                      },
+                      "ref": null,
+                      "rendered": "Right Hooks",
+                      "type": "div",
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "0",
+                      },
+                      "ref": null,
+                      "rendered": "0",
+                      "type": "div",
+                    },
+                  ],
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "children": Array [
+                      <div
+                        className="label"
+                      >
+                        Left Uppercuts
+                      </div>,
+                      <div>
+                        0
+                      </div>,
+                      <div
+                        className="label"
+                      >
+                        Right Uppercuts
+                      </div>,
+                      <div>
+                        0
+                      </div>,
+                    ],
+                    "className": "stat",
+                    "tag": "div",
+                    "widths": Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "Left Uppercuts",
+                        "className": "label",
+                      },
+                      "ref": null,
+                      "rendered": "Left Uppercuts",
+                      "type": "div",
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "0",
+                      },
+                      "ref": null,
+                      "rendered": "0",
+                      "type": "div",
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "Right Uppercuts",
+                        "className": "label",
+                      },
+                      "ref": null,
+                      "rendered": "Right Uppercuts",
+                      "type": "div",
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "0",
+                      },
+                      "ref": null,
+                      "rendered": "0",
+                      "type": "div",
+                    },
+                  ],
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "children": Array [
+                      <div
+                        className="label"
+                      >
+                        Left Body Hooks
+                      </div>,
+                      <div>
+                        0
+                      </div>,
+                      <div
+                        className="label"
+                      >
+                        Right Body Hooks
+                      </div>,
+                      <div>
+                        0
+                      </div>,
+                    ],
+                    "className": "stat",
+                    "tag": "div",
+                    "widths": Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "Left Body Hooks",
+                        "className": "label",
+                      },
+                      "ref": null,
+                      "rendered": "Left Body Hooks",
+                      "type": "div",
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "0",
+                      },
+                      "ref": null,
+                      "rendered": "0",
+                      "type": "div",
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "Right Body Hooks",
+                        "className": "label",
+                      },
+                      "ref": null,
+                      "rendered": "Right Body Hooks",
                       "type": "div",
                     },
                     Object {
@@ -1208,6 +1638,7 @@ ShallowWrapper {
           ],
           "type": [Function],
         },
+        undefined,
         Object {
           "instance": null,
           "key": undefined,
@@ -1235,7 +1666,7 @@ ShallowWrapper {
         },
         Object {
           "instance": null,
-          "key": "2019-04-04T10:35:34-07:00",
+          "key": undefined,
           "nodeType": "function",
           "props": Object {
             "children": Array [
@@ -1251,11 +1682,7 @@ ShallowWrapper {
                   ]
                 }
               >
-                <img
-                  alt="Test Movie"
-                  className="screenShot"
-                  src="https://shadowcam-back.herokuapp.com/screenshots/testmovie.png"
-                />
+                ID
               </Col>,
               <Col
                 tag="div"
@@ -1269,7 +1696,7 @@ ShallowWrapper {
                   ]
                 }
               >
-                Test Movie
+                Date
               </Col>,
               <Col
                 tag="div"
@@ -1283,11 +1710,38 @@ ShallowWrapper {
                   ]
                 }
               >
-                4/4/19 10:35:34 am
+                Length
+              </Col>,
+              <Col
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+              >
+                Number of Intervals
+              </Col>,
+              <Col
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+              >
+                Interval Length
               </Col>,
             ],
-            "className": "workout",
-            "onClick": [Function],
+            "className": "workoutsHeader",
             "tag": "div",
           },
           "ref": null,
@@ -1297,11 +1751,7 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "function",
               "props": Object {
-                "children": <img
-                  alt="Test Movie"
-                  className="screenShot"
-                  src="https://shadowcam-back.herokuapp.com/screenshots/testmovie.png"
-                />,
+                "children": "ID",
                 "tag": "div",
                 "widths": Array [
                   "xs",
@@ -1312,19 +1762,7 @@ ShallowWrapper {
                 ],
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "alt": "Test Movie",
-                  "className": "screenShot",
-                  "src": "https://shadowcam-back.herokuapp.com/screenshots/testmovie.png",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "img",
-              },
+              "rendered": "ID",
               "type": [Function],
             },
             Object {
@@ -1332,7 +1770,7 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "function",
               "props": Object {
-                "children": "Test Movie",
+                "children": "Date",
                 "tag": "div",
                 "widths": Array [
                   "xs",
@@ -1343,7 +1781,7 @@ ShallowWrapper {
                 ],
               },
               "ref": null,
-              "rendered": "Test Movie",
+              "rendered": "Date",
               "type": [Function],
             },
             Object {
@@ -1351,7 +1789,7 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "function",
               "props": Object {
-                "children": "4/4/19 10:35:34 am",
+                "children": "Length",
                 "tag": "div",
                 "widths": Array [
                   "xs",
@@ -1362,7 +1800,45 @@ ShallowWrapper {
                 ],
               },
               "ref": null,
-              "rendered": "4/4/19 10:35:34 am",
+              "rendered": "Length",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": "Number of Intervals",
+                "tag": "div",
+                "widths": Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ],
+              },
+              "ref": null,
+              "rendered": "Number of Intervals",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": "Interval Length",
+                "tag": "div",
+                "widths": Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ],
+              },
+              "ref": null,
+              "rendered": "Interval Length",
               "type": [Function],
             },
           ],
@@ -1370,137 +1846,31 @@ ShallowWrapper {
         },
         Object {
           "instance": null,
-          "key": "2019-03-28T10:35:34-07:00",
+          "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "children": Array [
-              <Col
-                tag="div"
-                widths={
-                  Array [
-                    "xs",
-                    "sm",
-                    "md",
-                    "lg",
-                    "xl",
-                  ]
-                }
-              >
-                <img
-                  alt="Test Movie2"
-                  className="screenShot"
-                  src="https://shadowcam-back.herokuapp.com/screenshots/testmovie2.png"
-                />
-              </Col>,
-              <Col
-                tag="div"
-                widths={
-                  Array [
-                    "xs",
-                    "sm",
-                    "md",
-                    "lg",
-                    "xl",
-                  ]
-                }
-              >
-                Test Movie2
-              </Col>,
-              <Col
-                tag="div"
-                widths={
-                  Array [
-                    "xs",
-                    "sm",
-                    "md",
-                    "lg",
-                    "xl",
-                  ]
-                }
-              >
-                3/28/19 10:35:34 am
-              </Col>,
-            ],
-            "className": "workout",
-            "onClick": [Function],
+            "children": <img
+              alt="Loading Spinner"
+              className="loadingSpinner"
+              src="loading-spinner.gif"
+            />,
+            "className": "spinnerContainer",
             "tag": "div",
           },
           "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "children": <img
-                  alt="Test Movie2"
-                  className="screenShot"
-                  src="https://shadowcam-back.herokuapp.com/screenshots/testmovie2.png"
-                />,
-                "tag": "div",
-                "widths": Array [
-                  "xs",
-                  "sm",
-                  "md",
-                  "lg",
-                  "xl",
-                ],
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "alt": "Test Movie2",
-                  "className": "screenShot",
-                  "src": "https://shadowcam-back.herokuapp.com/screenshots/testmovie2.png",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "img",
-              },
-              "type": [Function],
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "alt": "Loading Spinner",
+              "className": "loadingSpinner",
+              "src": "loading-spinner.gif",
             },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "children": "Test Movie2",
-                "tag": "div",
-                "widths": Array [
-                  "xs",
-                  "sm",
-                  "md",
-                  "lg",
-                  "xl",
-                ],
-              },
-              "ref": null,
-              "rendered": "Test Movie2",
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "children": "3/28/19 10:35:34 am",
-                "tag": "div",
-                "widths": Array [
-                  "xs",
-                  "sm",
-                  "md",
-                  "lg",
-                  "xl",
-                ],
-              },
-              "ref": null,
-              "rendered": "3/28/19 10:35:34 am",
-              "type": [Function],
-            },
-          ],
+            "ref": null,
+            "rendered": null,
+            "type": "img",
+          },
           "type": [Function],
         },
       ],
@@ -1515,7 +1885,7 @@ ShallowWrapper {
       "nodeType": "function",
       "props": Object {
         "children": <Container
-          className="pastRecordingsContainer"
+          className="pastWorkoutsContainer"
           tag="div"
         >
           <Row
@@ -1537,7 +1907,6 @@ ShallowWrapper {
               <video
                 className="video"
                 controls={true}
-                src={null}
               />
             </Col>
             <Row
@@ -1642,7 +2011,7 @@ ShallowWrapper {
                 <div
                   className="label"
                 >
-                  Hooks
+                  Power Rear Punches
                 </div>
                 <div>
                   0
@@ -1664,7 +2033,75 @@ ShallowWrapper {
                 <div
                   className="label"
                 >
-                  Uppercuts
+                  Left Hooks
+                </div>
+                <div>
+                  0
+                </div>
+                <div
+                  className="label"
+                >
+                  Right Hooks
+                </div>
+                <div>
+                  0
+                </div>
+              </Col>
+              <Col
+                className="stat"
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+              >
+                <div
+                  className="label"
+                >
+                  Left Uppercuts
+                </div>
+                <div>
+                  0
+                </div>
+                <div
+                  className="label"
+                >
+                  Right Uppercuts
+                </div>
+                <div>
+                  0
+                </div>
+              </Col>
+              <Col
+                className="stat"
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+              >
+                <div
+                  className="label"
+                >
+                  Left Body Hooks
+                </div>
+                <div>
+                  0
+                </div>
+                <div
+                  className="label"
+                >
+                  Right Body Hooks
                 </div>
                 <div>
                   0
@@ -1681,8 +2118,7 @@ ShallowWrapper {
             </h2>
           </Row>
           <Row
-            className="workout"
-            onClick={[Function]}
+            className="workoutsHeader"
             tag="div"
           >
             <Col
@@ -1697,11 +2133,7 @@ ShallowWrapper {
                 ]
               }
             >
-              <img
-                alt="Test Movie"
-                className="screenShot"
-                src="https://shadowcam-back.herokuapp.com/screenshots/testmovie.png"
-              />
+              ID
             </Col>
             <Col
               tag="div"
@@ -1715,7 +2147,7 @@ ShallowWrapper {
                 ]
               }
             >
-              Test Movie
+              Date
             </Col>
             <Col
               tag="div"
@@ -1729,60 +2161,46 @@ ShallowWrapper {
                 ]
               }
             >
-              4/4/19 10:35:34 am
+              Length
+            </Col>
+            <Col
+              tag="div"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
+            >
+              Number of Intervals
+            </Col>
+            <Col
+              tag="div"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
+            >
+              Interval Length
             </Col>
           </Row>
           <Row
-            className="workout"
-            onClick={[Function]}
+            className="spinnerContainer"
             tag="div"
           >
-            <Col
-              tag="div"
-              widths={
-                Array [
-                  "xs",
-                  "sm",
-                  "md",
-                  "lg",
-                  "xl",
-                ]
-              }
-            >
-              <img
-                alt="Test Movie2"
-                className="screenShot"
-                src="https://shadowcam-back.herokuapp.com/screenshots/testmovie2.png"
-              />
-            </Col>
-            <Col
-              tag="div"
-              widths={
-                Array [
-                  "xs",
-                  "sm",
-                  "md",
-                  "lg",
-                  "xl",
-                ]
-              }
-            >
-              Test Movie2
-            </Col>
-            <Col
-              tag="div"
-              widths={
-                Array [
-                  "xs",
-                  "sm",
-                  "md",
-                  "lg",
-                  "xl",
-                ]
-              }
-            >
-              3/28/19 10:35:34 am
-            </Col>
+            <img
+              alt="Loading Spinner"
+              className="loadingSpinner"
+              src="loading-spinner.gif"
+            />
           </Row>
         </Container>,
       },
@@ -1812,7 +2230,6 @@ ShallowWrapper {
                 <video
                   className="video"
                   controls={true}
-                  src={null}
                 />
               </Col>
               <Row
@@ -1917,7 +2334,7 @@ ShallowWrapper {
                   <div
                     className="label"
                   >
-                    Hooks
+                    Power Rear Punches
                   </div>
                   <div>
                     0
@@ -1939,7 +2356,75 @@ ShallowWrapper {
                   <div
                     className="label"
                   >
-                    Uppercuts
+                    Left Hooks
+                  </div>
+                  <div>
+                    0
+                  </div>
+                  <div
+                    className="label"
+                  >
+                    Right Hooks
+                  </div>
+                  <div>
+                    0
+                  </div>
+                </Col>
+                <Col
+                  className="stat"
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                >
+                  <div
+                    className="label"
+                  >
+                    Left Uppercuts
+                  </div>
+                  <div>
+                    0
+                  </div>
+                  <div
+                    className="label"
+                  >
+                    Right Uppercuts
+                  </div>
+                  <div>
+                    0
+                  </div>
+                </Col>
+                <Col
+                  className="stat"
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                >
+                  <div
+                    className="label"
+                  >
+                    Left Body Hooks
+                  </div>
+                  <div>
+                    0
+                  </div>
+                  <div
+                    className="label"
+                  >
+                    Right Body Hooks
                   </div>
                   <div>
                     0
@@ -1947,6 +2432,7 @@ ShallowWrapper {
                 </Col>
               </Row>
             </Row>,
+            undefined,
             <Row
               className="spacer"
               tag="div"
@@ -1955,114 +2441,93 @@ ShallowWrapper {
                 Workouts
               </h2>
             </Row>,
-            Array [
-              <Row
-                className="workout"
-                onClick={[Function]}
+            <Row
+              className="workoutsHeader"
+              tag="div"
+            >
+              <Col
                 tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
               >
-                <Col
-                  tag="div"
-                  widths={
-                    Array [
-                      "xs",
-                      "sm",
-                      "md",
-                      "lg",
-                      "xl",
-                    ]
-                  }
-                >
-                  <img
-                    alt="Test Movie"
-                    className="screenShot"
-                    src="https://shadowcam-back.herokuapp.com/screenshots/testmovie.png"
-                  />
-                </Col>
-                <Col
-                  tag="div"
-                  widths={
-                    Array [
-                      "xs",
-                      "sm",
-                      "md",
-                      "lg",
-                      "xl",
-                    ]
-                  }
-                >
-                  Test Movie
-                </Col>
-                <Col
-                  tag="div"
-                  widths={
-                    Array [
-                      "xs",
-                      "sm",
-                      "md",
-                      "lg",
-                      "xl",
-                    ]
-                  }
-                >
-                  4/4/19 10:35:34 am
-                </Col>
-              </Row>,
-              <Row
-                className="workout"
-                onClick={[Function]}
+                ID
+              </Col>
+              <Col
                 tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
               >
-                <Col
-                  tag="div"
-                  widths={
-                    Array [
-                      "xs",
-                      "sm",
-                      "md",
-                      "lg",
-                      "xl",
-                    ]
-                  }
-                >
-                  <img
-                    alt="Test Movie2"
-                    className="screenShot"
-                    src="https://shadowcam-back.herokuapp.com/screenshots/testmovie2.png"
-                  />
-                </Col>
-                <Col
-                  tag="div"
-                  widths={
-                    Array [
-                      "xs",
-                      "sm",
-                      "md",
-                      "lg",
-                      "xl",
-                    ]
-                  }
-                >
-                  Test Movie2
-                </Col>
-                <Col
-                  tag="div"
-                  widths={
-                    Array [
-                      "xs",
-                      "sm",
-                      "md",
-                      "lg",
-                      "xl",
-                    ]
-                  }
-                >
-                  3/28/19 10:35:34 am
-                </Col>
-              </Row>,
-            ],
+                Date
+              </Col>
+              <Col
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+              >
+                Length
+              </Col>
+              <Col
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+              >
+                Number of Intervals
+              </Col>
+              <Col
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+              >
+                Interval Length
+              </Col>
+            </Row>,
+            <Row
+              className="spinnerContainer"
+              tag="div"
+            >
+              <img
+                alt="Loading Spinner"
+                className="loadingSpinner"
+                src="loading-spinner.gif"
+              />
+            </Row>,
           ],
-          "className": "pastRecordingsContainer",
+          "className": "pastWorkoutsContainer",
           "tag": "div",
         },
         "ref": null,
@@ -2089,7 +2554,6 @@ ShallowWrapper {
                   <video
                     className="video"
                     controls={true}
-                    src={null}
                   />
                 </Col>,
                 <Row
@@ -2194,7 +2658,7 @@ ShallowWrapper {
                     <div
                       className="label"
                     >
-                      Hooks
+                      Power Rear Punches
                     </div>
                     <div>
                       0
@@ -2216,7 +2680,75 @@ ShallowWrapper {
                     <div
                       className="label"
                     >
-                      Uppercuts
+                      Left Hooks
+                    </div>
+                    <div>
+                      0
+                    </div>
+                    <div
+                      className="label"
+                    >
+                      Right Hooks
+                    </div>
+                    <div>
+                      0
+                    </div>
+                  </Col>
+                  <Col
+                    className="stat"
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                  >
+                    <div
+                      className="label"
+                    >
+                      Left Uppercuts
+                    </div>
+                    <div>
+                      0
+                    </div>
+                    <div
+                      className="label"
+                    >
+                      Right Uppercuts
+                    </div>
+                    <div>
+                      0
+                    </div>
+                  </Col>
+                  <Col
+                    className="stat"
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                  >
+                    <div
+                      className="label"
+                    >
+                      Left Body Hooks
+                    </div>
+                    <div>
+                      0
+                    </div>
+                    <div
+                      className="label"
+                    >
+                      Right Body Hooks
                     </div>
                     <div>
                       0
@@ -2236,7 +2768,6 @@ ShallowWrapper {
                   "children": <video
                     className="video"
                     controls={true}
-                    src={null}
                   />,
                   "className": "videoContainer",
                   "tag": "div",
@@ -2256,7 +2787,7 @@ ShallowWrapper {
                   "props": Object {
                     "className": "video",
                     "controls": true,
-                    "src": null,
+                    "src": undefined,
                   },
                   "ref": null,
                   "rendered": null,
@@ -2368,7 +2899,7 @@ ShallowWrapper {
                       <div
                         className="label"
                       >
-                        Hooks
+                        Power Rear Punches
                       </div>
                       <div>
                         0
@@ -2390,7 +2921,75 @@ ShallowWrapper {
                       <div
                         className="label"
                       >
-                        Uppercuts
+                        Left Hooks
+                      </div>
+                      <div>
+                        0
+                      </div>
+                      <div
+                        className="label"
+                      >
+                        Right Hooks
+                      </div>
+                      <div>
+                        0
+                      </div>
+                    </Col>,
+                    <Col
+                      className="stat"
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                    >
+                      <div
+                        className="label"
+                      >
+                        Left Uppercuts
+                      </div>
+                      <div>
+                        0
+                      </div>
+                      <div
+                        className="label"
+                      >
+                        Right Uppercuts
+                      </div>
+                      <div>
+                        0
+                      </div>
+                    </Col>,
+                    <Col
+                      className="stat"
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                    >
+                      <div
+                        className="label"
+                      >
+                        Left Body Hooks
+                      </div>
+                      <div>
+                        0
+                      </div>
+                      <div
+                        className="label"
+                      >
+                        Right Body Hooks
                       </div>
                       <div>
                         0
@@ -2601,7 +3200,7 @@ ShallowWrapper {
                         <div
                           className="label"
                         >
-                          Hooks
+                          Power Rear Punches
                         </div>,
                         <div>
                           0
@@ -2624,11 +3223,11 @@ ShallowWrapper {
                         "key": undefined,
                         "nodeType": "host",
                         "props": Object {
-                          "children": "Hooks",
+                          "children": "Power Rear Punches",
                           "className": "label",
                         },
                         "ref": null,
-                        "rendered": "Hooks",
+                        "rendered": "Power Rear Punches",
                         "type": "div",
                       },
                       Object {
@@ -2654,7 +3253,15 @@ ShallowWrapper {
                         <div
                           className="label"
                         >
-                          Uppercuts
+                          Left Hooks
+                        </div>,
+                        <div>
+                          0
+                        </div>,
+                        <div
+                          className="label"
+                        >
+                          Right Hooks
                         </div>,
                         <div>
                           0
@@ -2677,11 +3284,202 @@ ShallowWrapper {
                         "key": undefined,
                         "nodeType": "host",
                         "props": Object {
-                          "children": "Uppercuts",
+                          "children": "Left Hooks",
                           "className": "label",
                         },
                         "ref": null,
-                        "rendered": "Uppercuts",
+                        "rendered": "Left Hooks",
+                        "type": "div",
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {
+                          "children": "0",
+                        },
+                        "ref": null,
+                        "rendered": "0",
+                        "type": "div",
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {
+                          "children": "Right Hooks",
+                          "className": "label",
+                        },
+                        "ref": null,
+                        "rendered": "Right Hooks",
+                        "type": "div",
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {
+                          "children": "0",
+                        },
+                        "ref": null,
+                        "rendered": "0",
+                        "type": "div",
+                      },
+                    ],
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "function",
+                    "props": Object {
+                      "children": Array [
+                        <div
+                          className="label"
+                        >
+                          Left Uppercuts
+                        </div>,
+                        <div>
+                          0
+                        </div>,
+                        <div
+                          className="label"
+                        >
+                          Right Uppercuts
+                        </div>,
+                        <div>
+                          0
+                        </div>,
+                      ],
+                      "className": "stat",
+                      "tag": "div",
+                      "widths": Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ],
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {
+                          "children": "Left Uppercuts",
+                          "className": "label",
+                        },
+                        "ref": null,
+                        "rendered": "Left Uppercuts",
+                        "type": "div",
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {
+                          "children": "0",
+                        },
+                        "ref": null,
+                        "rendered": "0",
+                        "type": "div",
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {
+                          "children": "Right Uppercuts",
+                          "className": "label",
+                        },
+                        "ref": null,
+                        "rendered": "Right Uppercuts",
+                        "type": "div",
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {
+                          "children": "0",
+                        },
+                        "ref": null,
+                        "rendered": "0",
+                        "type": "div",
+                      },
+                    ],
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "function",
+                    "props": Object {
+                      "children": Array [
+                        <div
+                          className="label"
+                        >
+                          Left Body Hooks
+                        </div>,
+                        <div>
+                          0
+                        </div>,
+                        <div
+                          className="label"
+                        >
+                          Right Body Hooks
+                        </div>,
+                        <div>
+                          0
+                        </div>,
+                      ],
+                      "className": "stat",
+                      "tag": "div",
+                      "widths": Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ],
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {
+                          "children": "Left Body Hooks",
+                          "className": "label",
+                        },
+                        "ref": null,
+                        "rendered": "Left Body Hooks",
+                        "type": "div",
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {
+                          "children": "0",
+                        },
+                        "ref": null,
+                        "rendered": "0",
+                        "type": "div",
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {
+                          "children": "Right Body Hooks",
+                          "className": "label",
+                        },
+                        "ref": null,
+                        "rendered": "Right Body Hooks",
                         "type": "div",
                       },
                       Object {
@@ -2704,6 +3502,7 @@ ShallowWrapper {
             ],
             "type": [Function],
           },
+          undefined,
           Object {
             "instance": null,
             "key": undefined,
@@ -2731,7 +3530,7 @@ ShallowWrapper {
           },
           Object {
             "instance": null,
-            "key": "2019-04-04T10:35:34-07:00",
+            "key": undefined,
             "nodeType": "function",
             "props": Object {
               "children": Array [
@@ -2747,11 +3546,7 @@ ShallowWrapper {
                     ]
                   }
                 >
-                  <img
-                    alt="Test Movie"
-                    className="screenShot"
-                    src="https://shadowcam-back.herokuapp.com/screenshots/testmovie.png"
-                  />
+                  ID
                 </Col>,
                 <Col
                   tag="div"
@@ -2765,7 +3560,7 @@ ShallowWrapper {
                     ]
                   }
                 >
-                  Test Movie
+                  Date
                 </Col>,
                 <Col
                   tag="div"
@@ -2779,11 +3574,38 @@ ShallowWrapper {
                     ]
                   }
                 >
-                  4/4/19 10:35:34 am
+                  Length
+                </Col>,
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                >
+                  Number of Intervals
+                </Col>,
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                >
+                  Interval Length
                 </Col>,
               ],
-              "className": "workout",
-              "onClick": [Function],
+              "className": "workoutsHeader",
               "tag": "div",
             },
             "ref": null,
@@ -2793,11 +3615,7 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "function",
                 "props": Object {
-                  "children": <img
-                    alt="Test Movie"
-                    className="screenShot"
-                    src="https://shadowcam-back.herokuapp.com/screenshots/testmovie.png"
-                  />,
+                  "children": "ID",
                   "tag": "div",
                   "widths": Array [
                     "xs",
@@ -2808,19 +3626,7 @@ ShallowWrapper {
                   ],
                 },
                 "ref": null,
-                "rendered": Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "alt": "Test Movie",
-                    "className": "screenShot",
-                    "src": "https://shadowcam-back.herokuapp.com/screenshots/testmovie.png",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "img",
-                },
+                "rendered": "ID",
                 "type": [Function],
               },
               Object {
@@ -2828,7 +3634,7 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "function",
                 "props": Object {
-                  "children": "Test Movie",
+                  "children": "Date",
                   "tag": "div",
                   "widths": Array [
                     "xs",
@@ -2839,7 +3645,7 @@ ShallowWrapper {
                   ],
                 },
                 "ref": null,
-                "rendered": "Test Movie",
+                "rendered": "Date",
                 "type": [Function],
               },
               Object {
@@ -2847,7 +3653,7 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "function",
                 "props": Object {
-                  "children": "4/4/19 10:35:34 am",
+                  "children": "Length",
                   "tag": "div",
                   "widths": Array [
                     "xs",
@@ -2858,7 +3664,45 @@ ShallowWrapper {
                   ],
                 },
                 "ref": null,
-                "rendered": "4/4/19 10:35:34 am",
+                "rendered": "Length",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": "Number of Intervals",
+                  "tag": "div",
+                  "widths": Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ],
+                },
+                "ref": null,
+                "rendered": "Number of Intervals",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": "Interval Length",
+                  "tag": "div",
+                  "widths": Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ],
+                },
+                "ref": null,
+                "rendered": "Interval Length",
                 "type": [Function],
               },
             ],
@@ -2866,137 +3710,31 @@ ShallowWrapper {
           },
           Object {
             "instance": null,
-            "key": "2019-03-28T10:35:34-07:00",
+            "key": undefined,
             "nodeType": "function",
             "props": Object {
-              "children": Array [
-                <Col
-                  tag="div"
-                  widths={
-                    Array [
-                      "xs",
-                      "sm",
-                      "md",
-                      "lg",
-                      "xl",
-                    ]
-                  }
-                >
-                  <img
-                    alt="Test Movie2"
-                    className="screenShot"
-                    src="https://shadowcam-back.herokuapp.com/screenshots/testmovie2.png"
-                  />
-                </Col>,
-                <Col
-                  tag="div"
-                  widths={
-                    Array [
-                      "xs",
-                      "sm",
-                      "md",
-                      "lg",
-                      "xl",
-                    ]
-                  }
-                >
-                  Test Movie2
-                </Col>,
-                <Col
-                  tag="div"
-                  widths={
-                    Array [
-                      "xs",
-                      "sm",
-                      "md",
-                      "lg",
-                      "xl",
-                    ]
-                  }
-                >
-                  3/28/19 10:35:34 am
-                </Col>,
-              ],
-              "className": "workout",
-              "onClick": [Function],
+              "children": <img
+                alt="Loading Spinner"
+                className="loadingSpinner"
+                src="loading-spinner.gif"
+              />,
+              "className": "spinnerContainer",
               "tag": "div",
             },
             "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "function",
-                "props": Object {
-                  "children": <img
-                    alt="Test Movie2"
-                    className="screenShot"
-                    src="https://shadowcam-back.herokuapp.com/screenshots/testmovie2.png"
-                  />,
-                  "tag": "div",
-                  "widths": Array [
-                    "xs",
-                    "sm",
-                    "md",
-                    "lg",
-                    "xl",
-                  ],
-                },
-                "ref": null,
-                "rendered": Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "alt": "Test Movie2",
-                    "className": "screenShot",
-                    "src": "https://shadowcam-back.herokuapp.com/screenshots/testmovie2.png",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "img",
-                },
-                "type": [Function],
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "alt": "Loading Spinner",
+                "className": "loadingSpinner",
+                "src": "loading-spinner.gif",
               },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "function",
-                "props": Object {
-                  "children": "Test Movie2",
-                  "tag": "div",
-                  "widths": Array [
-                    "xs",
-                    "sm",
-                    "md",
-                    "lg",
-                    "xl",
-                  ],
-                },
-                "ref": null,
-                "rendered": "Test Movie2",
-                "type": [Function],
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "function",
-                "props": Object {
-                  "children": "3/28/19 10:35:34 am",
-                  "tag": "div",
-                  "widths": Array [
-                    "xs",
-                    "sm",
-                    "md",
-                    "lg",
-                    "xl",
-                  ],
-                },
-                "ref": null,
-                "rendered": "3/28/19 10:35:34 am",
-                "type": [Function],
-              },
-            ],
+              "ref": null,
+              "rendered": null,
+              "type": "img",
+            },
             "type": [Function],
           },
         ],
