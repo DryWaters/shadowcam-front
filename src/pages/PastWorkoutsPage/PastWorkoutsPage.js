@@ -62,11 +62,15 @@ export class PastWorkoutsPage extends Component {
       });
   }
 
+  handleClickVideo = id => {
+    // play video in player
+  };
+
   handleClickWorkout = id => {
     let url;
 
     if (process.env.REACT_APP_TEST) {
-      url = `"http://localhost:3000/workouts/${id}`;
+      url = `http://localhost:3000/workouts/${id}`;
     } else {
       url = `https://shadowcam-back.herokuapp.com/workouts/${id}`;
     }
@@ -79,9 +83,11 @@ export class PastWorkoutsPage extends Component {
       mode: "cors"
     })
       .then(res => {
+        console.log(res);
         if (res.status === 401) {
           return Promise.reject("unathorized");
         } else {
+          return res.text();
           return res.json();
         }
       })
@@ -96,6 +102,7 @@ export class PastWorkoutsPage extends Component {
         }
       })
       .catch(error => {
+        console.log(error);
         this.props.notLoading();
         if (error === "unathorized") {
           alert("Please log back in!");
@@ -108,6 +115,29 @@ export class PastWorkoutsPage extends Component {
   };
 
   render() {
+    const displayVideos = () => {
+      if (!this.state.currentWorkout) {
+        return;
+      } else {
+        return (
+          <Row>
+            <Col className={styles.recordedVideosContainer}>
+              {this.state.currentWorkout.videos.map(video => {
+                return (
+                  <div className={styles.recordedVideo} key={video.video_id}>
+                    <img
+                      src={video.screenShot}
+                      alt="Recorded Video"
+                      onClick={() => this.handleClickVideo(video.video_id)}
+                    />
+                  </div>
+                );
+              })}
+            </Col>
+          </Row>
+        );
+      }
+    };
     const displayPastWorkouts = () => {
       if (!this.state.workouts) {
         return (
@@ -189,6 +219,7 @@ export class PastWorkoutsPage extends Component {
               </Col>
             </Row>
           </Row>
+          {displayVideos()}
           <Row className={styles.spacer}>
             <h2>Workouts</h2>
           </Row>

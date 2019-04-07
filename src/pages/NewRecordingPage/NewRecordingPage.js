@@ -176,9 +176,6 @@ export class NewRecordingPage extends Component {
   };
 
   handleRestTraining = () => {
-    // if (this.state.trainingState === "resting") {
-    //   this.handleStopRest();
-    // }
     if (this.state.recorderSetup) {
       this.mediaRecorder.stop();
     }
