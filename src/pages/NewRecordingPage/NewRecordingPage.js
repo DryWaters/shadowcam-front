@@ -203,7 +203,7 @@ export class NewRecordingPage extends Component {
       const newVideo = {
         src: window.URL.createObjectURL(videoBlob),
         blob: videoBlob,
-        screenShot: this.canvasRef.current
+        screenshot: this.canvasRef.current
           .toDataURL("image/png")
           .replace("image/png", "image/octet-stream"),
         timeStamp: new Moment().format(),
@@ -330,6 +330,7 @@ export class NewRecordingPage extends Component {
     const formData = new FormData();
     formData.append("work_id", this.props.work_id);
     formData.append("file_size", video.fileSize);
+    formData.append("screenshot", video.screenshot)
     formData.append("video", video.blob);
 
     if (process.env.REACT_APP_TEST) {
@@ -400,7 +401,7 @@ export class NewRecordingPage extends Component {
           <div className={styles.recordedVideoContainer} key={video.timeStamp}>
             <img
               className={styles.recordedVideo}
-              src={video.screenShot}
+              src={video.screenshot}
               alt="Recording Video"
               onClick={() => this.handleClickPlayRecordedVideo(video.timeStamp)}
             />
