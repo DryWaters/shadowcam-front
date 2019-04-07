@@ -39,10 +39,25 @@
   padding: 10px 0px;
   margin-bottom: 40px;
   border: solid 3px black;
+  text-align: center;
 }
 
 .workout:hover {
-  border: solid 3px blue;
+  border: solid 3px #f45342;
   cursor: pointer;
   background-color: #555;
+}
+
+.workoutsHeader {
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+.spinnerContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.loadingSpinner {
+  height: 100%;
 }
