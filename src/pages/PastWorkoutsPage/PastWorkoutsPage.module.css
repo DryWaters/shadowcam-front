@@ -20,15 +20,18 @@
 .statContainer {
   display: flex;
   flex-direction: column;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .stat {
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 
 .label {
-  margin-right: 10px;
+  margin: 0px 20px;
 }
 
 .screenShot {

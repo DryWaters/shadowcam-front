@@ -166,11 +166,25 @@ export class PastWorkoutsPage extends Component {
                 <div>0</div>
               </Col>
               <Col className={styles.stat}>
-                <div className={styles.label}>Hooks</div>
+                <div className={styles.label}>Power Rear Punches</div>
                 <div>0</div>
               </Col>
               <Col className={styles.stat}>
-                <div className={styles.label}>Uppercuts</div>
+                <div className={styles.label}>Left Hooks</div>
+                <div>0</div>
+                <div className={styles.label}>Right Hooks</div>
+                <div>0</div>
+              </Col>
+              <Col className={styles.stat}>
+                <div className={styles.label}>Left Uppercuts</div>
+                <div>0</div>
+                <div className={styles.label}>Right Uppercuts</div>
+                <div>0</div>
+              </Col>
+              <Col className={styles.stat}>
+                <div className={styles.label}>Left Body Hooks</div>
+                <div>0</div>
+                <div className={styles.label}>Right Body Hooks</div>
                 <div>0</div>
               </Col>
             </Row>
