@@ -14,6 +14,7 @@ import {
   DropdownItem
 } from "reactstrap";
 import { NavLink, Link } from "react-router-dom";
+
 import { logout } from "../../store/actions/user";
 
 import styles from "./Header.module.css";
@@ -71,9 +72,7 @@ export class Header extends Component {
               </NavItem>
               <NavItem className={styles.menuItem}>
                 {this.props.isAuth && (
-                  <NavLink to="/workouts/pastWorkouts">
-                    Past Workouts
-                  </NavLink>
+                  <NavLink to="/workouts/pastWorkouts">Past Workouts</NavLink>
                 )}
               </NavItem>
               {!this.props.isAuth ? unauthLogin : loginDropdown}

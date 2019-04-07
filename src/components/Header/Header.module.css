@@ -1,11 +1,28 @@
+.dropdownItem,
+.dropdownItem > a {
+  color: #333 !important;
+  padding: 5px 0 !important;
+  text-align: center !important;
+}
+
+.dropdownItem:hover,
+.dropdownItem:hover > a {
+  color: white !important;
+  background: #333 !important;
+}
+
+.dropdownItem > a:hover {
+  text-decoration: none;
+}
+
 .headerContainer {
   box-shadow: #333 5px 10px;
 }
 
 .logo {
+  color: white;
   font-family: "Righteous", cursive;
   font-size: 2em;
-  color: white;
 }
 
 .logoLink {
@@ -13,20 +30,13 @@
 }
 
 .logoLink:hover {
-    color: white;
-    text-decoration: none !important;
-}
-
-.menuItems {
-  display: flex;
-  flex: 1;
-  justify-content: space-between;
-  margin-left: 20%;
+  color: white;
+  text-decoration: none !important;
 }
 
 .menuItem {
-  transition: border-bottom 0.25s ease-in-out;
   cursor: pointer;
+  transition: border-bottom 0.25s ease-in-out;
 }
 
 .menuItem a {
@@ -39,10 +49,10 @@
 }
 
 .menuItem:after {
-  padding-top: 10px;
-  display: block;
-  content: "";
   border-bottom: solid 3px #f45342;
+  content: "";
+  display: block;
+  padding-top: 10px;
   transform: scaleX(0);
   transition: transform 250ms ease-in-out;
   transform-origin: 0% 100%;
@@ -53,31 +63,23 @@
   transform-origin: 0% 50%;
 }
 
-.dropdownItem, .dropdownItem > a {
-  color: #333 !important;
-  padding: 5px 0 !important;
-  text-align: center !important;
-}
-
-.dropdownItem:hover, .dropdownItem:hover > a {
-  color: white !important;
-  background: #333 !important;
-}
-
-.dropdownItem > a:hover {
-  text-decoration: none;
+.menuItems {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  margin-left: 20%;
 }
 
 @media only screen and (max-width: 760px) {
-
-  .menuItems {
-    margin-left: 10%;
-  }
-
   .menuItem:after {
     display: none;
   }
+
   .menuItem:hover:after {
     transform: none;
+  }
+
+  .menuItems {
+    margin-left: 10%;
   }
 }

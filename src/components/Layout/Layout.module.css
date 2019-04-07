@@ -1,7 +1,7 @@
 .layoutContainer {
-    background-color: #27292e;
-    color: white;
-    min-height: 100vh;
-    font-family: "Open Sans", sans-serif;
-    padding-bottom: 50px;
+  background-color: #27292e;
+  color: white;
+  font-family: "Open Sans", sans-serif;
+  min-height: 100vh;
+  padding-bottom: 50px;
 }
