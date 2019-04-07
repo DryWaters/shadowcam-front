@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 
 const RestModal = props => (
   <div>
@@ -7,7 +7,7 @@ const RestModal = props => (
       <ModalHeader>Take a rest!</ModalHeader>
       <ModalBody>
         <div>You deserve a break!</div>
-        <div>Take a breather for another {props.restTime} seconds</div>
+        <div>Take a breather for another {props.restTime} seconds!</div>
       </ModalBody>
       <ModalFooter>
         <Button color="primary" onClick={props.stopRest}>

@@ -1,20 +1,27 @@
+.error {
+  color: #f45342;
+  font-size: 2rem;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.loadingSpinner {
+  height: 80px;
+}
+
 .newWorkoutContainer {
   padding-top: 50px;
 }
 
-.form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
 .spacer {
   padding-bottom: 15px;
-}
-
-.timeCategory {
-  font-size: 2rem;
 }
 
 .submitButtonContainer {
@@ -22,13 +29,6 @@
   justify-content: center;
 }
 
-.error {
+.timeCategory {
   font-size: 2rem;
-  color: red;
-  text-align: center;
-  padding-bottom: 10px;
-}
-
-.loadingSpinner {
-  height: 80px;
 }

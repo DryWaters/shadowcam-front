@@ -18,10 +18,14 @@ export const processPose = pose => {
 const normalizePose = pose => {
   const boundingBox = posenet.getBoundingBox(pose.keypoints);
   const normalizedArray = new Array(34);
+
+  // not needed if using compute-cosine-similiarty
   // const confidences = new Array(17);
   // let sumConfidences = 0;
 
   for (let index in pose.keypoints) {
+
+    // not needed if using compute-cosine-similiarty
     // sumConfidences += pose.keypoints[index].score;
     // confidences[index] = pose.keypoints[index].score;
     normalizedArray[index * 2] =
@@ -30,10 +34,12 @@ const normalizePose = pose => {
       pose.keypoints[index].position.y / boundingBox.maxY;
   }
 
+  // not needed if using compute-cosine-similiarty
   // return [...normalizedArray, ...confidences, sumConfidences];
   return normalizedArray;
 };
 
+// not needed if using compute-cosine-similiarty
 // const weightedDistanceMatching = (pose, punchPose) => {
 //   const vector1PoseXY = pose.slice(0, 34);
 //   const vector1Confidences = pose.slice(34, 51);
@@ -52,7 +58,6 @@ const normalizePose = pose => {
 //   return summation1 * summation2;
 // };
 
-// No longer used since using more accurate detection using keypoint weights
 const cosineDistanceMatching = (pose, punchPose) => {
   let cosineSimliary = similarity(pose.slice(0, 34), punchPose.slice(0, 34));
   let distance = 2 * (1 - cosineSimliary);
@@ -64,17 +69,9 @@ const buildVPTree = () => {
 };
 
 const findMostSimliarMatch = pose => {
-  // const top3Matches = vptree.search(pose, 3);
-
   const nearestPose = vptree.search(pose);
-  // console.log(nearestPose[0].d);
-  // console.log(poseData[nearestPose[0].i][34]);
 
   if (nearestPose[0].d < confidenceLevel) {
-    // for (let match of top3Matches) {
-    //   console.log(poseData[match.i][34]);
-    //   console.log(match.d);
-    // }
     return poseData[nearestPose[0].i][34];
   }
 };

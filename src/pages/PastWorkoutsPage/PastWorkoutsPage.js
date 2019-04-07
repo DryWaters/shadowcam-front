@@ -1,12 +1,13 @@
+import moment from "moment";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Container, Row, Col } from "reactstrap";
-import Moment from "moment";
 import Layout from "../../components/Layout/Layout";
+
 import { loading, notLoading } from "../../store/actions/ui";
 import { formatTimeFromSeconds } from "../../utils/utils";
-import loadingSpinner from "../../assets/images/loading-spinner.gif";
 
+import loadingSpinner from "../../assets/images/loading-spinner.gif";
 import styles from "./PastWorkoutsPage.module.css";
 
 export class PastWorkoutsPage extends Component {
@@ -62,6 +63,7 @@ export class PastWorkoutsPage extends Component {
       });
   }
 
+  // Needs to be implemented once get videos from backend
   handleClickVideo = id => {
     // play video in player
   };
@@ -157,7 +159,7 @@ export class PastWorkoutsPage extends Component {
             onClick={() => this.handleClickWorkout(workout.work_id)}
           >
             <Col>{workout.work_id}</Col>
-            <Col>{Moment(workout.recording_date).format("M/D/YY H:m:s a")}</Col>
+            <Col>{moment(workout.recording_date).format("M/D/YY H:m:s a")}</Col>
             <Col>{formatTimeFromSeconds(workout.workout_length)}</Col>
             <Col>{workout.num_of_intervals}</Col>
             <Col>{workout.interval_length}</Col>

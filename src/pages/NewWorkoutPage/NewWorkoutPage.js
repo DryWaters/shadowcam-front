@@ -1,22 +1,23 @@
+import moment from "moment";
 import React, { Component } from "react";
-import {
-  Row,
-  Container,
-  Col,
-  Form,
-  Input,
-  Button,
-  Label,
-  FormGroup
-} from "reactstrap";
 import { connect } from "react-redux";
+import {
+  Button,
+  Col,
+  Container,
+  Form,
+  FormGroup,
+  Input,
+  Label,
+  Row
+} from "reactstrap";
 import { withRouter } from "react-router-dom";
 import Layout from "../../components/Layout/Layout";
+
 import { tryStartWorkout } from "../../store/actions/workout";
-import loadingSpinner from "../../assets/images/loading-spinner.gif";
-import moment from "moment";
 import { formatTimeFromSeconds } from "../../utils/utils";
 
+import loadingSpinner from "../../assets/images/loading-spinner.gif";
 import styles from "./NewWorkoutPage.module.css";
 
 export class NewWorkoutPage extends Component {
@@ -33,6 +34,8 @@ export class NewWorkoutPage extends Component {
     };
   }
 
+  // wait for the value to be updated before
+  // calculating the new updated total time
   handleInputChange = async event => {
     if (!isNaN(parseInt(event.target.value))) {
       await this.setState({
@@ -44,6 +47,7 @@ export class NewWorkoutPage extends Component {
     });
   };
 
+  // calculate the total time
   getTotalTime = () => {
     if (this.state.intervalTimeMin <= 0 && this.state.intervalTimeSec <= 0) {
       return 0;
@@ -56,6 +60,7 @@ export class NewWorkoutPage extends Component {
     );
   };
 
+  // form submission handler
   handleSubmit = event => {
     event.preventDefault();
     const totalTime = this.getTotalTime();
@@ -91,6 +96,7 @@ export class NewWorkoutPage extends Component {
   };
 
   render() {
+    // display spinner if loading
     const shouldDisplayButton = () => {
       if (this.props.isLoading) {
         return (
@@ -207,7 +213,8 @@ export class NewWorkoutPage extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  tryStartWorkout: (workoutData, token) => dispatch(tryStartWorkout(workoutData, token))
+  tryStartWorkout: (workoutData, token) =>
+    dispatch(tryStartWorkout(workoutData, token))
 });
 
 const mapStateToProps = state => ({
@@ -215,6 +222,8 @@ const mapStateToProps = state => ({
   token: state.user.token
 });
 
+// wrap withRouter to get access to history
+// to push to new page
 export default connect(
   mapStateToProps,
   mapDispatchToProps

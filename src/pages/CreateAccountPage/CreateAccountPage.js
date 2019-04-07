@@ -1,19 +1,15 @@
 import React, { Component } from "react";
 import {
+  Button,
   Container,
   Col,
-  Row,
   Form,
-  Label,
+  FormGroup,
   Input,
-  Button,
-  FormGroup
+  Label,
+  Row
 } from "reactstrap";
 import { connect } from "react-redux";
-import { loading, notLoading } from "../../store/actions/ui";
-import { tryLogin } from "../../store/actions/user";
-import loadingSpinner from "../../assets/images/loading-spinner.gif";
-
 import Layout from "../../components/Layout/Layout";
 import validator from "../../utils/validation";
 import {
@@ -24,6 +20,11 @@ import {
   MIN_YEAR,
   MAX_YEAR
 } from "../../utils/constants";
+
+import { loading, notLoading } from "../../store/actions/ui";
+import { tryLogin } from "../../store/actions/user";
+
+import loadingSpinner from "../../assets/images/loading-spinner.gif";
 import styles from "./CreateAccountPage.module.css";
 
 const initialState = {
@@ -135,12 +136,14 @@ export class CreateAccountPage extends Component {
     });
   };
 
+  // handle checkboxes for gender
   handleChecked = event => {
     this.setState({
       gender: event.target.value
     });
   };
 
+  // handle form submission validation
   handleSubmit = event => {
     event.preventDefault();
     this.setState({
@@ -187,7 +190,6 @@ export class CreateAccountPage extends Component {
             password: userData.password
           });
         } else {
-          // need to do something with errors
           this.setState({
             error: true
           });
@@ -201,10 +203,12 @@ export class CreateAccountPage extends Component {
       });
   };
 
+  // clear all input fields
   handleClear = () => {
     this.setState({ ...initialState });
   };
 
+  // verifies that all form fields are valid before submitting
   isValidFields = () =>
     this.state.email.isValid &&
     this.state.password.isValid &&

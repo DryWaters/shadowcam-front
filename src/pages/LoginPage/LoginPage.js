@@ -1,21 +1,22 @@
 import React, { Component } from "react";
 import {
-  Container,
-  Row,
+  Button,
   Col,
+  Container,
   Form,
+  FormGroup,
   Input,
   Label,
-  Button,
-  FormGroup
+  Row
 } from "reactstrap";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+
 import Layout from "../../components/Layout/Layout";
+
 import { tryLogin } from "../../store/actions/user";
 
 import loadingSpinner from "../../assets/images/loading-spinner.gif";
-
 import styles from "./LoginPage.module.css";
 
 export class LoginPage extends Component {
@@ -25,6 +26,7 @@ export class LoginPage extends Component {
     isSubmitted: false
   };
 
+  // handle input change
   handleChange = event => {
     this.setState({
       [event.target.id]: event.target.value,
@@ -32,6 +34,7 @@ export class LoginPage extends Component {
     });
   };
 
+  // handle form submission
   handleSubmit = event => {
     event.preventDefault();
     this.setState({
@@ -115,7 +118,8 @@ export class LoginPage extends Component {
                       }
                     />
                   </Col>
-                  {/* <Label sm="3">
+                  {/* Place for forgot password logic page
+                     <Label sm="3">
                     <Link to="/account/forgot">Forgot Password?</Link>
                   </Label> */}
                 </FormGroup>
@@ -144,8 +148,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  isAuth: state.user.isAuth,
   invalidLogin: state.user.invalidLogin,
+  isAuth: state.user.isAuth,
   isLoading: state.ui.isLoading
 });
 

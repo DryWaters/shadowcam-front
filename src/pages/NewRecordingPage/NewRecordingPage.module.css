@@ -1,5 +1,69 @@
+.canvas {
+  display: none;
+}
+
+.countdown {
+  color: white;
+  font-size: 10rem;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.countdown:after {
+  animation: startRecording 5s linear;
+  content: "";
+  text-shadow: 5px 5px #f45342;
+}
+
 .newRecordingContainer {
   padding-top: 50px;
+}
+
+.recordedVideo {
+  border: solid 3px black;
+  margin: 10px;
+  transform: scaleX(-1);
+}
+
+.recordedVideo:hover {
+  border: solid 3px #f45342;
+  cursor: pointer;
+}
+
+.recordedVideoContainer {
+  position: relative;
+}
+
+.recordedVideosContainer {
+  border-style: solid;
+  border-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0),
+      #f45342,
+      rgba(0, 0, 0, 0)
+    )
+    1;
+  border-width: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  min-height: 100px;
+}
+
+.spacer {
+  padding-bottom: 15px;
+}
+
+.video {
+  display: block;
+  margin: 40px auto;
+  max-width: 640px;
+  position: relative;
+  transform: scaleX(-1);
+  width: 100%;
+  border-radius: 20px;
 }
 
 .videoButtonContainer {
@@ -8,47 +72,10 @@
   margin-bottom: 40px;
 }
 
-.video {
-  position: relative;
-  margin: 40px auto;
-  display: block;
-  max-width: 640px;
-  width: 100%;
-  transform: scaleX(-1);
-}
-
-.countdown {
-  font-size: 10rem;
-  position: absolute;
-  color: white;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
-}
-
-.countdown:after {
-  content: '';
-  text-shadow: 5px 5px #f45342;
-  animation: startRecording 5s linear;
-}
-
-.canvas {
-  display: none;
-}
-
-.notRecording {
-  border-radius: 20px;
-}
-
 .videoRecording {
-  border-radius: 20px;
   box-shadow: 0px 0px 0px 7px #f45342;
   transition: box-shadow 0.6s linear;
   animation: recording 1s ease-in-out infinite;
-}
-
-.recordedVideoContainer {
-  position: relative;
 }
 
 .videoStatus {
@@ -63,39 +90,8 @@
   pointer-events: none;
 }
 
-.recordedVideo {
-  margin: 10px;
-  border: solid 3px black;
-  transform: scaleX(-1);
-}
-
-.recordedVideo:hover {
-  border: solid 3px #f45342;
-  cursor: pointer;
-}
-
-.recordedVideosContainer {
-  display: flex;
-  flex-wrap: wrap;
-  min-height: 100px;
-  border-width: 10px;
-  border-style: solid;
-  border-image: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0),
-      #f45342,
-      rgba(0, 0, 0, 0)
-    )
-    1;
-  margin-bottom: 20px;
-}
-
 .videoControl {
   margin: 0 20px;
-}
-
-.spacer {
-  padding-bottom: 15px;
 }
 
 @keyframes recording {

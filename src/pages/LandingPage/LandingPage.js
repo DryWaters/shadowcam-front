@@ -1,24 +1,26 @@
+import moment from "moment";
 import React, { Component } from "react";
-import { Container, Row, Col, Button } from "reactstrap";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import moment from 'moment';
-import { connect } from 'react-redux';
+import { Button, Container, Col, Row } from "reactstrap";
+import Layout from "../../components/Layout/Layout";
+
 import { loadToken } from "../../store/actions/user";
 
-import styles from "./LandingPage.module.css";
-import Layout from "../../components/Layout/Layout";
+import brainLifting from "../../assets/images/brain-lifting.jpg";
 import screen1 from "../../assets/images/screenshot_1.jpg";
 import screen2 from "../../assets/images/screenshot_2.jpg";
-import brainLifting from "../../assets/images/brain-lifting.jpg";
+import styles from "./LandingPage.module.css";
 import uploadVideo from "../../assets/images/upload-video.jpg";
 
 export class LandingPage extends Component {
   componentDidMount() {
+    // if localstorage is available and has a token saved. Load it
     if (localStorage && localStorage.getItem("token")) {
-      const token = localStorage.getItem('token');
-      const expiresIn = localStorage.getItem('expiresIn');
+      const token = localStorage.getItem("token");
+      const expiresIn = localStorage.getItem("expiresIn");
       if (moment(expiresIn) > moment()) {
-        this.props.loadToken(token, expiresIn)
+        this.props.loadToken(token, expiresIn);
       }
     }
   }
@@ -157,4 +159,7 @@ const mapDispatchToProps = dispatch => ({
   loadToken: (token, expiresIn) => dispatch(loadToken(token, expiresIn))
 });
 
-export default connect(null, mapDispatchToProps)(LandingPage);
+export default connect(
+  null,
+  mapDispatchToProps
+)(LandingPage);

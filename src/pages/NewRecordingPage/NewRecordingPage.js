@@ -1,14 +1,16 @@
+import debounce from "lodash.debounce";
+import moment from "moment";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Container, Row, Col, Button } from "reactstrap";
+
 import Layout from "../../components/Layout/Layout";
 import RestModal from "../../components/RestModal/RestModal";
-
-import Moment from "moment";
-import * as posenet from "@tensorflow-models/posenet";
-import debounce from "lodash.debounce";
-import { processPose } from "../../utils/poseUtils";
 import { formatTimeFromSeconds } from "../../utils/utils";
+
+import * as posenet from "@tensorflow-models/posenet";
+import { processPose } from "../../utils/poseUtils";
+
 import styles from "./NewRecordingPage.module.css";
 
 export class NewRecordingPage extends Component {
@@ -20,9 +22,7 @@ export class NewRecordingPage extends Component {
       poseNet: {
         flipHorizontal: true,
         imageScaleFactor: 0.5,
-        outputStride: 16,
-        minPoseConfidence: 0.1,
-        minPartConfidence: 0.5
+        outputStride: 16
       },
       recorderSetup: false,
       trainingState: "stopped",
@@ -47,6 +47,7 @@ export class NewRecordingPage extends Component {
     };
   }
 
+  // setup webcam and recorder
   async componentDidMount() {
     await this.loadVideo();
     await this.setupRecorder();
@@ -55,6 +56,7 @@ export class NewRecordingPage extends Component {
     });
   }
 
+  // clear recording tracks when leaving page
   componentWillUnmount() {
     this.videoRef.current.pause();
     const tracks = this.currentStream.getTracks();
@@ -72,6 +74,7 @@ export class NewRecordingPage extends Component {
     this.currentVideo = [];
   };
 
+  // start training, start interval counter and start recording
   handleStartTraining = () => {
     const startTimeout = setTimeout(() => {
       const timerInterval = this.startInterval();
@@ -100,6 +103,7 @@ export class NewRecordingPage extends Component {
     });
   };
 
+  // after user has finished rest timer or clicked early cancel rest timer
   handleStopRest = () => {
     this.setState({
       trainingState: "running",
@@ -113,6 +117,7 @@ export class NewRecordingPage extends Component {
     this.processPoses();
   };
 
+  // countdown interval
   startInterval = () => {
     return setInterval(() => {
       if (this.state.totalTimeLeft === 0) {
@@ -122,6 +127,8 @@ export class NewRecordingPage extends Component {
       } else if (this.state.restTimeLeft === 0) {
         this.handleStopRest();
       } else if (this.state.trainingState === "resting") {
+        // if resting do not countdown interval timer,
+        // but need to countdown rest timer
         this.setState({
           totalTimeLeft: this.state.totalTimeLeft - 1,
           restTimeLeft: this.state.restTimeLeft - 1
@@ -135,7 +142,9 @@ export class NewRecordingPage extends Component {
     }, 1000);
   };
 
+  // if user pauses/resume recording
   handlePauseTraining = () => {
+    // if was recording then pause recorder
     if (this.state.recorderSetup && this.mediaRecorder.state === "recording") {
       this.mediaRecorder.pause();
       clearInterval(this.state.timerInterval);
@@ -144,6 +153,7 @@ export class NewRecordingPage extends Component {
         trainingState: "paused"
       });
     } else {
+      // user wants to resume recording, start recording
       const timerInterval = this.startInterval();
       if (this.state.recorderSetup && this.mediaRecorder.state === "inactive") {
         this.mediaRecorder.start();
@@ -159,6 +169,7 @@ export class NewRecordingPage extends Component {
     }
   };
 
+  // user wants to stop training early
   handleStopTraining = () => {
     if (this.state.trainingState === "done") {
       return;
@@ -175,6 +186,8 @@ export class NewRecordingPage extends Component {
     clearTimeout(this.state.startTimeout);
   };
 
+  // when interval has stopped running, start rest
+  // modal
   handleRestTraining = () => {
     if (this.state.recorderSetup) {
       this.mediaRecorder.stop();
@@ -185,10 +198,14 @@ export class NewRecordingPage extends Component {
     });
   };
 
+  // if recording video just push blob of video
+  // data to current video recording
   recordVideo = blob => {
     this.currentVideo.push(blob.data);
   };
 
+  // create video link that includes the screenshot of the last image
+  // of the current video recording
   createVideoLink = () => {
     this.setState(prevState => {
       const currentVideos = [...prevState.videos];
@@ -206,14 +223,20 @@ export class NewRecordingPage extends Component {
         screenshot: this.canvasRef.current
           .toDataURL("image/png")
           .replace("image/png", "image/octet-stream"),
-        timeStamp: new Moment().format(),
+        timeStamp: new moment().format(),
         synced: false,
         fileSize: videoBlob.size
       };
       currentVideos.push(newVideo);
       this.currentVideo = [];
+
+      // if done recording then go ahead
+      // and upload the videos to backend
       if (this.state.trainingState === "done") {
         this.handleUploadVideo(currentVideos);
+
+        // Needs to be called once backend is done.
+        //this.handleUploadStats();
       }
 
       return {
@@ -222,6 +245,7 @@ export class NewRecordingPage extends Component {
     });
   };
 
+  // setup webcam only recording video
   setupCamera = async () => {
     if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
       alert("Newer browser required to use ShadowCam");
@@ -239,6 +263,8 @@ export class NewRecordingPage extends Component {
     });
 
     this.videoRef.current.srcObject = this.currentStream;
+
+    // once video is running return
     return new Promise(resolve => {
       this.videoRef.current.onloadedmetadata = () => {
         resolve(this.videoRef.current);
@@ -253,9 +279,14 @@ export class NewRecordingPage extends Component {
     }
   };
 
+  // open pose logic for processing a frame from the
+  // video element
   processPoses = async () => {
     const net = await posenet.load(0.75);
 
+    // keep the state from updating constantly once it finds
+    // a correct punch pose
+    // May need to be adjusted later
     const debounceUpdateState = debounce(punchType => {
       this.setState(prevState => {
         return {
@@ -288,6 +319,7 @@ export class NewRecordingPage extends Component {
     poseDetectionFrame();
   };
 
+  // play a recorded video on video element
   handleClickPlayRecordedVideo = timeStamp => {
     this.setState({
       videoState: "playing"
@@ -302,6 +334,11 @@ export class NewRecordingPage extends Component {
     this.videoRef.current.play();
   };
 
+  // Upload all videos the backend
+  // and update the synce status to true for
+  // the videos that are synced
+  // Probably will need to add an option to manually
+  // upload a video if unable to sync automatically
   handleUploadVideo = videos => {
     Promise.all(
       videos.map(video =>
@@ -310,6 +347,8 @@ export class NewRecordingPage extends Component {
     ).then(result => this.updateSyncedStatus(result));
   };
 
+  // Update the synced videos status to show
+  // the green check mark on the video
   updateSyncedStatus = responses => {
     const newVideos = this.state.videos.slice();
 
@@ -324,13 +363,14 @@ export class NewRecordingPage extends Component {
     });
   };
 
+  // create an fetch request for each video
   createUploadRequest = video => {
     let url;
 
     const formData = new FormData();
     formData.append("work_id", this.props.work_id);
     formData.append("file_size", video.fileSize);
-    formData.append("screenshot", video.screenshot)
+    formData.append("screenshot", video.screenshot);
     formData.append("video", video.blob);
 
     if (process.env.REACT_APP_TEST) {
@@ -349,16 +389,20 @@ export class NewRecordingPage extends Component {
     });
   };
 
+  // NEEDS implemented once backend has the endpoint
   handleUploadStats = () => {
     // fetch POST upload stats
   };
 
   render() {
+    // Do now show recorder controls if recorder is not
+    // setup
     const displayRecordControls = () => {
       if (!this.state.recorderSetup) {
         return;
       }
 
+      // if training has not started yet, allow user to start trying
       if (this.state.trainingState === "stopped") {
         return (
           <Col className={styles.videoButtonContainer}>
@@ -370,6 +414,8 @@ export class NewRecordingPage extends Component {
             </Button>
           </Col>
         );
+        // else if the training is paused or running allow the user
+        // to resume/pause or stop the training
       } else if (
         this.state.trainingState === "running" ||
         this.state.trainingState === "paused"
@@ -395,6 +441,8 @@ export class NewRecordingPage extends Component {
       }
     };
 
+    // display the recorded videos after the
+    // training is complete
     const displayRecordedVideos = () => {
       return this.state.videos.map(video => {
         return (
@@ -433,7 +481,7 @@ export class NewRecordingPage extends Component {
                   this.state.recorderSetup &&
                   this.mediaRecorder.state === "recording"
                     ? styles.videoRecording
-                    : styles.notRecording
+                    : ""
                 }`}
               />
               <div
@@ -515,12 +563,12 @@ export class NewRecordingPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  workout_length: state.workout.workout_length,
-  num_of_intervals: state.workout.num_of_intervals,
   interval_length: state.workout.interval_length,
-  work_id: state.workout.work_id,
-  rest_time: state.workout.rest_time,
   isLoading: state.ui.isLoading,
+  num_of_intervals: state.workout.num_of_intervals,
+  rest_time: state.workout.rest_time,
+  work_id: state.workout.work_id,
+  workout_length: state.workout.workout_length,
   token: state.user.token
 });
 

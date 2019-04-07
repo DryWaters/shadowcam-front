@@ -52,6 +52,8 @@ export const tryStartWorkout = (workoutData, token) => {
   };
 };
 
+// save the workout data that will be used by the
+// new recording page
 export const saveWorkoutData = workoutData => {
   return dispatch => {
     return dispatch({

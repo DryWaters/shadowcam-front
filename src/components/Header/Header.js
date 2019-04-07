@@ -1,24 +1,24 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import {
-  Container,
-  Collapse,
-  Navbar,
-  NavbarToggler,
   Button,
-  Nav,
-  NavItem,
-  UncontrolledDropdown,
+  Collapse,
+  Container,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
+  Nav,
+  Navbar,
+  NavbarToggler,
+  NavItem,
+  UncontrolledDropdown
 } from "reactstrap";
-import { NavLink, Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import { logout } from "../../store/actions/user";
 
-import styles from "./Header.module.css";
 import logo from "../../assets/images/boxer-header.png";
+import styles from "./Header.module.css";
 
 export class Header extends Component {
   state = {

@@ -39,6 +39,7 @@ export const tryRegister = userData => {
   };
 };
 
+// load token into state store
 export const loadToken = (token, expiresIn) => {
   return dispatch => {
     dispatch({
@@ -51,6 +52,7 @@ export const loadToken = (token, expiresIn) => {
   };
 };
 
+// Try and login to application
 export const tryLogin = authData => {
   return dispatch => {
     let url;
@@ -77,6 +79,8 @@ export const tryLogin = authData => {
       .then(res => res.json())
       .then(parsedRes => {
         if (parsedRes.status === "ok") {
+
+          // save the token to storage to lookup later
           saveTokenToStorage(
             parsedRes.message.token,
             parsedRes.message.expiresIn
@@ -90,6 +94,8 @@ export const tryLogin = authData => {
           });
           return dispatch(notLoading());
         } else {
+
+          // do something with error?
           return dispatch(notLoading());
         }
       })
@@ -102,6 +108,7 @@ export const tryLogin = authData => {
   };
 };
 
+// save the token to local storage
 const saveTokenToStorage = (token, expiresIn) => {
   if (localStorage) {
     localStorage.setItem("token", token);
@@ -117,7 +124,7 @@ export const logout = () => {
       type: "DELETE_TOKEN"
     });
 
-    // then return action type LOGOUT
+    // then logout the user
     return dispatch({
       type: LOGOUT
     });

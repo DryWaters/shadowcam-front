@@ -1,27 +1,49 @@
+.label {
+  margin: 0px 20px;
+}
+
+.loadingSpinner {
+  height: 100%;
+}
+
 .pastWorkoutsContainer {
   padding-top: 50px;
 }
 
-.videoContainer {
+.recordedVideo {
+  border: solid 3px black;
+  margin: 10px;
+  transform: scaleX(-1);
+}
+
+.recordedVideo:hover {
+  border: solid 3px #f45342;
+  cursor: pointer;
+}
+
+.recordedVideosContainer {
+  border-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0),
+      #f45342,
+      rgba(0, 0, 0, 0)
+    )
+    1;
+  border-style: solid;
+  border-width: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  min-height: 100px;
+}
+
+.screenShot {
+  height: 75px;
+}
+
+.spinnerContainer {
   display: flex;
   justify-content: center;
-  margin-bottom: 40px;
-}
-
-.video {
-  width: 640px;
-  height: 480px;
-}
-
-.video:focus {
-  outline: none;
-}
-
-.statContainer {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  margin-bottom: 30px;
 }
 
 .stat {
@@ -30,64 +52,42 @@
   justify-content: center;
 }
 
-.label {
-  margin: 0px 20px;
+.statContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+  text-align: center;
 }
 
-.screenShot {
-  height: 75px;
+.video {
+  height: 480px;
+  width: 640px;
+}
+
+.video:focus {
+  outline: none;
+}
+
+.videoContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
 }
 
 .workout {
-  padding: 10px 0px;
-  margin-bottom: 40px;
   border: solid 3px black;
+  margin-bottom: 40px;
+  padding: 10px 0px;
   text-align: center;
 }
 
 .workout:hover {
+  background-color: #555;
   border: solid 3px #f45342;
   cursor: pointer;
-  background-color: #555;
 }
 
 .workoutsHeader {
   padding-bottom: 20px;
   text-align: center;
-}
-
-.spinnerContainer {
-  display: flex;
-  justify-content: center;
-}
-
-.loadingSpinner {
-  height: 100%;
-}
-
-.recordedVideosContainer {
-  display: flex;
-  flex-wrap: wrap;
-  min-height: 100px;
-  border-width: 10px;
-  border-style: solid;
-  border-image: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0),
-      #f45342,
-      rgba(0, 0, 0, 0)
-    )
-    1;
-  margin-bottom: 20px;
-}
-
-.recordedVideo {
-  margin: 10px;
-  border: solid 3px black;
-  transform: scaleX(-1);
-}
-
-.recordedVideo:hover {
-  border: solid 3px #f45342;
-  cursor: pointer;
 }
