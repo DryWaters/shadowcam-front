@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { Input } from "reactstrap";
+import { Form, Input } from "reactstrap";
 import { NewWorkoutPage } from "../../../pages/NewWorkoutPage/NewWorkoutPage";
 
 describe("NewWorkoutPage render", () => {
@@ -142,5 +142,78 @@ describe("Should return the correct total time", () => {
       .simulate("change", event);
 
     expect(wrapper.state("totalTime")).toEqual(300);
+  });
+
+  it("Should display correct total time on update", async () => {
+    const eventMin = { target: { id: "intervalTimeMin", value: 5 } };
+    const eventSec = { target: { id: "intervalTimeSec", value: 30 } };
+    const wrapper = shallow(<NewWorkoutPage />);
+
+    await wrapper
+      .find(Input)
+      .at(2)
+      .simulate("change", eventMin);
+
+    await wrapper
+      .find(Input)
+      .at(2)
+      .simulate("change", eventSec);
+
+    expect(wrapper.state("totalTime")).toEqual(330);
+  });
+});
+
+describe("Tests for form submission", () => {
+  it("Should update app state with workout data", () => {
+    const event = { preventDefault: function() {} };
+    const reduxSpy = jest.fn(() => {
+      return Promise.resolve("ok");
+    });
+    const wrapper = shallow(
+      <NewWorkoutPage tryStartWorkout={reduxSpy} token={"token"} />
+    );
+    const instance = wrapper.instance();
+    const spy = jest.spyOn(instance, "handleSubmit");
+
+    wrapper.setState({
+      numberInterval: 1,
+      intervalTimeMin: 1,
+      intervalTimeSec: 0,
+      restTimeMin: 0,
+      restTimeSec: 30
+    });
+
+    wrapper.find(Form).simulate("submit", event);
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(reduxSpy).toHaveBeenCalledWith(
+      {
+        interval_length: 60,
+        num_of_intervals: 1,
+        recording_date: expect.any(String),
+        rest_time: 30,
+        workout_length: 60
+      },
+      "token"
+    );
+  });
+
+  it("should set state of error message if total workout time is 0", () => {
+    const event = { preventDefault: function() {} };
+    const wrapper = shallow(<NewWorkoutPage />);
+    wrapper.find(Form).simulate("submit", event);
+
+    expect(wrapper.state("errorMessage")).toEqual(
+      "Total workout time must be greater than 0"
+    );
+  });
+
+  it("should display error message if total workout time is 0 and submitted", () => {
+    const event = { preventDefault: function() {} };
+    const wrapper = shallow(<NewWorkoutPage />);
+    wrapper.find(Form).simulate("submit", event);
+
+    expect(
+      wrapper.contains("Total workout time must be greater than 0")
+    ).toEqual(true);
   });
 });
