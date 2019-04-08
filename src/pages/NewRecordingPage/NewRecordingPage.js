@@ -56,9 +56,8 @@ export class NewRecordingPage extends Component {
         recorderSetup: true
       });
     } catch (e) {
-      console.error('Unable to setup camera');
+      console.error("Unable to setup camera");
     }
-
   }
 
   // clear recording tracks when leaving page
@@ -239,9 +238,7 @@ export class NewRecordingPage extends Component {
       // and upload the videos to backend
       if (this.state.trainingState === "done") {
         this.handleUploadVideo(currentVideos);
-
-        // Needs to be called once backend is done.
-        //this.handleUploadStats();
+        this.handleUploadStats();
       }
 
       return {
@@ -394,9 +391,38 @@ export class NewRecordingPage extends Component {
     });
   };
 
-  // NEEDS implemented once backend has the endpoint
   handleUploadStats = () => {
-    // fetch POST upload stats
+    let url;
+
+    if (process.env.REACT_APP_TEST) {
+      url = "http://localhost:3000/stats";
+    } else {
+      url = `https://shadowcam-back.herokuapp.com/stats`;
+    }
+
+    const statData = {
+      work_id: this.props.work_id,
+      jab: this.state.jab,
+      left_body_hook: this.state.leftBodyHook,
+      left_hook: this.state.leftHook,
+      left_uppercut: this.state.leftUppercut,
+      power_rear: this.state.powerRear,
+      right_body_hook: this.state.rightBodyHook,
+      right_hook: this.state.rightHook,
+      right_uppercut: this.state.rightUppercut
+    };
+
+    return fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${this.props.token}`
+      },
+      mode: "cors",
+      body: JSON.stringify(statData)
+    })
+      .then(result => result.json())
+      .then(parsedRes => console.log(parsedRes));
   };
 
   render() {

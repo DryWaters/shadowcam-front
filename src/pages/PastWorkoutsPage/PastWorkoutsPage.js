@@ -13,6 +13,7 @@ import styles from "./PastWorkoutsPage.module.css";
 export class PastWorkoutsPage extends Component {
   state = {
     currentWorkout: null,
+    currentVideo: null,
     workouts: null
   };
 
@@ -63,9 +64,10 @@ export class PastWorkoutsPage extends Component {
       });
   }
 
-  // Needs to be implemented once get videos from backend
   handleClickVideo = id => {
-    // play video in player
+    this.setState({
+      currentVideo: `http://localhost:3000/videos/${id}.webm`
+    });
   };
 
   handleClickWorkout = id => {
@@ -94,15 +96,26 @@ export class PastWorkoutsPage extends Component {
       .then(parsedRes => {
         this.props.notLoading();
         if (parsedRes.status === "ok") {
+          const { stats } = parsedRes.message;
+          stats.total_punches =
+            stats.jab +
+            stats.left_body_hook +
+            stats.left_hook +
+            stats.left_uppercut +
+            stats.power_rear +
+            stats.right_body_hook +
+            stats.right_hook +
+            stats.right_uppercut;
+          const currentWorkout = parsedRes.message;
+          currentWorkout.stats = stats;
           this.setState({
-            currentWorkout: parsedRes.workout
+            currentWorkout
           });
         } else {
           return Promise.reject(parsedRes);
         }
       })
       .catch(error => {
-        console.log(error);
         this.props.notLoading();
         if (error === "unathorized") {
           alert("Please log back in!");
@@ -126,7 +139,7 @@ export class PastWorkoutsPage extends Component {
                 return (
                   <div className={styles.recordedVideo} key={video.video_id}>
                     <img
-                      src={video.screenShot}
+                      src={video.screenshot}
                       alt="Recorded Video"
                       onClick={() => this.handleClickVideo(video.video_id)}
                     />
@@ -158,7 +171,6 @@ export class PastWorkoutsPage extends Component {
             key={workout.work_id}
             onClick={() => this.handleClickWorkout(workout.work_id)}
           >
-            <Col>{workout.work_id}</Col>
             <Col>{moment(workout.recording_date).format("M/D/YY H:m:s a")}</Col>
             <Col>{formatTimeFromSeconds(workout.workout_length)}</Col>
             <Col>{workout.num_of_intervals}</Col>
@@ -185,37 +197,69 @@ export class PastWorkoutsPage extends Component {
               </Col>
               <Col className={styles.stat}>
                 <div className={styles.label}>Total Time</div>
-                <div>0:00</div>
+                <div>
+                  {this.state.currentWorkout &&
+                    formatTimeFromSeconds(
+                      this.state.currentWorkout.workout.workout_length
+                    )}
+                </div>
               </Col>
               <Col className={styles.stat}>
                 <div className={styles.label}>Total Punches</div>
-                <div>0</div>
+                <div>
+                  {this.state.currentWorkout &&
+                    this.state.currentWorkout.stats.total_punches}
+                </div>
               </Col>
               <Col className={styles.stat}>
                 <div className={styles.label}>Jabs</div>
-                <div>0</div>
+                <div>
+                  {this.state.currentWorkout &&
+                    this.state.currentWorkout.stats.jab}
+                </div>
               </Col>
               <Col className={styles.stat}>
                 <div className={styles.label}>Power Rear Punches</div>
-                <div>0</div>
+                <div>
+                  {this.state.currentWorkout &&
+                    this.state.currentWorkout.stats.power_rear}
+                </div>
               </Col>
               <Col className={styles.stat}>
                 <div className={styles.label}>Left Hooks</div>
-                <div>0</div>
+                <div>
+                  {this.state.currentWorkout &&
+                    this.state.currentWorkout.stats.left_hook}
+                </div>
                 <div className={styles.label}>Right Hooks</div>
-                <div>0</div>
+                <div>
+                  {this.state.currentWorkout &&
+                    this.state.currentWorkout.stats.right_hook}
+                </div>
               </Col>
               <Col className={styles.stat}>
                 <div className={styles.label}>Left Uppercuts</div>
-                <div>0</div>
+                <div>
+                  {this.state.currentWorkout &&
+                    this.state.currentWorkout.stats.left_uppercut}
+                </div>
                 <div className={styles.label}>Right Uppercuts</div>
-                <div>0</div>
+                <div>
+                  {this.state.currentWorkout &&
+                    this.state.currentWorkout.stats.right_uppercut}
+                </div>
               </Col>
               <Col className={styles.stat}>
                 <div className={styles.label}>Left Body Hooks</div>
-                <div>0</div>
+                <div>
+                  {this.state.currentWorkout &&
+                    this.state.currentWorkout.stats.left_body_hook}
+                </div>
                 <div className={styles.label}>Right Body Hooks</div>
-                <div>0</div>
+                <div>
+                  {this.state.currentWorkout &&
+                    this.state.currentWorkout.stats.right_body_hook}
+                </div>
               </Col>
             </Row>
           </Row>
@@ -224,7 +268,6 @@ export class PastWorkoutsPage extends Component {
             <h2>Workouts</h2>
           </Row>
           <Row className={styles.workoutsHeader}>
-            <Col>ID</Col>
             <Col>Date</Col>
             <Col>Length</Col>
             <Col>Number of Intervals</Col>
