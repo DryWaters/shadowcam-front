@@ -37,11 +37,36 @@ export class NewWorkoutPage extends Component {
   // wait for the value to be updated before
   // calculating the new updated total time
   handleInputChange = async event => {
-    if (!isNaN(parseInt(event.target.value))) {
-      await this.setState({
-        [event.target.id]: parseInt(event.target.value)
-      });
+    let intValue;
+
+    // if not an int value don't update
+    if (isNaN(parseInt(event.target.value))) {
+      return;
+    } else {
+      intValue = parseInt(event.target.value);
     }
+
+    // if user is updating seconds greater than
+    // 59 then don't update either or negative values
+    if (
+      event.target.id === "intervalTimeSec" ||
+      event.target.id === "restTimeSec"
+    ) {
+      if (intValue > 59 || intValue < 0) {
+        return;
+      }
+    } else {
+      if (intValue < 0) {
+        return;
+      }
+    }
+
+    // wait for state to update to correct value
+    // before calculating totalTime
+    await this.setState({
+      [event.target.id]: parseInt(event.target.value)
+    });
+
     this.setState({
       totalTime: this.getTotalTime()
     });
