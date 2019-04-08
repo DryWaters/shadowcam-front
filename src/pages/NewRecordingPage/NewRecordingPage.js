@@ -49,11 +49,16 @@ export class NewRecordingPage extends Component {
 
   // setup webcam and recorder
   async componentDidMount() {
-    await this.loadVideo();
-    await this.setupRecorder();
-    this.setState({
-      recorderSetup: true
-    });
+    try {
+      await this.loadVideo();
+      await this.setupRecorder();
+      this.setState({
+        recorderSetup: true
+      });
+    } catch (e) {
+      console.error('Unable to setup camera');
+    }
+
   }
 
   // clear recording tracks when leaving page
