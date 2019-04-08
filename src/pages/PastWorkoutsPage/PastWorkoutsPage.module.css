@@ -62,6 +62,7 @@
 .video {
   height: 480px;
   width: 640px;
+  user-select: none;
 }
 
 .video:focus {

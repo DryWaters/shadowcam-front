@@ -56,7 +56,7 @@ export class NewRecordingPage extends Component {
         recorderSetup: true
       });
     } catch (e) {
-      console.error("Unable to setup camera");
+      console.error("Unable to setup camera with error " + e);
     }
   }
 
@@ -71,8 +71,9 @@ export class NewRecordingPage extends Component {
 
   setupRecorder = async () => {
     this.mediaRecorder = await new MediaRecorder(this.currentStream, {
-      mimeType: "video/webm; codecs=vp9"
+      mimeType: "video/webm; codecs=vp8"
     });
+
     this.mediaRecorder.ondataavailable = this.recordVideo;
     this.mediaRecorder.onstop = this.createVideoLink;
     this.currentVideo = [];
