@@ -129,7 +129,7 @@ export class NewRecordingPage extends Component {
         this.handleStopTraining();
       } else if (this.state.intervalTimeLeft === 0) {
         this.handleRestTraining();
-      } else if (this.state.restTimeLeft === 0) {
+      } else if (this.state.restTimeLeft === 0 && this.props.rest_time !== 0) {
         this.handleStopRest();
       } else if (this.state.trainingState === "resting") {
         // if resting do not countdown interval timer,
@@ -423,7 +423,11 @@ export class NewRecordingPage extends Component {
       body: JSON.stringify(statData)
     })
       .then(result => result.json())
-      .then(parsedRes => console.log(parsedRes));
+      .then(parsedRes => {
+        if (parsedRes.status === "error") {
+          alert("Unable to save stats to database, please check connection");
+        }
+      });
   };
 
   render() {
