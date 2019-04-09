@@ -43,6 +43,7 @@ ShallowWrapper {
             <video
               className="video"
               controls={true}
+              src={null}
             />
           </Col>
           <Row
@@ -83,9 +84,7 @@ ShallowWrapper {
               >
                 Total Time
               </div>
-              <div>
-                0:00
-              </div>
+              <div />
             </Col>
             <Col
               className="stat"
@@ -105,9 +104,7 @@ ShallowWrapper {
               >
                 Total Punches
               </div>
-              <div>
-                0
-              </div>
+              <div />
             </Col>
             <Col
               className="stat"
@@ -127,9 +124,7 @@ ShallowWrapper {
               >
                 Jabs
               </div>
-              <div>
-                0
-              </div>
+              <div />
             </Col>
             <Col
               className="stat"
@@ -149,9 +144,7 @@ ShallowWrapper {
               >
                 Power Rear Punches
               </div>
-              <div>
-                0
-              </div>
+              <div />
             </Col>
             <Col
               className="stat"
@@ -171,17 +164,13 @@ ShallowWrapper {
               >
                 Left Hooks
               </div>
-              <div>
-                0
-              </div>
+              <div />
               <div
                 className="label"
               >
                 Right Hooks
               </div>
-              <div>
-                0
-              </div>
+              <div />
             </Col>
             <Col
               className="stat"
@@ -201,17 +190,13 @@ ShallowWrapper {
               >
                 Left Uppercuts
               </div>
-              <div>
-                0
-              </div>
+              <div />
               <div
                 className="label"
               >
                 Right Uppercuts
               </div>
-              <div>
-                0
-              </div>
+              <div />
             </Col>
             <Col
               className="stat"
@@ -231,17 +216,13 @@ ShallowWrapper {
               >
                 Left Body Hooks
               </div>
-              <div>
-                0
-              </div>
+              <div />
               <div
                 className="label"
               >
                 Right Body Hooks
               </div>
-              <div>
-                0
-              </div>
+              <div />
             </Col>
           </Row>
         </Row>
@@ -257,20 +238,6 @@ ShallowWrapper {
           className="workoutsHeader"
           tag="div"
         >
-          <Col
-            tag="div"
-            widths={
-              Array [
-                "xs",
-                "sm",
-                "md",
-                "lg",
-                "xl",
-              ]
-            }
-          >
-            ID
-          </Col>
           <Col
             tag="div"
             widths={
@@ -366,6 +333,7 @@ ShallowWrapper {
               <video
                 className="video"
                 controls={true}
+                src={null}
               />
             </Col>
             <Row
@@ -406,9 +374,7 @@ ShallowWrapper {
                 >
                   Total Time
                 </div>
-                <div>
-                  0:00
-                </div>
+                <div />
               </Col>
               <Col
                 className="stat"
@@ -428,9 +394,7 @@ ShallowWrapper {
                 >
                   Total Punches
                 </div>
-                <div>
-                  0
-                </div>
+                <div />
               </Col>
               <Col
                 className="stat"
@@ -450,9 +414,7 @@ ShallowWrapper {
                 >
                   Jabs
                 </div>
-                <div>
-                  0
-                </div>
+                <div />
               </Col>
               <Col
                 className="stat"
@@ -472,9 +434,7 @@ ShallowWrapper {
                 >
                   Power Rear Punches
                 </div>
-                <div>
-                  0
-                </div>
+                <div />
               </Col>
               <Col
                 className="stat"
@@ -494,17 +454,13 @@ ShallowWrapper {
                 >
                   Left Hooks
                 </div>
-                <div>
-                  0
-                </div>
+                <div />
                 <div
                   className="label"
                 >
                   Right Hooks
                 </div>
-                <div>
-                  0
-                </div>
+                <div />
               </Col>
               <Col
                 className="stat"
@@ -524,17 +480,13 @@ ShallowWrapper {
                 >
                   Left Uppercuts
                 </div>
-                <div>
-                  0
-                </div>
+                <div />
                 <div
                   className="label"
                 >
                   Right Uppercuts
                 </div>
-                <div>
-                  0
-                </div>
+                <div />
               </Col>
               <Col
                 className="stat"
@@ -554,17 +506,13 @@ ShallowWrapper {
                 >
                   Left Body Hooks
                 </div>
-                <div>
-                  0
-                </div>
+                <div />
                 <div
                   className="label"
                 >
                   Right Body Hooks
                 </div>
-                <div>
-                  0
-                </div>
+                <div />
               </Col>
             </Row>
           </Row>,
@@ -581,20 +529,6 @@ ShallowWrapper {
             className="workoutsHeader"
             tag="div"
           >
-            <Col
-              tag="div"
-              widths={
-                Array [
-                  "xs",
-                  "sm",
-                  "md",
-                  "lg",
-                  "xl",
-                ]
-              }
-            >
-              ID
-            </Col>
             <Col
               tag="div"
               widths={
@@ -690,6 +624,7 @@ ShallowWrapper {
                 <video
                   className="video"
                   controls={true}
+                  src={null}
                 />
               </Col>,
               <Row
@@ -730,9 +665,7 @@ ShallowWrapper {
                   >
                     Total Time
                   </div>
-                  <div>
-                    0:00
-                  </div>
+                  <div />
                 </Col>
                 <Col
                   className="stat"
@@ -752,9 +685,7 @@ ShallowWrapper {
                   >
                     Total Punches
                   </div>
-                  <div>
-                    0
-                  </div>
+                  <div />
                 </Col>
                 <Col
                   className="stat"
@@ -774,9 +705,7 @@ ShallowWrapper {
                   >
                     Jabs
                   </div>
-                  <div>
-                    0
-                  </div>
+                  <div />
                 </Col>
                 <Col
                   className="stat"
@@ -796,9 +725,7 @@ ShallowWrapper {
                   >
                     Power Rear Punches
                   </div>
-                  <div>
-                    0
-                  </div>
+                  <div />
                 </Col>
                 <Col
                   className="stat"
@@ -818,17 +745,13 @@ ShallowWrapper {
                   >
                     Left Hooks
                   </div>
-                  <div>
-                    0
-                  </div>
+                  <div />
                   <div
                     className="label"
                   >
                     Right Hooks
                   </div>
-                  <div>
-                    0
-                  </div>
+                  <div />
                 </Col>
                 <Col
                   className="stat"
@@ -848,17 +771,13 @@ ShallowWrapper {
                   >
                     Left Uppercuts
                   </div>
-                  <div>
-                    0
-                  </div>
+                  <div />
                   <div
                     className="label"
                   >
                     Right Uppercuts
                   </div>
-                  <div>
-                    0
-                  </div>
+                  <div />
                 </Col>
                 <Col
                   className="stat"
@@ -878,17 +797,13 @@ ShallowWrapper {
                   >
                     Left Body Hooks
                   </div>
-                  <div>
-                    0
-                  </div>
+                  <div />
                   <div
                     className="label"
                   >
                     Right Body Hooks
                   </div>
-                  <div>
-                    0
-                  </div>
+                  <div />
                 </Col>
               </Row>,
             ],
@@ -904,6 +819,7 @@ ShallowWrapper {
                 "children": <video
                   className="video"
                   controls={true}
+                  src={null}
                 />,
                 "className": "videoContainer",
                 "tag": "div",
@@ -923,7 +839,7 @@ ShallowWrapper {
                 "props": Object {
                   "className": "video",
                   "controls": true,
-                  "src": undefined,
+                  "src": null,
                 },
                 "ref": null,
                 "rendered": null,
@@ -971,9 +887,7 @@ ShallowWrapper {
                     >
                       Total Time
                     </div>
-                    <div>
-                      0:00
-                    </div>
+                    <div />
                   </Col>,
                   <Col
                     className="stat"
@@ -993,9 +907,7 @@ ShallowWrapper {
                     >
                       Total Punches
                     </div>
-                    <div>
-                      0
-                    </div>
+                    <div />
                   </Col>,
                   <Col
                     className="stat"
@@ -1015,9 +927,7 @@ ShallowWrapper {
                     >
                       Jabs
                     </div>
-                    <div>
-                      0
-                    </div>
+                    <div />
                   </Col>,
                   <Col
                     className="stat"
@@ -1037,9 +947,7 @@ ShallowWrapper {
                     >
                       Power Rear Punches
                     </div>
-                    <div>
-                      0
-                    </div>
+                    <div />
                   </Col>,
                   <Col
                     className="stat"
@@ -1059,17 +967,13 @@ ShallowWrapper {
                     >
                       Left Hooks
                     </div>
-                    <div>
-                      0
-                    </div>
+                    <div />
                     <div
                       className="label"
                     >
                       Right Hooks
                     </div>
-                    <div>
-                      0
-                    </div>
+                    <div />
                   </Col>,
                   <Col
                     className="stat"
@@ -1089,17 +993,13 @@ ShallowWrapper {
                     >
                       Left Uppercuts
                     </div>
-                    <div>
-                      0
-                    </div>
+                    <div />
                     <div
                       className="label"
                     >
                       Right Uppercuts
                     </div>
-                    <div>
-                      0
-                    </div>
+                    <div />
                   </Col>,
                   <Col
                     className="stat"
@@ -1119,17 +1019,13 @@ ShallowWrapper {
                     >
                       Left Body Hooks
                     </div>
-                    <div>
-                      0
-                    </div>
+                    <div />
                     <div
                       className="label"
                     >
                       Right Body Hooks
                     </div>
-                    <div>
-                      0
-                    </div>
+                    <div />
                   </Col>,
                 ],
                 "className": "statContainer",
@@ -1179,9 +1075,7 @@ ShallowWrapper {
                       >
                         Total Time
                       </div>,
-                      <div>
-                        0:00
-                      </div>,
+                      <div />,
                     ],
                     "className": "stat",
                     "tag": "div",
@@ -1212,10 +1106,10 @@ ShallowWrapper {
                       "key": undefined,
                       "nodeType": "host",
                       "props": Object {
-                        "children": "0:00",
+                        "children": null,
                       },
                       "ref": null,
-                      "rendered": "0:00",
+                      "rendered": null,
                       "type": "div",
                     },
                   ],
@@ -1232,9 +1126,7 @@ ShallowWrapper {
                       >
                         Total Punches
                       </div>,
-                      <div>
-                        0
-                      </div>,
+                      <div />,
                     ],
                     "className": "stat",
                     "tag": "div",
@@ -1265,10 +1157,10 @@ ShallowWrapper {
                       "key": undefined,
                       "nodeType": "host",
                       "props": Object {
-                        "children": "0",
+                        "children": null,
                       },
                       "ref": null,
-                      "rendered": "0",
+                      "rendered": null,
                       "type": "div",
                     },
                   ],
@@ -1285,9 +1177,7 @@ ShallowWrapper {
                       >
                         Jabs
                       </div>,
-                      <div>
-                        0
-                      </div>,
+                      <div />,
                     ],
                     "className": "stat",
                     "tag": "div",
@@ -1318,10 +1208,10 @@ ShallowWrapper {
                       "key": undefined,
                       "nodeType": "host",
                       "props": Object {
-                        "children": "0",
+                        "children": null,
                       },
                       "ref": null,
-                      "rendered": "0",
+                      "rendered": null,
                       "type": "div",
                     },
                   ],
@@ -1338,9 +1228,7 @@ ShallowWrapper {
                       >
                         Power Rear Punches
                       </div>,
-                      <div>
-                        0
-                      </div>,
+                      <div />,
                     ],
                     "className": "stat",
                     "tag": "div",
@@ -1371,10 +1259,10 @@ ShallowWrapper {
                       "key": undefined,
                       "nodeType": "host",
                       "props": Object {
-                        "children": "0",
+                        "children": null,
                       },
                       "ref": null,
-                      "rendered": "0",
+                      "rendered": null,
                       "type": "div",
                     },
                   ],
@@ -1391,17 +1279,13 @@ ShallowWrapper {
                       >
                         Left Hooks
                       </div>,
-                      <div>
-                        0
-                      </div>,
+                      <div />,
                       <div
                         className="label"
                       >
                         Right Hooks
                       </div>,
-                      <div>
-                        0
-                      </div>,
+                      <div />,
                     ],
                     "className": "stat",
                     "tag": "div",
@@ -1432,10 +1316,10 @@ ShallowWrapper {
                       "key": undefined,
                       "nodeType": "host",
                       "props": Object {
-                        "children": "0",
+                        "children": null,
                       },
                       "ref": null,
-                      "rendered": "0",
+                      "rendered": null,
                       "type": "div",
                     },
                     Object {
@@ -1455,10 +1339,10 @@ ShallowWrapper {
                       "key": undefined,
                       "nodeType": "host",
                       "props": Object {
-                        "children": "0",
+                        "children": null,
                       },
                       "ref": null,
-                      "rendered": "0",
+                      "rendered": null,
                       "type": "div",
                     },
                   ],
@@ -1475,17 +1359,13 @@ ShallowWrapper {
                       >
                         Left Uppercuts
                       </div>,
-                      <div>
-                        0
-                      </div>,
+                      <div />,
                       <div
                         className="label"
                       >
                         Right Uppercuts
                       </div>,
-                      <div>
-                        0
-                      </div>,
+                      <div />,
                     ],
                     "className": "stat",
                     "tag": "div",
@@ -1516,10 +1396,10 @@ ShallowWrapper {
                       "key": undefined,
                       "nodeType": "host",
                       "props": Object {
-                        "children": "0",
+                        "children": null,
                       },
                       "ref": null,
-                      "rendered": "0",
+                      "rendered": null,
                       "type": "div",
                     },
                     Object {
@@ -1539,10 +1419,10 @@ ShallowWrapper {
                       "key": undefined,
                       "nodeType": "host",
                       "props": Object {
-                        "children": "0",
+                        "children": null,
                       },
                       "ref": null,
-                      "rendered": "0",
+                      "rendered": null,
                       "type": "div",
                     },
                   ],
@@ -1559,17 +1439,13 @@ ShallowWrapper {
                       >
                         Left Body Hooks
                       </div>,
-                      <div>
-                        0
-                      </div>,
+                      <div />,
                       <div
                         className="label"
                       >
                         Right Body Hooks
                       </div>,
-                      <div>
-                        0
-                      </div>,
+                      <div />,
                     ],
                     "className": "stat",
                     "tag": "div",
@@ -1600,10 +1476,10 @@ ShallowWrapper {
                       "key": undefined,
                       "nodeType": "host",
                       "props": Object {
-                        "children": "0",
+                        "children": null,
                       },
                       "ref": null,
-                      "rendered": "0",
+                      "rendered": null,
                       "type": "div",
                     },
                     Object {
@@ -1623,10 +1499,10 @@ ShallowWrapper {
                       "key": undefined,
                       "nodeType": "host",
                       "props": Object {
-                        "children": "0",
+                        "children": null,
                       },
                       "ref": null,
-                      "rendered": "0",
+                      "rendered": null,
                       "type": "div",
                     },
                   ],
@@ -1670,20 +1546,6 @@ ShallowWrapper {
           "nodeType": "function",
           "props": Object {
             "children": Array [
-              <Col
-                tag="div"
-                widths={
-                  Array [
-                    "xs",
-                    "sm",
-                    "md",
-                    "lg",
-                    "xl",
-                  ]
-                }
-              >
-                ID
-              </Col>,
               <Col
                 tag="div"
                 widths={
@@ -1746,25 +1608,6 @@ ShallowWrapper {
           },
           "ref": null,
           "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "children": "ID",
-                "tag": "div",
-                "widths": Array [
-                  "xs",
-                  "sm",
-                  "md",
-                  "lg",
-                  "xl",
-                ],
-              },
-              "ref": null,
-              "rendered": "ID",
-              "type": [Function],
-            },
             Object {
               "instance": null,
               "key": undefined,
@@ -1907,6 +1750,7 @@ ShallowWrapper {
               <video
                 className="video"
                 controls={true}
+                src={null}
               />
             </Col>
             <Row
@@ -1947,9 +1791,7 @@ ShallowWrapper {
                 >
                   Total Time
                 </div>
-                <div>
-                  0:00
-                </div>
+                <div />
               </Col>
               <Col
                 className="stat"
@@ -1969,9 +1811,7 @@ ShallowWrapper {
                 >
                   Total Punches
                 </div>
-                <div>
-                  0
-                </div>
+                <div />
               </Col>
               <Col
                 className="stat"
@@ -1991,9 +1831,7 @@ ShallowWrapper {
                 >
                   Jabs
                 </div>
-                <div>
-                  0
-                </div>
+                <div />
               </Col>
               <Col
                 className="stat"
@@ -2013,9 +1851,7 @@ ShallowWrapper {
                 >
                   Power Rear Punches
                 </div>
-                <div>
-                  0
-                </div>
+                <div />
               </Col>
               <Col
                 className="stat"
@@ -2035,17 +1871,13 @@ ShallowWrapper {
                 >
                   Left Hooks
                 </div>
-                <div>
-                  0
-                </div>
+                <div />
                 <div
                   className="label"
                 >
                   Right Hooks
                 </div>
-                <div>
-                  0
-                </div>
+                <div />
               </Col>
               <Col
                 className="stat"
@@ -2065,17 +1897,13 @@ ShallowWrapper {
                 >
                   Left Uppercuts
                 </div>
-                <div>
-                  0
-                </div>
+                <div />
                 <div
                   className="label"
                 >
                   Right Uppercuts
                 </div>
-                <div>
-                  0
-                </div>
+                <div />
               </Col>
               <Col
                 className="stat"
@@ -2095,17 +1923,13 @@ ShallowWrapper {
                 >
                   Left Body Hooks
                 </div>
-                <div>
-                  0
-                </div>
+                <div />
                 <div
                   className="label"
                 >
                   Right Body Hooks
                 </div>
-                <div>
-                  0
-                </div>
+                <div />
               </Col>
             </Row>
           </Row>
@@ -2121,20 +1945,6 @@ ShallowWrapper {
             className="workoutsHeader"
             tag="div"
           >
-            <Col
-              tag="div"
-              widths={
-                Array [
-                  "xs",
-                  "sm",
-                  "md",
-                  "lg",
-                  "xl",
-                ]
-              }
-            >
-              ID
-            </Col>
             <Col
               tag="div"
               widths={
@@ -2230,6 +2040,7 @@ ShallowWrapper {
                 <video
                   className="video"
                   controls={true}
+                  src={null}
                 />
               </Col>
               <Row
@@ -2270,9 +2081,7 @@ ShallowWrapper {
                   >
                     Total Time
                   </div>
-                  <div>
-                    0:00
-                  </div>
+                  <div />
                 </Col>
                 <Col
                   className="stat"
@@ -2292,9 +2101,7 @@ ShallowWrapper {
                   >
                     Total Punches
                   </div>
-                  <div>
-                    0
-                  </div>
+                  <div />
                 </Col>
                 <Col
                   className="stat"
@@ -2314,9 +2121,7 @@ ShallowWrapper {
                   >
                     Jabs
                   </div>
-                  <div>
-                    0
-                  </div>
+                  <div />
                 </Col>
                 <Col
                   className="stat"
@@ -2336,9 +2141,7 @@ ShallowWrapper {
                   >
                     Power Rear Punches
                   </div>
-                  <div>
-                    0
-                  </div>
+                  <div />
                 </Col>
                 <Col
                   className="stat"
@@ -2358,17 +2161,13 @@ ShallowWrapper {
                   >
                     Left Hooks
                   </div>
-                  <div>
-                    0
-                  </div>
+                  <div />
                   <div
                     className="label"
                   >
                     Right Hooks
                   </div>
-                  <div>
-                    0
-                  </div>
+                  <div />
                 </Col>
                 <Col
                   className="stat"
@@ -2388,17 +2187,13 @@ ShallowWrapper {
                   >
                     Left Uppercuts
                   </div>
-                  <div>
-                    0
-                  </div>
+                  <div />
                   <div
                     className="label"
                   >
                     Right Uppercuts
                   </div>
-                  <div>
-                    0
-                  </div>
+                  <div />
                 </Col>
                 <Col
                   className="stat"
@@ -2418,17 +2213,13 @@ ShallowWrapper {
                   >
                     Left Body Hooks
                   </div>
-                  <div>
-                    0
-                  </div>
+                  <div />
                   <div
                     className="label"
                   >
                     Right Body Hooks
                   </div>
-                  <div>
-                    0
-                  </div>
+                  <div />
                 </Col>
               </Row>
             </Row>,
@@ -2445,20 +2236,6 @@ ShallowWrapper {
               className="workoutsHeader"
               tag="div"
             >
-              <Col
-                tag="div"
-                widths={
-                  Array [
-                    "xs",
-                    "sm",
-                    "md",
-                    "lg",
-                    "xl",
-                  ]
-                }
-              >
-                ID
-              </Col>
               <Col
                 tag="div"
                 widths={
@@ -2554,6 +2331,7 @@ ShallowWrapper {
                   <video
                     className="video"
                     controls={true}
+                    src={null}
                   />
                 </Col>,
                 <Row
@@ -2594,9 +2372,7 @@ ShallowWrapper {
                     >
                       Total Time
                     </div>
-                    <div>
-                      0:00
-                    </div>
+                    <div />
                   </Col>
                   <Col
                     className="stat"
@@ -2616,9 +2392,7 @@ ShallowWrapper {
                     >
                       Total Punches
                     </div>
-                    <div>
-                      0
-                    </div>
+                    <div />
                   </Col>
                   <Col
                     className="stat"
@@ -2638,9 +2412,7 @@ ShallowWrapper {
                     >
                       Jabs
                     </div>
-                    <div>
-                      0
-                    </div>
+                    <div />
                   </Col>
                   <Col
                     className="stat"
@@ -2660,9 +2432,7 @@ ShallowWrapper {
                     >
                       Power Rear Punches
                     </div>
-                    <div>
-                      0
-                    </div>
+                    <div />
                   </Col>
                   <Col
                     className="stat"
@@ -2682,17 +2452,13 @@ ShallowWrapper {
                     >
                       Left Hooks
                     </div>
-                    <div>
-                      0
-                    </div>
+                    <div />
                     <div
                       className="label"
                     >
                       Right Hooks
                     </div>
-                    <div>
-                      0
-                    </div>
+                    <div />
                   </Col>
                   <Col
                     className="stat"
@@ -2712,17 +2478,13 @@ ShallowWrapper {
                     >
                       Left Uppercuts
                     </div>
-                    <div>
-                      0
-                    </div>
+                    <div />
                     <div
                       className="label"
                     >
                       Right Uppercuts
                     </div>
-                    <div>
-                      0
-                    </div>
+                    <div />
                   </Col>
                   <Col
                     className="stat"
@@ -2742,17 +2504,13 @@ ShallowWrapper {
                     >
                       Left Body Hooks
                     </div>
-                    <div>
-                      0
-                    </div>
+                    <div />
                     <div
                       className="label"
                     >
                       Right Body Hooks
                     </div>
-                    <div>
-                      0
-                    </div>
+                    <div />
                   </Col>
                 </Row>,
               ],
@@ -2768,6 +2526,7 @@ ShallowWrapper {
                   "children": <video
                     className="video"
                     controls={true}
+                    src={null}
                   />,
                   "className": "videoContainer",
                   "tag": "div",
@@ -2787,7 +2546,7 @@ ShallowWrapper {
                   "props": Object {
                     "className": "video",
                     "controls": true,
-                    "src": undefined,
+                    "src": null,
                   },
                   "ref": null,
                   "rendered": null,
@@ -2835,9 +2594,7 @@ ShallowWrapper {
                       >
                         Total Time
                       </div>
-                      <div>
-                        0:00
-                      </div>
+                      <div />
                     </Col>,
                     <Col
                       className="stat"
@@ -2857,9 +2614,7 @@ ShallowWrapper {
                       >
                         Total Punches
                       </div>
-                      <div>
-                        0
-                      </div>
+                      <div />
                     </Col>,
                     <Col
                       className="stat"
@@ -2879,9 +2634,7 @@ ShallowWrapper {
                       >
                         Jabs
                       </div>
-                      <div>
-                        0
-                      </div>
+                      <div />
                     </Col>,
                     <Col
                       className="stat"
@@ -2901,9 +2654,7 @@ ShallowWrapper {
                       >
                         Power Rear Punches
                       </div>
-                      <div>
-                        0
-                      </div>
+                      <div />
                     </Col>,
                     <Col
                       className="stat"
@@ -2923,17 +2674,13 @@ ShallowWrapper {
                       >
                         Left Hooks
                       </div>
-                      <div>
-                        0
-                      </div>
+                      <div />
                       <div
                         className="label"
                       >
                         Right Hooks
                       </div>
-                      <div>
-                        0
-                      </div>
+                      <div />
                     </Col>,
                     <Col
                       className="stat"
@@ -2953,17 +2700,13 @@ ShallowWrapper {
                       >
                         Left Uppercuts
                       </div>
-                      <div>
-                        0
-                      </div>
+                      <div />
                       <div
                         className="label"
                       >
                         Right Uppercuts
                       </div>
-                      <div>
-                        0
-                      </div>
+                      <div />
                     </Col>,
                     <Col
                       className="stat"
@@ -2983,17 +2726,13 @@ ShallowWrapper {
                       >
                         Left Body Hooks
                       </div>
-                      <div>
-                        0
-                      </div>
+                      <div />
                       <div
                         className="label"
                       >
                         Right Body Hooks
                       </div>
-                      <div>
-                        0
-                      </div>
+                      <div />
                     </Col>,
                   ],
                   "className": "statContainer",
@@ -3043,9 +2782,7 @@ ShallowWrapper {
                         >
                           Total Time
                         </div>,
-                        <div>
-                          0:00
-                        </div>,
+                        <div />,
                       ],
                       "className": "stat",
                       "tag": "div",
@@ -3076,10 +2813,10 @@ ShallowWrapper {
                         "key": undefined,
                         "nodeType": "host",
                         "props": Object {
-                          "children": "0:00",
+                          "children": null,
                         },
                         "ref": null,
-                        "rendered": "0:00",
+                        "rendered": null,
                         "type": "div",
                       },
                     ],
@@ -3096,9 +2833,7 @@ ShallowWrapper {
                         >
                           Total Punches
                         </div>,
-                        <div>
-                          0
-                        </div>,
+                        <div />,
                       ],
                       "className": "stat",
                       "tag": "div",
@@ -3129,10 +2864,10 @@ ShallowWrapper {
                         "key": undefined,
                         "nodeType": "host",
                         "props": Object {
-                          "children": "0",
+                          "children": null,
                         },
                         "ref": null,
-                        "rendered": "0",
+                        "rendered": null,
                         "type": "div",
                       },
                     ],
@@ -3149,9 +2884,7 @@ ShallowWrapper {
                         >
                           Jabs
                         </div>,
-                        <div>
-                          0
-                        </div>,
+                        <div />,
                       ],
                       "className": "stat",
                       "tag": "div",
@@ -3182,10 +2915,10 @@ ShallowWrapper {
                         "key": undefined,
                         "nodeType": "host",
                         "props": Object {
-                          "children": "0",
+                          "children": null,
                         },
                         "ref": null,
-                        "rendered": "0",
+                        "rendered": null,
                         "type": "div",
                       },
                     ],
@@ -3202,9 +2935,7 @@ ShallowWrapper {
                         >
                           Power Rear Punches
                         </div>,
-                        <div>
-                          0
-                        </div>,
+                        <div />,
                       ],
                       "className": "stat",
                       "tag": "div",
@@ -3235,10 +2966,10 @@ ShallowWrapper {
                         "key": undefined,
                         "nodeType": "host",
                         "props": Object {
-                          "children": "0",
+                          "children": null,
                         },
                         "ref": null,
-                        "rendered": "0",
+                        "rendered": null,
                         "type": "div",
                       },
                     ],
@@ -3255,17 +2986,13 @@ ShallowWrapper {
                         >
                           Left Hooks
                         </div>,
-                        <div>
-                          0
-                        </div>,
+                        <div />,
                         <div
                           className="label"
                         >
                           Right Hooks
                         </div>,
-                        <div>
-                          0
-                        </div>,
+                        <div />,
                       ],
                       "className": "stat",
                       "tag": "div",
@@ -3296,10 +3023,10 @@ ShallowWrapper {
                         "key": undefined,
                         "nodeType": "host",
                         "props": Object {
-                          "children": "0",
+                          "children": null,
                         },
                         "ref": null,
-                        "rendered": "0",
+                        "rendered": null,
                         "type": "div",
                       },
                       Object {
@@ -3319,10 +3046,10 @@ ShallowWrapper {
                         "key": undefined,
                         "nodeType": "host",
                         "props": Object {
-                          "children": "0",
+                          "children": null,
                         },
                         "ref": null,
-                        "rendered": "0",
+                        "rendered": null,
                         "type": "div",
                       },
                     ],
@@ -3339,17 +3066,13 @@ ShallowWrapper {
                         >
                           Left Uppercuts
                         </div>,
-                        <div>
-                          0
-                        </div>,
+                        <div />,
                         <div
                           className="label"
                         >
                           Right Uppercuts
                         </div>,
-                        <div>
-                          0
-                        </div>,
+                        <div />,
                       ],
                       "className": "stat",
                       "tag": "div",
@@ -3380,10 +3103,10 @@ ShallowWrapper {
                         "key": undefined,
                         "nodeType": "host",
                         "props": Object {
-                          "children": "0",
+                          "children": null,
                         },
                         "ref": null,
-                        "rendered": "0",
+                        "rendered": null,
                         "type": "div",
                       },
                       Object {
@@ -3403,10 +3126,10 @@ ShallowWrapper {
                         "key": undefined,
                         "nodeType": "host",
                         "props": Object {
-                          "children": "0",
+                          "children": null,
                         },
                         "ref": null,
-                        "rendered": "0",
+                        "rendered": null,
                         "type": "div",
                       },
                     ],
@@ -3423,17 +3146,13 @@ ShallowWrapper {
                         >
                           Left Body Hooks
                         </div>,
-                        <div>
-                          0
-                        </div>,
+                        <div />,
                         <div
                           className="label"
                         >
                           Right Body Hooks
                         </div>,
-                        <div>
-                          0
-                        </div>,
+                        <div />,
                       ],
                       "className": "stat",
                       "tag": "div",
@@ -3464,10 +3183,10 @@ ShallowWrapper {
                         "key": undefined,
                         "nodeType": "host",
                         "props": Object {
-                          "children": "0",
+                          "children": null,
                         },
                         "ref": null,
-                        "rendered": "0",
+                        "rendered": null,
                         "type": "div",
                       },
                       Object {
@@ -3487,10 +3206,10 @@ ShallowWrapper {
                         "key": undefined,
                         "nodeType": "host",
                         "props": Object {
-                          "children": "0",
+                          "children": null,
                         },
                         "ref": null,
-                        "rendered": "0",
+                        "rendered": null,
                         "type": "div",
                       },
                     ],
@@ -3534,20 +3253,6 @@ ShallowWrapper {
             "nodeType": "function",
             "props": Object {
               "children": Array [
-                <Col
-                  tag="div"
-                  widths={
-                    Array [
-                      "xs",
-                      "sm",
-                      "md",
-                      "lg",
-                      "xl",
-                    ]
-                  }
-                >
-                  ID
-                </Col>,
                 <Col
                   tag="div"
                   widths={
@@ -3610,25 +3315,6 @@ ShallowWrapper {
             },
             "ref": null,
             "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "function",
-                "props": Object {
-                  "children": "ID",
-                  "tag": "div",
-                  "widths": Array [
-                    "xs",
-                    "sm",
-                    "md",
-                    "lg",
-                    "xl",
-                  ],
-                },
-                "ref": null,
-                "rendered": "ID",
-                "type": [Function],
-              },
               Object {
                 "instance": null,
                 "key": undefined,
