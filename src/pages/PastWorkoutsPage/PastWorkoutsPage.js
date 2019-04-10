@@ -65,8 +65,16 @@ export class PastWorkoutsPage extends Component {
   }
 
   handleClickVideo = id => {
+    let url;
+
+    if (process.env.REACT_APP_TEST) {
+      url = `http://localhost:3000/videos/${id}.webm`;
+    } else {
+      url = `https://shadowcam-back.herokuapp.com/videos/${id}.webm`;
+    }
+
     this.setState({
-      currentVideo: `http://localhost:3000/videos/${id}.webm`
+      currentVideo: url
     });
   };
 
