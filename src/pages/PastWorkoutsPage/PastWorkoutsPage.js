@@ -195,7 +195,7 @@ export class PastWorkoutsPage extends Component {
     return (
       <Layout>
         <Container className={styles.pastWorkoutsContainer}>
-          <Row>
+          <Row className={styles.videoRow}>
             <Col className={styles.videoContainer}>
               <video
                 src={this.state.currentVideo}
