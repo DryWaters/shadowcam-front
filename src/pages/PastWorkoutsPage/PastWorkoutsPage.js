@@ -105,20 +105,24 @@ export class PastWorkoutsPage extends Component {
         this.props.notLoading();
         if (parsedRes.status === "ok") {
           const { stats } = parsedRes.message;
-          stats.total_punches =
-            stats.jab +
-            stats.left_body_hook +
-            stats.left_hook +
-            stats.left_uppercut +
-            stats.power_rear +
-            stats.right_body_hook +
-            stats.right_hook +
-            stats.right_uppercut;
-          const currentWorkout = parsedRes.message;
-          currentWorkout.stats = stats;
-          this.setState({
-            currentWorkout
-          });
+          if (stats) {
+            stats.total_punches =
+              stats.jab +
+              stats.left_body_hook +
+              stats.left_hook +
+              stats.left_uppercut +
+              stats.power_rear +
+              stats.right_body_hook +
+              stats.right_hook +
+              stats.right_uppercut;
+            const currentWorkout = parsedRes.message;
+            currentWorkout.stats = stats;
+            this.setState({
+              currentWorkout
+            });
+          } else {
+            alert('No recorded stats for this workout!')
+          }
         } else {
           return Promise.reject(parsedRes);
         }
