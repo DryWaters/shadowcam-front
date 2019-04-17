@@ -68,7 +68,7 @@ export class PastWorkoutsPage extends Component {
     let url;
 
     if (process.env.REACT_APP_TEST) {
-      url = "http://localhost:3000/videos";
+      url = `http://localhost:3000/videos/${id}.webm`;
     } else {
       url = `https://s3-us-west-1.amazonaws.com/shadowcam-back/${id}.webm`;
     }
