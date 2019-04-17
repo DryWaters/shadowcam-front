@@ -32,6 +32,7 @@ export class NewRecordingPage extends Component {
       width: 640,
       height: 480,
       videos: [],
+      intervalLeft: props.num_of_intervals,
       totalTimeLeft: props.workout_length,
       intervalTimeLeft: props.interval_length,
       restTimeLeft: props.rest_time,
@@ -112,7 +113,8 @@ export class NewRecordingPage extends Component {
   handleStopRest = () => {
     this.setState({
       trainingState: "running",
-      restTimeLeft: this.props.rest_time
+      restTimeLeft: this.props.rest_time,
+      intervalLeft: this.state.intervalLeft - 1
     });
 
     if (this.state.recorderSetup && this.mediaRecorder.state === "inactive") {
@@ -181,7 +183,8 @@ export class NewRecordingPage extends Component {
     }
 
     this.setState({
-      trainingState: "done"
+      trainingState: "done",
+      intervalLeft: this.state.intervalLeft - 1
     });
 
     if (this.state.recorderSetup && this.mediaRecorder.state === "recording") {
@@ -509,7 +512,27 @@ export class NewRecordingPage extends Component {
             ""
           )}
           <Row>
-            <Col>
+            <Col lg={7} className={styles.timerContainer}>
+              <div className={styles.timerCol}>
+                <div>Intervals Left</div>
+                <div className={styles.timer}>{this.state.intervalLeft}</div>
+              </div>
+              <div className={styles.timerCol}>
+                <div>Interval Time Left</div>
+                <div className={styles.timer}>
+                  {formatTimeFromSeconds(this.state.intervalTimeLeft)}
+                </div>
+              </div>
+              <div className={styles.timerCol}>
+                <div>Rest Time Left</div>
+                <div className={styles.timer}>
+                  {formatTimeFromSeconds(this.state.restTimeLeft)}
+                </div>
+              </div>
+            </Col>
+          </Row>
+          <Row className={styles.videoRow}>
+            <Col lg={7} className={styles.videoContainer}>
               <video
                 ref={this.videoRef}
                 srcobject={this.currentStream}
@@ -530,67 +553,55 @@ export class NewRecordingPage extends Component {
               />
               <canvas className={styles.canvas} ref={this.canvasRef} />
             </Col>
+            <Col lg={5} className={styles.statContainer}>
+              <Row>
+                <h3 className={styles.statHeader}>Stats</h3>
+              </Row>
+              <Row className={styles.stat}>
+                <Col xs={4}>Total Punches</Col>
+                <Col xs={4}>{this.state.totalPunches}</Col>
+              </Row>
+              <Row className={styles.stat}>
+                <Col xs={4}>
+                  Jabs
+                </Col>
+                <Col xs={4}>{this.state.jab}</Col>
+              </Row>
+              <Row className={styles.stat}>
+                <Col xs={4}>
+                  Straight Right
+                </Col>
+                <Col xs={4}>{this.state.powerRear}</Col>
+              </Row>
+              <Row className={styles.stat}>
+                <Col xs={4}>
+                  Left Hooks
+                </Col>
+                <Col xs={2}>{this.state.leftHook}</Col>
+                <Col xs={4}>
+                  Right Hooks
+                </Col>
+                <Col xs={2}>{this.state.rightHook}</Col>
+              </Row>
+              <Row className={styles.stat}>
+                <Col xs={4} className={styles.label}>Left Uppercuts</Col>
+                <Col xs={2}>{this.state.leftUppercut}</Col>
+                <Col xs={4} className={styles.label}>Right Uppercuts</Col>
+                <Col xs={2}>{this.state.rightUppercut}</Col>
+              </Row>
+              <Row className={styles.stat}>
+                <Col xs={4} className={styles.label}>Left Body Hooks</Col>
+                <Col xs={2}>{this.state.leftBodyHook}</Col>
+                <Col xs={4} className={styles.label}>Right Body Hooks</Col>
+                <Col xs={2}>{this.state.rightBodyHook}</Col>
+              </Row>
+            </Col>
           </Row>
           <Row>{displayRecordControls()}</Row>
           <Row>
             <Col className={styles.recordedVideosContainer}>
               {displayRecordedVideos()}
             </Col>
-          </Row>
-          <Row className={styles.spacer}>
-            <h2>Stats</h2>
-          </Row>
-          <Row className={styles.spacer}>
-            <Col>Total Time:</Col>
-            <Col>{formatTimeFromSeconds(this.props.workout_length)}</Col>
-          </Row>
-          <Row className={styles.spacer}>
-            <Col>Total Time Left:</Col>
-            <Col>{formatTimeFromSeconds(this.state.totalTimeLeft)}</Col>
-          </Row>
-          <Row className={styles.spacer}>
-            <Col>Interval Time:</Col>
-            <Col>{formatTimeFromSeconds(this.props.interval_length)}</Col>
-          </Row>
-          <Row className={styles.spacer}>
-            <Col>Interval Time Left:</Col>
-            <Col>{formatTimeFromSeconds(this.state.intervalTimeLeft)}</Col>
-          </Row>
-          <Row className={styles.spacer}>
-            <Col>Number of Punches</Col>
-            <Col>{this.state.totalPunches}</Col>
-          </Row>
-          <Row className={styles.spacer}>
-            <Col>Number of Jabs</Col>
-            <Col>{this.state.jab}</Col>
-          </Row>
-          <Row className={styles.spacer}>
-            <Col>Number of Power Rear Punches</Col>
-            <Col>{this.state.powerRear}</Col>
-          </Row>
-          <Row className={styles.spacer}>
-            <Col>Number of Left Hook Punches</Col>
-            <Col>{this.state.leftHook}</Col>
-          </Row>
-          <Row className={styles.spacer}>
-            <Col>Number of Right Hook Punches</Col>
-            <Col>{this.state.rightHook}</Col>
-          </Row>
-          <Row className={styles.spacer}>
-            <Col>Number of Left Uppercut Punches</Col>
-            <Col>{this.state.leftUppercut}</Col>
-          </Row>
-          <Row className={styles.spacer}>
-            <Col>Number of Right Uppercut Punches</Col>
-            <Col>{this.state.rightUppercut}</Col>
-          </Row>
-          <Row className={styles.spacer}>
-            <Col>Number of Left Body Hook Punches</Col>
-            <Col>{this.state.leftBodyHook}</Col>
-          </Row>
-          <Row className={styles.spacer}>
-            <Col>Number of Right Body Hook Punches</Col>
-            <Col>{this.state.rightBodyHook}</Col>
           </Row>
         </Container>
       </Layout>
