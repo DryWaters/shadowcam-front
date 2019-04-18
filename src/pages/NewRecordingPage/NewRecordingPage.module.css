@@ -63,7 +63,11 @@
 }
 
 .statHeader {
-  padding-left: 14px;
+  padding-left: 50px;
+}
+
+.stat {
+  padding-left: 40px;
 }
 
 .timerCol {
@@ -106,7 +110,8 @@
 }
 
 .videoRow {
-  margin: 20px;
+  margin-bottom: 40px;
+  margin-top: 20px;
 }
 .videoRecording {
   box-shadow: 0px 0px 0px 7px #f45342;

@@ -562,37 +562,29 @@ export class NewRecordingPage extends Component {
                 <Col xs={4}>{this.state.totalPunches}</Col>
               </Row>
               <Row className={styles.stat}>
-                <Col xs={4}>
-                  Jabs
-                </Col>
+                <Col xs={4}>Jabs</Col>
                 <Col xs={4}>{this.state.jab}</Col>
               </Row>
               <Row className={styles.stat}>
-                <Col xs={4}>
-                  Straight Right
-                </Col>
+                <Col xs={4}>Straight Right</Col>
                 <Col xs={4}>{this.state.powerRear}</Col>
               </Row>
               <Row className={styles.stat}>
-                <Col xs={4}>
-                  Left Hooks
-                </Col>
+                <Col xs={4}>Left Hooks</Col>
                 <Col xs={2}>{this.state.leftHook}</Col>
-                <Col xs={4}>
-                  Right Hooks
-                </Col>
+                <Col xs={4}>Right Hooks</Col>
                 <Col xs={2}>{this.state.rightHook}</Col>
               </Row>
               <Row className={styles.stat}>
-                <Col xs={4} className={styles.label}>Left Uppercuts</Col>
+                <Col xs={4}>Left Uppercuts</Col>
                 <Col xs={2}>{this.state.leftUppercut}</Col>
-                <Col xs={4} className={styles.label}>Right Uppercuts</Col>
+                <Col xs={4}>Right Uppercuts</Col>
                 <Col xs={2}>{this.state.rightUppercut}</Col>
               </Row>
               <Row className={styles.stat}>
-                <Col xs={4} className={styles.label}>Left Body Hooks</Col>
+                <Col xs={4}>Left Body Hooks</Col>
                 <Col xs={2}>{this.state.leftBodyHook}</Col>
-                <Col xs={4} className={styles.label}>Right Body Hooks</Col>
+                <Col xs={4}>Right Body Hooks</Col>
                 <Col xs={2}>{this.state.rightBodyHook}</Col>
               </Row>
             </Col>

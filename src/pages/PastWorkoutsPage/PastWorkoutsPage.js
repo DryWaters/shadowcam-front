@@ -121,7 +121,7 @@ export class PastWorkoutsPage extends Component {
               currentWorkout
             });
           } else {
-            alert('No recorded stats for this workout!')
+            alert("No recorded stats for this workout!");
           }
         } else {
           return Promise.reject(parsedRes);
@@ -196,84 +196,84 @@ export class PastWorkoutsPage extends Component {
       <Layout>
         <Container className={styles.pastWorkoutsContainer}>
           <Row className={styles.videoRow}>
-            <Col className={styles.videoContainer}>
+            <Col lg={7} className={styles.videoContainer}>
               <video
                 src={this.state.currentVideo}
                 className={styles.video}
                 controls
               />
             </Col>
-            <Row className={styles.statContainer}>
-              <Col>
-                <h3>Stats</h3>
-              </Col>
-              <Col className={styles.stat}>
-                <div className={styles.label}>Total Time</div>
-                <div>
+            <Col lg={5} className={styles.statContainer}>
+              <Row>
+                <h3 className={styles.statHeader}>Stats</h3>
+              </Row>
+              <Row className={styles.stat}>
+                <Col>Total Time</Col>
+                <Col>
                   {this.state.currentWorkout &&
                     formatTimeFromSeconds(
                       this.state.currentWorkout.workout.workout_length
                     )}
-                </div>
-              </Col>
-              <Col className={styles.stat}>
-                <div className={styles.label}>Total Punches</div>
-                <div>
+                </Col>
+              </Row>
+              <Row className={styles.stat}>
+                <Col xs={4}>Total Punches</Col>
+                <Col xs={4}>
                   {this.state.currentWorkout &&
                     this.state.currentWorkout.stats.total_punches}
-                </div>
-              </Col>
-              <Col className={styles.stat}>
-                <div className={styles.label}>Jabs</div>
-                <div>
+                </Col>
+              </Row>
+              <Row className={styles.stat}>
+                <Col xs={4}>Jabs</Col>
+                <Col xs={4} >
                   {this.state.currentWorkout &&
                     this.state.currentWorkout.stats.jab}
-                </div>
-              </Col>
-              <Col className={styles.stat}>
-                <div className={styles.label}>Power Rear Punches</div>
-                <div>
+                </Col>
+              </Row>
+              <Row className={styles.stat}>
+                <Col xs={4}>Power Rear Punches</Col>
+                <Col xs={4}>
                   {this.state.currentWorkout &&
                     this.state.currentWorkout.stats.power_rear}
-                </div>
-              </Col>
-              <Col className={styles.stat}>
-                <div className={styles.label}>Left Hooks</div>
-                <div>
+                </Col>
+              </Row>
+              <Row className={styles.stat}>
+                <Col xs={4}>Left Hooks</Col>
+                <Col xs={2}>
                   {this.state.currentWorkout &&
                     this.state.currentWorkout.stats.left_hook}
-                </div>
-                <div className={styles.label}>Right Hooks</div>
-                <div>
+                </Col>
+                <Col xs={4}>Right Hooks</Col>
+                <Col xs={2}>
                   {this.state.currentWorkout &&
                     this.state.currentWorkout.stats.right_hook}
-                </div>
-              </Col>
-              <Col className={styles.stat}>
-                <div className={styles.label}>Left Uppercuts</div>
-                <div>
+                </Col>
+              </Row>
+              <Row className={styles.stat}>
+                <Col xs={4}>Left Uppercuts</Col>
+                <Col xs={2}>
                   {this.state.currentWorkout &&
                     this.state.currentWorkout.stats.left_uppercut}
-                </div>
-                <div className={styles.label}>Right Uppercuts</div>
-                <div>
+                </Col>
+                <Col xs={4}>Right Uppercuts</Col>
+                <Col xs={2}>
                   {this.state.currentWorkout &&
                     this.state.currentWorkout.stats.right_uppercut}
-                </div>
-              </Col>
-              <Col className={styles.stat}>
-                <div className={styles.label}>Left Body Hooks</div>
-                <div>
+                </Col>
+              </Row>
+              <Row className={styles.stat}>
+                <Col xs={4}>Left Body Hooks</Col>
+                <Col xs={2}>
                   {this.state.currentWorkout &&
                     this.state.currentWorkout.stats.left_body_hook}
-                </div>
-                <div className={styles.label}>Right Body Hooks</div>
-                <div>
+                </Col>
+                <Col xs={4}>Right Body Hooks</Col>
+                <Col xs={2}>
                   {this.state.currentWorkout &&
                     this.state.currentWorkout.stats.right_body_hook}
-                </div>
-              </Col>
-            </Row>
+                </Col>
+              </Row>
+            </Col>
           </Row>
           {displayVideos()}
           <Row className={styles.spacer}>
