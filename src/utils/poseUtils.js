@@ -71,36 +71,6 @@ const buildVPTree = () => {
 const findMostSimliarMatch = pose => {
   const nearestPose = vptree.search(pose);
 
-  if (nearestPose[0].d < confidenceLevel + 0.005) {
-    console.log("Found a match 5/1000th more");
-    console.log(nearestPose[0].d);
-    console.log(poseData[nearestPose[0].i][34]);
-  }
-
-  if (nearestPose[0].d < confidenceLevel + 0.004) {
-    console.log("Found a match 4/1000th more");
-    console.log(nearestPose[0].d);
-    console.log(poseData[nearestPose[0].i][34]);
-  }
-
-  if (nearestPose[0].d < confidenceLevel + 0.003) {
-    console.log("Found a match 3/1000th more");
-    console.log(nearestPose[0].d);
-    console.log(poseData[nearestPose[0].i][34]);
-  }
-
-  if (nearestPose[0].d < confidenceLevel + 0.002) {
-    console.log("Found a match 2/1000th more");
-    console.log(nearestPose[0].d);
-    console.log(poseData[nearestPose[0].i][34]);
-  }
-
-  if (nearestPose[0].d < confidenceLevel + 0.001) {
-    console.log("Found a match 1/1000th more");
-    console.log(nearestPose[0].d);
-    console.log(poseData[nearestPose[0].i][34]);
-  }
-
   if (nearestPose[0].d < confidenceLevel) {
     console.log(nearestPose[0].d);
     console.log(poseData[nearestPose[0].i][34]);
