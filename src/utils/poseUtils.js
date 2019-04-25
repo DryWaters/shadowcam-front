@@ -7,7 +7,7 @@ import poseData from "./poseData.json";
 
 console.log("Working with " + poseData.length + " poses!");
 
-const confidenceLevel = 0.14;
+const confidenceLevel = 0.04;
 let vptree;
 
 export const processPose = pose => {
@@ -90,6 +90,8 @@ const findMostSimliarMatch = pose => {
   const nearestPose = vptree.search(pose);
 
   if (nearestPose[0].d < confidenceLevel) {
+    console.log(nearestPose[0].d);
+    console.log(poseData[nearestPose[0].i][34]);
     return poseData[nearestPose[0].i][34];
   }
 };
