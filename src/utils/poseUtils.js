@@ -17,22 +17,40 @@ export const processPose = pose => {
 
 const normalizePose = pose => {
   const boundingBox = posenet.getBoundingBox(pose.keypoints);
-  const normalizedArray = new Array(34);
+  let normalizedArray = new Array(34);
+
+  // move all points to top left corner
+  for (let index in pose.keypoints) {
+    normalizedArray[index * 2] = pose.keypoints[index].position.x - boundingBox.minX;
+    normalizedArray[index * 2 + 1] = pose.keypoints[index].position.y - boundingBox.minY;
+  }
+
+  // normalize between 0 and 1
+  const width = boundingBox.maxX - boundingBox.minX;
+  const height = boundingBox.maxY - boundingBox.minY;
+
+  normalizedArray = normalizedArray.map((point, index) => {
+    if (index % 2 === 0) {
+      return point / width
+    } else {
+      return point / height;
+    }
+  })
 
   // not needed if using compute-cosine-similiarty
   // const confidences = new Array(17);
   // let sumConfidences = 0;
 
-  for (let index in pose.keypoints) {
+  // for (let index in pose.keypoints) {
 
-    // not needed if using compute-cosine-similiarty
-    // sumConfidences += pose.keypoints[index].score;
-    // confidences[index] = pose.keypoints[index].score;
-    normalizedArray[index * 2] =
-      pose.keypoints[index].position.x / boundingBox.maxX;
-    normalizedArray[index * 2 + 1] =
-      pose.keypoints[index].position.y / boundingBox.maxY;
-  }
+  //   // not needed if using compute-cosine-similiarty
+  //   // sumConfidences += pose.keypoints[index].score;
+  //   // confidences[index] = pose.keypoints[index].score;
+  //   normalizedArray[index * 2] =
+  //     pose.keypoints[index].position.x / boundingBox.maxX;
+  //   normalizedArray[index * 2 + 1] =
+  //     pose.keypoints[index].position.y / boundingBox.maxY;
+  // }
 
   // not needed if using compute-cosine-similiarty
   // return [...normalizedArray, ...confidences, sumConfidences];
