@@ -7,7 +7,7 @@ import poseData from "./poseData.json";
 
 console.log("Working with " + poseData.length + " poses!");
 
-const confidenceLevel = 0.15;
+const confidenceLevel = 0.18;
 let vptree;
 
 export const processPose = pose => {
@@ -54,6 +54,7 @@ const normalizePose = pose => {
 
   // not needed if using compute-cosine-similiarty
   // return [...normalizedArray, ...confidences, sumConfidences];
+  console.log(JSON.stringify(normalizedArray));
   return normalizedArray;
 };
 
