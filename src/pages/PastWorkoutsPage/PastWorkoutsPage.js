@@ -183,7 +183,7 @@ export class PastWorkoutsPage extends Component {
             key={workout.work_id}
             onClick={() => this.handleClickWorkout(workout.work_id)}
           >
-            <Col>{moment(workout.recording_date).format("M/D/YY H:m:s a")}</Col>
+            <Col>{moment(workout.recording_date).format("M/D/YY h:mm:ss a")}</Col>
             <Col>{formatTimeFromSeconds(workout.workout_length)}</Col>
             <Col>{workout.num_of_intervals}</Col>
             <Col>{workout.interval_length}</Col>
