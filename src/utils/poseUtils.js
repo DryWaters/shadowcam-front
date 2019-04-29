@@ -7,7 +7,7 @@ import poseData from "./poseData.json";
 
 console.log("Working with " + poseData.length + " poses!");
 
-const confidenceLevel = 0.18;
+const confidenceLevel = 0.138;
 let vptree;
 
 export const processPose = pose => {
@@ -54,7 +54,7 @@ const normalizePose = pose => {
 
   // not needed if using compute-cosine-similiarty
   // return [...normalizedArray, ...confidences, sumConfidences];
-  console.log(JSON.stringify(normalizedArray));
+  // console.log(JSON.stringify(normalizedArray));
   return normalizedArray;
 };
 
@@ -89,11 +89,13 @@ const buildVPTree = () => {
 
 const findMostSimliarMatch = pose => {
   const nearestPose = vptree.search(pose);
-  console.log(nearestPose[0].d);
-  console.log(poseData[nearestPose[0].i][34]);
-  console.log(poseData[nearestPose[0].i][35]);
+
 
   if (nearestPose[0].d < confidenceLevel) {
+    console.log(pose);
+    console.log(nearestPose[0].d);
+    console.log(poseData[nearestPose[0].i][34]);
+    console.log(poseData[nearestPose[0].i][35]);
     return poseData[nearestPose[0].i][34];
   }
 };
