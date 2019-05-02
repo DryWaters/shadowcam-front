@@ -60,16 +60,6 @@ ShallowWrapper {
              seconds!
           </div>
         </ModalBody>
-        <ModalFooter
-          tag="div"
-        >
-          <Button
-            color="primary"
-            tag="button"
-          >
-            Cancel Break
-          </Button>
-        </ModalFooter>
       </Modal>,
     },
     "ref": null,
@@ -105,16 +95,6 @@ ShallowWrapper {
                seconds!
             </div>
           </ModalBody>,
-          <ModalFooter
-            tag="div"
-          >
-            <Button
-              color="primary"
-              tag="button"
-            >
-              Cancel Break
-            </Button>
-          </ModalFooter>,
         ],
         "fade": true,
         "isOpen": true,
@@ -125,7 +105,6 @@ ShallowWrapper {
         "onClosed": [Function],
         "onOpened": [Function],
         "role": "dialog",
-        "toggle": undefined,
         "zIndex": 1050,
       },
       "ref": null,
@@ -196,36 +175,6 @@ ShallowWrapper {
           ],
           "type": [Function],
         },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "function",
-          "props": Object {
-            "children": <Button
-              color="primary"
-              tag="button"
-            >
-              Cancel Break
-            </Button>,
-            "tag": "div",
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "children": "Cancel Break",
-              "color": "primary",
-              "onClick": undefined,
-              "tag": "button",
-            },
-            "ref": null,
-            "rendered": "Cancel Break",
-            "type": [Function],
-          },
-          "type": [Function],
-        },
       ],
       "type": [Function],
     },
@@ -279,16 +228,6 @@ ShallowWrapper {
                seconds!
             </div>
           </ModalBody>
-          <ModalFooter
-            tag="div"
-          >
-            <Button
-              color="primary"
-              tag="button"
-            >
-              Cancel Break
-            </Button>
-          </ModalFooter>
         </Modal>,
       },
       "ref": null,
@@ -324,16 +263,6 @@ ShallowWrapper {
                  seconds!
               </div>
             </ModalBody>,
-            <ModalFooter
-              tag="div"
-            >
-              <Button
-                color="primary"
-                tag="button"
-              >
-                Cancel Break
-              </Button>
-            </ModalFooter>,
           ],
           "fade": true,
           "isOpen": true,
@@ -344,7 +273,6 @@ ShallowWrapper {
           "onClosed": [Function],
           "onOpened": [Function],
           "role": "dialog",
-          "toggle": undefined,
           "zIndex": 1050,
         },
         "ref": null,
@@ -413,36 +341,6 @@ ShallowWrapper {
                 "type": "div",
               },
             ],
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "children": <Button
-                color="primary"
-                tag="button"
-              >
-                Cancel Break
-              </Button>,
-              "tag": "div",
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "children": "Cancel Break",
-                "color": "primary",
-                "onClick": undefined,
-                "tag": "button",
-              },
-              "ref": null,
-              "rendered": "Cancel Break",
-              "type": [Function],
-            },
             "type": [Function],
           },
         ],

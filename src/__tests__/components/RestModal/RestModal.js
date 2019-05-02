@@ -14,14 +14,6 @@ describe("RestModal render", () => {
   });
 });
 
-describe("RestModal toggle triggered", () => {
-  it("Should call the stop prop function on click", () => {
-    let spy = jest.fn();
-    const wrapper = shallow(<RestModal stopRest={spy} />);
-    wrapper.find(Button).simulate("click");
-    expect(spy).toHaveBeenCalledTimes(1);
-  });
-});
 
 describe("RestModal should be displayed as soon as started", () => {
   it("Should be displayed as soon as it is open", () => {
