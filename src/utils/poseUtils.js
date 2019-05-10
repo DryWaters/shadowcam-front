@@ -89,11 +89,12 @@ const buildVPTree = () => {
 
 const findMostSimliarMatch = pose => {
   const nearestPose = vptree.search(pose);
-  // console.log(nearestPose[0].d);
-  // console.log(poseData[nearestPose[0].i][34]);
-  // console.log(poseData[nearestPose[0].i][35]);
 
   if (nearestPose[0].d < confidenceLevel) {
+    // console.log(pose);
+    // console.log(nearestPose[0].d);
+    // console.log(poseData[nearestPose[0].i][34]);
+    // console.log(poseData[nearestPose[0].i][35]);
     return poseData[nearestPose[0].i][34];
   }
 };
