@@ -9,7 +9,7 @@ import { loadToken } from "../../store/actions/user";
 
 import brainLifting from "../../assets/images/brain-lifting.jpg";
 import screen1 from "../../assets/images/screenshot_1.jpg";
-import screen2 from "../../assets/images/screenshot_2.jpg";
+
 import styles from "./LandingPage.module.css";
 import uploadVideo from "../../assets/images/upload-video.jpg";
 
@@ -66,10 +66,14 @@ export class LandingPage extends Component {
           </Row>
           <Row className={styles.contentRow}>
             <Col sm={6}>
-              <img
-                className={styles.screenshots}
-                src={screen2}
-                alt="Screenshot of app"
+              <iframe
+                title="demo_video"
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/o0wxXZ4AA30"
+                frameBorder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
               />
             </Col>
             <Col sm={5}>
