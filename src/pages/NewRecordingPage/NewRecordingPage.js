@@ -302,7 +302,9 @@ export class NewRecordingPage extends Component {
       });
     }, 200);
 
+    // let startTime;
     const poseDetectionFrame = async () => {
+      // startTime = +new Date()
       let pose;
       if (this.state.recorderSetup) {
         pose = await net.estimateSinglePose(
@@ -320,6 +322,8 @@ export class NewRecordingPage extends Component {
       if (this.state.recorderSetup && this.state.trainingState === "running") {
         requestAnimationFrame(poseDetectionFrame);
       }
+
+      // console.log(+new Date() - startTime);
     };
 
     poseDetectionFrame();
