@@ -24,11 +24,11 @@ ShallowWrapper {
       >
         
         <Row
-          className="timerContainer"
           tag="div"
         >
           <Col
-            className="timerCol"
+            className="timerContainer"
+            lg={7}
             tag="div"
             widths={
               Array [
@@ -40,55 +40,39 @@ ShallowWrapper {
               ]
             }
           >
-            <div>
-              Intervals Left
-            </div>
             <div
-              className="timer"
-            />
-          </Col>
-          <Col
-            className="timerCol"
-            tag="div"
-            widths={
-              Array [
-                "xs",
-                "sm",
-                "md",
-                "lg",
-                "xl",
-              ]
-            }
-          >
-            <div>
-              Interval Time Left
-            </div>
-            <div
-              className="timer"
+              className="timerCol"
             >
-              0:NaN
-            </div>
-          </Col>
-          <Col
-            className="timerCol"
-            tag="div"
-            widths={
-              Array [
-                "xs",
-                "sm",
-                "md",
-                "lg",
-                "xl",
-              ]
-            }
-          >
-            <div>
-              Rest Time Left
+              <div>
+                Intervals Left
+              </div>
+              <div
+                className="timer"
+              />
             </div>
             <div
-              className="timer"
+              className="timerCol"
             >
-              0:NaN
+              <div>
+                Interval Time Left
+              </div>
+              <div
+                className="timer"
+              >
+                0:NaN
+              </div>
+            </div>
+            <div
+              className="timerCol"
+            >
+              <div>
+                Rest Time Left
+              </div>
+              <div
+                className="timer"
+              >
+                0:NaN
+              </div>
             </div>
           </Col>
         </Row>
@@ -98,6 +82,7 @@ ShallowWrapper {
         >
           <Col
             className="videoContainer"
+            lg={7}
             tag="div"
             widths={
               Array [
@@ -119,183 +104,330 @@ ShallowWrapper {
               className="canvas"
             />
           </Col>
-          <Row
+          <Col
             className="statContainer"
+            lg={5}
             tag="div"
+            widths={
+              Array [
+                "xs",
+                "sm",
+                "md",
+                "lg",
+                "xl",
+              ]
+            }
           >
-            <Col
+            <Row
               tag="div"
-              widths={
-                Array [
-                  "xs",
-                  "sm",
-                  "md",
-                  "lg",
-                  "xl",
-                ]
-              }
             >
-              <h3>
+              <h3
+                className="statHeader"
+              >
                 Stats
               </h3>
-            </Col>
-            <Col
+            </Row>
+            <Row
               className="stat"
               tag="div"
-              widths={
-                Array [
-                  "xs",
-                  "sm",
-                  "md",
-                  "lg",
-                  "xl",
-                ]
-              }
             >
-              <div
-                className="label"
+              <Col
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+                xs={4}
               >
                 Total Punches
-              </div>
-              <div>
+              </Col>
+              <Col
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+                xs={4}
+              >
                 0
-              </div>
-            </Col>
-            <Col
+              </Col>
+            </Row>
+            <Row
               className="stat"
               tag="div"
-              widths={
-                Array [
-                  "xs",
-                  "sm",
-                  "md",
-                  "lg",
-                  "xl",
-                ]
-              }
             >
-              <div
-                className="label"
+              <Col
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+                xs={4}
               >
                 Jabs
-              </div>
-              <div>
+              </Col>
+              <Col
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+                xs={4}
+              >
                 0
-              </div>
-            </Col>
-            <Col
+              </Col>
+            </Row>
+            <Row
               className="stat"
               tag="div"
-              widths={
-                Array [
-                  "xs",
-                  "sm",
-                  "md",
-                  "lg",
-                  "xl",
-                ]
-              }
             >
-              <div
-                className="label"
+              <Col
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+                xs={4}
               >
                 Straight Right
-              </div>
-              <div>
+              </Col>
+              <Col
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+                xs={4}
+              >
                 0
-              </div>
-            </Col>
-            <Col
+              </Col>
+            </Row>
+            <Row
               className="stat"
               tag="div"
-              widths={
-                Array [
-                  "xs",
-                  "sm",
-                  "md",
-                  "lg",
-                  "xl",
-                ]
-              }
             >
-              <div
-                className="label"
+              <Col
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+                xs={4}
               >
                 Left Hooks
-              </div>
-              <div>
+              </Col>
+              <Col
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+                xs={2}
+              >
                 0
-              </div>
-              <div
-                className="label"
+              </Col>
+              <Col
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+                xs={4}
               >
                 Right Hooks
-              </div>
-              <div>
+              </Col>
+              <Col
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+                xs={2}
+              >
                 0
-              </div>
-            </Col>
-            <Col
+              </Col>
+            </Row>
+            <Row
               className="stat"
               tag="div"
-              widths={
-                Array [
-                  "xs",
-                  "sm",
-                  "md",
-                  "lg",
-                  "xl",
-                ]
-              }
             >
-              <div
-                className="label"
+              <Col
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+                xs={4}
               >
                 Left Uppercuts
-              </div>
-              <div>
+              </Col>
+              <Col
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+                xs={2}
+              >
                 0
-              </div>
-              <div
-                className="label"
+              </Col>
+              <Col
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+                xs={4}
               >
                 Right Uppercuts
-              </div>
-              <div>
+              </Col>
+              <Col
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+                xs={2}
+              >
                 0
-              </div>
-            </Col>
-            <Col
+              </Col>
+            </Row>
+            <Row
               className="stat"
               tag="div"
-              widths={
-                Array [
-                  "xs",
-                  "sm",
-                  "md",
-                  "lg",
-                  "xl",
-                ]
-              }
             >
-              <div
-                className="label"
+              <Col
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+                xs={4}
               >
                 Left Body Hooks
-              </div>
-              <div>
+              </Col>
+              <Col
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+                xs={2}
+              >
                 0
-              </div>
-              <div
-                className="label"
+              </Col>
+              <Col
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+                xs={4}
               >
                 Right Body Hooks
-              </div>
-              <div>
+              </Col>
+              <Col
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+                xs={2}
+              >
                 0
-              </div>
-            </Col>
-          </Row>
+              </Col>
+            </Row>
+          </Col>
         </Row>
         <Row
           tag="div"
@@ -328,11 +460,11 @@ ShallowWrapper {
         "children": Array [
           "",
           <Row
-            className="timerContainer"
             tag="div"
           >
             <Col
-              className="timerCol"
+              className="timerContainer"
+              lg={7}
               tag="div"
               widths={
                 Array [
@@ -344,55 +476,39 @@ ShallowWrapper {
                 ]
               }
             >
-              <div>
-                Intervals Left
-              </div>
               <div
-                className="timer"
-              />
-            </Col>
-            <Col
-              className="timerCol"
-              tag="div"
-              widths={
-                Array [
-                  "xs",
-                  "sm",
-                  "md",
-                  "lg",
-                  "xl",
-                ]
-              }
-            >
-              <div>
-                Interval Time Left
-              </div>
-              <div
-                className="timer"
+                className="timerCol"
               >
-                0:NaN
-              </div>
-            </Col>
-            <Col
-              className="timerCol"
-              tag="div"
-              widths={
-                Array [
-                  "xs",
-                  "sm",
-                  "md",
-                  "lg",
-                  "xl",
-                ]
-              }
-            >
-              <div>
-                Rest Time Left
+                <div>
+                  Intervals Left
+                </div>
+                <div
+                  className="timer"
+                />
               </div>
               <div
-                className="timer"
+                className="timerCol"
               >
-                0:NaN
+                <div>
+                  Interval Time Left
+                </div>
+                <div
+                  className="timer"
+                >
+                  0:NaN
+                </div>
+              </div>
+              <div
+                className="timerCol"
+              >
+                <div>
+                  Rest Time Left
+                </div>
+                <div
+                  className="timer"
+                >
+                  0:NaN
+                </div>
               </div>
             </Col>
           </Row>,
@@ -402,6 +518,7 @@ ShallowWrapper {
           >
             <Col
               className="videoContainer"
+              lg={7}
               tag="div"
               widths={
                 Array [
@@ -423,183 +540,330 @@ ShallowWrapper {
                 className="canvas"
               />
             </Col>
-            <Row
+            <Col
               className="statContainer"
+              lg={5}
               tag="div"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
             >
-              <Col
+              <Row
                 tag="div"
-                widths={
-                  Array [
-                    "xs",
-                    "sm",
-                    "md",
-                    "lg",
-                    "xl",
-                  ]
-                }
               >
-                <h3>
+                <h3
+                  className="statHeader"
+                >
                   Stats
                 </h3>
-              </Col>
-              <Col
+              </Row>
+              <Row
                 className="stat"
                 tag="div"
-                widths={
-                  Array [
-                    "xs",
-                    "sm",
-                    "md",
-                    "lg",
-                    "xl",
-                  ]
-                }
               >
-                <div
-                  className="label"
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs={4}
                 >
                   Total Punches
-                </div>
-                <div>
+                </Col>
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs={4}
+                >
                   0
-                </div>
-              </Col>
-              <Col
+                </Col>
+              </Row>
+              <Row
                 className="stat"
                 tag="div"
-                widths={
-                  Array [
-                    "xs",
-                    "sm",
-                    "md",
-                    "lg",
-                    "xl",
-                  ]
-                }
               >
-                <div
-                  className="label"
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs={4}
                 >
                   Jabs
-                </div>
-                <div>
+                </Col>
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs={4}
+                >
                   0
-                </div>
-              </Col>
-              <Col
+                </Col>
+              </Row>
+              <Row
                 className="stat"
                 tag="div"
-                widths={
-                  Array [
-                    "xs",
-                    "sm",
-                    "md",
-                    "lg",
-                    "xl",
-                  ]
-                }
               >
-                <div
-                  className="label"
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs={4}
                 >
                   Straight Right
-                </div>
-                <div>
+                </Col>
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs={4}
+                >
                   0
-                </div>
-              </Col>
-              <Col
+                </Col>
+              </Row>
+              <Row
                 className="stat"
                 tag="div"
-                widths={
-                  Array [
-                    "xs",
-                    "sm",
-                    "md",
-                    "lg",
-                    "xl",
-                  ]
-                }
               >
-                <div
-                  className="label"
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs={4}
                 >
                   Left Hooks
-                </div>
-                <div>
+                </Col>
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs={2}
+                >
                   0
-                </div>
-                <div
-                  className="label"
+                </Col>
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs={4}
                 >
                   Right Hooks
-                </div>
-                <div>
+                </Col>
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs={2}
+                >
                   0
-                </div>
-              </Col>
-              <Col
+                </Col>
+              </Row>
+              <Row
                 className="stat"
                 tag="div"
-                widths={
-                  Array [
-                    "xs",
-                    "sm",
-                    "md",
-                    "lg",
-                    "xl",
-                  ]
-                }
               >
-                <div
-                  className="label"
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs={4}
                 >
                   Left Uppercuts
-                </div>
-                <div>
+                </Col>
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs={2}
+                >
                   0
-                </div>
-                <div
-                  className="label"
+                </Col>
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs={4}
                 >
                   Right Uppercuts
-                </div>
-                <div>
+                </Col>
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs={2}
+                >
                   0
-                </div>
-              </Col>
-              <Col
+                </Col>
+              </Row>
+              <Row
                 className="stat"
                 tag="div"
-                widths={
-                  Array [
-                    "xs",
-                    "sm",
-                    "md",
-                    "lg",
-                    "xl",
-                  ]
-                }
               >
-                <div
-                  className="label"
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs={4}
                 >
                   Left Body Hooks
-                </div>
-                <div>
+                </Col>
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs={2}
+                >
                   0
-                </div>
-                <div
-                  className="label"
+                </Col>
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs={4}
                 >
                   Right Body Hooks
-                </div>
-                <div>
+                </Col>
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs={2}
+                >
                   0
-                </div>
-              </Col>
-            </Row>
+                </Col>
+              </Row>
+            </Col>
           </Row>,
           <Row
             tag="div"
@@ -633,19 +897,22 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "children": Array [
-              <Col
+            "children": <Col
+              className="timerContainer"
+              lg={7}
+              tag="div"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
+            >
+              <div
                 className="timerCol"
-                tag="div"
-                widths={
-                  Array [
-                    "xs",
-                    "sm",
-                    "md",
-                    "lg",
-                    "xl",
-                  ]
-                }
               >
                 <div>
                   Intervals Left
@@ -653,19 +920,9 @@ ShallowWrapper {
                 <div
                   className="timer"
                 />
-              </Col>,
-              <Col
+              </div>
+              <div
                 className="timerCol"
-                tag="div"
-                widths={
-                  Array [
-                    "xs",
-                    "sm",
-                    "md",
-                    "lg",
-                    "xl",
-                  ]
-                }
               >
                 <div>
                   Interval Time Left
@@ -675,19 +932,9 @@ ShallowWrapper {
                 >
                   0:NaN
                 </div>
-              </Col>,
-              <Col
+              </div>
+              <div
                 className="timerCol"
-                tag="div"
-                widths={
-                  Array [
-                    "xs",
-                    "sm",
-                    "md",
-                    "lg",
-                    "xl",
-                  ]
-                }
               >
                 <div>
                   Rest Time Left
@@ -697,171 +944,201 @@ ShallowWrapper {
                 >
                   0:NaN
                 </div>
-              </Col>,
-            ],
-            "className": "timerContainer",
+              </div>
+            </Col>,
             "tag": "div",
           },
           "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "children": Array [
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": Array [
+                <div
+                  className="timerCol"
+                >
                   <div>
                     Intervals Left
-                  </div>,
+                  </div>
                   <div
                     className="timer"
-                  />,
-                ],
-                "className": "timerCol",
-                "tag": "div",
-                "widths": Array [
-                  "xs",
-                  "sm",
-                  "md",
-                  "lg",
-                  "xl",
-                ],
-              },
-              "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "Intervals Left",
-                  },
-                  "ref": null,
-                  "rendered": "Intervals Left",
-                  "type": "div",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": undefined,
-                    "className": "timer",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "div",
-                },
-              ],
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "children": Array [
+                  />
+                </div>,
+                <div
+                  className="timerCol"
+                >
                   <div>
                     Interval Time Left
-                  </div>,
+                  </div>
                   <div
                     className="timer"
                   >
                     0:NaN
-                  </div>,
-                ],
-                "className": "timerCol",
-                "tag": "div",
-                "widths": Array [
-                  "xs",
-                  "sm",
-                  "md",
-                  "lg",
-                  "xl",
-                ],
-              },
-              "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "Interval Time Left",
-                  },
-                  "ref": null,
-                  "rendered": "Interval Time Left",
-                  "type": "div",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "0:NaN",
-                    "className": "timer",
-                  },
-                  "ref": null,
-                  "rendered": "0:NaN",
-                  "type": "div",
-                },
-              ],
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "children": Array [
+                  </div>
+                </div>,
+                <div
+                  className="timerCol"
+                >
                   <div>
                     Rest Time Left
-                  </div>,
+                  </div>
                   <div
                     className="timer"
                   >
                     0:NaN
-                  </div>,
-                ],
-                "className": "timerCol",
-                "tag": "div",
-                "widths": Array [
-                  "xs",
-                  "sm",
-                  "md",
-                  "lg",
-                  "xl",
-                ],
-              },
-              "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "Rest Time Left",
-                  },
-                  "ref": null,
-                  "rendered": "Rest Time Left",
-                  "type": "div",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "0:NaN",
-                    "className": "timer",
-                  },
-                  "ref": null,
-                  "rendered": "0:NaN",
-                  "type": "div",
-                },
+                  </div>
+                </div>,
               ],
-              "type": [Function],
+              "className": "timerContainer",
+              "lg": 7,
+              "tag": "div",
+              "widths": Array [
+                "xs",
+                "sm",
+                "md",
+                "lg",
+                "xl",
+              ],
             },
-          ],
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <div>
+                      Intervals Left
+                    </div>,
+                    <div
+                      className="timer"
+                    />,
+                  ],
+                  "className": "timerCol",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "Intervals Left",
+                    },
+                    "ref": null,
+                    "rendered": "Intervals Left",
+                    "type": "div",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": undefined,
+                      "className": "timer",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": "div",
+                  },
+                ],
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <div>
+                      Interval Time Left
+                    </div>,
+                    <div
+                      className="timer"
+                    >
+                      0:NaN
+                    </div>,
+                  ],
+                  "className": "timerCol",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "Interval Time Left",
+                    },
+                    "ref": null,
+                    "rendered": "Interval Time Left",
+                    "type": "div",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "0:NaN",
+                      "className": "timer",
+                    },
+                    "ref": null,
+                    "rendered": "0:NaN",
+                    "type": "div",
+                  },
+                ],
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <div>
+                      Rest Time Left
+                    </div>,
+                    <div
+                      className="timer"
+                    >
+                      0:NaN
+                    </div>,
+                  ],
+                  "className": "timerCol",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "Rest Time Left",
+                    },
+                    "ref": null,
+                    "rendered": "Rest Time Left",
+                    "type": "div",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "0:NaN",
+                      "className": "timer",
+                    },
+                    "ref": null,
+                    "rendered": "0:NaN",
+                    "type": "div",
+                  },
+                ],
+                "type": "div",
+              },
+            ],
+            "type": [Function],
+          },
           "type": [Function],
         },
         Object {
@@ -872,6 +1149,7 @@ ShallowWrapper {
             "children": Array [
               <Col
                 className="videoContainer"
+                lg={7}
                 tag="div"
                 widths={
                   Array [
@@ -893,183 +1171,330 @@ ShallowWrapper {
                   className="canvas"
                 />
               </Col>,
-              <Row
+              <Col
                 className="statContainer"
+                lg={5}
                 tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
               >
-                <Col
+                <Row
                   tag="div"
-                  widths={
-                    Array [
-                      "xs",
-                      "sm",
-                      "md",
-                      "lg",
-                      "xl",
-                    ]
-                  }
                 >
-                  <h3>
+                  <h3
+                    className="statHeader"
+                  >
                     Stats
                   </h3>
-                </Col>
-                <Col
+                </Row>
+                <Row
                   className="stat"
                   tag="div"
-                  widths={
-                    Array [
-                      "xs",
-                      "sm",
-                      "md",
-                      "lg",
-                      "xl",
-                    ]
-                  }
                 >
-                  <div
-                    className="label"
+                  <Col
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs={4}
                   >
                     Total Punches
-                  </div>
-                  <div>
+                  </Col>
+                  <Col
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs={4}
+                  >
                     0
-                  </div>
-                </Col>
-                <Col
+                  </Col>
+                </Row>
+                <Row
                   className="stat"
                   tag="div"
-                  widths={
-                    Array [
-                      "xs",
-                      "sm",
-                      "md",
-                      "lg",
-                      "xl",
-                    ]
-                  }
                 >
-                  <div
-                    className="label"
+                  <Col
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs={4}
                   >
                     Jabs
-                  </div>
-                  <div>
+                  </Col>
+                  <Col
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs={4}
+                  >
                     0
-                  </div>
-                </Col>
-                <Col
+                  </Col>
+                </Row>
+                <Row
                   className="stat"
                   tag="div"
-                  widths={
-                    Array [
-                      "xs",
-                      "sm",
-                      "md",
-                      "lg",
-                      "xl",
-                    ]
-                  }
                 >
-                  <div
-                    className="label"
+                  <Col
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs={4}
                   >
                     Straight Right
-                  </div>
-                  <div>
+                  </Col>
+                  <Col
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs={4}
+                  >
                     0
-                  </div>
-                </Col>
-                <Col
+                  </Col>
+                </Row>
+                <Row
                   className="stat"
                   tag="div"
-                  widths={
-                    Array [
-                      "xs",
-                      "sm",
-                      "md",
-                      "lg",
-                      "xl",
-                    ]
-                  }
                 >
-                  <div
-                    className="label"
+                  <Col
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs={4}
                   >
                     Left Hooks
-                  </div>
-                  <div>
+                  </Col>
+                  <Col
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs={2}
+                  >
                     0
-                  </div>
-                  <div
-                    className="label"
+                  </Col>
+                  <Col
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs={4}
                   >
                     Right Hooks
-                  </div>
-                  <div>
+                  </Col>
+                  <Col
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs={2}
+                  >
                     0
-                  </div>
-                </Col>
-                <Col
+                  </Col>
+                </Row>
+                <Row
                   className="stat"
                   tag="div"
-                  widths={
-                    Array [
-                      "xs",
-                      "sm",
-                      "md",
-                      "lg",
-                      "xl",
-                    ]
-                  }
                 >
-                  <div
-                    className="label"
+                  <Col
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs={4}
                   >
                     Left Uppercuts
-                  </div>
-                  <div>
+                  </Col>
+                  <Col
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs={2}
+                  >
                     0
-                  </div>
-                  <div
-                    className="label"
+                  </Col>
+                  <Col
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs={4}
                   >
                     Right Uppercuts
-                  </div>
-                  <div>
+                  </Col>
+                  <Col
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs={2}
+                  >
                     0
-                  </div>
-                </Col>
-                <Col
+                  </Col>
+                </Row>
+                <Row
                   className="stat"
                   tag="div"
-                  widths={
-                    Array [
-                      "xs",
-                      "sm",
-                      "md",
-                      "lg",
-                      "xl",
-                    ]
-                  }
                 >
-                  <div
-                    className="label"
+                  <Col
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs={4}
                   >
                     Left Body Hooks
-                  </div>
-                  <div>
+                  </Col>
+                  <Col
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs={2}
+                  >
                     0
-                  </div>
-                  <div
-                    className="label"
+                  </Col>
+                  <Col
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs={4}
                   >
                     Right Body Hooks
-                  </div>
-                  <div>
+                  </Col>
+                  <Col
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs={2}
+                  >
                     0
-                  </div>
-                </Col>
-              </Row>,
+                  </Col>
+                </Row>
+              </Col>,
             ],
             "className": "videoRow",
             "tag": "div",
@@ -1093,6 +1518,7 @@ ShallowWrapper {
                   />,
                 ],
                 "className": "videoContainer",
+                "lg": 7,
                 "tag": "div",
                 "widths": Array [
                   "xs",
@@ -1151,181 +1577,326 @@ ShallowWrapper {
               "nodeType": "function",
               "props": Object {
                 "children": Array [
-                  <Col
+                  <Row
                     tag="div"
-                    widths={
-                      Array [
-                        "xs",
-                        "sm",
-                        "md",
-                        "lg",
-                        "xl",
-                      ]
-                    }
                   >
-                    <h3>
+                    <h3
+                      className="statHeader"
+                    >
                       Stats
                     </h3>
-                  </Col>,
-                  <Col
+                  </Row>,
+                  <Row
                     className="stat"
                     tag="div"
-                    widths={
-                      Array [
-                        "xs",
-                        "sm",
-                        "md",
-                        "lg",
-                        "xl",
-                      ]
-                    }
                   >
-                    <div
-                      className="label"
+                    <Col
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs={4}
                     >
                       Total Punches
-                    </div>
-                    <div>
+                    </Col>
+                    <Col
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs={4}
+                    >
                       0
-                    </div>
-                  </Col>,
-                  <Col
+                    </Col>
+                  </Row>,
+                  <Row
                     className="stat"
                     tag="div"
-                    widths={
-                      Array [
-                        "xs",
-                        "sm",
-                        "md",
-                        "lg",
-                        "xl",
-                      ]
-                    }
                   >
-                    <div
-                      className="label"
+                    <Col
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs={4}
                     >
                       Jabs
-                    </div>
-                    <div>
+                    </Col>
+                    <Col
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs={4}
+                    >
                       0
-                    </div>
-                  </Col>,
-                  <Col
+                    </Col>
+                  </Row>,
+                  <Row
                     className="stat"
                     tag="div"
-                    widths={
-                      Array [
-                        "xs",
-                        "sm",
-                        "md",
-                        "lg",
-                        "xl",
-                      ]
-                    }
                   >
-                    <div
-                      className="label"
+                    <Col
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs={4}
                     >
                       Straight Right
-                    </div>
-                    <div>
+                    </Col>
+                    <Col
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs={4}
+                    >
                       0
-                    </div>
-                  </Col>,
-                  <Col
+                    </Col>
+                  </Row>,
+                  <Row
                     className="stat"
                     tag="div"
-                    widths={
-                      Array [
-                        "xs",
-                        "sm",
-                        "md",
-                        "lg",
-                        "xl",
-                      ]
-                    }
                   >
-                    <div
-                      className="label"
+                    <Col
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs={4}
                     >
                       Left Hooks
-                    </div>
-                    <div>
+                    </Col>
+                    <Col
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs={2}
+                    >
                       0
-                    </div>
-                    <div
-                      className="label"
+                    </Col>
+                    <Col
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs={4}
                     >
                       Right Hooks
-                    </div>
-                    <div>
+                    </Col>
+                    <Col
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs={2}
+                    >
                       0
-                    </div>
-                  </Col>,
-                  <Col
+                    </Col>
+                  </Row>,
+                  <Row
                     className="stat"
                     tag="div"
-                    widths={
-                      Array [
-                        "xs",
-                        "sm",
-                        "md",
-                        "lg",
-                        "xl",
-                      ]
-                    }
                   >
-                    <div
-                      className="label"
+                    <Col
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs={4}
                     >
                       Left Uppercuts
-                    </div>
-                    <div>
+                    </Col>
+                    <Col
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs={2}
+                    >
                       0
-                    </div>
-                    <div
-                      className="label"
+                    </Col>
+                    <Col
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs={4}
                     >
                       Right Uppercuts
-                    </div>
-                    <div>
+                    </Col>
+                    <Col
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs={2}
+                    >
                       0
-                    </div>
-                  </Col>,
-                  <Col
+                    </Col>
+                  </Row>,
+                  <Row
                     className="stat"
                     tag="div"
-                    widths={
-                      Array [
-                        "xs",
-                        "sm",
-                        "md",
-                        "lg",
-                        "xl",
-                      ]
-                    }
                   >
-                    <div
-                      className="label"
+                    <Col
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs={4}
                     >
                       Left Body Hooks
-                    </div>
-                    <div>
+                    </Col>
+                    <Col
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs={2}
+                    >
                       0
-                    </div>
-                    <div
-                      className="label"
+                    </Col>
+                    <Col
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs={4}
                     >
                       Right Body Hooks
-                    </div>
-                    <div>
+                    </Col>
+                    <Col
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs={2}
+                    >
                       0
-                    </div>
-                  </Col>,
+                    </Col>
+                  </Row>,
                 ],
                 "className": "statContainer",
+                "lg": 5,
                 "tag": "div",
+                "widths": Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ],
               },
               "ref": null,
               "rendered": Array [
@@ -1334,17 +1905,12 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "function",
                   "props": Object {
-                    "children": <h3>
+                    "children": <h3
+                      className="statHeader"
+                    >
                       Stats
                     </h3>,
                     "tag": "div",
-                    "widths": Array [
-                      "xs",
-                      "sm",
-                      "md",
-                      "lg",
-                      "xl",
-                    ],
                   },
                   "ref": null,
                   "rendered": Object {
@@ -1353,6 +1919,7 @@ ShallowWrapper {
                     "nodeType": "host",
                     "props": Object {
                       "children": "Stats",
+                      "className": "statHeader",
                     },
                     "ref": null,
                     "rendered": "Stats",
@@ -1366,49 +1933,81 @@ ShallowWrapper {
                   "nodeType": "function",
                   "props": Object {
                     "children": Array [
-                      <div
-                        className="label"
+                      <Col
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs={4}
                       >
                         Total Punches
-                      </div>,
-                      <div>
+                      </Col>,
+                      <Col
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs={4}
+                      >
                         0
-                      </div>,
+                      </Col>,
                     ],
                     "className": "stat",
                     "tag": "div",
-                    "widths": Array [
-                      "xs",
-                      "sm",
-                      "md",
-                      "lg",
-                      "xl",
-                    ],
                   },
                   "ref": null,
                   "rendered": Array [
                     Object {
                       "instance": null,
                       "key": undefined,
-                      "nodeType": "host",
+                      "nodeType": "function",
                       "props": Object {
                         "children": "Total Punches",
-                        "className": "label",
+                        "tag": "div",
+                        "widths": Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ],
+                        "xs": 4,
                       },
                       "ref": null,
                       "rendered": "Total Punches",
-                      "type": "div",
+                      "type": [Function],
                     },
                     Object {
                       "instance": null,
                       "key": undefined,
-                      "nodeType": "host",
+                      "nodeType": "function",
                       "props": Object {
                         "children": 0,
+                        "tag": "div",
+                        "widths": Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ],
+                        "xs": 4,
                       },
                       "ref": null,
                       "rendered": 0,
-                      "type": "div",
+                      "type": [Function],
                     },
                   ],
                   "type": [Function],
@@ -1419,49 +2018,81 @@ ShallowWrapper {
                   "nodeType": "function",
                   "props": Object {
                     "children": Array [
-                      <div
-                        className="label"
+                      <Col
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs={4}
                       >
                         Jabs
-                      </div>,
-                      <div>
+                      </Col>,
+                      <Col
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs={4}
+                      >
                         0
-                      </div>,
+                      </Col>,
                     ],
                     "className": "stat",
                     "tag": "div",
-                    "widths": Array [
-                      "xs",
-                      "sm",
-                      "md",
-                      "lg",
-                      "xl",
-                    ],
                   },
                   "ref": null,
                   "rendered": Array [
                     Object {
                       "instance": null,
                       "key": undefined,
-                      "nodeType": "host",
+                      "nodeType": "function",
                       "props": Object {
                         "children": "Jabs",
-                        "className": "label",
+                        "tag": "div",
+                        "widths": Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ],
+                        "xs": 4,
                       },
                       "ref": null,
                       "rendered": "Jabs",
-                      "type": "div",
+                      "type": [Function],
                     },
                     Object {
                       "instance": null,
                       "key": undefined,
-                      "nodeType": "host",
+                      "nodeType": "function",
                       "props": Object {
                         "children": 0,
+                        "tag": "div",
+                        "widths": Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ],
+                        "xs": 4,
                       },
                       "ref": null,
                       "rendered": 0,
-                      "type": "div",
+                      "type": [Function],
                     },
                   ],
                   "type": [Function],
@@ -1472,49 +2103,81 @@ ShallowWrapper {
                   "nodeType": "function",
                   "props": Object {
                     "children": Array [
-                      <div
-                        className="label"
+                      <Col
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs={4}
                       >
                         Straight Right
-                      </div>,
-                      <div>
+                      </Col>,
+                      <Col
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs={4}
+                      >
                         0
-                      </div>,
+                      </Col>,
                     ],
                     "className": "stat",
                     "tag": "div",
-                    "widths": Array [
-                      "xs",
-                      "sm",
-                      "md",
-                      "lg",
-                      "xl",
-                    ],
                   },
                   "ref": null,
                   "rendered": Array [
                     Object {
                       "instance": null,
                       "key": undefined,
-                      "nodeType": "host",
+                      "nodeType": "function",
                       "props": Object {
                         "children": "Straight Right",
-                        "className": "label",
+                        "tag": "div",
+                        "widths": Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ],
+                        "xs": 4,
                       },
                       "ref": null,
                       "rendered": "Straight Right",
-                      "type": "div",
+                      "type": [Function],
                     },
                     Object {
                       "instance": null,
                       "key": undefined,
-                      "nodeType": "host",
+                      "nodeType": "function",
                       "props": Object {
                         "children": 0,
+                        "tag": "div",
+                        "widths": Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ],
+                        "xs": 4,
                       },
                       "ref": null,
                       "rendered": 0,
-                      "type": "div",
+                      "type": [Function],
                     },
                   ],
                   "type": [Function],
@@ -1525,80 +2188,151 @@ ShallowWrapper {
                   "nodeType": "function",
                   "props": Object {
                     "children": Array [
-                      <div
-                        className="label"
+                      <Col
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs={4}
                       >
                         Left Hooks
-                      </div>,
-                      <div>
+                      </Col>,
+                      <Col
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs={2}
+                      >
                         0
-                      </div>,
-                      <div
-                        className="label"
+                      </Col>,
+                      <Col
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs={4}
                       >
                         Right Hooks
-                      </div>,
-                      <div>
+                      </Col>,
+                      <Col
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs={2}
+                      >
                         0
-                      </div>,
+                      </Col>,
                     ],
                     "className": "stat",
                     "tag": "div",
-                    "widths": Array [
-                      "xs",
-                      "sm",
-                      "md",
-                      "lg",
-                      "xl",
-                    ],
                   },
                   "ref": null,
                   "rendered": Array [
                     Object {
                       "instance": null,
                       "key": undefined,
-                      "nodeType": "host",
+                      "nodeType": "function",
                       "props": Object {
                         "children": "Left Hooks",
-                        "className": "label",
+                        "tag": "div",
+                        "widths": Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ],
+                        "xs": 4,
                       },
                       "ref": null,
                       "rendered": "Left Hooks",
-                      "type": "div",
+                      "type": [Function],
                     },
                     Object {
                       "instance": null,
                       "key": undefined,
-                      "nodeType": "host",
+                      "nodeType": "function",
                       "props": Object {
                         "children": 0,
+                        "tag": "div",
+                        "widths": Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ],
+                        "xs": 2,
                       },
                       "ref": null,
                       "rendered": 0,
-                      "type": "div",
+                      "type": [Function],
                     },
                     Object {
                       "instance": null,
                       "key": undefined,
-                      "nodeType": "host",
+                      "nodeType": "function",
                       "props": Object {
                         "children": "Right Hooks",
-                        "className": "label",
+                        "tag": "div",
+                        "widths": Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ],
+                        "xs": 4,
                       },
                       "ref": null,
                       "rendered": "Right Hooks",
-                      "type": "div",
+                      "type": [Function],
                     },
                     Object {
                       "instance": null,
                       "key": undefined,
-                      "nodeType": "host",
+                      "nodeType": "function",
                       "props": Object {
                         "children": 0,
+                        "tag": "div",
+                        "widths": Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ],
+                        "xs": 2,
                       },
                       "ref": null,
                       "rendered": 0,
-                      "type": "div",
+                      "type": [Function],
                     },
                   ],
                   "type": [Function],
@@ -1609,80 +2343,151 @@ ShallowWrapper {
                   "nodeType": "function",
                   "props": Object {
                     "children": Array [
-                      <div
-                        className="label"
+                      <Col
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs={4}
                       >
                         Left Uppercuts
-                      </div>,
-                      <div>
+                      </Col>,
+                      <Col
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs={2}
+                      >
                         0
-                      </div>,
-                      <div
-                        className="label"
+                      </Col>,
+                      <Col
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs={4}
                       >
                         Right Uppercuts
-                      </div>,
-                      <div>
+                      </Col>,
+                      <Col
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs={2}
+                      >
                         0
-                      </div>,
+                      </Col>,
                     ],
                     "className": "stat",
                     "tag": "div",
-                    "widths": Array [
-                      "xs",
-                      "sm",
-                      "md",
-                      "lg",
-                      "xl",
-                    ],
                   },
                   "ref": null,
                   "rendered": Array [
                     Object {
                       "instance": null,
                       "key": undefined,
-                      "nodeType": "host",
+                      "nodeType": "function",
                       "props": Object {
                         "children": "Left Uppercuts",
-                        "className": "label",
+                        "tag": "div",
+                        "widths": Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ],
+                        "xs": 4,
                       },
                       "ref": null,
                       "rendered": "Left Uppercuts",
-                      "type": "div",
+                      "type": [Function],
                     },
                     Object {
                       "instance": null,
                       "key": undefined,
-                      "nodeType": "host",
+                      "nodeType": "function",
                       "props": Object {
                         "children": 0,
+                        "tag": "div",
+                        "widths": Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ],
+                        "xs": 2,
                       },
                       "ref": null,
                       "rendered": 0,
-                      "type": "div",
+                      "type": [Function],
                     },
                     Object {
                       "instance": null,
                       "key": undefined,
-                      "nodeType": "host",
+                      "nodeType": "function",
                       "props": Object {
                         "children": "Right Uppercuts",
-                        "className": "label",
+                        "tag": "div",
+                        "widths": Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ],
+                        "xs": 4,
                       },
                       "ref": null,
                       "rendered": "Right Uppercuts",
-                      "type": "div",
+                      "type": [Function],
                     },
                     Object {
                       "instance": null,
                       "key": undefined,
-                      "nodeType": "host",
+                      "nodeType": "function",
                       "props": Object {
                         "children": 0,
+                        "tag": "div",
+                        "widths": Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ],
+                        "xs": 2,
                       },
                       "ref": null,
                       "rendered": 0,
-                      "type": "div",
+                      "type": [Function],
                     },
                   ],
                   "type": [Function],
@@ -1693,80 +2498,151 @@ ShallowWrapper {
                   "nodeType": "function",
                   "props": Object {
                     "children": Array [
-                      <div
-                        className="label"
+                      <Col
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs={4}
                       >
                         Left Body Hooks
-                      </div>,
-                      <div>
+                      </Col>,
+                      <Col
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs={2}
+                      >
                         0
-                      </div>,
-                      <div
-                        className="label"
+                      </Col>,
+                      <Col
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs={4}
                       >
                         Right Body Hooks
-                      </div>,
-                      <div>
+                      </Col>,
+                      <Col
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs={2}
+                      >
                         0
-                      </div>,
+                      </Col>,
                     ],
                     "className": "stat",
                     "tag": "div",
-                    "widths": Array [
-                      "xs",
-                      "sm",
-                      "md",
-                      "lg",
-                      "xl",
-                    ],
                   },
                   "ref": null,
                   "rendered": Array [
                     Object {
                       "instance": null,
                       "key": undefined,
-                      "nodeType": "host",
+                      "nodeType": "function",
                       "props": Object {
                         "children": "Left Body Hooks",
-                        "className": "label",
+                        "tag": "div",
+                        "widths": Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ],
+                        "xs": 4,
                       },
                       "ref": null,
                       "rendered": "Left Body Hooks",
-                      "type": "div",
+                      "type": [Function],
                     },
                     Object {
                       "instance": null,
                       "key": undefined,
-                      "nodeType": "host",
+                      "nodeType": "function",
                       "props": Object {
                         "children": 0,
+                        "tag": "div",
+                        "widths": Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ],
+                        "xs": 2,
                       },
                       "ref": null,
                       "rendered": 0,
-                      "type": "div",
+                      "type": [Function],
                     },
                     Object {
                       "instance": null,
                       "key": undefined,
-                      "nodeType": "host",
+                      "nodeType": "function",
                       "props": Object {
                         "children": "Right Body Hooks",
-                        "className": "label",
+                        "tag": "div",
+                        "widths": Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ],
+                        "xs": 4,
                       },
                       "ref": null,
                       "rendered": "Right Body Hooks",
-                      "type": "div",
+                      "type": [Function],
                     },
                     Object {
                       "instance": null,
                       "key": undefined,
-                      "nodeType": "host",
+                      "nodeType": "function",
                       "props": Object {
                         "children": 0,
+                        "tag": "div",
+                        "widths": Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ],
+                        "xs": 2,
                       },
                       "ref": null,
                       "rendered": 0,
-                      "type": "div",
+                      "type": [Function],
                     },
                   ],
                   "type": [Function],
@@ -1849,11 +2725,11 @@ ShallowWrapper {
         >
           
           <Row
-            className="timerContainer"
             tag="div"
           >
             <Col
-              className="timerCol"
+              className="timerContainer"
+              lg={7}
               tag="div"
               widths={
                 Array [
@@ -1865,55 +2741,39 @@ ShallowWrapper {
                 ]
               }
             >
-              <div>
-                Intervals Left
-              </div>
               <div
-                className="timer"
-              />
-            </Col>
-            <Col
-              className="timerCol"
-              tag="div"
-              widths={
-                Array [
-                  "xs",
-                  "sm",
-                  "md",
-                  "lg",
-                  "xl",
-                ]
-              }
-            >
-              <div>
-                Interval Time Left
-              </div>
-              <div
-                className="timer"
+                className="timerCol"
               >
-                0:NaN
-              </div>
-            </Col>
-            <Col
-              className="timerCol"
-              tag="div"
-              widths={
-                Array [
-                  "xs",
-                  "sm",
-                  "md",
-                  "lg",
-                  "xl",
-                ]
-              }
-            >
-              <div>
-                Rest Time Left
+                <div>
+                  Intervals Left
+                </div>
+                <div
+                  className="timer"
+                />
               </div>
               <div
-                className="timer"
+                className="timerCol"
               >
-                0:NaN
+                <div>
+                  Interval Time Left
+                </div>
+                <div
+                  className="timer"
+                >
+                  0:NaN
+                </div>
+              </div>
+              <div
+                className="timerCol"
+              >
+                <div>
+                  Rest Time Left
+                </div>
+                <div
+                  className="timer"
+                >
+                  0:NaN
+                </div>
               </div>
             </Col>
           </Row>
@@ -1923,6 +2783,7 @@ ShallowWrapper {
           >
             <Col
               className="videoContainer"
+              lg={7}
               tag="div"
               widths={
                 Array [
@@ -1944,183 +2805,330 @@ ShallowWrapper {
                 className="canvas"
               />
             </Col>
-            <Row
+            <Col
               className="statContainer"
+              lg={5}
               tag="div"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
             >
-              <Col
+              <Row
                 tag="div"
-                widths={
-                  Array [
-                    "xs",
-                    "sm",
-                    "md",
-                    "lg",
-                    "xl",
-                  ]
-                }
               >
-                <h3>
+                <h3
+                  className="statHeader"
+                >
                   Stats
                 </h3>
-              </Col>
-              <Col
+              </Row>
+              <Row
                 className="stat"
                 tag="div"
-                widths={
-                  Array [
-                    "xs",
-                    "sm",
-                    "md",
-                    "lg",
-                    "xl",
-                  ]
-                }
               >
-                <div
-                  className="label"
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs={4}
                 >
                   Total Punches
-                </div>
-                <div>
+                </Col>
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs={4}
+                >
                   0
-                </div>
-              </Col>
-              <Col
+                </Col>
+              </Row>
+              <Row
                 className="stat"
                 tag="div"
-                widths={
-                  Array [
-                    "xs",
-                    "sm",
-                    "md",
-                    "lg",
-                    "xl",
-                  ]
-                }
               >
-                <div
-                  className="label"
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs={4}
                 >
                   Jabs
-                </div>
-                <div>
+                </Col>
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs={4}
+                >
                   0
-                </div>
-              </Col>
-              <Col
+                </Col>
+              </Row>
+              <Row
                 className="stat"
                 tag="div"
-                widths={
-                  Array [
-                    "xs",
-                    "sm",
-                    "md",
-                    "lg",
-                    "xl",
-                  ]
-                }
               >
-                <div
-                  className="label"
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs={4}
                 >
                   Straight Right
-                </div>
-                <div>
+                </Col>
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs={4}
+                >
                   0
-                </div>
-              </Col>
-              <Col
+                </Col>
+              </Row>
+              <Row
                 className="stat"
                 tag="div"
-                widths={
-                  Array [
-                    "xs",
-                    "sm",
-                    "md",
-                    "lg",
-                    "xl",
-                  ]
-                }
               >
-                <div
-                  className="label"
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs={4}
                 >
                   Left Hooks
-                </div>
-                <div>
+                </Col>
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs={2}
+                >
                   0
-                </div>
-                <div
-                  className="label"
+                </Col>
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs={4}
                 >
                   Right Hooks
-                </div>
-                <div>
+                </Col>
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs={2}
+                >
                   0
-                </div>
-              </Col>
-              <Col
+                </Col>
+              </Row>
+              <Row
                 className="stat"
                 tag="div"
-                widths={
-                  Array [
-                    "xs",
-                    "sm",
-                    "md",
-                    "lg",
-                    "xl",
-                  ]
-                }
               >
-                <div
-                  className="label"
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs={4}
                 >
                   Left Uppercuts
-                </div>
-                <div>
+                </Col>
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs={2}
+                >
                   0
-                </div>
-                <div
-                  className="label"
+                </Col>
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs={4}
                 >
                   Right Uppercuts
-                </div>
-                <div>
+                </Col>
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs={2}
+                >
                   0
-                </div>
-              </Col>
-              <Col
+                </Col>
+              </Row>
+              <Row
                 className="stat"
                 tag="div"
-                widths={
-                  Array [
-                    "xs",
-                    "sm",
-                    "md",
-                    "lg",
-                    "xl",
-                  ]
-                }
               >
-                <div
-                  className="label"
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs={4}
                 >
                   Left Body Hooks
-                </div>
-                <div>
+                </Col>
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs={2}
+                >
                   0
-                </div>
-                <div
-                  className="label"
+                </Col>
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs={4}
                 >
                   Right Body Hooks
-                </div>
-                <div>
+                </Col>
+                <Col
+                  tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                  xs={2}
+                >
                   0
-                </div>
-              </Col>
-            </Row>
+                </Col>
+              </Row>
+            </Col>
           </Row>
           <Row
             tag="div"
@@ -2153,11 +3161,11 @@ ShallowWrapper {
           "children": Array [
             "",
             <Row
-              className="timerContainer"
               tag="div"
             >
               <Col
-                className="timerCol"
+                className="timerContainer"
+                lg={7}
                 tag="div"
                 widths={
                   Array [
@@ -2169,55 +3177,39 @@ ShallowWrapper {
                   ]
                 }
               >
-                <div>
-                  Intervals Left
-                </div>
                 <div
-                  className="timer"
-                />
-              </Col>
-              <Col
-                className="timerCol"
-                tag="div"
-                widths={
-                  Array [
-                    "xs",
-                    "sm",
-                    "md",
-                    "lg",
-                    "xl",
-                  ]
-                }
-              >
-                <div>
-                  Interval Time Left
-                </div>
-                <div
-                  className="timer"
+                  className="timerCol"
                 >
-                  0:NaN
-                </div>
-              </Col>
-              <Col
-                className="timerCol"
-                tag="div"
-                widths={
-                  Array [
-                    "xs",
-                    "sm",
-                    "md",
-                    "lg",
-                    "xl",
-                  ]
-                }
-              >
-                <div>
-                  Rest Time Left
+                  <div>
+                    Intervals Left
+                  </div>
+                  <div
+                    className="timer"
+                  />
                 </div>
                 <div
-                  className="timer"
+                  className="timerCol"
                 >
-                  0:NaN
+                  <div>
+                    Interval Time Left
+                  </div>
+                  <div
+                    className="timer"
+                  >
+                    0:NaN
+                  </div>
+                </div>
+                <div
+                  className="timerCol"
+                >
+                  <div>
+                    Rest Time Left
+                  </div>
+                  <div
+                    className="timer"
+                  >
+                    0:NaN
+                  </div>
                 </div>
               </Col>
             </Row>,
@@ -2227,6 +3219,7 @@ ShallowWrapper {
             >
               <Col
                 className="videoContainer"
+                lg={7}
                 tag="div"
                 widths={
                   Array [
@@ -2248,183 +3241,330 @@ ShallowWrapper {
                   className="canvas"
                 />
               </Col>
-              <Row
+              <Col
                 className="statContainer"
+                lg={5}
                 tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
               >
-                <Col
+                <Row
                   tag="div"
-                  widths={
-                    Array [
-                      "xs",
-                      "sm",
-                      "md",
-                      "lg",
-                      "xl",
-                    ]
-                  }
                 >
-                  <h3>
+                  <h3
+                    className="statHeader"
+                  >
                     Stats
                   </h3>
-                </Col>
-                <Col
+                </Row>
+                <Row
                   className="stat"
                   tag="div"
-                  widths={
-                    Array [
-                      "xs",
-                      "sm",
-                      "md",
-                      "lg",
-                      "xl",
-                    ]
-                  }
                 >
-                  <div
-                    className="label"
+                  <Col
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs={4}
                   >
                     Total Punches
-                  </div>
-                  <div>
+                  </Col>
+                  <Col
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs={4}
+                  >
                     0
-                  </div>
-                </Col>
-                <Col
+                  </Col>
+                </Row>
+                <Row
                   className="stat"
                   tag="div"
-                  widths={
-                    Array [
-                      "xs",
-                      "sm",
-                      "md",
-                      "lg",
-                      "xl",
-                    ]
-                  }
                 >
-                  <div
-                    className="label"
+                  <Col
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs={4}
                   >
                     Jabs
-                  </div>
-                  <div>
+                  </Col>
+                  <Col
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs={4}
+                  >
                     0
-                  </div>
-                </Col>
-                <Col
+                  </Col>
+                </Row>
+                <Row
                   className="stat"
                   tag="div"
-                  widths={
-                    Array [
-                      "xs",
-                      "sm",
-                      "md",
-                      "lg",
-                      "xl",
-                    ]
-                  }
                 >
-                  <div
-                    className="label"
+                  <Col
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs={4}
                   >
                     Straight Right
-                  </div>
-                  <div>
+                  </Col>
+                  <Col
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs={4}
+                  >
                     0
-                  </div>
-                </Col>
-                <Col
+                  </Col>
+                </Row>
+                <Row
                   className="stat"
                   tag="div"
-                  widths={
-                    Array [
-                      "xs",
-                      "sm",
-                      "md",
-                      "lg",
-                      "xl",
-                    ]
-                  }
                 >
-                  <div
-                    className="label"
+                  <Col
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs={4}
                   >
                     Left Hooks
-                  </div>
-                  <div>
+                  </Col>
+                  <Col
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs={2}
+                  >
                     0
-                  </div>
-                  <div
-                    className="label"
+                  </Col>
+                  <Col
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs={4}
                   >
                     Right Hooks
-                  </div>
-                  <div>
+                  </Col>
+                  <Col
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs={2}
+                  >
                     0
-                  </div>
-                </Col>
-                <Col
+                  </Col>
+                </Row>
+                <Row
                   className="stat"
                   tag="div"
-                  widths={
-                    Array [
-                      "xs",
-                      "sm",
-                      "md",
-                      "lg",
-                      "xl",
-                    ]
-                  }
                 >
-                  <div
-                    className="label"
+                  <Col
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs={4}
                   >
                     Left Uppercuts
-                  </div>
-                  <div>
+                  </Col>
+                  <Col
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs={2}
+                  >
                     0
-                  </div>
-                  <div
-                    className="label"
+                  </Col>
+                  <Col
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs={4}
                   >
                     Right Uppercuts
-                  </div>
-                  <div>
+                  </Col>
+                  <Col
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs={2}
+                  >
                     0
-                  </div>
-                </Col>
-                <Col
+                  </Col>
+                </Row>
+                <Row
                   className="stat"
                   tag="div"
-                  widths={
-                    Array [
-                      "xs",
-                      "sm",
-                      "md",
-                      "lg",
-                      "xl",
-                    ]
-                  }
                 >
-                  <div
-                    className="label"
+                  <Col
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs={4}
                   >
                     Left Body Hooks
-                  </div>
-                  <div>
+                  </Col>
+                  <Col
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs={2}
+                  >
                     0
-                  </div>
-                  <div
-                    className="label"
+                  </Col>
+                  <Col
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs={4}
                   >
                     Right Body Hooks
-                  </div>
-                  <div>
+                  </Col>
+                  <Col
+                    tag="div"
+                    widths={
+                      Array [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                      ]
+                    }
+                    xs={2}
+                  >
                     0
-                  </div>
-                </Col>
-              </Row>
+                  </Col>
+                </Row>
+              </Col>
             </Row>,
             <Row
               tag="div"
@@ -2458,19 +3598,22 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "function",
             "props": Object {
-              "children": Array [
-                <Col
+              "children": <Col
+                className="timerContainer"
+                lg={7}
+                tag="div"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+              >
+                <div
                   className="timerCol"
-                  tag="div"
-                  widths={
-                    Array [
-                      "xs",
-                      "sm",
-                      "md",
-                      "lg",
-                      "xl",
-                    ]
-                  }
                 >
                   <div>
                     Intervals Left
@@ -2478,19 +3621,9 @@ ShallowWrapper {
                   <div
                     className="timer"
                   />
-                </Col>,
-                <Col
+                </div>
+                <div
                   className="timerCol"
-                  tag="div"
-                  widths={
-                    Array [
-                      "xs",
-                      "sm",
-                      "md",
-                      "lg",
-                      "xl",
-                    ]
-                  }
                 >
                   <div>
                     Interval Time Left
@@ -2500,19 +3633,9 @@ ShallowWrapper {
                   >
                     0:NaN
                   </div>
-                </Col>,
-                <Col
+                </div>
+                <div
                   className="timerCol"
-                  tag="div"
-                  widths={
-                    Array [
-                      "xs",
-                      "sm",
-                      "md",
-                      "lg",
-                      "xl",
-                    ]
-                  }
                 >
                   <div>
                     Rest Time Left
@@ -2522,171 +3645,201 @@ ShallowWrapper {
                   >
                     0:NaN
                   </div>
-                </Col>,
-              ],
-              "className": "timerContainer",
+                </div>
+              </Col>,
               "tag": "div",
             },
             "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "function",
-                "props": Object {
-                  "children": Array [
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": Array [
+                  <div
+                    className="timerCol"
+                  >
                     <div>
                       Intervals Left
-                    </div>,
+                    </div>
                     <div
                       className="timer"
-                    />,
-                  ],
-                  "className": "timerCol",
-                  "tag": "div",
-                  "widths": Array [
-                    "xs",
-                    "sm",
-                    "md",
-                    "lg",
-                    "xl",
-                  ],
-                },
-                "ref": null,
-                "rendered": Array [
-                  Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "host",
-                    "props": Object {
-                      "children": "Intervals Left",
-                    },
-                    "ref": null,
-                    "rendered": "Intervals Left",
-                    "type": "div",
-                  },
-                  Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "host",
-                    "props": Object {
-                      "children": undefined,
-                      "className": "timer",
-                    },
-                    "ref": null,
-                    "rendered": null,
-                    "type": "div",
-                  },
-                ],
-                "type": [Function],
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "function",
-                "props": Object {
-                  "children": Array [
+                    />
+                  </div>,
+                  <div
+                    className="timerCol"
+                  >
                     <div>
                       Interval Time Left
-                    </div>,
+                    </div>
                     <div
                       className="timer"
                     >
                       0:NaN
-                    </div>,
-                  ],
-                  "className": "timerCol",
-                  "tag": "div",
-                  "widths": Array [
-                    "xs",
-                    "sm",
-                    "md",
-                    "lg",
-                    "xl",
-                  ],
-                },
-                "ref": null,
-                "rendered": Array [
-                  Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "host",
-                    "props": Object {
-                      "children": "Interval Time Left",
-                    },
-                    "ref": null,
-                    "rendered": "Interval Time Left",
-                    "type": "div",
-                  },
-                  Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "host",
-                    "props": Object {
-                      "children": "0:NaN",
-                      "className": "timer",
-                    },
-                    "ref": null,
-                    "rendered": "0:NaN",
-                    "type": "div",
-                  },
-                ],
-                "type": [Function],
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "function",
-                "props": Object {
-                  "children": Array [
+                    </div>
+                  </div>,
+                  <div
+                    className="timerCol"
+                  >
                     <div>
                       Rest Time Left
-                    </div>,
+                    </div>
                     <div
                       className="timer"
                     >
                       0:NaN
-                    </div>,
-                  ],
-                  "className": "timerCol",
-                  "tag": "div",
-                  "widths": Array [
-                    "xs",
-                    "sm",
-                    "md",
-                    "lg",
-                    "xl",
-                  ],
-                },
-                "ref": null,
-                "rendered": Array [
-                  Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "host",
-                    "props": Object {
-                      "children": "Rest Time Left",
-                    },
-                    "ref": null,
-                    "rendered": "Rest Time Left",
-                    "type": "div",
-                  },
-                  Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "host",
-                    "props": Object {
-                      "children": "0:NaN",
-                      "className": "timer",
-                    },
-                    "ref": null,
-                    "rendered": "0:NaN",
-                    "type": "div",
-                  },
+                    </div>
+                  </div>,
                 ],
-                "type": [Function],
+                "className": "timerContainer",
+                "lg": 7,
+                "tag": "div",
+                "widths": Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ],
               },
-            ],
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      <div>
+                        Intervals Left
+                      </div>,
+                      <div
+                        className="timer"
+                      />,
+                    ],
+                    "className": "timerCol",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "Intervals Left",
+                      },
+                      "ref": null,
+                      "rendered": "Intervals Left",
+                      "type": "div",
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": undefined,
+                        "className": "timer",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": "div",
+                    },
+                  ],
+                  "type": "div",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      <div>
+                        Interval Time Left
+                      </div>,
+                      <div
+                        className="timer"
+                      >
+                        0:NaN
+                      </div>,
+                    ],
+                    "className": "timerCol",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "Interval Time Left",
+                      },
+                      "ref": null,
+                      "rendered": "Interval Time Left",
+                      "type": "div",
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "0:NaN",
+                        "className": "timer",
+                      },
+                      "ref": null,
+                      "rendered": "0:NaN",
+                      "type": "div",
+                    },
+                  ],
+                  "type": "div",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      <div>
+                        Rest Time Left
+                      </div>,
+                      <div
+                        className="timer"
+                      >
+                        0:NaN
+                      </div>,
+                    ],
+                    "className": "timerCol",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "Rest Time Left",
+                      },
+                      "ref": null,
+                      "rendered": "Rest Time Left",
+                      "type": "div",
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "0:NaN",
+                        "className": "timer",
+                      },
+                      "ref": null,
+                      "rendered": "0:NaN",
+                      "type": "div",
+                    },
+                  ],
+                  "type": "div",
+                },
+              ],
+              "type": [Function],
+            },
             "type": [Function],
           },
           Object {
@@ -2697,6 +3850,7 @@ ShallowWrapper {
               "children": Array [
                 <Col
                   className="videoContainer"
+                  lg={7}
                   tag="div"
                   widths={
                     Array [
@@ -2718,183 +3872,330 @@ ShallowWrapper {
                     className="canvas"
                   />
                 </Col>,
-                <Row
+                <Col
                   className="statContainer"
+                  lg={5}
                   tag="div"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
                 >
-                  <Col
+                  <Row
                     tag="div"
-                    widths={
-                      Array [
-                        "xs",
-                        "sm",
-                        "md",
-                        "lg",
-                        "xl",
-                      ]
-                    }
                   >
-                    <h3>
+                    <h3
+                      className="statHeader"
+                    >
                       Stats
                     </h3>
-                  </Col>
-                  <Col
+                  </Row>
+                  <Row
                     className="stat"
                     tag="div"
-                    widths={
-                      Array [
-                        "xs",
-                        "sm",
-                        "md",
-                        "lg",
-                        "xl",
-                      ]
-                    }
                   >
-                    <div
-                      className="label"
+                    <Col
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs={4}
                     >
                       Total Punches
-                    </div>
-                    <div>
+                    </Col>
+                    <Col
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs={4}
+                    >
                       0
-                    </div>
-                  </Col>
-                  <Col
+                    </Col>
+                  </Row>
+                  <Row
                     className="stat"
                     tag="div"
-                    widths={
-                      Array [
-                        "xs",
-                        "sm",
-                        "md",
-                        "lg",
-                        "xl",
-                      ]
-                    }
                   >
-                    <div
-                      className="label"
+                    <Col
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs={4}
                     >
                       Jabs
-                    </div>
-                    <div>
+                    </Col>
+                    <Col
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs={4}
+                    >
                       0
-                    </div>
-                  </Col>
-                  <Col
+                    </Col>
+                  </Row>
+                  <Row
                     className="stat"
                     tag="div"
-                    widths={
-                      Array [
-                        "xs",
-                        "sm",
-                        "md",
-                        "lg",
-                        "xl",
-                      ]
-                    }
                   >
-                    <div
-                      className="label"
+                    <Col
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs={4}
                     >
                       Straight Right
-                    </div>
-                    <div>
+                    </Col>
+                    <Col
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs={4}
+                    >
                       0
-                    </div>
-                  </Col>
-                  <Col
+                    </Col>
+                  </Row>
+                  <Row
                     className="stat"
                     tag="div"
-                    widths={
-                      Array [
-                        "xs",
-                        "sm",
-                        "md",
-                        "lg",
-                        "xl",
-                      ]
-                    }
                   >
-                    <div
-                      className="label"
+                    <Col
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs={4}
                     >
                       Left Hooks
-                    </div>
-                    <div>
+                    </Col>
+                    <Col
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs={2}
+                    >
                       0
-                    </div>
-                    <div
-                      className="label"
+                    </Col>
+                    <Col
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs={4}
                     >
                       Right Hooks
-                    </div>
-                    <div>
+                    </Col>
+                    <Col
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs={2}
+                    >
                       0
-                    </div>
-                  </Col>
-                  <Col
+                    </Col>
+                  </Row>
+                  <Row
                     className="stat"
                     tag="div"
-                    widths={
-                      Array [
-                        "xs",
-                        "sm",
-                        "md",
-                        "lg",
-                        "xl",
-                      ]
-                    }
                   >
-                    <div
-                      className="label"
+                    <Col
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs={4}
                     >
                       Left Uppercuts
-                    </div>
-                    <div>
+                    </Col>
+                    <Col
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs={2}
+                    >
                       0
-                    </div>
-                    <div
-                      className="label"
+                    </Col>
+                    <Col
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs={4}
                     >
                       Right Uppercuts
-                    </div>
-                    <div>
+                    </Col>
+                    <Col
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs={2}
+                    >
                       0
-                    </div>
-                  </Col>
-                  <Col
+                    </Col>
+                  </Row>
+                  <Row
                     className="stat"
                     tag="div"
-                    widths={
-                      Array [
-                        "xs",
-                        "sm",
-                        "md",
-                        "lg",
-                        "xl",
-                      ]
-                    }
                   >
-                    <div
-                      className="label"
+                    <Col
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs={4}
                     >
                       Left Body Hooks
-                    </div>
-                    <div>
+                    </Col>
+                    <Col
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs={2}
+                    >
                       0
-                    </div>
-                    <div
-                      className="label"
+                    </Col>
+                    <Col
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs={4}
                     >
                       Right Body Hooks
-                    </div>
-                    <div>
+                    </Col>
+                    <Col
+                      tag="div"
+                      widths={
+                        Array [
+                          "xs",
+                          "sm",
+                          "md",
+                          "lg",
+                          "xl",
+                        ]
+                      }
+                      xs={2}
+                    >
                       0
-                    </div>
-                  </Col>
-                </Row>,
+                    </Col>
+                  </Row>
+                </Col>,
               ],
               "className": "videoRow",
               "tag": "div",
@@ -2918,6 +4219,7 @@ ShallowWrapper {
                     />,
                   ],
                   "className": "videoContainer",
+                  "lg": 7,
                   "tag": "div",
                   "widths": Array [
                     "xs",
@@ -2976,181 +4278,326 @@ ShallowWrapper {
                 "nodeType": "function",
                 "props": Object {
                   "children": Array [
-                    <Col
+                    <Row
                       tag="div"
-                      widths={
-                        Array [
-                          "xs",
-                          "sm",
-                          "md",
-                          "lg",
-                          "xl",
-                        ]
-                      }
                     >
-                      <h3>
+                      <h3
+                        className="statHeader"
+                      >
                         Stats
                       </h3>
-                    </Col>,
-                    <Col
+                    </Row>,
+                    <Row
                       className="stat"
                       tag="div"
-                      widths={
-                        Array [
-                          "xs",
-                          "sm",
-                          "md",
-                          "lg",
-                          "xl",
-                        ]
-                      }
                     >
-                      <div
-                        className="label"
+                      <Col
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs={4}
                       >
                         Total Punches
-                      </div>
-                      <div>
+                      </Col>
+                      <Col
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs={4}
+                      >
                         0
-                      </div>
-                    </Col>,
-                    <Col
+                      </Col>
+                    </Row>,
+                    <Row
                       className="stat"
                       tag="div"
-                      widths={
-                        Array [
-                          "xs",
-                          "sm",
-                          "md",
-                          "lg",
-                          "xl",
-                        ]
-                      }
                     >
-                      <div
-                        className="label"
+                      <Col
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs={4}
                       >
                         Jabs
-                      </div>
-                      <div>
+                      </Col>
+                      <Col
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs={4}
+                      >
                         0
-                      </div>
-                    </Col>,
-                    <Col
+                      </Col>
+                    </Row>,
+                    <Row
                       className="stat"
                       tag="div"
-                      widths={
-                        Array [
-                          "xs",
-                          "sm",
-                          "md",
-                          "lg",
-                          "xl",
-                        ]
-                      }
                     >
-                      <div
-                        className="label"
+                      <Col
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs={4}
                       >
                         Straight Right
-                      </div>
-                      <div>
+                      </Col>
+                      <Col
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs={4}
+                      >
                         0
-                      </div>
-                    </Col>,
-                    <Col
+                      </Col>
+                    </Row>,
+                    <Row
                       className="stat"
                       tag="div"
-                      widths={
-                        Array [
-                          "xs",
-                          "sm",
-                          "md",
-                          "lg",
-                          "xl",
-                        ]
-                      }
                     >
-                      <div
-                        className="label"
+                      <Col
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs={4}
                       >
                         Left Hooks
-                      </div>
-                      <div>
+                      </Col>
+                      <Col
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs={2}
+                      >
                         0
-                      </div>
-                      <div
-                        className="label"
+                      </Col>
+                      <Col
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs={4}
                       >
                         Right Hooks
-                      </div>
-                      <div>
+                      </Col>
+                      <Col
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs={2}
+                      >
                         0
-                      </div>
-                    </Col>,
-                    <Col
+                      </Col>
+                    </Row>,
+                    <Row
                       className="stat"
                       tag="div"
-                      widths={
-                        Array [
-                          "xs",
-                          "sm",
-                          "md",
-                          "lg",
-                          "xl",
-                        ]
-                      }
                     >
-                      <div
-                        className="label"
+                      <Col
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs={4}
                       >
                         Left Uppercuts
-                      </div>
-                      <div>
+                      </Col>
+                      <Col
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs={2}
+                      >
                         0
-                      </div>
-                      <div
-                        className="label"
+                      </Col>
+                      <Col
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs={4}
                       >
                         Right Uppercuts
-                      </div>
-                      <div>
+                      </Col>
+                      <Col
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs={2}
+                      >
                         0
-                      </div>
-                    </Col>,
-                    <Col
+                      </Col>
+                    </Row>,
+                    <Row
                       className="stat"
                       tag="div"
-                      widths={
-                        Array [
-                          "xs",
-                          "sm",
-                          "md",
-                          "lg",
-                          "xl",
-                        ]
-                      }
                     >
-                      <div
-                        className="label"
+                      <Col
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs={4}
                       >
                         Left Body Hooks
-                      </div>
-                      <div>
+                      </Col>
+                      <Col
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs={2}
+                      >
                         0
-                      </div>
-                      <div
-                        className="label"
+                      </Col>
+                      <Col
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs={4}
                       >
                         Right Body Hooks
-                      </div>
-                      <div>
+                      </Col>
+                      <Col
+                        tag="div"
+                        widths={
+                          Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ]
+                        }
+                        xs={2}
+                      >
                         0
-                      </div>
-                    </Col>,
+                      </Col>
+                    </Row>,
                   ],
                   "className": "statContainer",
+                  "lg": 5,
                   "tag": "div",
+                  "widths": Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ],
                 },
                 "ref": null,
                 "rendered": Array [
@@ -3159,17 +4606,12 @@ ShallowWrapper {
                     "key": undefined,
                     "nodeType": "function",
                     "props": Object {
-                      "children": <h3>
+                      "children": <h3
+                        className="statHeader"
+                      >
                         Stats
                       </h3>,
                       "tag": "div",
-                      "widths": Array [
-                        "xs",
-                        "sm",
-                        "md",
-                        "lg",
-                        "xl",
-                      ],
                     },
                     "ref": null,
                     "rendered": Object {
@@ -3178,6 +4620,7 @@ ShallowWrapper {
                       "nodeType": "host",
                       "props": Object {
                         "children": "Stats",
+                        "className": "statHeader",
                       },
                       "ref": null,
                       "rendered": "Stats",
@@ -3191,49 +4634,81 @@ ShallowWrapper {
                     "nodeType": "function",
                     "props": Object {
                       "children": Array [
-                        <div
-                          className="label"
+                        <Col
+                          tag="div"
+                          widths={
+                            Array [
+                              "xs",
+                              "sm",
+                              "md",
+                              "lg",
+                              "xl",
+                            ]
+                          }
+                          xs={4}
                         >
                           Total Punches
-                        </div>,
-                        <div>
+                        </Col>,
+                        <Col
+                          tag="div"
+                          widths={
+                            Array [
+                              "xs",
+                              "sm",
+                              "md",
+                              "lg",
+                              "xl",
+                            ]
+                          }
+                          xs={4}
+                        >
                           0
-                        </div>,
+                        </Col>,
                       ],
                       "className": "stat",
                       "tag": "div",
-                      "widths": Array [
-                        "xs",
-                        "sm",
-                        "md",
-                        "lg",
-                        "xl",
-                      ],
                     },
                     "ref": null,
                     "rendered": Array [
                       Object {
                         "instance": null,
                         "key": undefined,
-                        "nodeType": "host",
+                        "nodeType": "function",
                         "props": Object {
                           "children": "Total Punches",
-                          "className": "label",
+                          "tag": "div",
+                          "widths": Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ],
+                          "xs": 4,
                         },
                         "ref": null,
                         "rendered": "Total Punches",
-                        "type": "div",
+                        "type": [Function],
                       },
                       Object {
                         "instance": null,
                         "key": undefined,
-                        "nodeType": "host",
+                        "nodeType": "function",
                         "props": Object {
                           "children": 0,
+                          "tag": "div",
+                          "widths": Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ],
+                          "xs": 4,
                         },
                         "ref": null,
                         "rendered": 0,
-                        "type": "div",
+                        "type": [Function],
                       },
                     ],
                     "type": [Function],
@@ -3244,49 +4719,81 @@ ShallowWrapper {
                     "nodeType": "function",
                     "props": Object {
                       "children": Array [
-                        <div
-                          className="label"
+                        <Col
+                          tag="div"
+                          widths={
+                            Array [
+                              "xs",
+                              "sm",
+                              "md",
+                              "lg",
+                              "xl",
+                            ]
+                          }
+                          xs={4}
                         >
                           Jabs
-                        </div>,
-                        <div>
+                        </Col>,
+                        <Col
+                          tag="div"
+                          widths={
+                            Array [
+                              "xs",
+                              "sm",
+                              "md",
+                              "lg",
+                              "xl",
+                            ]
+                          }
+                          xs={4}
+                        >
                           0
-                        </div>,
+                        </Col>,
                       ],
                       "className": "stat",
                       "tag": "div",
-                      "widths": Array [
-                        "xs",
-                        "sm",
-                        "md",
-                        "lg",
-                        "xl",
-                      ],
                     },
                     "ref": null,
                     "rendered": Array [
                       Object {
                         "instance": null,
                         "key": undefined,
-                        "nodeType": "host",
+                        "nodeType": "function",
                         "props": Object {
                           "children": "Jabs",
-                          "className": "label",
+                          "tag": "div",
+                          "widths": Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ],
+                          "xs": 4,
                         },
                         "ref": null,
                         "rendered": "Jabs",
-                        "type": "div",
+                        "type": [Function],
                       },
                       Object {
                         "instance": null,
                         "key": undefined,
-                        "nodeType": "host",
+                        "nodeType": "function",
                         "props": Object {
                           "children": 0,
+                          "tag": "div",
+                          "widths": Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ],
+                          "xs": 4,
                         },
                         "ref": null,
                         "rendered": 0,
-                        "type": "div",
+                        "type": [Function],
                       },
                     ],
                     "type": [Function],
@@ -3297,49 +4804,81 @@ ShallowWrapper {
                     "nodeType": "function",
                     "props": Object {
                       "children": Array [
-                        <div
-                          className="label"
+                        <Col
+                          tag="div"
+                          widths={
+                            Array [
+                              "xs",
+                              "sm",
+                              "md",
+                              "lg",
+                              "xl",
+                            ]
+                          }
+                          xs={4}
                         >
                           Straight Right
-                        </div>,
-                        <div>
+                        </Col>,
+                        <Col
+                          tag="div"
+                          widths={
+                            Array [
+                              "xs",
+                              "sm",
+                              "md",
+                              "lg",
+                              "xl",
+                            ]
+                          }
+                          xs={4}
+                        >
                           0
-                        </div>,
+                        </Col>,
                       ],
                       "className": "stat",
                       "tag": "div",
-                      "widths": Array [
-                        "xs",
-                        "sm",
-                        "md",
-                        "lg",
-                        "xl",
-                      ],
                     },
                     "ref": null,
                     "rendered": Array [
                       Object {
                         "instance": null,
                         "key": undefined,
-                        "nodeType": "host",
+                        "nodeType": "function",
                         "props": Object {
                           "children": "Straight Right",
-                          "className": "label",
+                          "tag": "div",
+                          "widths": Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ],
+                          "xs": 4,
                         },
                         "ref": null,
                         "rendered": "Straight Right",
-                        "type": "div",
+                        "type": [Function],
                       },
                       Object {
                         "instance": null,
                         "key": undefined,
-                        "nodeType": "host",
+                        "nodeType": "function",
                         "props": Object {
                           "children": 0,
+                          "tag": "div",
+                          "widths": Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ],
+                          "xs": 4,
                         },
                         "ref": null,
                         "rendered": 0,
-                        "type": "div",
+                        "type": [Function],
                       },
                     ],
                     "type": [Function],
@@ -3350,80 +4889,151 @@ ShallowWrapper {
                     "nodeType": "function",
                     "props": Object {
                       "children": Array [
-                        <div
-                          className="label"
+                        <Col
+                          tag="div"
+                          widths={
+                            Array [
+                              "xs",
+                              "sm",
+                              "md",
+                              "lg",
+                              "xl",
+                            ]
+                          }
+                          xs={4}
                         >
                           Left Hooks
-                        </div>,
-                        <div>
+                        </Col>,
+                        <Col
+                          tag="div"
+                          widths={
+                            Array [
+                              "xs",
+                              "sm",
+                              "md",
+                              "lg",
+                              "xl",
+                            ]
+                          }
+                          xs={2}
+                        >
                           0
-                        </div>,
-                        <div
-                          className="label"
+                        </Col>,
+                        <Col
+                          tag="div"
+                          widths={
+                            Array [
+                              "xs",
+                              "sm",
+                              "md",
+                              "lg",
+                              "xl",
+                            ]
+                          }
+                          xs={4}
                         >
                           Right Hooks
-                        </div>,
-                        <div>
+                        </Col>,
+                        <Col
+                          tag="div"
+                          widths={
+                            Array [
+                              "xs",
+                              "sm",
+                              "md",
+                              "lg",
+                              "xl",
+                            ]
+                          }
+                          xs={2}
+                        >
                           0
-                        </div>,
+                        </Col>,
                       ],
                       "className": "stat",
                       "tag": "div",
-                      "widths": Array [
-                        "xs",
-                        "sm",
-                        "md",
-                        "lg",
-                        "xl",
-                      ],
                     },
                     "ref": null,
                     "rendered": Array [
                       Object {
                         "instance": null,
                         "key": undefined,
-                        "nodeType": "host",
+                        "nodeType": "function",
                         "props": Object {
                           "children": "Left Hooks",
-                          "className": "label",
+                          "tag": "div",
+                          "widths": Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ],
+                          "xs": 4,
                         },
                         "ref": null,
                         "rendered": "Left Hooks",
-                        "type": "div",
+                        "type": [Function],
                       },
                       Object {
                         "instance": null,
                         "key": undefined,
-                        "nodeType": "host",
+                        "nodeType": "function",
                         "props": Object {
                           "children": 0,
+                          "tag": "div",
+                          "widths": Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ],
+                          "xs": 2,
                         },
                         "ref": null,
                         "rendered": 0,
-                        "type": "div",
+                        "type": [Function],
                       },
                       Object {
                         "instance": null,
                         "key": undefined,
-                        "nodeType": "host",
+                        "nodeType": "function",
                         "props": Object {
                           "children": "Right Hooks",
-                          "className": "label",
+                          "tag": "div",
+                          "widths": Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ],
+                          "xs": 4,
                         },
                         "ref": null,
                         "rendered": "Right Hooks",
-                        "type": "div",
+                        "type": [Function],
                       },
                       Object {
                         "instance": null,
                         "key": undefined,
-                        "nodeType": "host",
+                        "nodeType": "function",
                         "props": Object {
                           "children": 0,
+                          "tag": "div",
+                          "widths": Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ],
+                          "xs": 2,
                         },
                         "ref": null,
                         "rendered": 0,
-                        "type": "div",
+                        "type": [Function],
                       },
                     ],
                     "type": [Function],
@@ -3434,80 +5044,151 @@ ShallowWrapper {
                     "nodeType": "function",
                     "props": Object {
                       "children": Array [
-                        <div
-                          className="label"
+                        <Col
+                          tag="div"
+                          widths={
+                            Array [
+                              "xs",
+                              "sm",
+                              "md",
+                              "lg",
+                              "xl",
+                            ]
+                          }
+                          xs={4}
                         >
                           Left Uppercuts
-                        </div>,
-                        <div>
+                        </Col>,
+                        <Col
+                          tag="div"
+                          widths={
+                            Array [
+                              "xs",
+                              "sm",
+                              "md",
+                              "lg",
+                              "xl",
+                            ]
+                          }
+                          xs={2}
+                        >
                           0
-                        </div>,
-                        <div
-                          className="label"
+                        </Col>,
+                        <Col
+                          tag="div"
+                          widths={
+                            Array [
+                              "xs",
+                              "sm",
+                              "md",
+                              "lg",
+                              "xl",
+                            ]
+                          }
+                          xs={4}
                         >
                           Right Uppercuts
-                        </div>,
-                        <div>
+                        </Col>,
+                        <Col
+                          tag="div"
+                          widths={
+                            Array [
+                              "xs",
+                              "sm",
+                              "md",
+                              "lg",
+                              "xl",
+                            ]
+                          }
+                          xs={2}
+                        >
                           0
-                        </div>,
+                        </Col>,
                       ],
                       "className": "stat",
                       "tag": "div",
-                      "widths": Array [
-                        "xs",
-                        "sm",
-                        "md",
-                        "lg",
-                        "xl",
-                      ],
                     },
                     "ref": null,
                     "rendered": Array [
                       Object {
                         "instance": null,
                         "key": undefined,
-                        "nodeType": "host",
+                        "nodeType": "function",
                         "props": Object {
                           "children": "Left Uppercuts",
-                          "className": "label",
+                          "tag": "div",
+                          "widths": Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ],
+                          "xs": 4,
                         },
                         "ref": null,
                         "rendered": "Left Uppercuts",
-                        "type": "div",
+                        "type": [Function],
                       },
                       Object {
                         "instance": null,
                         "key": undefined,
-                        "nodeType": "host",
+                        "nodeType": "function",
                         "props": Object {
                           "children": 0,
+                          "tag": "div",
+                          "widths": Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ],
+                          "xs": 2,
                         },
                         "ref": null,
                         "rendered": 0,
-                        "type": "div",
+                        "type": [Function],
                       },
                       Object {
                         "instance": null,
                         "key": undefined,
-                        "nodeType": "host",
+                        "nodeType": "function",
                         "props": Object {
                           "children": "Right Uppercuts",
-                          "className": "label",
+                          "tag": "div",
+                          "widths": Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ],
+                          "xs": 4,
                         },
                         "ref": null,
                         "rendered": "Right Uppercuts",
-                        "type": "div",
+                        "type": [Function],
                       },
                       Object {
                         "instance": null,
                         "key": undefined,
-                        "nodeType": "host",
+                        "nodeType": "function",
                         "props": Object {
                           "children": 0,
+                          "tag": "div",
+                          "widths": Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ],
+                          "xs": 2,
                         },
                         "ref": null,
                         "rendered": 0,
-                        "type": "div",
+                        "type": [Function],
                       },
                     ],
                     "type": [Function],
@@ -3518,80 +5199,151 @@ ShallowWrapper {
                     "nodeType": "function",
                     "props": Object {
                       "children": Array [
-                        <div
-                          className="label"
+                        <Col
+                          tag="div"
+                          widths={
+                            Array [
+                              "xs",
+                              "sm",
+                              "md",
+                              "lg",
+                              "xl",
+                            ]
+                          }
+                          xs={4}
                         >
                           Left Body Hooks
-                        </div>,
-                        <div>
+                        </Col>,
+                        <Col
+                          tag="div"
+                          widths={
+                            Array [
+                              "xs",
+                              "sm",
+                              "md",
+                              "lg",
+                              "xl",
+                            ]
+                          }
+                          xs={2}
+                        >
                           0
-                        </div>,
-                        <div
-                          className="label"
+                        </Col>,
+                        <Col
+                          tag="div"
+                          widths={
+                            Array [
+                              "xs",
+                              "sm",
+                              "md",
+                              "lg",
+                              "xl",
+                            ]
+                          }
+                          xs={4}
                         >
                           Right Body Hooks
-                        </div>,
-                        <div>
+                        </Col>,
+                        <Col
+                          tag="div"
+                          widths={
+                            Array [
+                              "xs",
+                              "sm",
+                              "md",
+                              "lg",
+                              "xl",
+                            ]
+                          }
+                          xs={2}
+                        >
                           0
-                        </div>,
+                        </Col>,
                       ],
                       "className": "stat",
                       "tag": "div",
-                      "widths": Array [
-                        "xs",
-                        "sm",
-                        "md",
-                        "lg",
-                        "xl",
-                      ],
                     },
                     "ref": null,
                     "rendered": Array [
                       Object {
                         "instance": null,
                         "key": undefined,
-                        "nodeType": "host",
+                        "nodeType": "function",
                         "props": Object {
                           "children": "Left Body Hooks",
-                          "className": "label",
+                          "tag": "div",
+                          "widths": Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ],
+                          "xs": 4,
                         },
                         "ref": null,
                         "rendered": "Left Body Hooks",
-                        "type": "div",
+                        "type": [Function],
                       },
                       Object {
                         "instance": null,
                         "key": undefined,
-                        "nodeType": "host",
+                        "nodeType": "function",
                         "props": Object {
                           "children": 0,
+                          "tag": "div",
+                          "widths": Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ],
+                          "xs": 2,
                         },
                         "ref": null,
                         "rendered": 0,
-                        "type": "div",
+                        "type": [Function],
                       },
                       Object {
                         "instance": null,
                         "key": undefined,
-                        "nodeType": "host",
+                        "nodeType": "function",
                         "props": Object {
                           "children": "Right Body Hooks",
-                          "className": "label",
+                          "tag": "div",
+                          "widths": Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ],
+                          "xs": 4,
                         },
                         "ref": null,
                         "rendered": "Right Body Hooks",
-                        "type": "div",
+                        "type": [Function],
                       },
                       Object {
                         "instance": null,
                         "key": undefined,
-                        "nodeType": "host",
+                        "nodeType": "function",
                         "props": Object {
                           "children": 0,
+                          "tag": "div",
+                          "widths": Array [
+                            "xs",
+                            "sm",
+                            "md",
+                            "lg",
+                            "xl",
+                          ],
+                          "xs": 2,
                         },
                         "ref": null,
                         "rendered": 0,
-                        "type": "div",
+                        "type": [Function],
                       },
                     ],
                     "type": [Function],
