@@ -66,10 +66,19 @@ export class LandingPage extends Component {
           </Row>
           <Row className={styles.contentRow}>
             <Col sm={6}>
-              <img
+              {/* <img
                 className={styles.screenshots}
                 src={screen2}
                 alt="Screenshot of app"
+              /> */}
+              <iframe
+                title="demo_video"
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/o0wxXZ4AA30"
+                frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
               />
             </Col>
             <Col sm={5}>
