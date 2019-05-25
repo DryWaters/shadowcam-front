@@ -1,9 +1,7 @@
 # ShadowCam FrontEnd Application
 ShadowCam frontend application that uses 
 [PoseNet](https://github.com/tensorflow/tfjs-models/tree/master/posenet) to 
-determine user's poses to record user's boxing workouts.  It requires the  
-[backend](https://github.com/DryWaters/shadowcam-back) companion Express 
-application for user authentication and for savingof user's data.
+determine user's poses to record user's boxing workouts.  It requires the [backend](https://github.com/DryWaters/shadowcam-back) companion Express application for user authentication and for savingof user's data.
 
 * [Instructions](#instructions)
 * [Getting Started](#getting-started)
